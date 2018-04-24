@@ -53,7 +53,7 @@ func (s authorizationStore) Get(code string) (*Authorization, error) {
 	cmd := s.R.Get(s.key(code))
 	if err := cmd.Err(); err != nil {
 		if err == redis.Nil {
-			return nil, notFoundError("invalid authorization code")
+			return nil, NotFoundError("invalid authorization code")
 		}
 		return nil, err
 	}

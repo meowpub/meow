@@ -8,14 +8,14 @@ import (
 
 var ErrNoTTL = errors.New("a TTL is required, but not given")
 
-type notFoundError string
+type NotFoundError string
 
-func (err notFoundError) Error() string {
+func (err NotFoundError) Error() string {
 	return string(err)
 }
 
 func IsNotFound(err error) bool {
-	if _, ok := err.(notFoundError); ok {
+	if _, ok := err.(NotFoundError); ok {
 		return true
 	}
 	return gorm.IsRecordNotFoundError(err)
