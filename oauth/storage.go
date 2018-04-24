@@ -78,20 +78,19 @@ func (s Storage) RemoveAuthorize(code string) error {
 	return s.Auths.Delete(code)
 }
 
-// SaveAccess saves the refresh token (and nothing else) to redis.
+// SaveAccess saves the refresh token to redis.
 // It's possible for there not to be an access token; NOP in that case.
 func (s Storage) SaveAccess(*osin.AccessData) error {
 	panic("not implemented")
 }
 
-// LoadAccess decodes a JWT. It's completely stateless. (Me too.) The Client field must be
-// populated, but AuthorizeData and AccessData do NOT need to be loaded if it's not easily
-// available.
+// LoadAccess looks up an access token in Redis. The Client field must be populated, but
+// AuthorizeData and AccessData do NOT need to be loaded if it's not easily available.
 func (s Storage) LoadAccess(token string) (*osin.AccessData, error) {
 	panic("not implemented")
 }
 
-// RemoveAccess does nothing, because JWTs are stateless. Revoke the refresh token instead.
+// RemoveAccess removes the token from Redis.
 func (s Storage) RemoveAccess(token string) error {
 	panic("not implemented")
 }
