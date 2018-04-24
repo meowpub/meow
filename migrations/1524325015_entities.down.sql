@@ -4,8 +4,6 @@
 
 BEGIN;
 
---
--- TODO: Add your SQL!
---
+DROP TABLE entities;
 
 COMMIT;
