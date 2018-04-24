@@ -13,3 +13,8 @@ func IsProd() bool {
 func DB() string {
 	return viper.GetString("db")
 }
+
+// Redis returns the redis connection string.
+func Redis() string {
+	return viper.GetString("redis")
+}
