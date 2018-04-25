@@ -34,15 +34,15 @@ func (m *MockAuthorizationStore) EXPECT() *MockAuthorizationStoreMockRecorder {
 }
 
 // Set mocks base method
-func (m *MockAuthorizationStore) Set(code string, auth *Authorization, ttl time.Duration) error {
-	ret := m.ctrl.Call(m, "Set", code, auth, ttl)
+func (m *MockAuthorizationStore) Set(auth *Authorization, ttl time.Duration) error {
+	ret := m.ctrl.Call(m, "Set", auth, ttl)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // Set indicates an expected call of Set
-func (mr *MockAuthorizationStoreMockRecorder) Set(code, auth, ttl interface{}) *gomock.Call {
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Set", reflect.TypeOf((*MockAuthorizationStore)(nil).Set), code, auth, ttl)
+func (mr *MockAuthorizationStoreMockRecorder) Set(auth, ttl interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Set", reflect.TypeOf((*MockAuthorizationStore)(nil).Set), auth, ttl)
 }
 
 // Get mocks base method

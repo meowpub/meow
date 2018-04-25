@@ -42,7 +42,8 @@ func (s Storage) GetClient(id string) (osin.Client, error) {
 
 // SaveAuthorize stores authorization data in Redis for later use, w/ a TTL.
 func (s Storage) SaveAuthorize(auth *osin.AuthorizeData) error {
-	return s.Auths.Set(auth.Code, &models.Authorization{
+	return s.Auths.Set(&models.Authorization{
+		Code:        auth.Code,
 		ClientID:    auth.Client.GetId(),
 		Scope:       auth.Scope,
 		RedirectURI: auth.RedirectUri,
@@ -80,7 +81,7 @@ func (s Storage) RemoveAuthorize(code string) error {
 
 // SaveAccess saves the refresh token to redis.
 // It's possible for there not to be an access token; NOP in that case.
-func (s Storage) SaveAccess(*osin.AccessData) error {
+func (s Storage) SaveAccess(access *osin.AccessData) error {
 	panic("not implemented")
 }
 

@@ -80,7 +80,8 @@ func TestStorageSaveAuthorize(t *testing.T) {
 		defer ctrl.Finish()
 
 		store := newMockStorage(ctrl)
-		mockAuthStore(store).EXPECT().Set("my_code", &models.Authorization{
+		mockAuthStore(store).EXPECT().Set(&models.Authorization{
+			Code:        "my_code",
 			ClientID:    "my_client",
 			Scope:       "my_scope",
 			RedirectURI: "https://example.com/",
@@ -102,7 +103,7 @@ func TestStorageSaveAuthorize(t *testing.T) {
 		defer ctrl.Finish()
 
 		store := newMockStorage(ctrl)
-		mockAuthStore(store).EXPECT().Set("my_code", gomock.Any(), 0*time.Second).Return(models.ErrNoTTL)
+		mockAuthStore(store).EXPECT().Set(gomock.Any(), 0*time.Second).Return(models.ErrNoTTL)
 
 		assert.EqualError(t, store.SaveAuthorize(&osin.AuthorizeData{
 			Client:      &models.Client{ID: "my_client"},

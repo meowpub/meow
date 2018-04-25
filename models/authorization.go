@@ -12,6 +12,7 @@ import (
 // Authorization stores server-side state for an authorization. It's stored temporarily, before
 // being traded for an AccessToken and a RefreshToken and subsequently deleted.
 type Authorization struct {
+	Code        string `json:"code"`
 	ClientID    string `json:"client_id"`
 	Scope       string `json:"scope"`
 	RedirectURI string `json:"redirect_uri"`
@@ -20,7 +21,7 @@ type Authorization struct {
 
 // AuthorizationStore stores Authorizations (in Redis).
 type AuthorizationStore interface {
-	Set(code string, auth *Authorization, ttl time.Duration) error
+	Set(auth *Authorization, ttl time.Duration) error
 	Get(code string) (*Authorization, error)
 	Delete(code string) error
 }
@@ -38,7 +39,7 @@ func (s authorizationStore) key(code string) string {
 	return s.K + ":oauth2:authorizations:" + code
 }
 
-func (s authorizationStore) Set(code string, auth *Authorization, ttl time.Duration) error {
+func (s authorizationStore) Set(auth *Authorization, ttl time.Duration) error {
 	if ttl == 0 {
 		return ErrNoTTL
 	}
@@ -46,7 +47,7 @@ func (s authorizationStore) Set(code string, auth *Authorization, ttl time.Durat
 	if err != nil {
 		return err
 	}
-	return s.R.Set(s.key(code), data, ttl).Err()
+	return s.R.Set(s.key(auth.Code), data, ttl).Err()
 }
 
 func (s authorizationStore) Get(code string) (*Authorization, error) {
