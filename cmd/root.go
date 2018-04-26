@@ -46,6 +46,7 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	rootCmd.PersistentFlags().BoolP("prod", "P", false, "run in production mode")
+	rootCmd.PersistentFlags().Int64P("node-id", "n", 0, "node id used for snowflake generation")
 	rootCmd.PersistentFlags().String("db", "postgres:///meow?sslmode=disable", "database connection uri")
 	rootCmd.PersistentFlags().String("redis", "redis://localhost:6379/0", "redis connection uri")
 	viper.BindPFlags(rootCmd.PersistentFlags())

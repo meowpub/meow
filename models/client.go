@@ -3,9 +3,12 @@ package models
 import (
 	"crypto/rand"
 	"encoding/base64"
+	"strconv"
 
+	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
-	"github.com/satori/uuid"
+	"github.com/liclac/meow/config"
+	"github.com/liclac/meow/lib"
 )
 
 //go:generate mockgen -package=models -source=client.go -destination=client.mock.go
@@ -13,9 +16,9 @@ import (
 // Client is an OAuth2 client application.
 // Implements the osin.Client interface for the oauth package.
 type Client struct {
-	ID          string `json:"id"`
-	RedirectURI string `json:"redirect_uri"`
-	Secret      string `json:"-"`
+	ID          snowflake.ID `json:"id"`
+	RedirectURI string       `json:"redirect_uri"`
+	Secret      string       `json:"-"`
 	ClientUserData
 }
 
@@ -26,8 +29,8 @@ type ClientUserData struct {
 }
 
 func NewClient(ud ClientUserData, redirectURI string) (*Client, error) {
-	// Generate a UUID.
-	id, err := uuid.NewV4()
+	// Generate a snowflake.
+	id, err := lib.GenSnowflake(config.NodeID())
 	if err != nil {
 		return nil, err
 	}
@@ -40,14 +43,14 @@ func NewClient(ud ClientUserData, redirectURI string) (*Client, error) {
 	secret := base64.RawURLEncoding.EncodeToString(secretData)
 
 	return &Client{
-		ID:             id.String(),
+		ID:             id,
 		RedirectURI:    redirectURI,
 		Secret:         secret,
 		ClientUserData: ud,
 	}, nil
 }
 
-func (c Client) GetId() string            { return c.ID }
+func (c Client) GetId() string            { return strconv.FormatInt(int64(c.ID), 10) }
 func (c Client) GetSecret() string        { return c.Secret }
 func (c Client) GetRedirectUri() string   { return c.RedirectURI }
 func (c Client) GetUserData() interface{} { return c.ClientUserData }
@@ -58,7 +61,7 @@ type ClientStore interface {
 	Create(cl *Client) error
 
 	// Get returns a client by ID, or an error if it doesn't exist.
-	Get(id string) (*Client, error)
+	Get(id snowflake.ID) (*Client, error)
 }
 
 type clientStore struct {
@@ -74,7 +77,7 @@ func (s clientStore) Create(cl *Client) error {
 	return s.DB.Create(cl).Error
 }
 
-func (s clientStore) Get(id string) (*Client, error) {
+func (s clientStore) Get(id snowflake.ID) (*Client, error) {
 	var cl Client
 	return &cl, s.DB.First(&cl, Client{ID: id}).Error
 }

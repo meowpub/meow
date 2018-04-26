@@ -1,9 +1,11 @@
 package oauth
 
 import (
+	"strconv"
 	"time"
 
 	"github.com/RangelReale/osin"
+	"github.com/bwmarrin/snowflake"
 	"github.com/liclac/meow/models"
 )
 
@@ -33,7 +35,11 @@ func (s Storage) Close() {
 
 // GetClient returns the client with the given ID.
 func (s Storage) GetClient(id string) (osin.Client, error) {
-	cl, err := s.Clients.Get(id)
+	flake, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		return nil, err
+	}
+	cl, err := s.Clients.Get(snowflake.ID(flake))
 	if models.IsNotFound(err) {
 		return nil, osin.ErrNotFound
 	}

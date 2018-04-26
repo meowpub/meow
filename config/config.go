@@ -18,3 +18,8 @@ func DB() string {
 func Redis() string {
 	return viper.GetString("redis")
 }
+
+// NodeID returns the node ID used for distributed snowflake generation.
+func NodeID() int64 {
+	return viper.GetInt64("node-id")
+}

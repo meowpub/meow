@@ -5,6 +5,7 @@
 package models
 
 import (
+	snowflake "github.com/bwmarrin/snowflake"
 	gomock "github.com/golang/mock/gomock"
 	reflect "reflect"
 )
@@ -45,7 +46,7 @@ func (mr *MockClientStoreMockRecorder) Create(cl interface{}) *gomock.Call {
 }
 
 // Get mocks base method
-func (m *MockClientStore) Get(id string) (*Client, error) {
+func (m *MockClientStore) Get(id snowflake.ID) (*Client, error) {
 	ret := m.ctrl.Call(m, "Get", id)
 	ret0, _ := ret[0].(*Client)
 	ret1, _ := ret[1].(error)

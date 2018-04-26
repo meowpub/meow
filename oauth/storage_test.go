@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/RangelReale/osin"
+	"github.com/bwmarrin/snowflake"
 	"github.com/golang/mock/gomock"
 	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/assert"
@@ -41,7 +42,7 @@ func TestStorage(t *testing.T) {
 
 func TestStorageGetClient(t *testing.T) {
 	cl := &models.Client{
-		ID:          "my_client",
+		ID:          353894652568535040,
 		RedirectURI: "https://example.com/",
 		Secret:      "hello world",
 		ClientUserData: models.ClientUserData{
@@ -55,10 +56,12 @@ func TestStorageGetClient(t *testing.T) {
 		defer ctrl.Finish()
 
 		store := newMockStorage(ctrl)
-		mockClientStore(store).EXPECT().Get("my_client").Return(nil, gorm.ErrRecordNotFound)
+		mockClientStore(store).EXPECT().Get(
+			snowflake.ID(353894652568535040),
+		).Return(nil, gorm.ErrRecordNotFound)
 
-		_, err := store.GetClient("my_client")
-		assert.Equal(t, err, osin.ErrNotFound)
+		_, err := store.GetClient("353894652568535040")
+		assert.Equal(t, osin.ErrNotFound, err)
 	})
 
 	t.Run("Found", func(t *testing.T) {
@@ -66,9 +69,11 @@ func TestStorageGetClient(t *testing.T) {
 		defer ctrl.Finish()
 
 		store := newMockStorage(ctrl)
-		mockClientStore(store).EXPECT().Get("my_client").Return(cl, nil)
+		mockClientStore(store).EXPECT().Get(
+			snowflake.ID(353894652568535040),
+		).Return(cl, nil)
 
-		cl2, err := store.GetClient("my_client")
+		cl2, err := store.GetClient("353894652568535040")
 		require.NoError(t, err)
 		assert.Equal(t, cl, cl2)
 	})
@@ -82,14 +87,14 @@ func TestStorageSaveAuthorize(t *testing.T) {
 		store := newMockStorage(ctrl)
 		mockAuthStore(store).EXPECT().Set(&models.Authorization{
 			Code:        "my_code",
-			ClientID:    "my_client",
+			ClientID:    "353894652568535040",
 			Scope:       "my_scope",
 			RedirectURI: "https://example.com/",
 			State:       "hi",
 		}, 15*time.Second).Return(nil)
 
 		assert.NoError(t, store.SaveAuthorize(&osin.AuthorizeData{
-			Client:      &models.Client{ID: "my_client"},
+			Client:      &models.Client{ID: 353894652568535040},
 			Code:        "my_code",
 			ExpiresIn:   15,
 			Scope:       "my_scope",
@@ -106,7 +111,7 @@ func TestStorageSaveAuthorize(t *testing.T) {
 		mockAuthStore(store).EXPECT().Set(gomock.Any(), 0*time.Second).Return(models.ErrNoTTL)
 
 		assert.EqualError(t, store.SaveAuthorize(&osin.AuthorizeData{
-			Client:      &models.Client{ID: "my_client"},
+			Client:      &models.Client{ID: 353894652568535040},
 			Code:        "my_code",
 			Scope:       "my_scope",
 			RedirectUri: "https://example.com/",
@@ -134,20 +139,22 @@ func TestStorageLoadAuthorize(t *testing.T) {
 		store := newMockStorage(ctrl)
 		gomock.InOrder(
 			mockAuthStore(store).EXPECT().Get("my_code").Return(&models.Authorization{
-				ClientID:    "my_client",
+				ClientID:    "353894652568535040",
 				Scope:       "my_scope",
 				RedirectURI: "https://example.com/",
 				State:       "hi",
 			}, nil),
-			mockClientStore(store).EXPECT().Get("my_client").Return(&models.Client{
-				ID: "my_client",
+			mockClientStore(store).EXPECT().Get(
+				snowflake.ID(353894652568535040),
+			).Return(&models.Client{
+				ID: 353894652568535040,
 			}, nil),
 		)
 
 		auth, err := store.LoadAuthorize("my_code")
 		require.NoError(t, err)
 		assert.Equal(t, &osin.AuthorizeData{
-			Client:      &models.Client{ID: "my_client"},
+			Client:      &models.Client{ID: 353894652568535040},
 			Code:        "my_code",
 			Scope:       "my_scope",
 			RedirectUri: "https://example.com/",

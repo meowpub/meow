@@ -5,7 +5,7 @@
 BEGIN;
 
 CREATE TABLE clients (
-    id           UUID         PRIMARY KEY,
+    id           BIGINT       PRIMARY KEY,
     name         VARCHAR(255) NOT NULL CHECK (name != ''),
     description  VARCHAR(255) NOT NULL CHECK (description != ''),
 	redirect_uri VARCHAR(255) NOT NULL CHECK (redirect_uri != ''),
