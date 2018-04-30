@@ -15,10 +15,18 @@ type StringItem struct {
 	Language string `json:"@language"`
 }
 
+func ToString(s string) String {
+	return String{StringItem{Value: s}}
+}
+
 func (s StringItem) String() string {
 	return s.Value
 }
 
-func ToString(s string) String {
-	return String{StringItem{Value: s}}
+func (s StringItem) MarshalJSON() ([]byte, error) {
+	return s.Meta.Marshal(s)
+}
+
+func (s *StringItem) UnmarshalJSON(data []byte) error {
+	return s.Meta.Unmarshal(data, s)
 }
