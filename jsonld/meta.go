@@ -77,7 +77,7 @@ func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
 		if len(fields) == 0 {
 			fields = nil
 		}
-		m.Extra = fields
+		meta.Extra = fields
 	}
 
 	return nil
