@@ -75,7 +75,7 @@ func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
 			continue
 		}
 		if meta := m.findMeta(fieldV); meta != nil {
-			if err := meta.Unmarshal(fieldData, fieldV); err != nil {
+			if err := meta.unmarshal(fieldData, fieldV); err != nil {
 				return errors.Wrap(err, key)
 			}
 		} else {
