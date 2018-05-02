@@ -7,6 +7,21 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+type Image struct {
+	Type      Type   `json:"@type"`
+	MediaType String `json:"https://www.w3.org/ns/activitystreams#mediaType"`
+	URL       Ref    `json:"https://www.w3.org/ns/activitystreams#url"`
+}
+
+type Person struct {
+	Meta
+	ID   ID   `json:"@id"`
+	Type Type `json:"@type"`
+
+	PreferredUsername String `json:"https://www.w3.org/ns/activitystreams#preferredUsername"`
+	Icon              Image  `json:"https://www.w3.org/ns/activitystreams#icon"`
+}
+
 func TestUnmarshalPerson(t *testing.T) {
 	data := []byte(`{
 		"@id": "https://example.com/@jsmith",
@@ -19,18 +34,8 @@ func TestUnmarshalPerson(t *testing.T) {
 			"https://www.w3.org/ns/activitystreams#url": [{"@id": "https://example.com/icon.jpg"}]
 		}
 	}`)
-	var v struct {
-		Meta
-		ID   ID   `json:"@id"`
-		Type Type `json:"@type"`
+	var v Person
 
-		PreferredUsername String `json:"https://www.w3.org/ns/activitystreams#preferredUsername"`
-		Icon              struct {
-			Type      Type   `json:"@type"`
-			MediaType String `json:"https://www.w3.org/ns/activitystreams#mediaType"`
-			URL       Ref    `json:"https://www.w3.org/ns/activitystreams#url"`
-		} `json:"https://www.w3.org/ns/activitystreams#icon"`
-	}
 	require.NoError(t, v.Meta.Unmarshal(data, &v))
 	assert.Equal(t, ID("https://example.com/@jsmith"), v.ID)
 	assert.Equal(t, Type{"https://www.w3.org/ns/activitystreams#Person"}, v.Type)
