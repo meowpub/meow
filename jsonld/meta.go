@@ -24,7 +24,8 @@ func (m Meta) MarshalJSON() ([]byte, error) {
 func (m *Meta) Unmarshal(data []byte, v interface{}) error {
 	rV := reflect.ValueOf(v)
 	if m.findMeta(rV) != m {
-		return errors.New("Meta.Unmarshal called on a struct other than the one containing this Meta")
+		return errors.Errorf("Meta.Unmarshal called on a struct other than the one containing this Meta (of type '%s')",
+			rV.Type().String())
 	}
 	return m.unmarshal(data, rV)
 }
@@ -90,7 +91,9 @@ func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
 func (m *Meta) Marshal(v interface{}) ([]byte, error) {
 	rV := reflect.ValueOf(v)
 	if m.findMeta(rV) != m {
-		return nil, errors.New("Meta.Marshal called on a struct other than the one containing this Meta")
+		return nil, errors.Errorf(
+			"Meta.Marshal called on a struct other than the one containing this Meta (of type '%s')",
+			rV.Type().Name())
 	}
 	return m.marshal(rV)
 }
