@@ -104,11 +104,19 @@ func (m *Meta) marshal(rV reflect.Value) (json.RawMessage, error) {
 
 func (m *Meta) findMeta(rV reflect.Value) *Meta {
 	rT := rV.Type()
+
+	if rT.Kind() == reflect.Ptr {
+		rV = reflect.Indirect(rV)
+		rT = rV.Type()
+	}
+
 	if rT.Kind() != reflect.Struct {
 		return nil
 	}
+
 	for i := 0; i < rT.NumField(); i++ {
-		if rT == metaType {
+		rF := rT.Field(i)
+		if rF.Type == metaType {
 			return rV.Field(i).Addr().Interface().(*Meta)
 		}
 	}
