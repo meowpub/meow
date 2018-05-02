@@ -55,7 +55,7 @@ func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
 			continue
 		}
 
-		// If this is an embedded field, descend into it using with the same Meta.
+		// If this is an embedded field, descend into it using the same Meta.
 		if field.Anonymous {
 			if err := m.unmarshal(data, fieldV); err != nil {
 				return err
@@ -141,7 +141,7 @@ func (m *Meta) marshalBody(rV reflect.Value, buf *bytes.Buffer) error {
 			continue
 		}
 
-		// If this is an embedded field, descend into it using with the same Meta.
+		// If this is an embedded field, descend into it using the same Meta.
 		// and encode it into the same body
 		if field.Anonymous {
 			if err := m.marshalBody(fieldV, buf); err != nil {
