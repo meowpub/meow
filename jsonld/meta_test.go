@@ -1,6 +1,9 @@
 package jsonld
 
 import (
+	"bytes"
+	"encoding/json"
+
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -70,6 +73,12 @@ func TestMarshal(t *testing.T) {
 		PreferredUsername: ToString("jsmith"),
 	}
 	data, err := v.Meta.Marshal(&v)
+
 	require.NoError(t, err)
-	assert.Equal(t, `{"@id":"https://example.com/jsmith","@type":["https://www.w3.org/ns/activitystreams#Person"],"https://www.w3.org/ns/activitystreams#preferredUsername":[{"@value":"jsmith"}]}`, string(data))
+
+	var buf bytes.Buffer
+	err = json.Compact(&buf, data)
+	require.NoError(t, err)
+
+	assert.Equal(t, `{"@id":"https://example.com/jsmith","@type":["https://www.w3.org/ns/activitystreams#Person"],"https://www.w3.org/ns/activitystreams#preferredUsername":[{"@value":"jsmith"}]}`, string(buf.Bytes()))
 }

@@ -24,7 +24,7 @@ func (s StringItem) String() string {
 }
 
 func (s StringItem) MarshalJSON() ([]byte, error) {
-	return s.Meta.Marshal(s)
+	return s.Meta.Marshal(&s)
 }
 
 func (s *StringItem) UnmarshalJSON(data []byte) error {
