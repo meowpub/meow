@@ -3,7 +3,6 @@ package jsonld
 import (
 	"encoding/json"
 	"reflect"
-	"strings"
 
 	"github.com/pkg/errors"
 )
@@ -23,7 +22,11 @@ func (m Meta) MarshalJSON() ([]byte, error) {
 }
 
 func (m *Meta) Unmarshal(data []byte, v interface{}) error {
-	return m.unmarshal(data, reflect.ValueOf(v))
+	rV := reflect.ValueOf(v)
+	if m.findMeta(rV) != m {
+		return errors.New("Meta.Unmarshal called on a struct other than the one containing this Meta")
+	}
+	return m.unmarshal(data, rV)
 }
 
 func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
@@ -41,48 +44,70 @@ func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
 		return err
 	}
 
-	var meta *Meta
 	for i := 0; i < rT.NumField(); i++ {
 		field := rT.Field(i)
+		fieldV := rV.Field(i)
 
-		// Grab the Meta and skip if we have one.
+		// Skip the Meta embed.
 		if field.Type == metaType {
-			meta = rV.Field(i).Addr().Interface().(*Meta)
+			continue
+		}
+
+		// If this is an embedded field, descend into it using with the same Meta.
+		if field.Anonymous {
+			if err := m.unmarshal(data, fieldV); err != nil {
+				return err
+			}
 			continue
 		}
 
 		// Horribly mangle the `json` tag, just like what encoding/json does.
-		key := field.Name
-		if tag, ok := field.Tag.Lookup("json"); ok {
-			if idx := strings.Index(tag, ","); idx != -1 {
-				tag = tag[:idx]
-			}
-			key = tag
+		key := jsonKey(field.Name, field.Tag.Get("json"))
+		if key == "" || key == "-" {
+			continue
 		}
 
-		// Unmarshal the field if we have any data for it.
+		// Unmarshal the field if we have any data for it; using Meta.Unmarshal if it has a Meta,
+		// otherwise plain encoding/json-style.
 		fieldData, ok := fields[key]
 		if !ok {
 			continue
 		}
-		if err := m.unmarshal(fieldData, rV.Field(i)); err != nil {
-			return errors.Wrap(err, key)
+		if meta := m.findMeta(fieldV); meta != nil {
+			if err := meta.Unmarshal(fieldData, fieldV); err != nil {
+				return errors.Wrap(err, key)
+			}
+		} else {
+			if err := json.Unmarshal(fieldData, fieldV.Addr().Interface()); err != nil {
+				return errors.Wrap(err, key)
+			}
 		}
-		delete(fields, key)
-	}
-
-	if meta != nil {
-		// Set it to nil if there are no leftover fields, to save some memory and make test cases
-		// simpler to write.
-		if len(fields) == 0 {
-			fields = nil
-		}
-		meta.Extra = fields
 	}
 
 	return nil
 }
 
 func (m *Meta) Marshal(v interface{}) ([]byte, error) {
+	rV := reflect.ValueOf(v)
+	if m.findMeta(rV) != m {
+		return nil, errors.New("Meta.Marshal called on a struct other than the one containing this Meta")
+	}
+	return m.marshal(rV)
+}
+
+func (m *Meta) marshal(rV reflect.Value) (json.RawMessage, error) {
 	return nil, nil
+}
+
+func (m *Meta) findMeta(rV reflect.Value) *Meta {
+	rT := rV.Type()
+	if rT.Kind() != reflect.Struct {
+		return nil
+	}
+	for i := 0; i < rT.NumField(); i++ {
+		if rT == metaType {
+			return rV.Field(i).Addr().Interface().(*Meta)
+		}
+	}
+	return nil
 }

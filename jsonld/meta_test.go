@@ -41,3 +41,30 @@ func TestUnmarshalPerson(t *testing.T) {
 		assert.Equal(t, ToRef(ID("https://example.com/icon.jpg"), nil), v.Icon.URL)
 	}
 }
+
+type marshalTestStruct struct {
+	Meta
+	ID   ID   `json:"@id"`
+	Type Type `json:"@type"`
+
+	PreferredUsername String `json:"https://www.w3.org/ns/activitystreams#preferredUsername"`
+}
+
+func (s *marshalTestStruct) UnmarshalJSON(data []byte) error {
+	return s.Meta.Unmarshal(data, s)
+}
+
+func (s marshalTestStruct) MarshalJSON() ([]byte, error) {
+	return s.Meta.Marshal(s)
+}
+
+func TestMarshal(t *testing.T) {
+	v := marshalTestStruct{
+		ID:                ID("https://example.com/jsmith"),
+		Type:              Type{"https://www.w3.org/ns/activitystreams#Person"},
+		PreferredUsername: ToString("jsmith"),
+	}
+	data, err := v.Meta.Marshal(&v)
+	require.NoError(t, err)
+	assert.Equal(t, `{"@id":"https://example.com/jsmith","@type":["https://www.w3.org/ns/activitystreams#Person"],"https://www.w3.org/ns/activitystreams#preferredUsername":[{"@value":"jsmith"}]}`, string(data))
+}

@@ -11,8 +11,8 @@ func (s String) String() string {
 
 type StringItem struct {
 	Meta
-	Value    string `json:"@value"`
-	Language string `json:"@language"`
+	Value    string `json:"@value,omitempty"`
+	Language string `json:"@language,omitempty"`
 }
 
 func ToString(s string) String {

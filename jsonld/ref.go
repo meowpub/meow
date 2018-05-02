@@ -4,8 +4,8 @@ type Ref []RefItem
 
 type RefItem struct {
 	Meta
-	ID   ID   `json:"@id"`
-	Type Type `json:"@type"`
+	ID   ID   `json:"@id,omitempty"`
+	Type Type `json:"@type,omitempty"`
 }
 
 func (ref RefItem) MarshalJSON() ([]byte, error) {
