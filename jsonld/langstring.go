@@ -4,7 +4,7 @@ package jsonld
 // https://www.w3.org/TR/rdf11-concepts/#dfn-language-tagged-string
 type LangString []LangStringItem
 
-func (s LangString) LangString() string {
+func (s LangString) String() string {
 	if len(s) == 0 {
 		return ""
 	}
