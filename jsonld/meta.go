@@ -64,24 +64,24 @@ func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
 		}
 
 		// Horribly mangle the `json` tag, just like what encoding/json does.
-		key := jsonKey(field.Name, field.Tag.Get("json"))
-		if key == "" || key == "-" {
+		jField := parseJsonField(field.Name, field.Tag.Get("json"))
+		if jField.Name == "" || jField.Name == "-" {
 			continue
 		}
 
 		// Unmarshal the field if we have any data for it; using Meta.Unmarshal if it has a Meta,
 		// otherwise plain encoding/json-style.
-		fieldData, ok := fields[key]
+		fieldData, ok := fields[jField.Name]
 		if !ok {
 			continue
 		}
 		if meta := m.findMeta(fieldV); meta != nil {
 			if err := meta.unmarshal(fieldData, fieldV); err != nil {
-				return errors.Wrap(err, key)
+				return errors.Wrap(err, jField.Name)
 			}
 		} else {
 			if err := json.Unmarshal(fieldData, fieldV.Addr().Interface()); err != nil {
-				return errors.Wrap(err, key)
+				return errors.Wrap(err, jField.Name)
 			}
 		}
 	}
