@@ -11,9 +11,9 @@ import (
 )
 
 type Image struct {
-	Type      Type       `json:"@type"`
-	MediaType LangString `json:"https://www.w3.org/ns/activitystreams#mediaType"`
-	URL       Ref        `json:"https://www.w3.org/ns/activitystreams#url"`
+	Type      Type   `json:"@type"`
+	MediaType String `json:"https://www.w3.org/ns/activitystreams#mediaType"`
+	URL       Ref    `json:"https://www.w3.org/ns/activitystreams#url"`
 }
 
 type Person struct {
@@ -22,7 +22,7 @@ type Person struct {
 	Type Type `json:"@type"`
 
 	Name              LangString `json:"https://www.w3.org/ns/activitystreams#name"`
-	PreferredUsername LangString `json:"https://www.w3.org/ns/activitystreams#preferredUsername"`
+	PreferredUsername String     `json:"https://www.w3.org/ns/activitystreams#preferredUsername"`
 	Icon              Image      `json:"https://www.w3.org/ns/activitystreams#icon"`
 }
 
@@ -44,10 +44,10 @@ func TestUnmarshalPerson(t *testing.T) {
 	require.NoError(t, v.Meta.Unmarshal(data, &v))
 	assert.Equal(t, ID("https://example.com/@jsmith"), v.ID)
 	assert.Equal(t, Type{"https://www.w3.org/ns/activitystreams#Person"}, v.Type)
-	assert.Equal(t, ToLangString("jsmith"), v.PreferredUsername)
+	assert.Equal(t, ToString("jsmith"), v.PreferredUsername)
 	{
 		assert.Equal(t, Type{"https://www.w3.org/ns/activitystreams#Image"}, v.Icon.Type)
-		assert.Equal(t, ToLangString("image/jpeg"), v.Icon.MediaType)
+		assert.Equal(t, ToString("image/jpeg"), v.Icon.MediaType)
 		assert.Equal(t, ToRef(ID("https://example.com/icon.jpg"), nil), v.Icon.URL)
 	}
 }
@@ -58,7 +58,7 @@ type marshalTestStruct struct {
 	Type Type       `json:"@type"`
 	Name LangString `json:"https://www.w3.org/ns/activitystreams#name,omitempty"`
 
-	PreferredUsername LangString `json:"https://www.w3.org/ns/activitystreams#preferredUsername,omitempty"`
+	PreferredUsername String `json:"https://www.w3.org/ns/activitystreams#preferredUsername,omitempty"`
 }
 
 func (s *marshalTestStruct) UnmarshalJSON(data []byte) error {
@@ -73,7 +73,7 @@ func TestMarshal(t *testing.T) {
 	v := marshalTestStruct{
 		ID:                ID("https://example.com/jsmith"),
 		Type:              Type{"https://www.w3.org/ns/activitystreams#Person"},
-		PreferredUsername: ToLangString("jsmith"),
+		PreferredUsername: ToString("jsmith"),
 	}
 	data, err := v.Meta.Marshal(&v)
 
