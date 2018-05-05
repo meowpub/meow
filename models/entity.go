@@ -61,5 +61,5 @@ func (s entityStore) Save(e *Entity) error {
 	// 3. Insert with a unique snowflake and reused ID -> discard the new snowflake and reuse the
 	//    old one; this preserves foreign key integrity without forcing the models/entities API to
 	//    hang onto snowflakes.
-	return s.DB.Set("gorm:insert_option", `ON CONFLICT ((data->>'@id')) DO UPDATE SET data = EXCLUDED.data`).Create(e).Error
+	return s.DB.Set(gormInsertOption, `ON CONFLICT ((data->>'@id')) DO UPDATE SET data = EXCLUDED.data`).Create(e).Error
 }
