@@ -54,6 +54,7 @@ func (s Storage) SaveAuthorize(auth *osin.AuthorizeData) error {
 		Scope:       auth.Scope,
 		RedirectURI: auth.RedirectUri,
 		State:       auth.State,
+		AuthorizationUserData: auth.UserData.(models.AuthorizationUserData),
 	}, time.Duration(auth.ExpiresIn)*time.Second)
 }
 
@@ -77,6 +78,7 @@ func (s Storage) LoadAuthorize(code string) (*osin.AuthorizeData, error) {
 		Scope:       auth.Scope,
 		RedirectUri: auth.RedirectURI,
 		State:       auth.State,
+		UserData:    auth.AuthorizationUserData,
 	}, nil
 }
 

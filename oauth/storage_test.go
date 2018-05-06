@@ -91,6 +91,9 @@ func TestStorageSaveAuthorize(t *testing.T) {
 			Scope:       "my_scope",
 			RedirectURI: "https://example.com/",
 			State:       "hi",
+			AuthorizationUserData: models.AuthorizationUserData{
+				UserID: 12345,
+			},
 		}, 15*time.Second).Return(nil)
 
 		assert.NoError(t, store.SaveAuthorize(&osin.AuthorizeData{
@@ -100,6 +103,9 @@ func TestStorageSaveAuthorize(t *testing.T) {
 			Scope:       "my_scope",
 			RedirectUri: "https://example.com/",
 			State:       "hi",
+			UserData: models.AuthorizationUserData{
+				UserID: 12345,
+			},
 		}))
 	})
 
@@ -116,6 +122,9 @@ func TestStorageSaveAuthorize(t *testing.T) {
 			Scope:       "my_scope",
 			RedirectUri: "https://example.com/",
 			State:       "hi",
+			UserData: models.AuthorizationUserData{
+				UserID: 12345,
+			},
 		}), "a TTL is required, but not given")
 	})
 }
@@ -143,6 +152,9 @@ func TestStorageLoadAuthorize(t *testing.T) {
 				Scope:       "my_scope",
 				RedirectURI: "https://example.com/",
 				State:       "hi",
+				AuthorizationUserData: models.AuthorizationUserData{
+					UserID: 12345,
+				},
 			}, nil),
 			mockClientStore(store).EXPECT().Get(
 				snowflake.ID(353894652568535040),
@@ -159,6 +171,9 @@ func TestStorageLoadAuthorize(t *testing.T) {
 			Scope:       "my_scope",
 			RedirectUri: "https://example.com/",
 			State:       "hi",
+			UserData: models.AuthorizationUserData{
+				UserID: 12345,
+			},
 		}, auth)
 	})
 }

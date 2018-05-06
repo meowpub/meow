@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
+	"github.com/bwmarrin/snowflake"
 	"github.com/go-redis/redis"
 )
 
@@ -17,6 +18,11 @@ type Authorization struct {
 	Scope       string `json:"scope"`
 	RedirectURI string `json:"redirect_uri"`
 	State       string `json:"state"`
+	AuthorizationUserData
+}
+
+type AuthorizationUserData struct {
+	UserID snowflake.ID `json:"user_id"`
 }
 
 // AuthorizationStore stores Authorizations (in Redis).

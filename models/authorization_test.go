@@ -22,6 +22,9 @@ func TestAuthorizationStore(t *testing.T) {
 		Scope:       "myscope",
 		RedirectURI: "https://google.com/",
 		State:       "weh",
+		AuthorizationUserData: AuthorizationUserData{
+			UserID: 12345,
+		},
 	}
 
 	require.Len(t, r.Keys("*").Val(), 0)
