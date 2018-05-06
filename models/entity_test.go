@@ -30,7 +30,7 @@ func TestEntityStore(t *testing.T) {
 
 	t.Run("Create", func(t *testing.T) {
 		t.Run("No Snowflake", func(t *testing.T) {
-			require.EqualError(t, store.Save(&Entity{Data: JSONB(`{
+			require.EqualError(t, store.Save(Entity{Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "John Smith"}]
@@ -40,7 +40,7 @@ func TestEntityStore(t *testing.T) {
 		id, err := lib.GenSnowflake(0)
 		require.NoError(t, err)
 
-		require.NoError(t, store.Save(&Entity{ID: id, Data: JSONB(`{
+		require.NoError(t, store.Save(Entity{ID: id, Data: JSONB(`{
 			"@id": "https://example.com/@jsmith",
 			"@type": ["http://schema.org/Person"],
 			"http://schema.org/name": [{"@value": "John Smith"}]
@@ -67,7 +67,7 @@ func TestEntityStore(t *testing.T) {
 		})
 
 		t.Run("Snowflake Reuse", func(t *testing.T) {
-			require.EqualError(t, store.Save(&Entity{ID: id, Data: JSONB(`{
+			require.EqualError(t, store.Save(Entity{ID: id, Data: JSONB(`{
 				"@id": "https://example.com/@jdoe",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "John Smith"}]
@@ -76,7 +76,7 @@ func TestEntityStore(t *testing.T) {
 
 		t.Run("Update", func(t *testing.T) {
 			t.Run("No Snowflake", func(t *testing.T) {
-				require.EqualError(t, store.Save(&Entity{Data: JSONB(`{
+				require.EqualError(t, store.Save(Entity{Data: JSONB(`{
 					"@id": "https://example.com/@jsmith",
 					"@type": ["http://schema.org/Person"],
 					"http://schema.org/name": [{"@value": "Jane Smith"}]
@@ -86,7 +86,7 @@ func TestEntityStore(t *testing.T) {
 			newID, err := lib.GenSnowflake(0)
 			require.NoError(t, err)
 
-			require.NoError(t, store.Save(&Entity{ID: newID, Data: JSONB(`{
+			require.NoError(t, store.Save(Entity{ID: newID, Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "Jane Smith"}]

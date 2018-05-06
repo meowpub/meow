@@ -23,9 +23,9 @@ type Entity struct {
 	Kind string `json:"_kind"`
 }
 
-func NewEntity(data []byte) (*Entity, error) {
+func NewEntity(kind string, data []byte) (*Entity, error) {
 	id, err := lib.GenSnowflake(config.NodeID())
-	return &Entity{ID: id, Data: data}, err
+	return &Entity{ID: id, Data: data, Kind: kind}, err
 }
 
 // EntityStore stores Entities in their raw database form.
@@ -38,7 +38,7 @@ type EntityStore interface {
 	GetByID(id string) (*Entity, error)
 
 	// Save stores an Entity using an upsert.
-	Save(e *Entity) error
+	Save(e Entity) error
 }
 
 type entityStore struct {
@@ -59,7 +59,7 @@ func (s entityStore) GetByID(id string) (*Entity, error) {
 	return &e, s.DB.First(&e, `data->>'@id' = ?`, id).Error
 }
 
-func (s entityStore) Save(e *Entity) error {
+func (s entityStore) Save(e Entity) error {
 	// Note about this expression: we are NOT conflicting on the snowflake.
 	// These are the possible scenarios at work here:
 	//
@@ -70,5 +70,5 @@ func (s entityStore) Save(e *Entity) error {
 	// 3. Insert with a unique snowflake and reused ID -> discard the new snowflake and reuse the
 	//    old one; this preserves foreign key integrity without forcing the models/entities API to
 	//    hang onto snowflakes.
-	return s.DB.Set(gormInsertOption, `ON CONFLICT ((data->>'@id')) DO UPDATE SET data = EXCLUDED.data`).Create(e).Error
+	return s.DB.Set(gormInsertOption, `ON CONFLICT ((data->>'@id')) DO UPDATE SET data = EXCLUDED.data`).Create(&e).Error
 }
