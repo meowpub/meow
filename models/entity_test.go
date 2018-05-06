@@ -13,7 +13,7 @@ func TestEntityStore(t *testing.T) {
 	tx := TestDB.Begin()
 	defer tx.Rollback()
 
-	store := NewEntityStore(tx)
+	store := NewEntityStore(TestDB)
 
 	t.Run("Not Found", func(t *testing.T) {
 		t.Run("Snowflake", func(t *testing.T) {
