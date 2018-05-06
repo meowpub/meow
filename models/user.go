@@ -3,6 +3,8 @@ package models
 import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
+	"github.com/liclac/meow/config"
+	"github.com/liclac/meow/lib"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -18,6 +20,20 @@ type User struct {
 	EntityID     snowflake.ID `json:"entity_id"`
 	Email        string       `json:"email"`
 	PasswordHash string       `json:"-"`
+}
+
+func NewUser(profileID snowflake.ID, email, password string) (*User, error) {
+	id, err := lib.GenSnowflake(config.NodeID())
+	if err != nil {
+		return nil, err
+	}
+
+	user := User{
+		ID:       id,
+		EntityID: profileID,
+		Email:    email,
+	}
+	return &user, user.SetPassword(password)
 }
 
 // SetPassword updates the user's PasswordHash by bcrypt'ing the password.

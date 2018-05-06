@@ -3,6 +3,8 @@ package models
 import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
+	"github.com/liclac/meow/config"
+	"github.com/liclac/meow/lib"
 )
 
 //go:generate mockgen -package=models -source=entity.go -destination=entity.mock.go
@@ -15,6 +17,11 @@ type Entity struct {
 
 	// Raw JSON data.
 	Data JSONB `json:"_data"`
+}
+
+func NewEntity(data []byte) (*Entity, error) {
+	id, err := lib.GenSnowflake(config.NodeID())
+	return &Entity{ID: id, Data: data}, err
 }
 
 // EntityStore stores Entities in their raw database form.
