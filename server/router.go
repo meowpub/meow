@@ -6,8 +6,8 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/liclac/meow/config"
+	"github.com/liclac/meow/models/entities"
 	"github.com/liclac/meow/server/api"
-	"github.com/pkg/errors"
 	"github.com/unrolled/render"
 )
 
@@ -19,11 +19,27 @@ func New() http.Handler {
 		IndentJSON:    true,
 		IsDevelopment: !config.IsProd(),
 	}))
-	r.Get("/", WrapHandler(api.Handler(HandleRoot)))
+
+	r.Get("/", WrapHandler(RouteRequest))
+	r.NotFound(WrapHandler(RouteRequest))
+
 	return r
 }
 
-// HandleRoot serves the index page.
-func HandleRoot(ctx context.Context, req *http.Request) api.Response {
-	return api.Response{Error: errors.New("according to all known laws of aviation, there's no way a bee should be able to fly")}
+func RouteRequest(ctx context.Context, req *http.Request) api.Response {
+	url := *req.URL
+	url.RawQuery = ""
+	url.ForceQuery = false
+	url.Fragment = ""
+
+	store := entities.GetStore(ctx)
+	ent, err := store.GetByID(url.String())
+
+	if err != nil {
+		return api.ErrorResponse(err)
+	} else {
+		return api.Response{
+			Data: ent,
+		}
+	}
 }
