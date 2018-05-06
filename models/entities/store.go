@@ -58,7 +58,7 @@ func (s *Store) GetBySnowflake(id snowflake.ID) (Entity, error) {
 	if rawEntity, err := s.rawStore.GetBySnowflake(id); err == nil {
 		return s.inflateEntity(rawEntity)
 	} else {
-		return nil, err
+		return nil, errors.Wrapf(err, "Unable to find entity by snowflake %s", id)
 	}
 }
 
@@ -71,7 +71,7 @@ func (s *Store) GetByID(id string) (Entity, error) {
 	if rawEntity, err := s.rawStore.GetByID(id); err == nil {
 		return s.inflateEntity(rawEntity)
 	} else {
-		return nil, err
+		return nil, errors.Wrapf(err, "Unable to find '%s'", id)
 	}
 }
 
