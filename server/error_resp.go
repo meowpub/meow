@@ -14,6 +14,7 @@ type stackFrame struct {
 
 // errorResponse is the Data type given to Error responses.
 type errorResponse struct {
+	StatusCode int          `json:"status_code"`
 	Error      string       `json:"error"`
 	StackTrace []stackFrame `json:"stack_trace,omitempty"`
 }
@@ -29,6 +30,7 @@ func toErrorResponse(err error) errorResponse {
 		})
 	}
 	return errorResponse{
+		StatusCode: api.ErrorStatus(err),
 		Error:      err.Error(),
 		StackTrace: stack,
 	}
