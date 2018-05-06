@@ -1,24 +1,18 @@
 package server
 
 import (
-	"context"
 	"net/http"
 
+	"github.com/liclac/meow/server/api"
 	"go.uber.org/zap"
 )
 
-// Handler is a more convenient structure for an HTTP handler. By returning responses instead of
-// using the ResponseWriter, we prevent errors arising from forgetting to return after a render
-// call, and let content negotiation occur outside of the handlers themselves.
-type Handler func(ctx context.Context, req *http.Request) Response
-
 // WrapHandler wraps a Handler in an http.Handler.
-func WrapHandler(h Handler) http.HandlerFunc {
+func WrapHandler(h api.Handler) http.HandlerFunc {
 	return http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
 		ctx := req.Context()
 		resp := h(ctx, req)
 		if resp.Error != nil {
-
 			resp.Status = ErrorStatus(resp.Error)
 			resp.Data = toErrorResponse(resp.Error)
 		}

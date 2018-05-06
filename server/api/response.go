@@ -1,4 +1,4 @@
-package server
+package api
 
 // Response is a structured response.
 type Response struct {
