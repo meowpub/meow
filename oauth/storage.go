@@ -7,6 +7,7 @@ import (
 	"github.com/RangelReale/osin"
 	"github.com/bwmarrin/snowflake"
 	"github.com/liclac/meow/models"
+	"go.uber.org/multierr"
 )
 
 // Storage implements osin's Storage interface. Clients go in a database (see models.go),
@@ -14,13 +15,17 @@ import (
 type Storage struct {
 	Clients models.ClientStore
 	Auths   models.AuthorizationStore
+	Tokens  models.AccessTokenStore
+	RTokens models.RefreshTokenStore
 }
 
 // NewStorage returns a new Storage instance.
-func NewStorage(clients models.ClientStore, auths models.AuthorizationStore) *Storage {
+func NewStorage(clients models.ClientStore, auths models.AuthorizationStore, tokens models.AccessTokenStore, rtokens models.RefreshTokenStore) *Storage {
 	return &Storage{
 		Clients: clients,
 		Auths:   auths,
+		Tokens:  tokens,
+		RTokens: rtokens,
 	}
 }
 
@@ -87,30 +92,75 @@ func (s Storage) RemoveAuthorize(code string) error {
 	return s.Auths.Delete(code)
 }
 
-// SaveAccess saves the refresh token to redis.
-// It's possible for there not to be an access token; NOP in that case.
+// SaveAccess saves the access- and refresh tokens to redis.
+// This may be called without one or the other, and this should be handled gracefully.
 func (s Storage) SaveAccess(access *osin.AccessData) error {
-	panic("not implemented")
+	userData := access.UserData.(models.AuthorizationUserData)
+
+	var errs []error
+	if access.AccessToken != "" {
+		errs = append(errs, s.Tokens.Set(&models.AccessToken{
+			Token:    access.AccessToken,
+			ClientID: access.Client.GetId(),
+			Scope:    access.Scope,
+			AuthorizationUserData: userData,
+		}, time.Duration(access.ExpiresIn)*time.Second))
+	}
+	if access.RefreshToken != "" {
+		errs = append(errs, s.RTokens.Set(&models.RefreshToken{
+			Token:    access.AccessToken,
+			ClientID: access.Client.GetId(),
+			Scope:    access.Scope,
+			AuthorizationUserData: userData,
+		}))
+	}
+	return multierr.Combine(errs...)
 }
 
 // LoadAccess looks up an access token in Redis. The Client field must be populated, but
 // AuthorizeData and AccessData do NOT need to be loaded if it's not easily available.
 func (s Storage) LoadAccess(token string) (*osin.AccessData, error) {
-	panic("not implemented")
+	tok, err := s.Tokens.Get(token)
+	if err != nil {
+		return nil, err
+	}
+	client, err := s.GetClient(tok.ClientID)
+	if err != nil {
+		return nil, err
+	}
+	return &osin.AccessData{
+		Client:      client,
+		AccessToken: tok.Token,
+		Scope:       tok.Scope,
+		UserData:    tok.AuthorizationUserData,
+	}, nil
 }
 
 // RemoveAccess removes the token from Redis.
 func (s Storage) RemoveAccess(token string) error {
-	panic("not implemented")
+	return s.Tokens.Delete(token)
 }
 
 // LoadRefresh loads access data out of redis. The Client field must be populated, but
 // AuthorizeData and AccessData do NOT need to be loaded if it's not easily available.
 func (s Storage) LoadRefresh(token string) (*osin.AccessData, error) {
-	panic("not implemented")
+	tok, err := s.RTokens.Get(token)
+	if err != nil {
+		return nil, err
+	}
+	client, err := s.GetClient(tok.ClientID)
+	if err != nil {
+		return nil, err
+	}
+	return &osin.AccessData{
+		Client:       client,
+		RefreshToken: tok.Token,
+		Scope:        tok.Scope,
+		UserData:     tok.AuthorizationUserData,
+	}, nil
 }
 
 // RemoveRefresh deletes a refresh token from redis.
 func (s Storage) RemoveRefresh(token string) error {
-	panic("not implemented")
+	return s.RTokens.Delete(token)
 }

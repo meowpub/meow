@@ -18,6 +18,8 @@ func newMockStorage(ctrl *gomock.Controller) *Storage {
 	return NewStorage(
 		models.NewMockClientStore(ctrl),
 		models.NewMockAuthorizationStore(ctrl),
+		models.NewMockAccessTokenStore(ctrl),
+		models.NewMockRefreshTokenStore(ctrl),
 	)
 }
 
