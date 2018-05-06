@@ -1,8 +1,6 @@
 package models
 
 import (
-	"encoding/json"
-
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
 )
@@ -16,7 +14,7 @@ type Entity struct {
 	ID snowflake.ID `json:"_id"`
 
 	// Raw JSON data.
-	Data json.RawMessage `json:"_data"`
+	Data JSONB `json:"_data"`
 }
 
 // EntityStore stores Entities in their raw database form.
