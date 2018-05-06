@@ -13,7 +13,7 @@ func WrapHandler(h api.Handler) http.HandlerFunc {
 		ctx := req.Context()
 		resp := h(ctx, req)
 		if resp.Error != nil {
-			resp.Status = ErrorStatus(resp.Error)
+			resp.Status = api.ErrorStatus(resp.Error)
 			resp.Data = toErrorResponse(resp.Error)
 		}
 		if resp.Data == nil {

@@ -3,6 +3,8 @@ package server
 import (
 	"fmt"
 	"runtime"
+
+	"github.com/liclac/meow/server/api"
 )
 
 type stackFrame struct {
@@ -18,7 +20,7 @@ type errorResponse struct {
 
 func toErrorResponse(err error) errorResponse {
 	var stack []stackFrame
-	for _, frame := range StackTrace(err) {
+	for _, frame := range api.StackTrace(err) {
 		fn := runtime.FuncForPC(uintptr(frame))
 		file, line := fn.FileLine(uintptr(frame))
 		stack = append(stack, stackFrame{

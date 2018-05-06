@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/liclac/meow/config"
+	"github.com/liclac/meow/server/api"
 	"github.com/pkg/errors"
 	"github.com/unrolled/render"
 )
@@ -17,11 +18,11 @@ func New() http.Handler {
 		IndentJSON:    true,
 		IsDevelopment: !config.IsProd(),
 	}))
-	r.Get("/", WrapHandler(Handler(HandleRoot)))
+	r.Get("/", WrapHandler(api.Handler(HandleRoot)))
 	return r
 }
 
 // HandleRoot serves the index page.
-func HandleRoot(ctx context.Context, req *http.Request) Response {
-	return Response{Error: errors.New("according to all known laws of aviation, there's no way a bee should be able to fly")}
+func HandleRoot(ctx context.Context, req *http.Request) api.Response {
+	return api.Response{Error: errors.New("according to all known laws of aviation, there's no way a bee should be able to fly")}
 }
