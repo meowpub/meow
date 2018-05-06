@@ -56,6 +56,14 @@ func (*Object) GetKind() *EntityKind {
 	return objectKind
 }
 
+func (o *Object) UnmarshalJSON(data []byte) error {
+	return o.Meta.Unmarshal(data, o)
+}
+
+func (o *Object) MarshalJSON() ([]byte, error) {
+	return o.Marshal(o)
+}
+
 func NewObject(store *Store, id string, types []string) (*Object, error) {
 	obj := &Object{
 		Base: Base{
