@@ -7,6 +7,8 @@ import (
 	"github.com/go-redis/redis"
 )
 
+//go:generate mockgen -package=models -source=accesstoken.go -destination=accesstoken.mock.go
+
 // AccessToken stores an active access token in Redis. See also: RefreshToken.
 type AccessToken struct {
 	Token    string `json:"token"`

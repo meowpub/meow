@@ -7,6 +7,8 @@ import (
 	"github.com/go-redis/redis"
 )
 
+//go:generate mockgen -package=models -source=refreshtoken.go -destination=refreshtoken.mock.go
+
 // RefreshToken stores a persistent refresh token in Redis. See also: AccessToken.
 type RefreshToken struct {
 	Token    string `json:"token"`
