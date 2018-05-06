@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	"github.com/pkg/errors"
+
+	"github.com/liclac/meow/models"
 )
 
 // From pkg/errors; unexported but stable.
@@ -30,9 +32,15 @@ func ErrorStatus(err error) int {
 	if e, ok := err.(Error); ok {
 		return e.StatusCode
 	}
+
+	if models.IsNotFound(err) {
+		return http.StatusNotFound
+	}
+
 	if e, ok := err.(causer); ok {
 		return ErrorStatus(e.Cause())
 	}
+
 	return http.StatusInternalServerError
 }
 
