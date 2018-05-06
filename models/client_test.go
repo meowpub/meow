@@ -41,7 +41,7 @@ func TestClientStore(t *testing.T) {
 	tx := TestDB.Begin()
 	defer tx.Rollback()
 
-	store := NewClientStore(TestDB)
+	store := NewClientStore(tx)
 	cl, err := NewClient(ClientUserData{
 		Name:        "test client",
 		Description: "lorem ipsum dolor sit amet",
