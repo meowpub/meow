@@ -2,6 +2,7 @@ package entities
 
 import (
 	"github.com/liclac/meow/jsonld"
+	"github.com/liclac/meow/models"
 )
 
 type Person struct {
@@ -36,13 +37,25 @@ func (*Person) GetKind() *EntityKind {
 	return personKind
 }
 
-func NewPerson(store *Store, id string, types []string) (*Person, error) {
+func (p *Person) GetUser(store models.UserStore) (*models.User, error) {
+	return store.GetBySnowflake(p.GetSnowflake())
+}
+
+func (o *Person) UnmarshalJSON(data []byte) error {
+	return o.Meta.Unmarshal(data, o)
+}
+
+func (o *Person) MarshalJSON() ([]byte, error) {
+	return o.Marshal(o)
+}
+
+func NewPerson(store *Store, id string) (*Person, error) {
 	obj := &Person{
 		Object: Object{
 			Base: Base{
 				Meta: jsonld.Meta{},
 				ID:   id,
-				Type: types,
+				Type: []string{"https://www.w3c.org/ns/activitystreams#Person"},
 			},
 		},
 	}
