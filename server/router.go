@@ -14,6 +14,7 @@ import (
 // New returns a new API router.
 func New() http.Handler {
 	r := chi.NewMux()
+	r.Use(DBMiddleware())
 	r.Use(RenderMiddleware(render.Options{
 		IndentJSON:    true,
 		IsDevelopment: !config.IsProd(),
