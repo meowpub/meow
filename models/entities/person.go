@@ -6,13 +6,13 @@ import (
 
 type Person struct {
 	Object
-	PreferredUsername jsonld.String `json:"https://www.w3.org/ns/activitystreams#preferredUsername,omitempty"`
-	Outbox            jsonld.Ref    `json:"https://www.w3.org/ns/activitystreams#outbox,omitempty"`
-	Following         jsonld.Ref    `json:"https://www.w3.org/ns/activitystreams#following,omitempty"`
-	Followers         jsonld.Ref    `json:"https://www.w3.org/ns/activitystreams#followers,omitempty"`
-	Liked             jsonld.Ref    `json:"https://www.w3.org/ns/activitystreams#liked,omitempty"`
-	Streams           jsonld.Ref    `json:"https://www.w3.org/ns/activitystreams#streams,omitempty"`
-	Endpoints         jsonld.Ref    `json:"https://www.w3.org/ns/activitystreams#endpoints,omitempty"`
+	PreferredUsername jsonld.String `json:"https://www.w3c.org/ns/activitystreams#preferredUsername,omitempty"`
+	Outbox            jsonld.Ref    `json:"https://www.w3c.org/ns/activitystreams#outbox,omitempty"`
+	Following         jsonld.Ref    `json:"https://www.w3c.org/ns/activitystreams#following,omitempty"`
+	Followers         jsonld.Ref    `json:"https://www.w3c.org/ns/activitystreams#followers,omitempty"`
+	Liked             jsonld.Ref    `json:"https://www.w3c.org/ns/activitystreams#liked,omitempty"`
+	Streams           jsonld.Ref    `json:"https://www.w3c.org/ns/activitystreams#streams,omitempty"`
+	Endpoints         jsonld.Ref    `json:"https://www.w3c.org/ns/activitystreams#endpoints,omitempty"`
 }
 
 var personKind = &EntityKind{
