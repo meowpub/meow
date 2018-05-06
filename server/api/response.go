@@ -7,3 +7,9 @@ type Response struct {
 	Template string      // Template for HTML responses.
 	Data     interface{} // Data, marshalled (JSON) or given to a template (HTML).
 }
+
+func ErrorResponse(err error) Response {
+	return Response{
+		Error: err,
+	}
+}
