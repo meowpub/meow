@@ -118,7 +118,9 @@ func (m *Meta) marshal(rV reflect.Value, buf *bytes.Buffer) error {
 	}
 
 	buf.WriteString("{")
-	if err := m.marshalBody(rV, buf); err != nil {
+
+	first := true
+	if err := m.marshalBody(rV, buf, &first); err != nil {
 		return err
 	}
 	buf.WriteString("}")
@@ -126,9 +128,8 @@ func (m *Meta) marshal(rV reflect.Value, buf *bytes.Buffer) error {
 	return nil
 }
 
-func (m *Meta) marshalBody(rV reflect.Value, buf *bytes.Buffer) error {
+func (m *Meta) marshalBody(rV reflect.Value, buf *bytes.Buffer, first *bool) error {
 	rT := rV.Type()
-	first := true
 
 	for i := 0; i < rT.NumField(); i++ {
 		field := rT.Field(i)
@@ -144,7 +145,7 @@ func (m *Meta) marshalBody(rV reflect.Value, buf *bytes.Buffer) error {
 		// If this is an embedded field, descend into it using the same Meta.
 		// and encode it into the same body
 		if field.Anonymous {
-			if err := m.marshalBody(fieldV, buf); err != nil {
+			if err := m.marshalBody(fieldV, buf, first); err != nil {
 				return err
 			}
 			continue
@@ -172,10 +173,10 @@ func (m *Meta) marshalBody(rV reflect.Value, buf *bytes.Buffer) error {
 			continue
 		}
 
-		if !first {
+		if !*first {
 			buf.WriteString(",")
 		} else {
-			first = false
+			*first = false
 		}
 
 		if err := enc.Encode(jField.Name); err != nil {
