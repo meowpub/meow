@@ -223,6 +223,10 @@ func (m *Meta) findMeta(rV reflect.Value) *Meta {
 		rF := rT.Field(i)
 		if rF.Type == metaType {
 			return rV.Field(i).Addr().Interface().(*Meta)
+		} else if rF.Anonymous && rF.Type.Kind() == reflect.Struct {
+			if child := m.findMeta(rV.Field(i)); child != nil {
+				return child
+			}
 		}
 	}
 	return nil

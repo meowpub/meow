@@ -8,7 +8,7 @@ type RefItem struct {
 	Type Type `json:"@type,omitempty"`
 }
 
-func (ref RefItem) MarshalJSON() ([]byte, error) {
+func (ref *RefItem) MarshalJSON() ([]byte, error) {
 	return ref.Meta.Marshal(ref)
 }
 

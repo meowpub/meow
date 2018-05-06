@@ -30,7 +30,7 @@ func TestEntityStore(t *testing.T) {
 
 	t.Run("Create", func(t *testing.T) {
 		t.Run("No Snowflake", func(t *testing.T) {
-			require.EqualError(t, store.Save(&Entity{Data: JSONB(`{
+			require.EqualError(t, store.Save(Entity{Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "John Smith"}]
@@ -40,11 +40,11 @@ func TestEntityStore(t *testing.T) {
 		id, err := lib.GenSnowflake(0)
 		require.NoError(t, err)
 
-		require.NoError(t, store.Save(&Entity{ID: id, Data: JSONB(`{
+		require.NoError(t, store.Save(Entity{ID: id, Data: JSONB(`{
 			"@id": "https://example.com/@jsmith",
 			"@type": ["http://schema.org/Person"],
 			"http://schema.org/name": [{"@value": "John Smith"}]
-		}`)}))
+		}`), Kind: "weird"}))
 
 		t.Run("Get", func(t *testing.T) {
 			se, err := store.GetBySnowflake(id)
@@ -67,30 +67,30 @@ func TestEntityStore(t *testing.T) {
 		})
 
 		t.Run("Snowflake Reuse", func(t *testing.T) {
-			require.EqualError(t, store.Save(&Entity{ID: id, Data: JSONB(`{
+			require.EqualError(t, store.Save(Entity{ID: id, Data: JSONB(`{
 				"@id": "https://example.com/@jdoe",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "John Smith"}]
-			}`)}), "pq: duplicate key value violates unique constraint \"entities_pkey\"")
+			}`), Kind: "Busted"}), "pq: duplicate key value violates unique constraint \"entities_pkey\"")
 		})
 
 		t.Run("Update", func(t *testing.T) {
 			t.Run("No Snowflake", func(t *testing.T) {
-				require.EqualError(t, store.Save(&Entity{Data: JSONB(`{
+				require.EqualError(t, store.Save(Entity{Data: JSONB(`{
 					"@id": "https://example.com/@jsmith",
 					"@type": ["http://schema.org/Person"],
 					"http://schema.org/name": [{"@value": "Jane Smith"}]
-				}`)}), "pq: null value in column \"id\" violates not-null constraint")
+				}`), Kind: "NoSnowflake"}), "pq: null value in column \"id\" violates not-null constraint")
 			})
 
 			newID, err := lib.GenSnowflake(0)
 			require.NoError(t, err)
 
-			require.NoError(t, store.Save(&Entity{ID: newID, Data: JSONB(`{
+			require.NoError(t, store.Save(Entity{ID: newID, Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "Jane Smith"}]
-			}`)}))
+			}`), Kind: "Success!"}))
 
 			t.Run("Get", func(t *testing.T) {
 				_, err := store.GetBySnowflake(newID)
