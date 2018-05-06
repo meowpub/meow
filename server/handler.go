@@ -25,6 +25,10 @@ func RenderResponse(rw http.ResponseWriter, req *http.Request, resp api.Response
 		resp.Data = toErrorResponse(resp.Error)
 	}
 
+	if resp.Status == 0 {
+		resp.Status = 200
+	}
+
 	if resp.Data == nil {
 		return
 	}
