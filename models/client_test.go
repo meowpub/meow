@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"testing"
 
+	"github.com/liclac/meow/lib"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -38,13 +39,25 @@ func TestClientAccessors(t *testing.T) {
 }
 
 func TestClientStore(t *testing.T) {
-	tx := TestDB.Begin()
-	defer tx.Rollback()
+	estore := NewEntityStore(TestDB)
+	ustore := NewUserStore(TestDB)
+
+	pid, err := lib.GenSnowflake(0)
+	require.NoError(t, err)
+	profile := &Entity{ID: pid, Data: JSONB(`{"@id": "https://example.com/@client-dev"}`)}
+	require.NoError(t, estore.Save(profile))
+
+	uid, err := lib.GenSnowflake(0)
+	require.NoError(t, err)
+	user := &User{ID: uid, EntityID: pid, Email: "client-dev@example.com"}
+	require.NoError(t, user.SetPassword("password"))
+	require.NoError(t, ustore.Save(user))
 
 	store := NewClientStore(TestDB)
 	cl, err := NewClient(ClientUserData{
 		Name:        "test client",
 		Description: "lorem ipsum dolor sit amet",
+		OwnerID:     uid,
 	}, "https://google.com/")
 
 	t.Run("NotFound", func(t *testing.T) {

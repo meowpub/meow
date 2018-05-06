@@ -24,8 +24,9 @@ type Client struct {
 
 // ClientUserData contains additional fields for a client to be included as UserData.
 type ClientUserData struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
+	Name        string       `json:"name"`
+	Description string       `json:"description"`
+	OwnerID     snowflake.ID `json:"owner_id"`
 }
 
 func NewClient(ud ClientUserData, redirectURI string) (*Client, error) {
