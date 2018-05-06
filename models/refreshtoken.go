@@ -2,7 +2,6 @@ package models
 
 import (
 	"encoding/json"
-	"time"
 
 	"github.com/go-redis/redis"
 )
@@ -18,7 +17,7 @@ type RefreshToken struct {
 }
 
 type RefreshTokenStore interface {
-	Set(token *RefreshToken, ttl time.Duration) error
+	Set(token *RefreshToken) error
 	Get(token string) (*RefreshToken, error)
 	Delete(token string) error
 }
@@ -36,15 +35,12 @@ func (s *refreshTokenStore) key(code string) string {
 	return s.K + ":oauth2:refresh_tokens:" + code
 }
 
-func (s *refreshTokenStore) Set(token *RefreshToken, ttl time.Duration) error {
-	if ttl == 0 {
-		return ErrNoTTL
-	}
+func (s *refreshTokenStore) Set(token *RefreshToken) error {
 	data, err := json.Marshal(token)
 	if err != nil {
 		return err
 	}
-	return s.R.Set(s.key(token.Token), data, ttl).Err()
+	return s.R.Set(s.key(token.Token), data, 0).Err()
 }
 
 func (s *refreshTokenStore) Get(token string) (*RefreshToken, error) {

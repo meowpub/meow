@@ -2,7 +2,6 @@ package models
 
 import (
 	"testing"
-	"time"
 
 	"github.com/alicebob/miniredis"
 	"github.com/go-redis/redis"
@@ -34,11 +33,7 @@ func TestRefreshTokenStore(t *testing.T) {
 	})
 
 	t.Run("Set", func(t *testing.T) {
-		t.Run("NoTTL", func(t *testing.T) {
-			assert.EqualError(t, store.Set(token, 0), "a TTL is required, but not given")
-		})
-
-		assert.NoError(t, store.Set(token, 15*time.Minute))
+		assert.NoError(t, store.Set(token))
 		assert.Equal(t, r.Keys("*").Val(), []string{"meow:oauth2:refresh_tokens:" + token.Token})
 	})
 
