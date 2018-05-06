@@ -16,11 +16,13 @@ var createClientCmd = &cobra.Command{
 	Short: "Creates an OAuth client application",
 	Long:  `Creates an OAuth client application.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
+		// Collect flags upfront.
 		name := viper.GetString("create.client.name")
 		desc := viper.GetString("create.client.description")
 		ownerID := snowflake.ID(viper.GetInt64("create.client.owner-id"))
 		redirect := viper.GetString("create.client.redirect-uri")
 
+		// Create a client object.
 		clData := models.ClientUserData{
 			Name:        name,
 			Description: desc,
@@ -34,11 +36,18 @@ var createClientCmd = &cobra.Command{
 		}
 		dump(cl)
 
+		// Connect to the database.
 		db, err := gorm.Open("postgres", config.DB())
 		if err != nil {
 			return err
 		}
-		return models.NewClientStore(db).Create(cl)
+
+		// Insert the objects inside a transaction.
+		tx := db.Begin()
+		if err := models.NewClientStore(db).Create(cl); err != nil {
+			return err
+		}
+		return tx.Commit().Error
 	},
 }
 
