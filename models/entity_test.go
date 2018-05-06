@@ -19,10 +19,12 @@ func TestEntityStore(t *testing.T) {
 		t.Run("Snowflake", func(t *testing.T) {
 			_, err := store.GetBySnowflake(12345)
 			require.EqualError(t, err, "record not found")
+			assert.True(t, IsNotFound(err))
 		})
 		t.Run("ID", func(t *testing.T) {
 			_, err := store.GetByID("https://example.com/@jsmith")
 			require.EqualError(t, err, "record not found")
+			assert.True(t, IsNotFound(err))
 		})
 	})
 
@@ -93,6 +95,7 @@ func TestEntityStore(t *testing.T) {
 			t.Run("Get", func(t *testing.T) {
 				_, err := store.GetBySnowflake(newID)
 				require.EqualError(t, err, "record not found")
+				assert.True(t, IsNotFound(err))
 				se, err := store.GetBySnowflake(id)
 				require.NoError(t, err)
 				ie, err := store.GetByID("https://example.com/@jsmith")
