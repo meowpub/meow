@@ -53,7 +53,7 @@ func TestClientStore(t *testing.T) {
 	cl, err := NewClient(ClientUserData{
 		Name:        "test client",
 		Description: "lorem ipsum dolor sit amet",
-		OwnerID:     user.ID,
+		OwnerID:     &user.ID,
 	}, "https://google.com/")
 
 	t.Run("NotFound", func(t *testing.T) {
