@@ -12,6 +12,10 @@ var (
 )
 
 type Entity interface {
+	// SetSnowflake sets the internal snowflake of the entity if unset
+	// This should only be called by Store
+	SetSnowflake(snowflake.ID)
+
 	// GetSnowflake returns the internal snowflake of the entity, eg. 353894652568535040.
 	GetSnowflake() snowflake.ID
 

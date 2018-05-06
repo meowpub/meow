@@ -13,6 +13,10 @@ type Base struct {
 	Type []string `json:"@type"`
 }
 
+func (b *Base) SetSnowflake(id snowflake.ID) {
+	b.Snowflake = id
+}
+
 func (b Base) GetSnowflake() snowflake.ID {
 	return b.Snowflake
 }

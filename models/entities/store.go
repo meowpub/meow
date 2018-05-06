@@ -45,6 +45,7 @@ func (s *Store) inflateEntity(raw *models.Entity) (Entity, error) {
 	s.liveByID[e.GetID()] = e
 	s.liveBySnowflake[raw.ID] = e
 	s.liveToSnowflake[e] = raw.ID
+	e.SetSnowflake(raw.ID)
 
 	return e, nil
 }
@@ -93,6 +94,7 @@ func (s *Store) Insert(e Entity) error {
 	s.liveToSnowflake[e] = flake
 	s.liveBySnowflake[flake] = e
 	s.liveByID[e.GetID()] = e
+	e.SetSnowflake(flake)
 
 	return nil
 }
