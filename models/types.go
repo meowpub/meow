@@ -12,6 +12,10 @@ import (
 // more useful logging than the nonsense byte arrays produce.
 type JSONB []byte
 
+func (j JSONB) String() string {
+	return string(j)
+}
+
 func (j *JSONB) UnmarshalJSON(data []byte) error {
 	if bytes.Equal(data, []byte(`null`)) {
 		*j = JSONB{}
