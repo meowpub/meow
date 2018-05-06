@@ -2,6 +2,8 @@ package entities
 
 import (
 	"fmt"
+
+	"github.com/bwmarrin/snowflake"
 	"github.com/pkg/errors"
 )
 
@@ -10,6 +12,9 @@ var (
 )
 
 type Entity interface {
+	// GetSnowflake returns the internal snowflake of the entity, eg. 353894652568535040.
+	GetSnowflake() snowflake.ID
+
 	// GetID returns the public ID of the entity, eg. "https://example.com/@jsmith".
 	GetID() string
 

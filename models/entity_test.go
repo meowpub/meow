@@ -9,6 +9,10 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestEntityConflictClause(t *testing.T) {
+	assert.Equal(t, `ON CONFLICT (id) DO UPDATE SET data=EXCLUDED.data, kind=EXCLUDED.kind`, entityOnConflict)
+}
+
 func TestEntityStore(t *testing.T) {
 	tx := TestDB.Begin()
 	defer tx.Rollback()
@@ -66,36 +70,14 @@ func TestEntityStore(t *testing.T) {
 			}, data)
 		})
 
-		t.Run("Snowflake Reuse", func(t *testing.T) {
-			require.EqualError(t, store.Save(Entity{ID: id, Data: JSONB(`{
-				"@id": "https://example.com/@jdoe",
-				"@type": ["http://schema.org/Person"],
-				"http://schema.org/name": [{"@value": "John Smith"}]
-			}`), Kind: "Busted"}), "pq: duplicate key value violates unique constraint \"entities_pkey\"")
-		})
-
 		t.Run("Update", func(t *testing.T) {
-			t.Run("No Snowflake", func(t *testing.T) {
-				require.EqualError(t, store.Save(Entity{Data: JSONB(`{
-					"@id": "https://example.com/@jsmith",
-					"@type": ["http://schema.org/Person"],
-					"http://schema.org/name": [{"@value": "Jane Smith"}]
-				}`), Kind: "NoSnowflake"}), "pq: null value in column \"id\" violates not-null constraint")
-			})
-
-			newID, err := lib.GenSnowflake(0)
-			require.NoError(t, err)
-
-			require.NoError(t, store.Save(Entity{ID: newID, Data: JSONB(`{
+			require.NoError(t, store.Save(Entity{ID: id, Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "Jane Smith"}]
 			}`), Kind: "Success!"}))
 
 			t.Run("Get", func(t *testing.T) {
-				_, err := store.GetBySnowflake(newID)
-				require.EqualError(t, err, "record not found")
-				assert.True(t, IsNotFound(err))
 				se, err := store.GetBySnowflake(id)
 				require.NoError(t, err)
 				ie, err := store.GetByID("https://example.com/@jsmith")

@@ -1,14 +1,20 @@
 package entities
 
 import (
+	"github.com/bwmarrin/snowflake"
 	"github.com/liclac/meow/jsonld"
 )
 
 type Base struct {
 	jsonld.Meta
+	Snowflake snowflake.ID `json:"-"` // Only used internally.
 
 	ID   string   `json:"@id"`
 	Type []string `json:"@type"`
+}
+
+func (b Base) GetSnowflake() snowflake.ID {
+	return b.Snowflake
 }
 
 func (b Base) GetID() string {
