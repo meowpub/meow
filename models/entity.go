@@ -17,6 +17,10 @@ type Entity struct {
 
 	// Raw JSON data.
 	Data JSONB `json:"_data"`
+
+	// "Kind" of an entity
+	// Kinds determine what special server side behavior applies
+	Kind string `json:"_kind"`
 }
 
 func NewEntity(data []byte) (*Entity, error) {

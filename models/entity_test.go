@@ -44,7 +44,7 @@ func TestEntityStore(t *testing.T) {
 			"@id": "https://example.com/@jsmith",
 			"@type": ["http://schema.org/Person"],
 			"http://schema.org/name": [{"@value": "John Smith"}]
-		}`)}))
+		}`), Kind: "weird"}))
 
 		t.Run("Get", func(t *testing.T) {
 			se, err := store.GetBySnowflake(id)
@@ -71,7 +71,7 @@ func TestEntityStore(t *testing.T) {
 				"@id": "https://example.com/@jdoe",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "John Smith"}]
-			}`)}), "pq: duplicate key value violates unique constraint \"entities_pkey\"")
+			}`), Kind: "Busted"}), "pq: duplicate key value violates unique constraint \"entities_pkey\"")
 		})
 
 		t.Run("Update", func(t *testing.T) {
@@ -80,7 +80,7 @@ func TestEntityStore(t *testing.T) {
 					"@id": "https://example.com/@jsmith",
 					"@type": ["http://schema.org/Person"],
 					"http://schema.org/name": [{"@value": "Jane Smith"}]
-				}`)}), "pq: null value in column \"id\" violates not-null constraint")
+				}`), Kind: "NoSnowflake"}), "pq: null value in column \"id\" violates not-null constraint")
 			})
 
 			newID, err := lib.GenSnowflake(0)
@@ -90,7 +90,7 @@ func TestEntityStore(t *testing.T) {
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "Jane Smith"}]
-			}`)}))
+			}`), Kind: "Success!"}))
 
 			t.Run("Get", func(t *testing.T) {
 				_, err := store.GetBySnowflake(newID)
