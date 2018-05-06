@@ -19,6 +19,11 @@ func Redis() string {
 	return viper.GetString("redis")
 }
 
+// RedisKeyspace returns the keyspace for redis, eg. "meow" will prefix all redis keys with "meow:".
+func RedisKeyspace() string {
+	return viper.GetString("redis-keyspace")
+}
+
 // NodeID returns the node ID used for distributed snowflake generation.
 func NodeID() int64 {
 	return viper.GetInt64("node-id")

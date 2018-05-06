@@ -55,6 +55,7 @@ func init() {
 	rootCmd.PersistentFlags().Int64("node-id", 0, "node id used for snowflake generation")
 	rootCmd.PersistentFlags().String("db", "postgres:///meow?sslmode=disable", "database connection uri")
 	rootCmd.PersistentFlags().String("redis", "redis://localhost:6379/0", "redis connection uri")
+	rootCmd.PersistentFlags().String("redis-keyspace", "meow", "prepended (+ a ':') to all redis keys")
 
 	rootCmd.PersistentFlags().String("highlight-style", "vim", "style used for syntax highlighting")
 	rootCmd.PersistentFlags().Bool("no-colour", false, "disable all colours in the output")
