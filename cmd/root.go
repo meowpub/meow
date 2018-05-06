@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
@@ -29,6 +30,11 @@ var rootCmd = &cobra.Command{
 		zap.RedirectStdLog(l)
 		zap.ReplaceGlobals(l)
 
+		// Disable colours globally if asked.
+		if config.NoColour() {
+			color.NoColor = true
+		}
+
 		return nil
 	},
 }
@@ -49,6 +55,10 @@ func init() {
 	rootCmd.PersistentFlags().Int64("node-id", 0, "node id used for snowflake generation")
 	rootCmd.PersistentFlags().String("db", "postgres:///meow?sslmode=disable", "database connection uri")
 	rootCmd.PersistentFlags().String("redis", "redis://localhost:6379/0", "redis connection uri")
+
+	rootCmd.PersistentFlags().String("highlight-style", "vim", "style used for syntax highlighting")
+	rootCmd.PersistentFlags().Bool("no-colour", false, "disable all colours in the output")
+
 	viper.BindPFlags(rootCmd.PersistentFlags())
 }
 

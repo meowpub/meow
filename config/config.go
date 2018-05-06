@@ -23,3 +23,13 @@ func Redis() string {
 func NodeID() int64 {
 	return viper.GetInt64("node-id")
 }
+
+// Syntax style for JSON output.
+func HighlightStyle() string {
+	return viper.GetString("highlight-style")
+}
+
+// Disable colour in the CLI.
+func NoColour() bool {
+	return viper.GetBool("no-colour")
+}
