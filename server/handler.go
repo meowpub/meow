@@ -3,8 +3,10 @@ package server
 import (
 	"net/http"
 
-	"github.com/liclac/meow/server/api"
 	"go.uber.org/zap"
+
+	"github.com/liclac/meow/lib"
+	"github.com/liclac/meow/server/api"
 )
 
 // WrapHandler wraps a Handler in an http.Handler.
@@ -36,11 +38,11 @@ func RenderResponse(rw http.ResponseWriter, req *http.Request, resp api.Response
 	var err error
 	switch data := resp.Data.(type) {
 	case string:
-		err = GetRender(ctx).Text(rw, resp.Status, data)
+		err = lib.GetRender(ctx).Text(rw, resp.Status, data)
 	case []byte:
-		err = GetRender(ctx).Data(rw, resp.Status, data)
+		err = lib.GetRender(ctx).Data(rw, resp.Status, data)
 	default:
-		err = GetRender(ctx).JSON(rw, resp.Status, data)
+		err = lib.GetRender(ctx).JSON(rw, resp.Status, data)
 	}
 
 	if err != nil {

@@ -6,30 +6,35 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi"
+	"github.com/go-redis/redis"
+	"github.com/jinzhu/gorm"
+	"github.com/unrolled/render"
+
 	"github.com/liclac/meow/config"
 	"github.com/liclac/meow/lib"
 	"github.com/liclac/meow/models/entities"
 	"github.com/liclac/meow/server/api"
-	"github.com/unrolled/render"
+	"github.com/liclac/meow/server/middleware"
 )
 
 // New returns a new API router.
-func New() http.Handler {
-	r := chi.NewMux()
-	r.Use(DBMiddleware())
-	r.Use(RenderMiddleware(render.Options{
+func New(db *gorm.DB, r *redis.Client) http.Handler {
+	mux := chi.NewMux()
+	mux.Use(middleware.AddDB(db))
+	mux.Use(middleware.AddRedis(r))
+	mux.Use(middleware.AddStores())
+	mux.Use(middleware.AddRender(render.New(render.Options{
 		IndentJSON:    true,
 		IsDevelopment: !config.IsProd(),
-	}))
+	})))
 
-	r.Get("/", WrapHandler(RouteRequest))
-	r.NotFound(WrapHandler(RouteRequest))
+	mux.Get("/", WrapHandler(RouteRequest))
+	mux.NotFound(WrapHandler(RouteRequest))
 
-	return r
+	return mux
 }
 
 func RouteRequest(ctx context.Context, req *http.Request) api.Response {
-
 	host, _, err := net.SplitHostPort(req.Host)
 	if err != nil {
 		return api.ErrorResponse(err)

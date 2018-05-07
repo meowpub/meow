@@ -1,10 +1,11 @@
 package lib
 
 import (
+	"net/http"
+
 	"github.com/go-redis/redis"
 	"github.com/gregjones/httpcache"
 	"github.com/liclac/meow/lib/rediscache"
-	"net/http"
 )
 
 // CreateHttpClient creates a http.Client instance which
