@@ -23,6 +23,7 @@ func New(db *gorm.DB, r *redis.Client) http.Handler {
 	mux.Use(middleware.AddDB(db))
 	mux.Use(middleware.AddRedis(r))
 	mux.Use(middleware.AddStores())
+	mux.Use(middleware.AddEntityStore())
 	mux.Use(middleware.AddRender(render.New(render.Options{
 		IndentJSON:    true,
 		IsDevelopment: !config.IsProd(),
