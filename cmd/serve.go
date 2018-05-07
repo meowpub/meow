@@ -36,8 +36,21 @@ var serveCmd = &cobra.Command{
 			cancel()
 		}()
 
+		// Connect to the database + redis, disconnect when the context exits.
+		db, err := openDB()
+		if err != nil {
+			return err
+		}
+		defer db.Close()
+
+		r, err := openRedis()
+		if err != nil {
+			return err
+		}
+		defer r.Close()
+
 		// Build a server.
-		srv := &http.Server{Handler: server.New()}
+		srv := &http.Server{Handler: server.New(db, r)}
 
 		// Listen!
 		lis, err := net.Listen("tcp", addr)

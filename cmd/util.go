@@ -8,11 +8,33 @@ import (
 
 	"github.com/alecthomas/chroma/quick"
 	"github.com/fatih/color"
-	"github.com/liclac/meow/config"
+	"github.com/go-redis/redis"
+	"github.com/jinzhu/gorm"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 	"go.uber.org/multierr"
+	"go.uber.org/zap"
+
+	"github.com/liclac/meow/config"
 )
+
+func openDB() (*gorm.DB, error) {
+	addr := config.DB()
+	zap.L().Info("Connecting to Postgres...", zap.String("addr", addr))
+
+	return gorm.Open("postgres", addr)
+}
+
+func openRedis() (*redis.Client, error) {
+	addr := config.Redis()
+	zap.L().Info("Connecting to Redis...", zap.String("addr", addr))
+
+	opts, err := redis.ParseURL(addr)
+	if err != nil {
+		return nil, err
+	}
+	return redis.NewClient(opts), nil
+}
 
 func bindPFlags(pfx string, flags *pflag.FlagSet) error {
 	var errs []error
