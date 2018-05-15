@@ -2,6 +2,7 @@ package entities
 
 import (
 	"context"
+
 	"github.com/bwmarrin/snowflake"
 	"github.com/liclac/meow/config"
 	"github.com/liclac/meow/lib"
@@ -134,5 +135,6 @@ func WithStore(ctx context.Context, st *Store) context.Context {
 
 // GetStore gets the entity Store from a Context
 func GetStore(ctx context.Context) *Store {
-	return ctx.Value(storeKey).(*Store)
+	store, _ := ctx.Value(storeKey).(*Store)
+	return store
 }
