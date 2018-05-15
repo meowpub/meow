@@ -4,10 +4,11 @@ import (
 	"context"
 
 	"github.com/bwmarrin/snowflake"
+	"github.com/pkg/errors"
+
 	"github.com/liclac/meow/config"
 	"github.com/liclac/meow/lib"
 	"github.com/liclac/meow/models"
-	"github.com/pkg/errors"
 )
 
 type key int

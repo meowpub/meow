@@ -9,12 +9,13 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/lib"
-	"github.com/liclac/meow/server"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
+
+	"github.com/liclac/meow/config"
+	"github.com/liclac/meow/lib"
+	"github.com/liclac/meow/server"
 )
 
 // serveCmd represents the api command

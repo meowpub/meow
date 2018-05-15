@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-redis/redis"
 	"github.com/gregjones/httpcache"
+
 	"github.com/liclac/meow/config"
 	"github.com/liclac/meow/lib/rediscache"
 )

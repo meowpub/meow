@@ -3,6 +3,7 @@ package models
 import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
+
 	"github.com/liclac/meow/config"
 	"github.com/liclac/meow/lib"
 )

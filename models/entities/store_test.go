@@ -1,13 +1,13 @@
 package entities
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"errors"
 	"github.com/liclac/meow/jsonld"
 	"github.com/liclac/meow/models"
 )

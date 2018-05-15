@@ -3,9 +3,10 @@ package models
 import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
+	"golang.org/x/crypto/bcrypt"
+
 	"github.com/liclac/meow/config"
 	"github.com/liclac/meow/lib"
-	"golang.org/x/crypto/bcrypt"
 )
 
 //go:generate mockgen -package=models -source=user.go -destination=user.mock.go
