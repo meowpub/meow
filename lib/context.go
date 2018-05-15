@@ -20,6 +20,9 @@ const (
 
 // GetLogger returns the logger associated with the context, or the global logger if none is set.
 func GetLogger(ctx context.Context) *zap.Logger {
+	if ctx == nil {
+		ctx = context.Background()
+	}
 	if l, ok := ctx.Value(ctxKeyLogger).(*zap.Logger); ok {
 		return l
 	}
