@@ -9,6 +9,8 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/liclac/meow/config"
+	"github.com/liclac/meow/lib"
 	"github.com/liclac/meow/server"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -41,16 +43,17 @@ var serveCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		defer db.Close()
+		defer lib.Report(ctx, db.Close(), "couldn't cleanly close database connection")
 
 		r, err := openRedis()
 		if err != nil {
 			return err
 		}
-		defer r.Close()
+		defer lib.Report(ctx, r.Close(), "couldn't cleanly close redis connection")
 
 		// Build a server.
-		srv := &http.Server{Handler: server.New(db, r)}
+		mux := server.New(db, r, config.RedisKeyspace())
+		srv := &http.Server{Handler: mux}
 
 		// Listen!
 		lis, err := net.Listen("tcp", addr)

@@ -12,25 +12,30 @@ import (
 
 	"github.com/liclac/meow/config"
 	"github.com/liclac/meow/lib"
+	"github.com/liclac/meow/models"
 	"github.com/liclac/meow/models/entities"
 	"github.com/liclac/meow/server/api"
 	"github.com/liclac/meow/server/middleware"
+	"github.com/liclac/meow/server/oauth"
 )
 
 // New returns a new API router.
-func New(db *gorm.DB, r *redis.Client) http.Handler {
+func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 	mux := chi.NewMux()
 	mux.Use(middleware.AddDB(db))
 	mux.Use(middleware.AddRedis(r))
 	mux.Use(middleware.AddStores())
 	mux.Use(middleware.AddEntityStore())
 	mux.Use(middleware.AddRender(render.New(render.Options{
+		Directory:     "templates",
+		Extensions:    []string{".html"},
 		IndentJSON:    true,
 		IsDevelopment: !config.IsProd(),
 	})))
 
-	mux.Get("/", WrapHandler(RouteRequest))
-	mux.NotFound(WrapHandler(RouteRequest))
+	mux.Get("/", api.WrapHandler(RouteRequest))
+	mux.NotFound(api.WrapHandler(RouteRequest))
+	mux.Mount("/oauth", oauth.New(models.NewStores(db, r, keyspace)))
 
 	return mux
 }

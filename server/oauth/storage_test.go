@@ -15,20 +15,15 @@ import (
 )
 
 func newMockStorage(ctrl *gomock.Controller) *Storage {
-	return NewStorage(
-		models.NewMockClientStore(ctrl),
-		models.NewMockAuthorizationStore(ctrl),
-		models.NewMockAccessTokenStore(ctrl),
-		models.NewMockRefreshTokenStore(ctrl),
-	)
+	return NewStorage(models.NewMockStores(ctrl))
 }
 
 func mockClientStore(s *Storage) *models.MockClientStore {
-	return s.Clients.(*models.MockClientStore)
+	return s.Stores.Clients().(*models.MockClientStore)
 }
 
 func mockAuthStore(s *Storage) *models.MockAuthorizationStore {
-	return s.Auths.(*models.MockAuthorizationStore)
+	return s.Stores.Authorizations().(*models.MockAuthorizationStore)
 }
 
 func TestStorage(t *testing.T) {

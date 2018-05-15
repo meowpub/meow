@@ -13,20 +13,12 @@ import (
 // Storage implements osin's Storage interface. Clients go in a database (see models.go),
 // tokens in Redis.
 type Storage struct {
-	Clients models.ClientStore
-	Auths   models.AuthorizationStore
-	Tokens  models.AccessTokenStore
-	RTokens models.RefreshTokenStore
+	Stores models.Stores
 }
 
 // NewStorage returns a new Storage instance.
-func NewStorage(clients models.ClientStore, auths models.AuthorizationStore, tokens models.AccessTokenStore, rtokens models.RefreshTokenStore) *Storage {
-	return &Storage{
-		Clients: clients,
-		Auths:   auths,
-		Tokens:  tokens,
-		RTokens: rtokens,
-	}
+func NewStorage(stores models.Stores) *Storage {
+	return &Storage{stores}
 }
 
 // Clone just returns itself.
@@ -44,7 +36,7 @@ func (s Storage) GetClient(id string) (osin.Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	cl, err := s.Clients.Get(snowflake.ID(flake))
+	cl, err := s.Stores.Clients().Get(snowflake.ID(flake))
 	if models.IsNotFound(err) {
 		return nil, osin.ErrNotFound
 	}
@@ -53,7 +45,7 @@ func (s Storage) GetClient(id string) (osin.Client, error) {
 
 // SaveAuthorize stores authorization data in Redis for later use, w/ a TTL.
 func (s Storage) SaveAuthorize(auth *osin.AuthorizeData) error {
-	return s.Auths.Set(&models.Authorization{
+	return s.Stores.Authorizations().Set(&models.Authorization{
 		Code:        auth.Code,
 		ClientID:    auth.Client.GetId(),
 		Scope:       auth.Scope,
@@ -66,7 +58,7 @@ func (s Storage) SaveAuthorize(auth *osin.AuthorizeData) error {
 // LoadAuthorize loads previously saved authorization data from Redis.
 // The Client field must be populated.
 func (s Storage) LoadAuthorize(code string) (*osin.AuthorizeData, error) {
-	auth, err := s.Auths.Get(code)
+	auth, err := s.Stores.Authorizations().Get(code)
 	if err != nil {
 		if models.IsNotFound(err) {
 			return nil, osin.ErrNotFound
@@ -89,7 +81,7 @@ func (s Storage) LoadAuthorize(code string) (*osin.AuthorizeData, error) {
 
 // RemoveAuthorize explicitly removes authorization data.
 func (s Storage) RemoveAuthorize(code string) error {
-	return s.Auths.Delete(code)
+	return s.Stores.Authorizations().Delete(code)
 }
 
 // SaveAccess saves the access- and refresh tokens to redis.
@@ -99,7 +91,7 @@ func (s Storage) SaveAccess(access *osin.AccessData) error {
 
 	var errs []error
 	if access.AccessToken != "" {
-		errs = append(errs, s.Tokens.Set(&models.AccessToken{
+		errs = append(errs, s.Stores.AccessTokens().Set(&models.AccessToken{
 			Token:    access.AccessToken,
 			ClientID: access.Client.GetId(),
 			Scope:    access.Scope,
@@ -107,7 +99,7 @@ func (s Storage) SaveAccess(access *osin.AccessData) error {
 		}, time.Duration(access.ExpiresIn)*time.Second))
 	}
 	if access.RefreshToken != "" {
-		errs = append(errs, s.RTokens.Set(&models.RefreshToken{
+		errs = append(errs, s.Stores.RefreshTokens().Set(&models.RefreshToken{
 			Token:    access.AccessToken,
 			ClientID: access.Client.GetId(),
 			Scope:    access.Scope,
@@ -120,7 +112,7 @@ func (s Storage) SaveAccess(access *osin.AccessData) error {
 // LoadAccess looks up an access token in Redis. The Client field must be populated, but
 // AuthorizeData and AccessData do NOT need to be loaded if it's not easily available.
 func (s Storage) LoadAccess(token string) (*osin.AccessData, error) {
-	tok, err := s.Tokens.Get(token)
+	tok, err := s.Stores.AccessTokens().Get(token)
 	if err != nil {
 		return nil, err
 	}
@@ -138,13 +130,13 @@ func (s Storage) LoadAccess(token string) (*osin.AccessData, error) {
 
 // RemoveAccess removes the token from Redis.
 func (s Storage) RemoveAccess(token string) error {
-	return s.Tokens.Delete(token)
+	return s.Stores.AccessTokens().Delete(token)
 }
 
 // LoadRefresh loads access data out of redis. The Client field must be populated, but
 // AuthorizeData and AccessData do NOT need to be loaded if it's not easily available.
 func (s Storage) LoadRefresh(token string) (*osin.AccessData, error) {
-	tok, err := s.RTokens.Get(token)
+	tok, err := s.Stores.RefreshTokens().Get(token)
 	if err != nil {
 		return nil, err
 	}
@@ -162,5 +154,5 @@ func (s Storage) LoadRefresh(token string) (*osin.AccessData, error) {
 
 // RemoveRefresh deletes a refresh token from redis.
 func (s Storage) RemoveRefresh(token string) error {
-	return s.RTokens.Delete(token)
+	return s.Stores.RefreshTokens().Delete(token)
 }
