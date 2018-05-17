@@ -20,7 +20,7 @@ func New(stores models.Stores) http.Handler {
 	// The library we're using makes it very easy to use regular http handlers.
 	// TODO: Look into rewriting this with API scaffolding instead.
 	mux := chi.NewMux()
-	mux.Get("/authorize", api.WrapHandler(HandleGETAuthorize))
+	mux.Get("/authorize", api.WrapHandler(api.HandlerFunc(HandleGETAuthorize)))
 	mux.Post("/authorize", func(rw http.ResponseWriter, r *http.Request) {
 		resp := server.NewResponse()
 		defer resp.Close()

@@ -33,8 +33,8 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 		IsDevelopment: !config.IsProd(),
 	})))
 
-	mux.Get("/", api.WrapHandler(RouteRequest))
-	mux.NotFound(api.WrapHandler(RouteRequest))
+	mux.Get("/", api.WrapHandler(api.HandlerFunc(RouteRequest)))
+	mux.NotFound(api.WrapHandler(api.HandlerFunc(RouteRequest)))
 	mux.Mount("/oauth", oauth.New(models.NewStores(db, r, keyspace)))
 
 	return mux

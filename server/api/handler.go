@@ -13,12 +13,26 @@ import (
 // Handler is a more convenient structure for an HTTP handler. By returning responses instead of
 // using the ResponseWriter, we prevent errors arising from forgetting to return after a render
 // call, and let content negotiation occur outside of the handlers themselves.
-type Handler func(ctx context.Context, req *http.Request) Response
+type Handler interface {
+	HandleRequest(ctx context.Context, req *http.Request) Response
+}
 
-// WrapHandler wraps a Handler in an http.Handler.
+type funcHandler struct {
+	h func(ctx context.Context, req *http.Request) Response
+}
+
+func (h funcHandler) HandleRequest(ctx context.Context, req *http.Request) Response {
+	return h.h(ctx, req)
+}
+
+func HandlerFunc(h func(ctx context.Context, req *http.Request) Response) Handler {
+	return &funcHandler{h: h}
+}
+
+// WrapHandler wraps a Handler into an http.Handler.
 func WrapHandler(h Handler) http.HandlerFunc {
 	return http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
-		RenderResponse(rw, req, h(req.Context(), req))
+		RenderResponse(rw, req, h.HandleRequest(req.Context(), req))
 	})
 }
 
