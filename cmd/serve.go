@@ -44,13 +44,13 @@ var serveCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		defer lib.Report(ctx, db.Close(), "couldn't cleanly close database connection")
+		defer func() { lib.Report(ctx, db.Close(), "couldn't cleanly close database connection") }()
 
 		r, err := openRedis()
 		if err != nil {
 			return err
 		}
-		defer lib.Report(ctx, r.Close(), "couldn't cleanly close redis connection")
+		defer func() { lib.Report(ctx, r.Close(), "couldn't cleanly close redis connection") }()
 
 		// Build a server.
 		mux := server.New(db, r, config.RedisKeyspace())
