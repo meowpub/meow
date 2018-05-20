@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/bwmarrin/snowflake"
+	"github.com/liclac/meow/server/api"
 	"github.com/pkg/errors"
 )
 
@@ -12,6 +13,8 @@ var (
 )
 
 type Entity interface {
+	api.Traversible
+
 	// SetSnowflake sets the internal snowflake of the entity if unset
 	// This should only be called by Store
 	SetSnowflake(snowflake.ID)

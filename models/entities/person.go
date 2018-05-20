@@ -1,8 +1,12 @@
 package entities
 
 import (
+	"context"
+	"net/http"
+
 	"github.com/liclac/meow/jsonld"
 	"github.com/liclac/meow/models"
+	"github.com/liclac/meow/server/api"
 )
 
 type Person struct {
@@ -47,6 +51,14 @@ func (o *Person) UnmarshalJSON(data []byte) error {
 
 func (o *Person) MarshalJSON() ([]byte, error) {
 	return o.Marshal(o)
+}
+
+// Return ourselves serialized as a json blob
+// TOOD: Compact!
+func (o *Person) HandleRequest(ctx context.Context, req *http.Request) api.Response {
+	return api.Response{
+		Data: o,
+	}
 }
 
 func NewPerson(store *Store, id string) (*Person, error) {

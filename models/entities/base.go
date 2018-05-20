@@ -1,8 +1,11 @@
 package entities
 
 import (
+	"context"
+
 	"github.com/bwmarrin/snowflake"
 	"github.com/liclac/meow/jsonld"
+	"github.com/liclac/meow/server/api"
 )
 
 type Base struct {
@@ -35,4 +38,13 @@ func (b *Base) UnmarshalJSON(data []byte) error {
 
 func (b *Base) MarshalJSON() ([]byte, error) {
 	return b.Marshal(b)
+}
+
+// api.Traversible
+func (b *Base) Traverse(ctx context.Context, pathElement string) (api.Handler, error) {
+	store := GetStore(ctx)
+
+	id := b.GetID() + "/" + pathElement
+
+	return store.GetByID(id)
 }
