@@ -1,9 +1,8 @@
 package models
 
 import (
-	"errors"
-
 	"github.com/jinzhu/gorm"
+	"github.com/pkg/errors"
 )
 
 var ErrNoTTL = errors.New("a TTL is required, but not given")
@@ -15,8 +14,13 @@ func (err NotFoundError) Error() string {
 }
 
 func IsNotFound(err error) bool {
+	err = errors.Cause(err)
+
 	if _, ok := err.(NotFoundError); ok {
 		return true
+	} else if gorm.IsRecordNotFoundError(err) {
+		return true
+	} else {
+		return false
 	}
-	return gorm.IsRecordNotFoundError(err)
 }
