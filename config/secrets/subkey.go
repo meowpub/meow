@@ -20,7 +20,7 @@ func (k *subkey) init(hsh func() hash.Hash, masterKey []byte) error {
 	// Use HKDF to derive a subkey from the master key.
 	r := hkdf.New(hsh, masterKey, nil, []byte(k.Name))
 	key := make([]byte, k.Length)
-	if _, err := io.ReadFull(r, k.value); err != nil {
+	if _, err := io.ReadFull(r, key); err != nil {
 		return err
 	}
 

@@ -59,6 +59,7 @@ func Init(L *zap.Logger, masterKeyStr string) error {
 	var g errgroup.Group
 	for _, k := range subkeys {
 		// Derive each key in a goroutine, tracking time taken per key as well.
+		k := k
 		g.Go(func() error {
 			l := L.With(
 				zap.String("key", k.Name),
@@ -66,7 +67,7 @@ func Init(L *zap.Logger, masterKeyStr string) error {
 			)
 
 			startTime := time.Now()
-			if err := errors.Wrap(err, k.Name); err != nil {
+			if err := k.init(hsh, masterKey); err != nil {
 				l.Error("Subkey derivation failed",
 					zap.Error(err),
 					zap.Duration("t", time.Since(startTime)),
@@ -76,6 +77,7 @@ func Init(L *zap.Logger, masterKeyStr string) error {
 
 			l.Debug("Subkey derived",
 				zap.Duration("t", time.Since(startTime)),
+				// zap.Binary("key", k.value),
 			)
 			return nil
 		})
