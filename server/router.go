@@ -8,10 +8,12 @@ import (
 	"strings"
 
 	"github.com/go-redis/redis"
+	"github.com/gorilla/sessions"
 	"github.com/jinzhu/gorm"
 	"github.com/unrolled/render"
 
 	"github.com/liclac/meow/config"
+	"github.com/liclac/meow/config/secrets"
 	"github.com/liclac/meow/lib"
 	"github.com/liclac/meow/models"
 	"github.com/liclac/meow/models/entities"
@@ -32,6 +34,9 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 		IndentJSON:    true,
 		IsDevelopment: !config.IsProd(),
 	})))
+	mux.Use(middleware.AddSession(
+		sessions.NewCookieStore(secrets.SessionKey()),
+	))
 
 	mux.GET("/", api.HandlerFunc(RouteRequest))
 	mux.ANY("/favicon.ico", api.HandlerFunc(HandleNotFound))
