@@ -55,6 +55,7 @@ func RenderResponse(rw http.ResponseWriter, req *http.Request, resp Response) {
 		resp.Status = 200
 	}
 
+	// Render the response body.
 	var rerr error
 	switch {
 	case resp.Template != "":
