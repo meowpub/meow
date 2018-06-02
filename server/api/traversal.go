@@ -4,11 +4,7 @@ import (
 	"context"
 )
 
-type ctxKey string
-
-const (
-	ctxKeyTraversal ctxKey = "traversal"
-)
+const ctxKeyTraversal ctxKey = "traversal"
 
 // TraversalContext is the context traversed so far in the processing of
 // this request
