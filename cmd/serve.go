@@ -25,6 +25,8 @@ var serveCmd = &cobra.Command{
 	Short:   "Runs a web worker",
 	Long:    `Runs a web worker.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
+		L := zap.L().Named("serve")
+
 		addr := viper.GetString("api.addr")
 
 		// Create a context that is cancelled on Ctrl+C.
@@ -40,13 +42,13 @@ var serveCmd = &cobra.Command{
 		}()
 
 		// Connect to the database + redis, disconnect when the context exits.
-		db, err := openDB()
+		db, err := openDB(L.Named("db"))
 		if err != nil {
 			return err
 		}
 		defer func() { lib.Report(ctx, db.Close(), "couldn't cleanly close database connection") }()
 
-		r, err := openRedis()
+		r, err := openRedis(L.Named("redis"))
 		if err != nil {
 			return err
 		}
@@ -61,7 +63,7 @@ var serveCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		zap.L().Info("listening on...", zap.String("addr", lis.Addr().String()))
+		L.Info("listening on...", zap.String("addr", lis.Addr().String()))
 
 		// Run until the context exits.
 		errC := make(chan error, 1)

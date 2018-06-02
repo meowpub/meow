@@ -18,16 +18,16 @@ import (
 	"github.com/liclac/meow/config"
 )
 
-func openDB() (*gorm.DB, error) {
+func openDB(L *zap.Logger) (*gorm.DB, error) {
 	addr := config.DB()
-	zap.L().Info("Connecting to Postgres...", zap.String("addr", addr))
+	L.Info("Connecting to Postgres...", zap.String("addr", addr))
 
 	return gorm.Open("postgres", addr)
 }
 
-func openRedis() (*redis.Client, error) {
+func openRedis(L *zap.Logger) (*redis.Client, error) {
 	addr := config.Redis()
-	zap.L().Info("Connecting to Redis...", zap.String("addr", addr))
+	L.Info("Connecting to Redis...", zap.String("addr", addr))
 
 	opts, err := redis.ParseURL(addr)
 	if err != nil {
