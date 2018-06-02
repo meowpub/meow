@@ -9,10 +9,14 @@ import (
 	"github.com/liclac/meow/lib"
 )
 
-func RenderError(rw http.ResponseWriter, req *http.Request, rspErr error) {
+func RenderError(rw http.ResponseWriter, req *http.Request, status int, rspErr error) {
 	ctx := req.Context()
-	status := ErrorStatus(rspErr)
 	rsp := toErrorResponse(rspErr)
+
+	// Default to the status pulled from the error, which defaults to 500.
+	if status == 0 {
+		status = ErrorStatus(rspErr)
+	}
 
 	l := lib.GetLogger(ctx).WithOptions(zap.Fields(
 		zap.String("path", req.URL.Path),
@@ -39,14 +43,15 @@ func RenderResponse(rw http.ResponseWriter, req *http.Request, resp Response) {
 		zap.String("method", req.Method),
 	))
 
+	// If the response is an error, render just the status.
 	if resp.Error != nil {
 		l.Debug("response is an error", zap.Error(resp.Error))
-		RenderError(rw, req, resp.Error)
+		RenderError(rw, req, resp.Status, resp.Error)
 		return
 	}
 
+	// Default to a HTTP 200 OK response if no status is set.
 	if resp.Status == 0 {
-		l.Debug("status = 0, setting status = 200")
 		resp.Status = 200
 	}
 
@@ -72,7 +77,8 @@ func RenderResponse(rw http.ResponseWriter, req *http.Request, resp Response) {
 		rerr = lib.GetRender(ctx).Data(rw, resp.Status, nil)
 	}
 
+	// Render an error if rendering the contents failed for whatever reason.
 	if rerr != nil {
-		RenderError(rw, req, rerr)
+		RenderError(rw, req, http.StatusInternalServerError, rerr)
 	}
 }
