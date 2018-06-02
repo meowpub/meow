@@ -52,6 +52,12 @@ func (rsp *Response) Write(b []byte) (int, error) {
 	return n, nil
 }
 
+func RedirectResponse(url string) Response {
+	resp := Response{Status: http.StatusTemporaryRedirect}
+	resp.Header().Set("Location", url)
+	return resp
+}
+
 func ErrorResponse(err error) Response {
 	return Response{
 		Error: err,
