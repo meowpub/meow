@@ -2,11 +2,11 @@ package server
 
 import (
 	"context"
+	"errors"
 	"net"
 	"net/http"
 	"strings"
 
-	"github.com/go-chi/chi"
 	"github.com/go-redis/redis"
 	"github.com/jinzhu/gorm"
 	"github.com/unrolled/render"
@@ -22,11 +22,10 @@ import (
 
 // New returns a new API router.
 func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
-	mux := chi.NewMux()
+	mux := api.NewRouter()
 	mux.Use(middleware.AddDB(db))
 	mux.Use(middleware.AddRedis(r))
 	mux.Use(middleware.AddStores())
-	mux.Use(middleware.AddEntityStore())
 	mux.Use(middleware.AddRender(render.New(render.Options{
 		Directory:     "templates",
 		Extensions:    []string{".html"},
@@ -34,11 +33,18 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 		IsDevelopment: !config.IsProd(),
 	})))
 
-	mux.Get("/", api.WrapHandler(api.HandlerFunc(RouteRequest)))
-	mux.NotFound(api.WrapHandler(api.HandlerFunc(RouteRequest)))
+	mux.GET("/", api.HandlerFunc(RouteRequest))
+	mux.ANY("/favicon.ico", api.HandlerFunc(HandleNotFound))
+	mux.GET("/-/login", api.HandlerFunc(RenderLogin))
+	mux.POST("/-/login", api.HandlerFunc(HandleLogin))
+	mux.NotFound(api.HandlerFunc(RouteRequest))
 	mux.Mount("/oauth", oauth.New(models.NewStores(db, r, keyspace)))
 
 	return mux
+}
+
+func HandleNotFound(ctx context.Context, req *http.Request) api.Response {
+	return api.Response{Error: api.Wrap(errors.New("not found"), http.StatusNotFound)}
 }
 
 func RouteRequest(ctx context.Context, req *http.Request) api.Response {
