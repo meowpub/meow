@@ -9,6 +9,12 @@ func IsProd() bool {
 	return viper.GetBool("prod")
 }
 
+// Secret returns the master secret, as a hex string.
+// Do not use this key directly; use config/secrets to generate per-task derivative keys.
+func Secret() string {
+	return viper.GetString("secret")
+}
+
 // DB returns the database connection string.
 func DB() string {
 	return viper.GetString("db")

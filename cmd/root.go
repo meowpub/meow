@@ -6,11 +6,13 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
+	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
 	"github.com/liclac/meow/config"
+	"github.com/liclac/meow/config/secrets"
 )
 
 var rootCmd = &cobra.Command{
@@ -35,6 +37,11 @@ var rootCmd = &cobra.Command{
 			color.NoColor = true
 		}
 
+		// Derive subkeys from the master secret; this has to be done before use.
+		if err := secrets.Init(l.Named("secrets"), config.Secret()); err != nil {
+			return errors.Wrap(err, "secrets.Init")
+		}
+
 		return nil
 	},
 }
@@ -52,6 +59,7 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	rootCmd.PersistentFlags().BoolP("prod", "P", false, "run in production mode")
+	rootCmd.PersistentFlags().StringP("secret", "S", "", "secret key (base64, min 64 bytes)")
 	rootCmd.PersistentFlags().Int64("node-id", 0, "node id used for snowflake generation")
 	rootCmd.PersistentFlags().String("db", "postgres:///meow?sslmode=disable", "database connection uri")
 	rootCmd.PersistentFlags().String("redis", "redis://localhost:6379/0", "redis connection uri")
