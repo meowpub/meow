@@ -34,6 +34,7 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 	mux.Use(middleware.AddRedis(r))
 	mux.Use(middleware.AddStores())
 	mux.Use(middleware.AddSession(sessions.NewCookieStore(secrets.SessionKey())))
+	mux.Use(oauth.AuthenticationMiddleware)
 
 	mux.GET("/", api.HandlerFunc(RouteRequest))
 	mux.ANY("/favicon.ico", api.HandlerFunc(HandleNotFound))
