@@ -80,6 +80,8 @@ func (r *Router) Render(rw http.ResponseWriter, req *http.Request, resp Response
 		default:
 			err = r.rend.JSON(rw, resp.Status, data)
 		}
+	default:
+		rw.WriteHeader(resp.Status)
 	}
 	if err != nil {
 		L.Error("Failed to render response", zap.Error(err))
