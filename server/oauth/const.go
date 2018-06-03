@@ -1,5 +1,15 @@
 package oauth
 
+import (
+	"time"
+)
+
+// Default access token validity period.
+const AccessTokenTTL = 1 * time.Hour
+
+// Web access token validity period. TODO: Make the web UI deal with refresh tokens.
+const WebAccessTokenTTL = 30 * 24 * time.Hour
+
 // SpecialScopeWeb is a special scope issued only to the web frontend, through the login page.
 var SpecialScopeWeb = &Scope{"web", "", nil}
 
