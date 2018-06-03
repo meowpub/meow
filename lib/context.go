@@ -5,7 +5,6 @@ import (
 
 	"github.com/go-redis/redis"
 	"github.com/jinzhu/gorm"
-	"github.com/unrolled/render"
 	"go.uber.org/zap"
 )
 
@@ -59,15 +58,4 @@ func GetRedis(ctx context.Context) *redis.Client {
 // WithRedis associates a Redis connection with a context.
 func WithRedis(ctx context.Context, r *redis.Client) context.Context {
 	return context.WithValue(ctx, ctxKeyRedis, r)
-}
-
-// GetRender returns the Render associated with the context, or nil.
-func GetRender(ctx context.Context) *render.Render {
-	rend, _ := ctx.Value(ctxKeyRender).(*render.Render)
-	return rend
-}
-
-// WithRender associates a Render with a context.
-func WithRender(ctx context.Context, rend *render.Render) context.Context {
-	return context.WithValue(ctx, ctxKeyRender, rend)
 }
