@@ -6,6 +6,7 @@ import (
 
 	"github.com/liclac/meow/lib"
 	"github.com/liclac/meow/models"
+	"github.com/liclac/meow/models/entities"
 	"github.com/liclac/meow/server/api"
 	"github.com/liclac/meow/server/middleware"
 	"github.com/liclac/meow/server/oauth"
@@ -18,6 +19,25 @@ type LoginRequest struct {
 }
 
 func RenderLogin(ctx context.Context, req *http.Request) api.Response {
+	tok := oauth.GetToken(ctx)
+
+	if tok != nil {
+		uid := tok.UserID
+		stores := models.GetStores(ctx)
+		usr, err := stores.Users().GetBySnowflake(uid)
+		if err != nil {
+			return api.ErrorResponse(err)
+		}
+
+		entities := entities.GetStore(ctx)
+		usrEntity, err := entities.GetBySnowflake(usr.EntityID)
+		if err != nil {
+			return api.ErrorResponse(err)
+		}
+
+		return api.RedirectResponse(usrEntity.GetID())
+	}
+
 	return api.Response{Template: "login"}
 }
 
