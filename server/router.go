@@ -24,19 +24,16 @@ import (
 
 // New returns a new API router.
 func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
-	mux := api.NewRouter()
-	mux.Use(middleware.AddDB(db))
-	mux.Use(middleware.AddRedis(r))
-	mux.Use(middleware.AddStores())
-	mux.Use(middleware.AddRender(render.New(render.Options{
+	mux := api.NewRouter(render.Options{
 		Directory:     "templates",
 		Extensions:    []string{".html"},
 		IndentJSON:    true,
 		IsDevelopment: !config.IsProd(),
-	})))
-	mux.Use(middleware.AddSession(
-		sessions.NewCookieStore(secrets.SessionKey()),
-	))
+	})
+	mux.Use(middleware.AddDB(db))
+	mux.Use(middleware.AddRedis(r))
+	mux.Use(middleware.AddStores())
+	mux.Use(middleware.AddSession(sessions.NewCookieStore(secrets.SessionKey())))
 
 	mux.GET("/", api.HandlerFunc(RouteRequest))
 	mux.ANY("/favicon.ico", api.HandlerFunc(HandleNotFound))

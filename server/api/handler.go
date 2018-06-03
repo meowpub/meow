@@ -23,12 +23,3 @@ func (h funcHandler) HandleRequest(ctx context.Context, req *http.Request) Respo
 func HandlerFunc(h func(ctx context.Context, req *http.Request) Response) Handler {
 	return &funcHandler{h: h}
 }
-
-// WrapHandler wraps a Handler into an http.Handler.
-func WrapHandler(h Handler) http.HandlerFunc {
-	return http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
-		ctx := req.Context()
-		req = req.WithContext(ctx)
-		RenderResponse(rw, req, h.HandleRequest(ctx, req))
-	})
-}
