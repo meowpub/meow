@@ -15,7 +15,6 @@ import (
 	"github.com/liclac/meow/config"
 	"github.com/liclac/meow/config/secrets"
 	"github.com/liclac/meow/lib"
-	"github.com/liclac/meow/models"
 	"github.com/liclac/meow/models/entities"
 	"github.com/liclac/meow/server/api"
 	"github.com/liclac/meow/server/middleware"
@@ -41,7 +40,6 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 	mux.GET("/-/login", api.HandlerFunc(RenderLogin))
 	mux.POST("/-/login", api.HandlerFunc(HandleLogin))
 	mux.NotFound(api.HandlerFunc(RouteRequest))
-	mux.Mount("/oauth", oauth.New(models.NewStores(db, r, keyspace)))
 
 	return mux
 }
