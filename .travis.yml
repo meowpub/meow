@@ -13,11 +13,11 @@ addons:
 services:
 - postgresql # Needed for model tests.
 
-before_script:
-- psql -U postgres -c 'create database meow_test;'
-
 env:
 - MEOW_TEST_DB: postgres://localhost/meow_test?sslmode=disable
+
+before_script:
+- psql -U postgres -c 'create database meow_test;'
 
 # Run with the race detector, it makes it slower, but races in something like this are bad.
 script: go test -race ./...
