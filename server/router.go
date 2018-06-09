@@ -37,6 +37,7 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 
 	mux.GET("/", RouteRequest)
 	mux.ANY("/favicon.ico", HandleNotFound)
+	mux.ANY("/-", HandleNotFound)
 	mux.GET("/-/login", RenderLogin)
 	mux.POST("/-/login", HandleLogin)
 	mux.NotFound(RouteRequest)
