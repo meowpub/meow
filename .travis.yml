@@ -8,7 +8,7 @@ go:
 - "master"
 
 addons:
-  postgresql: "10.0" # Use an up-to-date version of Postgres; default is 9.2.
+  postgresql: "10" # Use an up-to-date version of Postgres; default is 9.2.
 
 services:
 - postgresql # Needed for model tests.
