@@ -12,14 +12,9 @@ type Handler interface {
 	HandleRequest(ctx context.Context, req *http.Request) Response
 }
 
-type funcHandler struct {
-	h func(ctx context.Context, req *http.Request) Response
-}
+// HandlerFunc lets a function act as a Handler.
+type HandlerFunc func(ctx context.Context, req *http.Request) Response
 
-func (h funcHandler) HandleRequest(ctx context.Context, req *http.Request) Response {
-	return h.h(ctx, req)
-}
-
-func HandlerFunc(h func(ctx context.Context, req *http.Request) Response) Handler {
-	return &funcHandler{h: h}
+func (h HandlerFunc) HandleRequest(ctx context.Context, req *http.Request) Response {
+	return h(ctx, req)
 }

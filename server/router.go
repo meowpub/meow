@@ -35,11 +35,11 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 	mux.Use(middleware.AddSession(sessions.NewCookieStore(secrets.SessionKey())))
 	mux.Use(oauth.AuthenticationMiddleware)
 
-	mux.GET("/", api.HandlerFunc(RouteRequest))
-	mux.ANY("/favicon.ico", api.HandlerFunc(HandleNotFound))
-	mux.GET("/-/login", api.HandlerFunc(RenderLogin))
-	mux.POST("/-/login", api.HandlerFunc(HandleLogin))
-	mux.NotFound(api.HandlerFunc(RouteRequest))
+	mux.GET("/", RouteRequest)
+	mux.ANY("/favicon.ico", HandleNotFound)
+	mux.GET("/-/login", RenderLogin)
+	mux.POST("/-/login", HandleLogin)
+	mux.NotFound(RouteRequest)
 
 	return mux
 }

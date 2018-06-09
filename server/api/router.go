@@ -111,11 +111,12 @@ func (r *Router) RenderError(rw http.ResponseWriter, req *http.Request, status i
 	fmt.Fprintln(rw, string(data))
 }
 
-func (r *Router) GET(path string, h Handler)        { r.mux.Get(path, r.wrap(h)) }
-func (r *Router) HEAD(path string, h Handler)       { r.mux.Head(path, r.wrap(h)) }
-func (r *Router) POST(path string, h Handler)       { r.mux.Post(path, r.wrap(h)) }
-func (r *Router) PUT(path string, h Handler)        { r.mux.Put(path, r.wrap(h)) }
-func (r *Router) DELETE(path string, h Handler)     { r.mux.Delete(path, r.wrap(h)) }
-func (r *Router) ANY(path string, h Handler)        { r.mux.HandleFunc(path, r.wrap(h)) }
+func (r *Router) GET(path string, h HandlerFunc)    { r.mux.Get(path, r.wrap(h)) }
+func (r *Router) HEAD(path string, h HandlerFunc)   { r.mux.Head(path, r.wrap(h)) }
+func (r *Router) POST(path string, h HandlerFunc)   { r.mux.Post(path, r.wrap(h)) }
+func (r *Router) PUT(path string, h HandlerFunc)    { r.mux.Put(path, r.wrap(h)) }
+func (r *Router) DELETE(path string, h HandlerFunc) { r.mux.Delete(path, r.wrap(h)) }
+func (r *Router) ANY(path string, h HandlerFunc)    { r.mux.HandleFunc(path, r.wrap(h)) }
+func (r *Router) Handle(path string, h Handler)     { r.mux.HandleFunc(path, r.wrap(h)) }
 func (r *Router) Mount(path string, h http.Handler) { r.mux.Mount(path, h) }
-func (r *Router) NotFound(h Handler)                { r.mux.NotFound(r.wrap(h)) }
+func (r *Router) NotFound(h HandlerFunc)            { r.mux.NotFound(r.wrap(h)) }
