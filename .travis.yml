@@ -19,5 +19,8 @@ env:
 before_script:
 - psql -U postgres -c 'create database meow_test;'
 
+# Why aren't test dependencies installed by default e_e
+install: go get -t -v ./...
+
 # Run with the race detector, it makes it slower, but races in something like this are bad.
 script: go test -race ./...
