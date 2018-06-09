@@ -6,8 +6,8 @@ import (
 	"github.com/go-redis/redis"
 	"github.com/gregjones/httpcache"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/lib/rediscache"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/lib/rediscache"
 )
 
 // CreateHttpClient creates a http.Client instance which

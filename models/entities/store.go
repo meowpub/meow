@@ -6,9 +6,9 @@ import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/pkg/errors"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/lib"
-	"github.com/liclac/meow/models"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/lib"
+	"github.com/meowpub/meow/models"
 )
 
 type key int

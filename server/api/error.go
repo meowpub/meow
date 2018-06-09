@@ -5,7 +5,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/liclac/meow/models"
+	"github.com/meowpub/meow/models"
 )
 
 // From pkg/errors; unexported but stable.

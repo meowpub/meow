@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/liclac/meow/jsonld"
-	"github.com/liclac/meow/server/api"
+	"github.com/meowpub/meow/jsonld"
+	"github.com/meowpub/meow/server/api"
 )
 
 type Object struct {

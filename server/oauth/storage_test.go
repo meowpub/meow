@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/liclac/meow/models"
+	"github.com/meowpub/meow/models"
 )
 
 func newMockStorage(ctrl *gomock.Controller) *Storage {

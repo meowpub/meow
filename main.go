@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/liclac/meow/cmd"
+	"github.com/meowpub/meow/cmd"
 
 	// Autoload a .env file as environment variables.
 	_ "github.com/joho/godotenv/autoload"

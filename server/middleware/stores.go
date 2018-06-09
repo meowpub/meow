@@ -7,11 +7,11 @@ import (
 	"github.com/go-redis/redis"
 	"github.com/jinzhu/gorm"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/lib"
-	"github.com/liclac/meow/models"
-	"github.com/liclac/meow/models/entities"
-	"github.com/liclac/meow/server/api"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/lib"
+	"github.com/meowpub/meow/models"
+	"github.com/meowpub/meow/models/entities"
+	"github.com/meowpub/meow/server/api"
 )
 
 func AddDB(db *gorm.DB) func(next api.Handler) api.Handler {

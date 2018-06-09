@@ -7,10 +7,10 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/liclac/meow/lib"
-	"github.com/liclac/meow/models"
-	"github.com/liclac/meow/server/api"
-	"github.com/liclac/meow/server/middleware"
+	"github.com/meowpub/meow/lib"
+	"github.com/meowpub/meow/models"
+	"github.com/meowpub/meow/server/api"
+	"github.com/meowpub/meow/server/middleware"
 )
 
 const BearerPrefix = "Bearer "

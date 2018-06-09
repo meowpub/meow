@@ -7,8 +7,8 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/liclac/meow/lib"
-	"github.com/liclac/meow/server/api"
+	"github.com/meowpub/meow/lib"
+	"github.com/meowpub/meow/server/api"
 )
 
 // Authorize retrieves the access token from the context and ensures that it has the requested

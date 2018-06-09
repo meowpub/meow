@@ -8,7 +8,7 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/go-chi/chi"
-	"github.com/liclac/meow/lib"
+	"github.com/meowpub/meow/lib"
 	"github.com/unrolled/render"
 )
 

@@ -6,7 +6,7 @@ import (
 
 	"github.com/gorilla/sessions"
 
-	"github.com/liclac/meow/server/api"
+	"github.com/meowpub/meow/server/api"
 )
 
 const ctxKeySession ctxKey = "session"

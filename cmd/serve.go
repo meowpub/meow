@@ -13,9 +13,9 @@ import (
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/lib"
-	"github.com/liclac/meow/server"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/lib"
+	"github.com/meowpub/meow/server"
 )
 
 // serveCmd represents the api command

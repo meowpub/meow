@@ -5,8 +5,8 @@ import (
 	"github.com/jinzhu/gorm"
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/lib"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/lib"
 )
 
 //go:generate mockgen -package=models -source=user.go -destination=user.mock.go

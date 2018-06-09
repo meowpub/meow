@@ -15,7 +15,7 @@ import (
 	"go.uber.org/multierr"
 	"go.uber.org/zap"
 
-	"github.com/liclac/meow/config"
+	"github.com/meowpub/meow/config"
 )
 
 func openDB(L *zap.Logger) (*gorm.DB, error) {

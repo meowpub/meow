@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/bwmarrin/snowflake"
-	"github.com/liclac/meow/server/api"
+	"github.com/meowpub/meow/server/api"
 	"github.com/pkg/errors"
 )
 

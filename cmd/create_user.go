@@ -5,10 +5,10 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/jsonld"
-	"github.com/liclac/meow/models"
-	"github.com/liclac/meow/models/entities"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/jsonld"
+	"github.com/meowpub/meow/models"
+	"github.com/meowpub/meow/models/entities"
 )
 
 // createUserCmd represents the createUser command

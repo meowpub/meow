@@ -13,7 +13,7 @@ import (
 	"github.com/spf13/cobra"
 	"go.uber.org/multierr"
 
-	"github.com/liclac/meow/config"
+	"github.com/meowpub/meow/config"
 )
 
 func migrationsDir() string {

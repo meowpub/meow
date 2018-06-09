@@ -11,8 +11,8 @@ import (
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/config/secrets"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/config/secrets"
 )
 
 var rootCmd = &cobra.Command{

@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/liclac/meow/lib"
+	"github.com/meowpub/meow/lib"
 )
 
 func TestUserConflictClause(t *testing.T) {

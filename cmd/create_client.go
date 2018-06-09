@@ -6,8 +6,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/models"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/models"
 )
 
 // createClientCmd represents the createClient command

@@ -8,8 +8,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/liclac/meow/jsonld"
-	"github.com/liclac/meow/models"
+	"github.com/meowpub/meow/jsonld"
+	"github.com/meowpub/meow/models"
 )
 
 func newStore(t *testing.T) (*gomock.Controller, *models.MockEntityStore, *Store) {

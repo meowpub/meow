@@ -12,13 +12,13 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/unrolled/render"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/config/secrets"
-	"github.com/liclac/meow/lib"
-	"github.com/liclac/meow/models/entities"
-	"github.com/liclac/meow/server/api"
-	"github.com/liclac/meow/server/middleware"
-	"github.com/liclac/meow/server/oauth"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/config/secrets"
+	"github.com/meowpub/meow/lib"
+	"github.com/meowpub/meow/models/entities"
+	"github.com/meowpub/meow/server/api"
+	"github.com/meowpub/meow/server/middleware"
+	"github.com/meowpub/meow/server/oauth"
 )
 
 // New returns a new API router.

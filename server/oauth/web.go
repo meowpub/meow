@@ -4,8 +4,8 @@ import (
 	"github.com/RangelReale/osin"
 	"github.com/keybase/saltpack/encoding/basex"
 
-	"github.com/liclac/meow/config/secrets"
-	"github.com/liclac/meow/models"
+	"github.com/meowpub/meow/config/secrets"
+	"github.com/meowpub/meow/models"
 )
 
 var WebClient osin.Client = &webClient{}

@@ -8,8 +8,8 @@ import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
 
-	"github.com/liclac/meow/config"
-	"github.com/liclac/meow/lib"
+	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/lib"
 )
 
 //go:generate mockgen -package=models -source=client.go -destination=client.mock.go

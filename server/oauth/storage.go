@@ -6,7 +6,7 @@ import (
 
 	"github.com/RangelReale/osin"
 	"github.com/bwmarrin/snowflake"
-	"github.com/liclac/meow/models"
+	"github.com/meowpub/meow/models"
 	"go.uber.org/multierr"
 )
 
