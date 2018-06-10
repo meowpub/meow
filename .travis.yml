@@ -17,8 +17,22 @@ env:
 before_script:
 - psql -U postgres -c 'create database meow_test;'
 
+
+
 # Why aren't test dependencies installed by default e_e
-install: go get -t -v ./...
+# Passing -u so that we can use a cache and pull updates when needed, let's be nice to the hosts.
+install: go get -t -u -v ./...
 
 # Run with the race detector, it makes it slower, but races in something like this are bad.
 script: go test -race ./...
+
+
+
+# Cache $GOPATH/src to avoid having to re-fetch everything.
+cache:
+  directories:
+  - $GOPATH/src
+
+# Do not cache our own sources, that would be silly.
+before_cache:
+- rm -rf $GOPATH/src/github.com/meowpub/meow
