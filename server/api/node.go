@@ -14,7 +14,10 @@ type Node struct {
 }
 
 func (n Node) HandleRequest(ctx context.Context, req *http.Request) Response {
-	return n.Self.HandleRequest(ctx, req)
+	if n.Self != nil {
+		return n.Self.HandleRequest(ctx, req)
+	}
+	return Response{Status: http.StatusNotFound}
 }
 
 func (n Node) Traverse(ctx context.Context, pathElement string) (Handler, error) {

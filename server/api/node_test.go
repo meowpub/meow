@@ -62,3 +62,8 @@ func TestNode(t *testing.T) {
 		})
 	})
 }
+
+func TestNodeNoSelf(t *testing.T) {
+	req := httptest.NewRequest("GET", "https://example.com/", nil)
+	assert.Equal(t, Response{Status: http.StatusNotFound}, (&Node{}).HandleRequest(req.Context(), req))
+}
