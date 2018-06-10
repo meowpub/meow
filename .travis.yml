@@ -4,7 +4,6 @@ go:
 - "1.x"
 - "1.9.x"
 - "1.10.x"
-- "master"
 
 addons:
   postgresql: "9.6" # Use an up-to-date version of Postgres; default is 9.2.
