@@ -73,7 +73,7 @@ func TestStore(t *testing.T) {
 :"https://example.net/"
 ,"@type"
 :["https://w3c.org/ns/activitystreams#Article"]
-"https://www.w3.org/ns/activitystreams#content"
+,"https://www.w3.org/ns/activitystreams#content"
 :[{"@value":"my disrespectful teen son somehow got  hold of a gluten product and now he wants to become a cat girl"}]
 ,"https://www.w3.org/ns/activitystreams#name"
 :[{"@value":"Catgirls: how?"}]
