@@ -1,44 +1,101 @@
 package api
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"net"
 	"net/http"
+	"strings"
 
-	"go.uber.org/zap"
-
-	"github.com/go-chi/chi"
 	"github.com/meowpub/meow/lib"
 	"github.com/unrolled/render"
+	"go.uber.org/zap"
 )
 
+var _ Handler = &Router{}
 var _ http.Handler = &Router{}
 
+type LookupFunc func(ctx context.Context, normalizedURL string) (Traversible, error)
+
 type Router struct {
+	// Returns the entity at the given path. The given URL will always be normalized.
+	lookup LookupFunc
+
+	// Renderer used to serve responses.
 	rend *render.Render
-	mux  chi.Router
-	mw   []Middleware
+
+	// Hard routes that will override any attempt to traverse. Usually Node objects.
+	// Note that these will only be looked at if the root object exists.
+	hardRoutes map[string]Handler
+
+	// Middleware stack.
+	mw []Middleware
 }
 
-func NewRouter(rendopt ...render.Options) *Router {
-	return &Router{
-		rend: render.New(rendopt...),
-		mux:  chi.NewMux(),
+func NewRouter(lookup LookupFunc, opts ...render.Options) *Router {
+	renderOpts := render.Options{}
+	if len(opts) > 0 {
+		renderOpts = opts[0]
 	}
+	renderOpts.DisableHTTPErrorRendering = true
+
+	return &Router{
+		lookup:     lookup,
+		rend:       render.New(renderOpts),
+		hardRoutes: make(map[string]Handler),
+	}
+}
+
+func (r *Router) Mount(path string, h Handler) {
+	r.hardRoutes[path] = h
 }
 
 func (r *Router) Use(mw ...Middleware) {
 	r.mw = append(r.mw, mw...)
 }
 
-func (r *Router) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
-	r.mux.ServeHTTP(rw, req)
+func (r Router) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
+	r.Render(rw, req, r.HandleRequest(req.Context(), req))
 }
 
-func (r *Router) wrap(h Handler) http.HandlerFunc {
-	return http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
-		r.Render(rw, req, Chain(h, r.mw...).HandleRequest(req.Context(), req))
-	})
+func (r Router) HandleRequest(ctx context.Context, req *http.Request) Response {
+	// Request URLs' URLs don't actually need to contain a correct hostname.
+	host := req.Host
+	if h, _, err := net.SplitHostPort(req.Host); err == nil {
+		host = h
+	}
+
+	// Normalize the URL.
+	url := *req.URL
+	url.Scheme = "https"
+	url.Host = host
+	url = lib.NormalizeURL(url)
+
+	// Build the URL of the root object for traversal.
+	rootUrl := url
+	rootUrl.Path = ""
+	rootUrl.RawPath = rootUrl.EscapedPath()
+
+	// Find the root for the domain, make a Node out of it to reuse existing hard route logic.
+	root, err := r.lookup(ctx, rootUrl.String())
+	if root == nil {
+		return Response{Status: http.StatusNotFound}
+	}
+	node := Node{root, r.hardRoutes}
+
+	// Traverse the node, find a handler.
+	path := strings.Split(url.Path, "/")
+	tc, err := TraverseFrom(ctx, node, path)
+	if err != nil {
+		return Response{Error: err}
+	}
+	handler := tc.FoundHandler
+
+	// Chain middleware onto the handler, build the context, invoke.
+	handler = Chain(handler, r.mw...)
+	ctx = WithTraversalContext(ctx, tc)
+	return handler.HandleRequest(ctx, req)
 }
 
 func (r *Router) Render(rw http.ResponseWriter, req *http.Request, resp Response) {
@@ -110,13 +167,3 @@ func (r *Router) RenderError(rw http.ResponseWriter, req *http.Request, status i
 	}
 	fmt.Fprintln(rw, string(data))
 }
-
-func (r *Router) GET(path string, h HandlerFunc)    { r.mux.Get(path, r.wrap(h)) }
-func (r *Router) HEAD(path string, h HandlerFunc)   { r.mux.Head(path, r.wrap(h)) }
-func (r *Router) POST(path string, h HandlerFunc)   { r.mux.Post(path, r.wrap(h)) }
-func (r *Router) PUT(path string, h HandlerFunc)    { r.mux.Put(path, r.wrap(h)) }
-func (r *Router) DELETE(path string, h HandlerFunc) { r.mux.Delete(path, r.wrap(h)) }
-func (r *Router) ANY(path string, h HandlerFunc)    { r.mux.HandleFunc(path, r.wrap(h)) }
-func (r *Router) Handle(path string, h Handler)     { r.mux.HandleFunc(path, r.wrap(h)) }
-func (r *Router) Mount(path string, h http.Handler) { r.mux.Mount(path, h) }
-func (r *Router) NotFound(h HandlerFunc)            { r.mux.NotFound(r.wrap(h)) }
