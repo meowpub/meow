@@ -60,6 +60,12 @@ func (r Router) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 }
 
 func (r Router) HandleRequest(ctx context.Context, req *http.Request) Response {
+	// Just wrap handleRequest in our own middleware stack and invoke that.
+	// This ensures that lookups, etc. get middlewares applied properly.
+	return Chain(HandlerFunc(r.handleRequest), r.mw...).HandleRequest(ctx, req)
+}
+
+func (r Router) handleRequest(ctx context.Context, req *http.Request) Response {
 	// Request URLs' URLs don't actually need to contain a correct hostname.
 	host := req.Host
 	if h, _, err := net.SplitHostPort(req.Host); err == nil {
@@ -90,12 +96,8 @@ func (r Router) HandleRequest(ctx context.Context, req *http.Request) Response {
 	if err != nil {
 		return Response{Error: err}
 	}
-	handler := tc.FoundHandler
 
-	// Chain middleware onto the handler, build the context, invoke.
-	handler = Chain(handler, r.mw...)
-	ctx = WithTraversalContext(ctx, tc)
-	return handler.HandleRequest(ctx, req)
+	return tc.FoundHandler.HandleRequest(ctx, req)
 }
 
 func (r *Router) Render(rw http.ResponseWriter, req *http.Request, resp Response) {
