@@ -35,4 +35,4 @@ cache:
 
 # Do not cache our own sources, that would be silly.
 before_cache:
-- rm -rf $GOPATH/src/github.com/meowpub/meow
+- ( shopt -s dotglob && rm -rf $GOPATH/src/github.com/meowpub/meow/* )
