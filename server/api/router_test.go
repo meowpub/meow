@@ -199,9 +199,17 @@ func TestRouterUse(t *testing.T) {
 			return resp
 		})
 	})
+	r.Use(func(next Handler) Handler {
+		return HandlerFunc(func(ctx context.Context, req *http.Request) Response {
+			resp := next.HandleRequest(ctx, req)
+			resp.Header().Set("X-My-Header", "value")
+			return resp
+		})
+	})
 
 	rec := httptest.NewRecorder()
 	r.ServeHTTP(rec, httptest.NewRequest("GET", "https://example.com/", nil))
 	assert.Equal(t, http.StatusTeapot, rec.Code)
+	assert.Equal(t, "value", rec.Header().Get("X-My-Header"))
 	assert.Equal(t, "hi", rec.Body.String())
 }
