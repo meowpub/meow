@@ -39,10 +39,10 @@ type EntityKind struct {
 	Name string
 
 	// Unmarshall this object into an Entity
-	Unmarshall func([]byte) (Entity, error)
+	Unmarshall func(map[string]interface{}) (Entity, error)
 
 	// Marshall this object into an Entity
-	Marshall func(Entity) ([]byte, error)
+	Marshall func(Entity) (map[string]interface{}, error)
 }
 
 func RegisterKind(kind *EntityKind) {

@@ -22,18 +22,17 @@ type Person struct {
 
 var personKind = &EntityKind{
 	Name: "person",
-	Unmarshall: func(data []byte) (Entity, error) {
-		v := &Person{}
-		if err := v.Meta.Unmarshal(data, v); err != nil {
+	Unmarshall: func(obj map[string]interface{}) (Entity, error) {
+		v := &Object{}
+		return v, jsonld.Unmarshal(obj, v)
+	},
+	Marshall: func(e Entity) (map[string]interface{}, error) {
+		v, err := jsonld.Marshal(e.(*Object))
+		if err != nil {
 			return nil, err
 		} else {
-			return v, nil
+			return v.(map[string]interface{}), nil
 		}
-	},
-
-	// Marshall this object into an Entity
-	Marshall: func(e Entity) ([]byte, error) {
-		return e.(*Person).Meta.Marshal(e.(*Person))
 	},
 }
 
@@ -43,14 +42,6 @@ func (*Person) GetKind() *EntityKind {
 
 func (p *Person) GetUser(store models.UserStore) (*models.User, error) {
 	return store.GetBySnowflake(p.GetSnowflake())
-}
-
-func (o *Person) UnmarshalJSON(data []byte) error {
-	return o.Meta.Unmarshal(data, o)
-}
-
-func (o *Person) MarshalJSON() ([]byte, error) {
-	return o.Marshal(o)
 }
 
 // Return ourselves serialized as a json blob

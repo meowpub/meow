@@ -32,14 +32,6 @@ func (b Base) GetType() []string {
 	return b.Type
 }
 
-func (b *Base) UnmarshalJSON(data []byte) error {
-	return b.Meta.Unmarshal(data, b)
-}
-
-func (b *Base) MarshalJSON() ([]byte, error) {
-	return b.Marshal(b)
-}
-
 // api.Traversible
 func (b *Base) Traverse(ctx context.Context, pathElement string) (api.Handler, error) {
 	store := GetStore(ctx)

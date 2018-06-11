@@ -2,6 +2,7 @@ package entities
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/bwmarrin/snowflake"
 	"github.com/pkg/errors"
@@ -39,9 +40,14 @@ func (s *Store) inflateEntity(raw *models.Entity) (Entity, error) {
 		return nil, err
 	}
 
-	e, err := kind.Unmarshall(raw.Data)
+	var map_ map[string]interface{}
+	if err := json.Unmarshal(raw.Data, &map_); err != nil {
+		return nil, errors.Wrap(err, "Unmarshalling JSON data")
+	}
+
+	e, err := kind.Unmarshall(map_)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "Unmarshalling entity")
 	}
 
 	s.liveByID[e.GetID()] = e
@@ -110,9 +116,14 @@ func (s *Store) Save(e Entity) error {
 
 	kind := e.GetKind()
 
-	data, err := kind.Marshall(e)
+	map_, err := kind.Marshall(e)
 	if err != nil {
 		return errors.Wrap(err, "Marhalling entity for save")
+	}
+
+	data, err := json.Marshal(map_)
+	if err != nil {
+		return errors.Wrap(err, "Marshalling entity to JSON for save")
 	}
 
 	r := models.Entity{

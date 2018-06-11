@@ -41,31 +41,22 @@ type Object struct {
 
 var objectKind = &EntityKind{
 	Name: "object",
-	Unmarshall: func(data []byte) (Entity, error) {
+	Unmarshall: func(obj map[string]interface{}) (Entity, error) {
 		v := &Object{}
-		if err := v.Meta.Unmarshal(data, v); err != nil {
+		return v, jsonld.Unmarshal(obj, v)
+	},
+	Marshall: func(e Entity) (map[string]interface{}, error) {
+		v, err := jsonld.Marshal(e.(*Object))
+		if err != nil {
 			return nil, err
 		} else {
-			return v, nil
+			return v.(map[string]interface{}), nil
 		}
-	},
-
-	// Marshall this object into an Entity
-	Marshall: func(e Entity) ([]byte, error) {
-		return e.(*Object).Meta.Marshal(e.(*Object))
 	},
 }
 
 func (*Object) GetKind() *EntityKind {
 	return objectKind
-}
-
-func (o *Object) UnmarshalJSON(data []byte) error {
-	return o.Meta.Unmarshal(data, o)
-}
-
-func (o *Object) MarshalJSON() ([]byte, error) {
-	return o.Marshal(o)
 }
 
 // api.Handler
