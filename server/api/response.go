@@ -2,12 +2,20 @@ package api
 
 import (
 	"bytes"
+	"context"
 	"net/http"
 
 	"github.com/pkg/errors"
 )
 
 var _ http.ResponseWriter = &Response{}
+
+// Hydratable indicates that this object can be "hydrated"
+// before rendering
+type Hydratable interface {
+	// Hydrates the object
+	Hydrate(context.Context) (interface{}, error)
+}
 
 // Response is a structured response. Implements http.ResponseWriter.
 type Response struct {

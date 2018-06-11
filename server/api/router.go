@@ -130,20 +130,31 @@ func (r *Router) Render(rw http.ResponseWriter, req *http.Request, resp Response
 
 	// TODO: Do proper content negotiation here.
 	var err error
-	switch {
-	case resp.Template != "":
-		err = r.rend.HTML(rw, resp.Status, resp.Template, resp.Data)
-	case resp.Data != nil:
-		switch data := resp.Data.(type) {
-		case string:
-			err = r.rend.Text(rw, resp.Status, data)
-		case []byte:
-			err = r.rend.Data(rw, resp.Status, data)
+
+	data := resp.Data
+	if h, ok := data.(Hydratable); ok {
+		L.Info("Hydrating")
+		data, err = h.Hydrate(req.Context())
+	} else {
+		L.Info("Can't hydrate")
+	}
+
+	if err == nil {
+		switch {
+		case resp.Template != "":
+			err = r.rend.HTML(rw, resp.Status, resp.Template, resp.Data)
+		case data != nil:
+			switch data := data.(type) {
+			case string:
+				err = r.rend.Text(rw, resp.Status, data)
+			case []byte:
+				err = r.rend.Data(rw, resp.Status, data)
+			default:
+				err = r.rend.JSON(rw, resp.Status, data)
+			}
 		default:
-			err = r.rend.JSON(rw, resp.Status, data)
+			rw.WriteHeader(resp.Status)
 		}
-	default:
-		rw.WriteHeader(resp.Status)
 	}
 	if err != nil {
 		L.Error("Failed to render response", zap.Error(err))
