@@ -41,7 +41,7 @@ func (*Person) GetKind() *EntityKind {
 	return personKind
 }
 
-func (self *Person) Hydrate(ctx context.Context) (interface{}, error) {
+func (self *Person) Hydrate(ctx context.Context) (map[string]interface{}, error) {
 	if o, err := jsonld.Marshal(self); err == nil {
 		return jsonld.Compact(lib.GetHttpClient(ctx), o.(map[string]interface{}), "", "https://www.w3.org/ns/activitystreams")
 	} else {
@@ -55,8 +55,13 @@ func (p *Person) GetUser(store models.UserStore) (*models.User, error) {
 
 // Return ourselves
 func (o *Person) HandleRequest(ctx context.Context, req *http.Request) api.Response {
+	d, err := o.Hydrate(ctx)
+	if err != nil {
+		return api.ErrorResponse(err)
+	}
+
 	return api.Response{
-		Data: o,
+		Data: d,
 	}
 }
 

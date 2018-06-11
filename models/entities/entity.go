@@ -1,6 +1,7 @@
 package entities
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/bwmarrin/snowflake"
@@ -14,7 +15,9 @@ var (
 
 type Entity interface {
 	api.Traversible
-	api.Hydratable
+
+	// Hydrates the object
+	Hydrate(context.Context) (map[string]interface{}, error)
 
 	// SetSnowflake sets the internal snowflake of the entity if unset
 	// This should only be called by Store
