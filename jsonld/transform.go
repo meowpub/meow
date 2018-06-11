@@ -2,16 +2,20 @@ package jsonld
 
 import (
 	"encoding/json"
+	"net/http"
+
 	"github.com/GeertJohan/go.rice"
 	"github.com/piprate/json-gold/ld"
 	"github.com/pkg/errors"
-	"net/http"
 )
 
 type documentLoader struct {
 	def *ld.DefaultDocumentLoader
 }
 
+// Note:
+//  * Do not mark changing documents as known (e.g. the as2 context)
+//  * If a document has good caching, it is not important to include here
 var knownDocuments = map[string]string{
 	"https://w3id.org/security/v1": "security-v1.json",
 	"https://w3id.org/security/v2": "security-v2.json",
@@ -52,37 +56,27 @@ func Options(cli *http.Client, uri string) *ld.JsonLdOptions {
 	return opts
 }
 
-func Expand(cli *http.Client, doc []byte, uri string) ([]byte, error) {
+func Expand(cli *http.Client, doc map[string]interface{}, uri string) (map[string]interface{}, error) {
 	proc := ld.NewJsonLdProcessor()
 	opts := Options(cli, uri)
 
-	var obj map[string]interface{}
-	if err := json.Unmarshal(doc, &obj); err != nil {
-		return nil, errors.Wrapf(err, "unmarshalling '%s' for expansion", uri)
-	}
-
-	res, err := proc.Expand(obj, opts)
+	res, err := proc.Expand(doc, opts)
 	if err != nil {
 		return nil, errors.Wrapf(err, "expanding '%s'", uri)
 	}
 
 	if len(res) == 1 {
-		return json.Marshal(res[0])
+		return res[0].(map[string]interface{}), nil
 	} else {
 		return nil, errors.Errorf("Expansion of '%s' returned an array of length %d (need 1)", uri, len(res))
 	}
 }
 
-func Compact(cli *http.Client, doc []byte, uri string, context interface{}) ([]byte, error) {
+func Compact(cli *http.Client, doc map[string]interface{}, uri string, context interface{}) (map[string]interface{}, error) {
 	proc := ld.NewJsonLdProcessor()
 	opts := Options(cli, uri)
 
-	var obj map[string]interface{}
-	if err := json.Unmarshal(doc, &obj); err != nil {
-		return nil, errors.Wrapf(err, "unmarshalling '%s' for compaction", uri)
-	}
-
-	arr := []interface{}{obj}
+	arr := []interface{}{doc}
 	res, err := proc.Compact(arr, context, opts)
 	if err != nil {
 		return nil, errors.Wrapf(err, "compacting '%s'", uri)
@@ -90,10 +84,9 @@ func Compact(cli *http.Client, doc []byte, uri string, context interface{}) ([]b
 
 	res["@context"] = context
 
-	buf, err := json.Marshal(res)
 	if err != nil {
 		return nil, errors.Wrapf(err, "marshalling '%s' after compaction", uri)
 	} else {
-		return buf, nil
+		return res, nil
 	}
 }
