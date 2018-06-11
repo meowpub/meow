@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/meowpub/meow/jsonld"
+	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/server/api"
 )
@@ -23,11 +24,11 @@ type Person struct {
 var personKind = &EntityKind{
 	Name: "person",
 	Unmarshall: func(obj map[string]interface{}) (Entity, error) {
-		v := &Object{}
+		v := &Person{}
 		return v, jsonld.Unmarshal(obj, v)
 	},
 	Marshall: func(e Entity) (map[string]interface{}, error) {
-		v, err := jsonld.Marshal(e.(*Object))
+		v, err := jsonld.Marshal(e.(*Person))
 		if err != nil {
 			return nil, err
 		} else {
@@ -40,12 +41,19 @@ func (*Person) GetKind() *EntityKind {
 	return personKind
 }
 
+func (self *Person) Hydrate(ctx context.Context) (interface{}, error) {
+	if o, err := jsonld.Marshal(self); err == nil {
+		return jsonld.Compact(lib.GetHttpClient(ctx), o.(map[string]interface{}), "", "https://www.w3.org/ns/activitystreams")
+	} else {
+		return nil, err
+	}
+}
+
 func (p *Person) GetUser(store models.UserStore) (*models.User, error) {
 	return store.GetBySnowflake(p.GetSnowflake())
 }
 
-// Return ourselves serialized as a json blob
-// TOOD: Compact!
+// Return ourselves
 func (o *Person) HandleRequest(ctx context.Context, req *http.Request) api.Response {
 	return api.Response{
 		Data: o,
@@ -58,7 +66,7 @@ func NewPerson(store *Store, id string) (*Person, error) {
 			Base: Base{
 				Meta: jsonld.Meta{},
 				ID:   id,
-				Type: []string{"https://www.w3c.org/ns/activitystreams#Person"},
+				Type: []string{"https://www.w3.org/ns/activitystreams#Person"},
 			},
 		},
 	}

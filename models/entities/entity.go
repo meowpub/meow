@@ -14,6 +14,7 @@ var (
 
 type Entity interface {
 	api.Traversible
+	api.Hydratable
 
 	// SetSnowflake sets the internal snowflake of the entity if unset
 	// This should only be called by Store

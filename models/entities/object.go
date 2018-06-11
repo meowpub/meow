@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/meowpub/meow/jsonld"
+	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/server/api"
 )
 
@@ -39,6 +40,8 @@ type Object struct {
 	Inbox        jsonld.Ref        `json:"https://www.w3.org/ns/ldp#inbox,omitempty"`
 }
 
+var _ Entity = &Object{}
+
 var objectKind = &EntityKind{
 	Name: "object",
 	Unmarshall: func(obj map[string]interface{}) (Entity, error) {
@@ -61,11 +64,19 @@ func (*Object) GetKind() *EntityKind {
 
 // api.Handler
 
-// Return ourselves serialized as a json blob
-// TOOD: Compact!
+// Return ourselves
 func (o *Object) HandleRequest(ctx context.Context, req *http.Request) api.Response {
 	return api.Response{
 		Data: o,
+	}
+}
+
+// api.Hydratable
+func (self *Object) Hydrate(ctx context.Context) (interface{}, error) {
+	if o, err := jsonld.Marshal(self); err == nil {
+		return jsonld.Compact(lib.GetHttpClient(ctx), o.(map[string]interface{}), "", "https://www.w3.org/ns/activitystreams")
+	} else {
+		return nil, err
 	}
 }
 
