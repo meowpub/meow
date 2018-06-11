@@ -85,6 +85,9 @@ func (r Router) handleRequest(ctx context.Context, req *http.Request) Response {
 
 	// Find the root for the domain, make a Node out of it to reuse existing hard route logic.
 	root, err := r.lookup(ctx, rootUrl.String())
+	if err != nil {
+		return Response{Error: err}
+	}
 	if root == nil {
 		return Response{Status: http.StatusNotFound}
 	}
