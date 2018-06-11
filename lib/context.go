@@ -2,6 +2,7 @@ package lib
 
 import (
 	"context"
+	"net/http"
 
 	"github.com/go-redis/redis"
 	"github.com/jinzhu/gorm"
@@ -11,10 +12,11 @@ import (
 type ctxKey string
 
 const (
-	ctxKeyLogger ctxKey = "logger"
-	ctxKeyDB     ctxKey = "db"
-	ctxKeyRedis  ctxKey = "redis"
-	ctxKeyRender ctxKey = "render"
+	ctxKeyLogger     ctxKey = "logger"
+	ctxKeyDB         ctxKey = "db"
+	ctxKeyRedis      ctxKey = "redis"
+	ctxKeyRender     ctxKey = "render"
+	ctxKeyHttpClient ctxKey = "httpclient"
 )
 
 // GetLogger returns the logger associated with the context, or the global logger if none is set.
@@ -58,4 +60,15 @@ func GetRedis(ctx context.Context) *redis.Client {
 // WithRedis associates a Redis connection with a context.
 func WithRedis(ctx context.Context, r *redis.Client) context.Context {
 	return context.WithValue(ctx, ctxKeyRedis, r)
+}
+
+// GetHttpClient returns the Http client associated with the context, or nil
+func GetHttpClient(ctx context.Context) *http.Client {
+	r, _ := ctx.Value(ctxKeyHttpClient).(*http.Client)
+	return r
+}
+
+// WithHttpClient associates the HttpClient with a context
+func WithHttpClient(ctx context.Context, cli *http.Client) context.Context {
+	return context.WithValue(ctx, ctxKeyHttpClient, cli)
 }
