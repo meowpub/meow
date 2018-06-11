@@ -37,7 +37,7 @@ type Object struct {
 	CC           jsonld.Ref        `json:"https://www.w3.org/ns/activitystreams#cc,omitempty"`
 	BCC          jsonld.Ref        `json:"https://www.w3.org/ns/activitystreams#bcc,omitempty"`
 	MediaType    jsonld.String     `json:"https://www.w3.org/ns/activitystreams#mediaType,omitempty"`
-	Inbox        jsonld.Ref        `json:"https://www.w3.org/ns/ldp#inbox,omitempty"`
+	Inbox        jsonld.Ref        `json:"http://www.w3.org/ns/ldp#inbox,omitempty"`
 }
 
 var _ Entity = &Object{}
