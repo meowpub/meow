@@ -1,7 +1,6 @@
 package jsonld
 
 import (
-	"bytes"
 	"encoding/json"
 
 	"testing"
@@ -11,6 +10,7 @@ import (
 )
 
 type Image struct {
+	Meta
 	Type      Type   `json:"@type"`
 	MediaType String `json:"https://www.w3.org/ns/activitystreams#mediaType"`
 	URL       Ref    `json:"https://www.w3.org/ns/activitystreams#url"`
@@ -40,8 +40,11 @@ func TestUnmarshalPerson(t *testing.T) {
 		}
 	}`)
 	var v Person
+	var m map[string]interface{}
 
-	require.NoError(t, v.Meta.Unmarshal(data, &v))
+	require.NoError(t, json.Unmarshal(data, &m), "JSON unmarshal")
+	require.NoError(t, Unmarshal(m, &v), "Unmarshal")
+
 	assert.Equal(t, ID("https://example.com/@jsmith"), v.ID)
 	assert.Equal(t, Type{"https://www.w3.org/ns/activitystreams#Person"}, v.Type)
 	assert.Equal(t, ToString("jsmith"), v.PreferredUsername)
@@ -61,27 +64,18 @@ type marshalTestStruct struct {
 	PreferredUsername String `json:"https://www.w3.org/ns/activitystreams#preferredUsername,omitempty"`
 }
 
-func (s *marshalTestStruct) UnmarshalJSON(data []byte) error {
-	return s.Meta.Unmarshal(data, s)
-}
-
-func (s marshalTestStruct) MarshalJSON() ([]byte, error) {
-	return s.Meta.Marshal(s)
-}
-
 func TestMarshal(t *testing.T) {
 	v := marshalTestStruct{
 		ID:                ID("https://example.com/jsmith"),
 		Type:              Type{"https://www.w3.org/ns/activitystreams#Person"},
 		PreferredUsername: ToString("jsmith"),
 	}
-	data, err := v.Meta.Marshal(&v)
 
-	require.NoError(t, err)
+	map_, err := Marshal(&v)
+	require.NoError(t, err, "Marshal")
 
-	var buf bytes.Buffer
-	err = json.Compact(&buf, data)
-	require.NoError(t, err)
+	buf, err := json.Marshal(map_)
+	require.NoError(t, err, "json.Marshal")
 
-	assert.Equal(t, `{"@id":"https://example.com/jsmith","@type":["https://www.w3.org/ns/activitystreams#Person"],"https://www.w3.org/ns/activitystreams#preferredUsername":[{"@value":"jsmith"}]}`, string(buf.Bytes()))
+	assert.Equal(t, `{"@id":"https://example.com/jsmith","@type":["https://www.w3.org/ns/activitystreams#Person"],"https://www.w3.org/ns/activitystreams#preferredUsername":[{"@value":"jsmith"}]}`, string(buf))
 }

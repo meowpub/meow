@@ -1,8 +1,8 @@
 package jsonld
 
 import (
-	"bytes"
 	"encoding/json"
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -14,37 +14,88 @@ type Meta struct {
 	Extra map[string]json.RawMessage `json:"-"`
 }
 
-func (m Meta) UnmarshalJSON(data []byte) error {
-	return errors.New("if you embed Meta, you must override UnmarshalJSON and have it call Meta.Unmarshal")
+func Unmarshal(obj, target interface{}) error {
+	_, err := UnmarshalValue(obj, reflect.ValueOf(target))
+	return err
 }
 
-func (m Meta) MarshalJSON() ([]byte, error) {
-	return nil, errors.New("if you embed Meta, you must override MarshalJSON and have it call Meta.Marshal")
-}
-
-func (m *Meta) Unmarshal(data []byte, v interface{}) error {
-	rV := reflect.ValueOf(v)
-	if m.findMeta(rV) != m {
-		return errors.Errorf("Meta.Unmarshal called on a struct other than the one containing this Meta (of type '%s')",
-			rV.Type().String())
-	}
-	return m.unmarshal(data, rV)
-}
-
-func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
+// UnmarshalValue unmarshalls obj into rV, returning rV
+// (the returned value of rV may differ from the passed in value, for example
+// if it is an array)
+func UnmarshalValue(obj interface{}, rV reflect.Value) (reflect.Value, error) {
 	rV = reflect.Indirect(rV)
 	rT := rV.Type()
 
-	// Use regular ol' encoding/json unmarshalling for non-structs.
-	if rT.Kind() != reflect.Struct {
-		return json.Unmarshal(data, rV.Addr().Interface())
+	switch rT.Kind() {
+	case reflect.Bool:
+	case reflect.Int8:
+	case reflect.Int16:
+	case reflect.Int32:
+	case reflect.Int64:
+	case reflect.Uint8:
+	case reflect.Uint16:
+	case reflect.Uint32:
+	case reflect.Uint64:
+	case reflect.Float32:
+	case reflect.Float64:
+	case reflect.String:
+		rV.Set(reflect.ValueOf(obj).Convert(rT))
+
+	case reflect.Slice:
+		arr, ok := obj.([]interface{})
+		if !ok {
+			return rV, errors.New("Expected to decode an array but got a non-array")
+		}
+
+		for i := 0; i < len(arr); i++ {
+			childV := reflect.New(rT.Elem())
+			childV, err := UnmarshalValue(arr[i], childV)
+			if err != nil {
+				return rV, errors.Wrapf(err, "Element %d", i)
+			}
+			rV = reflect.Append(rV, childV)
+		}
+
+	case reflect.Map:
+		map_, ok := obj.(map[string]interface{})
+		if !ok {
+			return rV, errors.New("Expected to decode a map but got something else")
+		}
+
+		for k, v := range map_ {
+			childV := reflect.New(rT.Elem())
+			childV, err := UnmarshalValue(v, childV)
+			if err != nil {
+				return rV, errors.Wrap(err, k)
+			}
+			rV.SetMapIndex(reflect.ValueOf(k), childV)
+		}
+
+	case reflect.Struct:
+		fields, ok := obj.(map[string]interface{})
+		if !ok {
+			return rV, errors.New("Expected to decode a struct but got a non-Object")
+		}
+
+		m := findMeta(rV)
+		if m == nil {
+			return rV, errors.New("Could not find Meta to unmarshall struct")
+		}
+
+		err := m.unmarshalFields(fields, rV)
+		if err != nil {
+			return rV, err
+		}
+
+	default:
+		panic(fmt.Sprintf("Don't know how to marshal a %s", rT.Kind()))
 	}
 
-	// Unmarshal all of the fields into RawMessage objects.
-	var fields map[string]json.RawMessage
-	if err := json.Unmarshal(data, &fields); err != nil {
-		return err
-	}
+	return rV, nil
+}
+
+func (m *Meta) unmarshalFields(fields map[string]interface{}, rV reflect.Value) error {
+	rT := rV.Type()
 
 	for i := 0; i < rT.NumField(); i++ {
 		field := rT.Field(i)
@@ -57,7 +108,7 @@ func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
 
 		// If this is an embedded field, descend into it using the same Meta.
 		if field.Anonymous {
-			if err := m.unmarshal(data, fieldV); err != nil {
+			if err := m.unmarshalFields(fields, fieldV); err != nil {
 				return err
 			}
 			continue
@@ -69,73 +120,100 @@ func (m *Meta) unmarshal(data json.RawMessage, rV reflect.Value) error {
 			continue
 		}
 
-		// Unmarshal the field if we have any data for it; using Meta.Unmarshal if it has a Meta,
-		// otherwise plain encoding/json-style.
+		// Unmarshal the field if we have any data for it
 		fieldData, ok := fields[jField.Name]
 		if !ok {
 			continue
 		}
-		if meta := m.findMeta(fieldV); meta != nil {
-			if err := meta.unmarshal(fieldData, fieldV); err != nil {
-				return errors.Wrap(err, jField.Name)
-			}
-		} else {
-			if err := json.Unmarshal(fieldData, fieldV.Addr().Interface()); err != nil {
-				return errors.Wrap(err, jField.Name)
-			}
+
+		v, err := UnmarshalValue(fieldData, fieldV)
+		if err != nil {
+			return errors.Wrapf(err, "Field %s", jField.Name)
 		}
+		fieldV.Set(v)
 	}
 
 	return nil
 }
 
-func (m *Meta) Marshal(v interface{}) ([]byte, error) {
-	rV := reflect.ValueOf(v)
-	if m.findMeta(rV) != m {
-		return nil, errors.Errorf(
-			"Meta.Marshal called on a struct other than the one containing this Meta (of type '%s')",
-			rV.Type().Name())
-	}
-
-	var buf bytes.Buffer
-
-	if err := m.marshal(reflect.Indirect(rV), &buf); err != nil {
-		return nil, err
-	}
-
-	return buf.Bytes(), nil
+func Marshal(v interface{}) (interface{}, error) {
+	return marshal(reflect.ValueOf(v))
 }
 
-func (m *Meta) marshal(rV reflect.Value, buf *bytes.Buffer) error {
-	// rV = reflect.Indirect(rV)
+func marshal(rV reflect.Value) (interface{}, error) {
 	rT := rV.Type()
 
-	enc := json.NewEncoder(buf)
+	switch rT.Kind() {
+	case reflect.Bool:
+	case reflect.Int8:
+	case reflect.Int16:
+	case reflect.Int32:
+	case reflect.Int64:
+	case reflect.Uint8:
+	case reflect.Uint16:
+	case reflect.Uint32:
+	case reflect.Uint64:
+	case reflect.Float32:
+	case reflect.Float64:
+	case reflect.String:
+		return rV.Interface(), nil
 
-	// Use regular ol' encoding/json marshalling for non-structs.
-	if rT.Kind() != reflect.Struct {
-		return enc.Encode(rV.Addr().Interface())
+	case reflect.Slice:
+		slice := make([]interface{}, rV.Len())
+		for i := 0; i < rV.Len(); i++ {
+			v, err := marshal(rV.Index(i))
+			if err != nil {
+				return nil, errors.Wrapf(err, "Item %d", i)
+			} else {
+				slice[i] = v
+			}
+		}
+		return slice, nil
+
+	case reflect.Map:
+		m := make(map[string]interface{})
+		keys := rV.MapKeys()
+		for i := 0; i < len(keys); i++ {
+			k := keys[i].String()
+			v, err := marshal(rV.MapIndex(keys[i]))
+			if err != nil {
+				return nil, errors.Wrap(err, k)
+			} else {
+				m[k] = v
+			}
+		}
+		return m, nil
+
+	case reflect.Struct:
+		m := findMeta(rV)
+		if m == nil {
+			return nil, errors.New("Trying to marshal struct but couldn't find Meta?")
+		}
+
+		map_ := make(map[string]interface{})
+		err := m.marshalFields(rV, map_)
+		if err != nil {
+			return nil, err
+		}
+		return map_, nil
+
+	case reflect.Ptr:
+		return marshal(reflect.Indirect(rV))
+
+	default:
+		panic(fmt.Sprintf("Don't know how to marshal a %s", rT.Kind()))
 	}
 
-	buf.WriteString("{")
-
-	first := true
-	if err := m.marshalBody(rV, buf, &first); err != nil {
-		return err
-	}
-	buf.WriteString("}")
-
-	return nil
+	return nil, nil
 }
 
-func (m *Meta) marshalBody(rV reflect.Value, buf *bytes.Buffer, first *bool) error {
+func (m *Meta) marshalFields(rV reflect.Value, fields map[string]interface{}) error {
 	rT := rV.Type()
 
 	for i := 0; i < rT.NumField(); i++ {
 		field := rT.Field(i)
 		fieldV := rV.Field(i)
 		fieldT := fieldV.Type()
-		enc := json.NewEncoder(buf)
 
 		// Skip the Meta embed.
 		if field.Type == metaType {
@@ -145,7 +223,7 @@ func (m *Meta) marshalBody(rV reflect.Value, buf *bytes.Buffer, first *bool) err
 		// If this is an embedded field, descend into it using the same Meta.
 		// and encode it into the same body
 		if field.Anonymous {
-			if err := m.marshalBody(fieldV, buf, first); err != nil {
+			if err := m.marshalFields(fieldV, fields); err != nil {
 				return err
 			}
 			continue
@@ -173,42 +251,18 @@ func (m *Meta) marshalBody(rV reflect.Value, buf *bytes.Buffer, first *bool) err
 			continue
 		}
 
-		if !*first {
-			buf.WriteString(",")
-		} else {
-			*first = false
-		}
-
-		if err := enc.Encode(jField.Name); err != nil {
+		v, err := marshal(fieldV)
+		if err != nil {
 			return errors.Wrap(err, jField.Name)
 		}
-		buf.WriteString(":")
 
-		// If not a struct, marshall normally
-		if fieldT.Kind() != reflect.Struct {
-			if err := enc.Encode(fieldV.Addr().Interface()); err != nil {
-				return errors.Wrap(err, jField.Name)
-			}
-			continue
-		}
-
-		// Else, marshall it as a Meta struct if it posesses one
-		if meta := m.findMeta(fieldV); meta != nil {
-			if err := meta.marshal(fieldV, buf); err != nil {
-				return errors.Wrap(err, jField.Name)
-			}
-		} else {
-			// Else, just encode it
-			if err := enc.Encode(fieldV.Addr().Interface()); err != nil {
-				return errors.Wrap(err, jField.Name)
-			}
-		}
+		fields[jField.Name] = v
 	}
 
 	return nil
 }
 
-func (m *Meta) findMeta(rV reflect.Value) *Meta {
+func findMeta(rV reflect.Value) *Meta {
 	rT := rV.Type()
 
 	if rT.Kind() == reflect.Ptr {
@@ -225,7 +279,7 @@ func (m *Meta) findMeta(rV reflect.Value) *Meta {
 		if rF.Type == metaType {
 			return rV.Field(i).Addr().Interface().(*Meta)
 		} else if rF.Anonymous && rF.Type.Kind() == reflect.Struct {
-			if child := m.findMeta(rV.Field(i)); child != nil {
+			if child := findMeta(rV.Field(i)); child != nil {
 				return child
 			}
 		}
