@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/meowpub/meow/jsonld"
+	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/server/api"
 )
@@ -22,18 +23,17 @@ type Person struct {
 
 var personKind = &EntityKind{
 	Name: "person",
-	Unmarshall: func(data []byte) (Entity, error) {
+	Unmarshall: func(obj map[string]interface{}) (Entity, error) {
 		v := &Person{}
-		if err := v.Meta.Unmarshal(data, v); err != nil {
+		return v, jsonld.Unmarshal(obj, v)
+	},
+	Marshall: func(e Entity) (map[string]interface{}, error) {
+		v, err := jsonld.Marshal(e.(*Person))
+		if err != nil {
 			return nil, err
 		} else {
-			return v, nil
+			return v.(map[string]interface{}), nil
 		}
-	},
-
-	// Marshall this object into an Entity
-	Marshall: func(e Entity) ([]byte, error) {
-		return e.(*Person).Meta.Marshal(e.(*Person))
 	},
 }
 
@@ -41,23 +41,27 @@ func (*Person) GetKind() *EntityKind {
 	return personKind
 }
 
+func (self *Person) Hydrate(ctx context.Context) (map[string]interface{}, error) {
+	if o, err := jsonld.Marshal(self); err == nil {
+		return jsonld.Compact(lib.GetHttpClient(ctx), o.(map[string]interface{}), "", "https://www.w3.org/ns/activitystreams")
+	} else {
+		return nil, err
+	}
+}
+
 func (p *Person) GetUser(store models.UserStore) (*models.User, error) {
 	return store.GetBySnowflake(p.GetSnowflake())
 }
 
-func (o *Person) UnmarshalJSON(data []byte) error {
-	return o.Meta.Unmarshal(data, o)
-}
-
-func (o *Person) MarshalJSON() ([]byte, error) {
-	return o.Marshal(o)
-}
-
-// Return ourselves serialized as a json blob
-// TOOD: Compact!
+// Return ourselves
 func (o *Person) HandleRequest(ctx context.Context, req *http.Request) api.Response {
+	d, err := o.Hydrate(ctx)
+	if err != nil {
+		return api.ErrorResponse(err)
+	}
+
 	return api.Response{
-		Data: o,
+		Data: d,
 	}
 }
 
@@ -67,7 +71,7 @@ func NewPerson(store *Store, id string) (*Person, error) {
 			Base: Base{
 				Meta: jsonld.Meta{},
 				ID:   id,
-				Type: []string{"https://www.w3c.org/ns/activitystreams#Person"},
+				Type: []string{"https://www.w3.org/ns/activitystreams#Person"},
 			},
 		},
 	}

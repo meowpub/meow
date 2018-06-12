@@ -5,8 +5,9 @@ import (
 	"encoding/json"
 
 	// "github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 const expanded = `
@@ -32,21 +33,33 @@ const compacted = `
 
 func TestCompact(t *testing.T) {
 	var compBuf bytes.Buffer
-	require.NoError(t, json.Compact(&compBuf, []byte(compacted)), "reference must compact")
+	require.NoError(t, json.Compact(&compBuf, []byte(compacted)), "reference must json compact")
+
+	var v map[string]interface{}
+	require.NoError(t, json.Unmarshal([]byte(expanded), &v), "json.Unmarshal")
 
 	// We  can use a nil http.Client as no fetches should actually be done
-	res, err := Compact(nil, []byte(expanded), "https://example.com/something", "https://w3id.org/security/v1")
-
+	res, err := Compact(nil, v, "https://example.com/something", "https://w3id.org/security/v1")
 	require.NoError(t, err, "Compact should succeed")
-	require.Equal(t, compBuf.String(), string(res), "should produce expected result")
+
+	buf, err := json.Marshal(res)
+	require.NoError(t, err, "json.Marshal")
+
+	require.Equal(t, compBuf.String(), string(buf), "should produce expected result")
 }
 
 func TestExpand(t *testing.T) {
 	var expBuf bytes.Buffer
 	require.NoError(t, json.Compact(&expBuf, []byte(expanded)), "reference must compact")
 
-	res, err := Expand(nil, []byte(compacted), "https://example.com/something")
+	var v map[string]interface{}
+	require.NoError(t, json.Unmarshal([]byte(compacted), &v), "json.Unmarshal")
 
+	res, err := Expand(nil, v, "https://example.com/something")
 	require.NoError(t, err, "Expand should succeed")
-	require.Equal(t, expBuf.String(), string(res), "should produce expected result")
+
+	buf, err := json.Marshal(res)
+	require.NoError(t, err, "json.Marshal")
+
+	require.Equal(t, expBuf.String(), string(buf), "should produce expected result")
 }

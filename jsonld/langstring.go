@@ -27,11 +27,3 @@ func ToLangString(s string) LangString {
 func (s LangStringItem) String() string {
 	return s.Value
 }
-
-func (s LangStringItem) MarshalJSON() ([]byte, error) {
-	return s.Meta.Marshal(&s)
-}
-
-func (s *LangStringItem) UnmarshalJSON(data []byte) error {
-	return s.Meta.Unmarshal(data, s)
-}

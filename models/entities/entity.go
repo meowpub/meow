@@ -1,6 +1,7 @@
 package entities
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/bwmarrin/snowflake"
@@ -14,6 +15,9 @@ var (
 
 type Entity interface {
 	api.Traversible
+
+	// Hydrates the object
+	Hydrate(context.Context) (map[string]interface{}, error)
 
 	// SetSnowflake sets the internal snowflake of the entity if unset
 	// This should only be called by Store
@@ -39,10 +43,10 @@ type EntityKind struct {
 	Name string
 
 	// Unmarshall this object into an Entity
-	Unmarshall func([]byte) (Entity, error)
+	Unmarshall func(map[string]interface{}) (Entity, error)
 
 	// Marshall this object into an Entity
-	Marshall func(Entity) ([]byte, error)
+	Marshall func(Entity) (map[string]interface{}, error)
 }
 
 func RegisterKind(kind *EntityKind) {

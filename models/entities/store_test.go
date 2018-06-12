@@ -68,18 +68,7 @@ func TestStore(t *testing.T) {
 		raw.EXPECT().Save(gomock.Eq(models.Entity{
 			ID:   353894652568535040,
 			Kind: "object",
-			Data: models.JSONB(`
-{"@id"
-:"https://example.net/"
-,"@type"
-:["https://w3c.org/ns/activitystreams#Article"]
-,"https://www.w3.org/ns/activitystreams#content"
-:[{"@value":"my disrespectful teen son somehow got  hold of a gluten product and now he wants to become a cat girl"}]
-,"https://www.w3.org/ns/activitystreams#name"
-:[{"@value":"Catgirls: how?"}]
-,"https://www.w3.org/ns/activitystreams#url"
-:[{"@id":"http://catgirl.how/"}]
-}`[1:]),
+			Data: models.JSONB(`{"@id":"https://example.net/","@type":["https://w3c.org/ns/activitystreams#Article"],"https://www.w3.org/ns/activitystreams#content":[{"@value":"my disrespectful teen son somehow got  hold of a gluten product and now he wants to become a cat girl"}],"https://www.w3.org/ns/activitystreams#name":[{"@value":"Catgirls: how?"}],"https://www.w3.org/ns/activitystreams#url":[{"@id":"http://catgirl.how/"}]}`),
 		})).Return(nil)
 		err = store.Save(glutenObj)
 		require.NoError(t, err, "Saving modified entity")

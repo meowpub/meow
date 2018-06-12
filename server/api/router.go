@@ -130,6 +130,7 @@ func (r *Router) Render(rw http.ResponseWriter, req *http.Request, resp Response
 
 	// TODO: Do proper content negotiation here.
 	var err error
+
 	switch {
 	case resp.Template != "":
 		err = r.rend.HTML(rw, resp.Status, resp.Template, resp.Data)
@@ -145,6 +146,7 @@ func (r *Router) Render(rw http.ResponseWriter, req *http.Request, resp Response
 	default:
 		rw.WriteHeader(resp.Status)
 	}
+
 	if err != nil {
 		L.Error("Failed to render response", zap.Error(err))
 		r.RenderError(rw, req, 0, err)

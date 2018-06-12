@@ -26,11 +26,3 @@ func ToString(s string) String {
 func (s StringItem) String() string {
 	return s.Value
 }
-
-func (s StringItem) MarshalJSON() ([]byte, error) {
-	return s.Meta.Marshal(&s)
-}
-
-func (s *StringItem) UnmarshalJSON(data []byte) error {
-	return s.Meta.Unmarshal(data, s)
-}
