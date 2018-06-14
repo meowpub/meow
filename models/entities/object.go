@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/jsonld"
 	"github.com/meowpub/meow/server/api"
 )
@@ -68,8 +69,30 @@ func (o *Object) HandleRequest(ctx context.Context, req *http.Request) api.Respo
 	return handleEntityGetRequest(ctx, o, req)
 }
 
-func (self *Object) Hydrate(ctx context.Context) (interface{}, error) {
-	return jsonld.Marshal(self)
+func (self *Object) Hydrate(ctx context.Context, stack []snowflake.ID) (interface{}, error) {
+	stack = append([]snowflake.ID{self.GetSnowflake()}, stack...)
+
+	o, err := jsonld.Marshal(self)
+	if err != nil {
+		return nil, err
+	}
+
+	hydrateChildren(ctx, o, stack,
+		as2("attachment"),
+		as2("attributedTo"),
+		as2("context"),
+		as2("generator"),
+		as2("icon"),
+		as2("image"),
+		as2("inReplyTo"),
+		as2("location"),
+		as2("preview"),
+		as2("replies"),
+		as2("tag"),
+		as2("url"),
+		ldp("inbox"))
+
+	return o, nil
 }
 
 func NewObject(store *Store, id string, types []string) (*Object, error) {

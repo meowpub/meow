@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/jsonld"
 	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/server/api"
@@ -41,8 +42,27 @@ func (*Person) GetKind() *EntityKind {
 	return personKind
 }
 
-func (self *Person) Hydrate(ctx context.Context) (interface{}, error) {
-	return jsonld.Marshal(self)
+func (self *Person) Hydrate(ctx context.Context, stack []snowflake.ID) (interface{}, error) {
+	stack = append([]snowflake.ID{self.GetSnowflake()}, stack...)
+	o, err := jsonld.Marshal(self)
+	if err != nil {
+		return nil, err
+	}
+
+	hydrateChildren(ctx, o, stack,
+		as2("icon"),
+		as2("image"),
+		as2("location"),
+		as2("url"),
+		ldp("inbox"),
+		as2("outbox"),
+		as2("following"),
+		as2("followers"),
+		as2("liked"),
+		as2("streams"),
+		as2("endpoints"))
+
+	return o, nil
 }
 
 func (p *Person) GetUser(store models.UserStore) (*models.User, error) {

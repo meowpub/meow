@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/jsonld"
 	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/server/api"
@@ -33,39 +34,47 @@ func (*Stream) GetKind() *EntityKind {
 	return streamKind
 }
 
-func (self *Stream) Hydrate(ctx context.Context) (interface{}, error) {
+func (self *Stream) Hydrate(ctx context.Context, stack []snowflake.ID) (interface{}, error) {
+	stack = append([]snowflake.ID{self.GetSnowflake()}, stack...)
 	o_, err := jsonld.Marshal(self)
 	if err != nil {
 		return nil, err
 	}
 	o := o_.(map[string]interface{})
 
-	itemStore := models.GetStores(ctx).StreamItems()
-	eStore := GetStore(ctx)
+	hydrateChildren(ctx, o, stack,
+		as2("attributedTo"),
+		as2("icon"),
+		as2("image"))
 
-	items, err := itemStore.GetItems(self.GetSnowflake(), models.End, models.Before, 20)
-	if err != nil {
-		return nil, err
-	}
+	if len(stack) == 1 {
+		itemStore := models.GetStores(ctx).StreamItems()
+		eStore := GetStore(ctx)
 
-	ents := make([]interface{}, len(items))
-	for i := 0; i < len(items); i++ {
-		e, err := eStore.GetBySnowflake(items[i].EntityID)
+		items, err := itemStore.GetItems(self.GetSnowflake(), models.End, models.Before, 20)
 		if err != nil {
 			return nil, err
 		}
-		o, err := e.Hydrate(ctx)
-		if err != nil {
-			return nil, err
+
+		ents := make([]interface{}, len(items))
+		for i := 0; i < len(items); i++ {
+			e, err := eStore.GetBySnowflake(items[i].EntityID)
+			if err != nil {
+				return nil, err
+			}
+			o, err := e.Hydrate(ctx, stack)
+			if err != nil {
+				return nil, err
+			}
+			ents[i] = o
 		}
-		ents[i] = o
-	}
 
-	m := map[string]interface{}{
-		"@list": ents,
-	}
+		m := map[string]interface{}{
+			"@list": ents,
+		}
 
-	o[as2("items")] = []interface{}{m}
+		o[as2("items")] = []interface{}{m}
+	}
 
 	return o, nil
 }

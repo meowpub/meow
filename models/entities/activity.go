@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/jsonld"
 	"github.com/meowpub/meow/lib"
@@ -22,7 +23,7 @@ type Activity struct {
 	Instrument jsonld.Ref `json:"https://www.w3.org/ns/activitystreams#instrument,omitempty"`
 }
 
-var _ Entity = &Object{}
+var _ Entity = &Activity{}
 
 var activityKind = &EntityKind{
 	Name: "activity",
@@ -48,18 +49,25 @@ func (*Activity) GetKind() *EntityKind {
 
 // Return ourselves
 func (o *Activity) HandleRequest(ctx context.Context, req *http.Request) api.Response {
-	d, err := o.Hydrate(ctx)
-	if err != nil {
-		return api.ErrorResponse(err)
-	}
-
-	return api.Response{
-		Data: d,
-	}
+	return handleEntityGetRequest(ctx, o, req)
 }
 
-func (self *Activity) Hydrate(ctx context.Context) (interface{}, error) {
-	return jsonld.Marshal(self)
+func (self *Activity) Hydrate(ctx context.Context, stack []snowflake.ID) (interface{}, error) {
+	stack = append([]snowflake.ID{self.GetSnowflake()}, stack...)
+	o, err := jsonld.Marshal(self)
+	if err != nil {
+		return nil, err
+	}
+
+	hydrateChildren(ctx, o, stack,
+		as2("actor"),
+		as2("object"),
+		as2("target"),
+		as2("origin"),
+		as2("result"),
+		as2("instrument"))
+
+	return o, nil
 }
 
 func NewActivity(store *Store, parent Entity, types []string) (*Activity, error) {
