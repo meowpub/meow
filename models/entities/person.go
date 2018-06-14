@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/meowpub/meow/jsonld"
-	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/server/api"
 	"github.com/pkg/errors"
@@ -42,12 +41,8 @@ func (*Person) GetKind() *EntityKind {
 	return personKind
 }
 
-func (self *Person) Hydrate(ctx context.Context) (map[string]interface{}, error) {
-	if o, err := jsonld.Marshal(self); err == nil {
-		return jsonld.Compact(lib.GetHttpClient(ctx), o.(map[string]interface{}), "", "https://www.w3.org/ns/activitystreams")
-	} else {
-		return nil, err
-	}
+func (self *Person) Hydrate(ctx context.Context) (interface{}, error) {
+	return jsonld.Marshal(self)
 }
 
 func (p *Person) GetUser(store models.UserStore) (*models.User, error) {
@@ -56,14 +51,7 @@ func (p *Person) GetUser(store models.UserStore) (*models.User, error) {
 
 // Return ourselves
 func (o *Person) HandleRequest(ctx context.Context, req *http.Request) api.Response {
-	d, err := o.Hydrate(ctx)
-	if err != nil {
-		return api.ErrorResponse(err)
-	}
-
-	return api.Response{
-		Data: d,
-	}
+	return handleEntityGetRequest(ctx, o, req)
 }
 
 func NewPerson(ctx context.Context, id string) (*Person, error) {

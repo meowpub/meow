@@ -58,12 +58,8 @@ func (o *Activity) HandleRequest(ctx context.Context, req *http.Request) api.Res
 	}
 }
 
-func (self *Activity) Hydrate(ctx context.Context) (map[string]interface{}, error) {
-	if o, err := jsonld.Marshal(self); err == nil {
-		return jsonld.Compact(lib.GetHttpClient(ctx), o.(map[string]interface{}), "", "https://www.w3.org/ns/activitystreams")
-	} else {
-		return nil, err
-	}
+func (self *Activity) Hydrate(ctx context.Context) (interface{}, error) {
+	return jsonld.Marshal(self)
 }
 
 func NewActivity(store *Store, parent Entity, types []string) (*Activity, error) {

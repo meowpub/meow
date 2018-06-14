@@ -17,7 +17,7 @@ type Entity interface {
 	api.Traversible
 
 	// Hydrates the object
-	Hydrate(context.Context) (map[string]interface{}, error)
+	Hydrate(context.Context) (interface{}, error)
 
 	// SetSnowflake sets the internal snowflake of the entity if unset
 	// This should only be called by Store
