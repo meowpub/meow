@@ -44,7 +44,7 @@ type StreamItemStore interface {
 	// Returns:
 	//   * If the entry was inserted
 	//   * The stream item (regardless)
-	TryInsertItem(stream snowflake.ID, entityId snowflake.ID) (bool, *StreamItem, error)
+	TryInsertItem(stream snowflake.ID, entityId snowflake.ID) (*StreamItem, bool, error)
 }
 
 type streamItemStore struct {
@@ -64,10 +64,11 @@ func (s *streamItemStore) GetItems(streamID snowflake.ID, startID snowflake.ID, 
 		q = q.Where("item_id < ?", startID).Order("item_id DESC")
 	} else if direction == After {
 		q = q.Where("item_id > ?", startID).Order("item_id ASC")
+	} else {
+		panic("Bad direction")
 	}
-	q = q.Limit(count)
-	err := q.Find(&items).Error
-	if err != nil {
+
+	if err := q.Limit(count).Find(&items).Error; err != nil {
 		return nil, err
 	} else {
 		return items, nil
@@ -76,24 +77,22 @@ func (s *streamItemStore) GetItems(streamID snowflake.ID, startID snowflake.ID, 
 
 func (s *streamItemStore) GetItem(itemID snowflake.ID) (*StreamItem, error) {
 	var item StreamItem
-
 	return &item, s.DB.First(&item, StreamItem{ItemID: itemID}).Error
 }
 
 func (s *streamItemStore) GetItemByEntityID(streamID snowflake.ID, entityID snowflake.ID) (*StreamItem, error) {
 	var item StreamItem
-
 	return &item, s.DB.First(&item, StreamItem{StreamID: streamID, EntityID: entityID}).Error
 }
 
-func (s *streamItemStore) TryInsertItem(streamID snowflake.ID, entityID snowflake.ID) (bool, *StreamItem, error) {
+func (s *streamItemStore) TryInsertItem(streamID snowflake.ID, entityID snowflake.ID) (*StreamItem, bool, error) {
 	item, err := s.GetItemByEntityID(streamID, entityID)
 	if err == nil {
-		return false, item, nil
+		return item, false, nil
 	} else if gorm.IsRecordNotFoundError(err) {
 		flake, err := lib.GenSnowflake(config.NodeID())
 		if err != nil {
-			return false, nil, err
+			return nil, false, err
 		}
 
 		item := &StreamItem{
@@ -103,8 +102,8 @@ func (s *streamItemStore) TryInsertItem(streamID snowflake.ID, entityID snowflak
 		}
 		err = s.DB.Create(item).Error
 
-		return true, item, err
+		return item, true, err
 	} else {
-		return false, nil, err
+		return nil, false, err
 	}
 }

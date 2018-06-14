@@ -73,10 +73,10 @@ func (mr *MockStreamItemStoreMockRecorder) GetItemByEntityID(streamID, entityID 
 }
 
 // TryInsertItem mocks base method
-func (m *MockStreamItemStore) TryInsertItem(stream, entityId snowflake.ID) (bool, *StreamItem, error) {
+func (m *MockStreamItemStore) TryInsertItem(stream, entityId snowflake.ID) (*StreamItem, bool, error) {
 	ret := m.ctrl.Call(m, "TryInsertItem", stream, entityId)
-	ret0, _ := ret[0].(bool)
-	ret1, _ := ret[1].(*StreamItem)
+	ret0, _ := ret[0].(*StreamItem)
+	ret1, _ := ret[1].(bool)
 	ret2, _ := ret[2].(error)
 	return ret0, ret1, ret2
 }

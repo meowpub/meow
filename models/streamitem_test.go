@@ -34,38 +34,38 @@ func TestStreamItemStore(t *testing.T) {
 	// Now we should insert some items into a stream
 	t.Run("Insert", func(t *testing.T) {
 		t.Run("Candles", func(t *testing.T) {
-			b, i, err := store.TryInsertItem(snowflake.ID(353894652568535040), snowflake.ID(384408932061417472))
+			item, inserted, err := store.TryInsertItem(snowflake.ID(353894652568535040), snowflake.ID(384408932061417472))
 			require.NoError(t, err, "TryInsertItem")
-			require.Equal(t, true, b, "Should have inserted")
-			require.Equal(t, snowflake.ID(353894652568535040), i.StreamID, "stream ID should match")
-			require.Equal(t, snowflake.ID(384408932061417472), i.EntityID, "entity ID should match")
+			require.Equal(t, true, inserted, "Should have inserted")
+			require.Equal(t, snowflake.ID(353894652568535040), item.StreamID, "stream ID should match")
+			require.Equal(t, snowflake.ID(384408932061417472), item.EntityID, "entity ID should match")
 		})
 
 		t.Run("No", func(t *testing.T) {
-			b, i, err := store.TryInsertItem(snowflake.ID(353894652568535040), snowflake.ID(384411458794057728))
+			item, inserted, err := store.TryInsertItem(snowflake.ID(353894652568535040), snowflake.ID(384411458794057728))
 			require.NoError(t, err, "TryInsertItem")
-			require.Equal(t, true, b, "Should have inserted")
-			require.Equal(t, snowflake.ID(353894652568535040), i.StreamID, "stream ID should match")
-			require.Equal(t, snowflake.ID(384411458794057728), i.EntityID, "entity ID should match")
+			require.Equal(t, true, inserted, "Should have inserted")
+			require.Equal(t, snowflake.ID(353894652568535040), item.StreamID, "stream ID should match")
+			require.Equal(t, snowflake.ID(384411458794057728), item.EntityID, "entity ID should match")
 		})
 	})
 
 	// Check we don't insert duplicates
 	t.Run("Duplicates", func(t *testing.T) {
 		t.Run("Candles", func(t *testing.T) {
-			b, i, err := store.TryInsertItem(snowflake.ID(353894652568535040), snowflake.ID(384408932061417472))
+			item, inserted, err := store.TryInsertItem(snowflake.ID(353894652568535040), snowflake.ID(384408932061417472))
 			require.NoError(t, err, "TryInsertItem")
-			require.Equal(t, false, b, "Should not have inserted")
-			require.Equal(t, snowflake.ID(353894652568535040), i.StreamID, "stream ID should match")
-			require.Equal(t, snowflake.ID(384408932061417472), i.EntityID, "entity ID should match")
+			require.Equal(t, false, inserted, "Should not have inserted")
+			require.Equal(t, snowflake.ID(353894652568535040), item.StreamID, "stream ID should match")
+			require.Equal(t, snowflake.ID(384408932061417472), item.EntityID, "entity ID should match")
 		})
 
 		t.Run("No", func(t *testing.T) {
-			b, i, err := store.TryInsertItem(snowflake.ID(353894652568535040), snowflake.ID(384411458794057728))
+			item, inserted, err := store.TryInsertItem(snowflake.ID(353894652568535040), snowflake.ID(384411458794057728))
 			require.NoError(t, err, "TryInsertItem")
-			require.Equal(t, false, b, "Should not have inserted")
-			require.Equal(t, snowflake.ID(353894652568535040), i.StreamID, "stream ID should match")
-			require.Equal(t, snowflake.ID(384411458794057728), i.EntityID, "entity ID should match")
+			require.Equal(t, false, inserted, "Should not have inserted")
+			require.Equal(t, snowflake.ID(353894652568535040), item.StreamID, "stream ID should match")
+			require.Equal(t, snowflake.ID(384411458794057728), item.EntityID, "entity ID should match")
 		})
 	})
 
