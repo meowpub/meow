@@ -87,23 +87,29 @@ func (s *streamItemStore) GetItemByEntityID(streamID snowflake.ID, entityID snow
 
 func (s *streamItemStore) TryInsertItem(streamID snowflake.ID, entityID snowflake.ID) (*StreamItem, bool, error) {
 	item, err := s.GetItemByEntityID(streamID, entityID)
-	if err == nil {
-		return item, false, nil
-	} else if gorm.IsRecordNotFoundError(err) {
-		flake, err := lib.GenSnowflake(config.NodeID())
-		if err != nil {
-			return nil, false, err
+
+	if err != nil {
+		// Not found - insert our own entry
+		if gorm.IsRecordNotFoundError(err) {
+			flake, err := lib.GenSnowflake(config.NodeID())
+			if err != nil {
+				return nil, false, err
+			}
+
+			item := &StreamItem{
+				StreamID: streamID,
+				EntityID: entityID,
+				ItemID:   flake,
+			}
+			err = s.DB.Create(item).Error
+
+			return item, true, err
 		}
 
-		item := &StreamItem{
-			StreamID: streamID,
-			EntityID: entityID,
-			ItemID:   flake,
-		}
-		err = s.DB.Create(item).Error
-
-		return item, true, err
-	} else {
+		// Other error
 		return nil, false, err
 	}
+
+	// Found existing item
+	return item, false, nil
 }
