@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"math"
 
 	"github.com/bwmarrin/snowflake"
@@ -65,14 +66,14 @@ func (s *streamItemStore) GetItems(streamID snowflake.ID, startID snowflake.ID, 
 	} else if direction == After {
 		q = q.Where("item_id > ?", startID).Order("item_id ASC")
 	} else {
-		panic("Bad direction")
+		return nil, errors.New("Bad direction")
 	}
 
 	if err := q.Limit(count).Find(&items).Error; err != nil {
 		return nil, err
-	} else {
-		return items, nil
 	}
+	return items, nil
+
 }
 
 func (s *streamItemStore) GetItem(itemID snowflake.ID) (*StreamItem, error) {
@@ -90,6 +91,7 @@ func (s *streamItemStore) TryInsertItem(streamID snowflake.ID, entityID snowflak
 
 	if err != nil {
 		// Not found - insert our own entry
+
 		if gorm.IsRecordNotFoundError(err) {
 			flake, err := lib.GenSnowflake(config.NodeID())
 			if err != nil {
