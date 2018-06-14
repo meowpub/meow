@@ -93,13 +93,7 @@ func NewStream(store *Store, id string) (*Stream, error) {
 		},
 	}
 
-	if err := store.Insert(obj); err != nil {
-		return nil, err
-	}
-
-	// Revisit: Create Inbox/Outbox/etc
-
-	return obj, nil
+	return obj, store.Insert(obj)
 }
 
 func init() {
