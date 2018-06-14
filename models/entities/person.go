@@ -8,6 +8,7 @@ import (
 	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/server/api"
+	"github.com/pkg/errors"
 )
 
 type Person struct {
@@ -65,7 +66,10 @@ func (o *Person) HandleRequest(ctx context.Context, req *http.Request) api.Respo
 	}
 }
 
-func NewPerson(store *Store, id string) (*Person, error) {
+func NewPerson(ctx context.Context, id string) (*Person, error) {
+	store := GetStore(ctx)
+	stores := models.GetStores(ctx)
+
 	obj := &Person{
 		Object: Object{
 			Base: Base{
@@ -83,11 +87,12 @@ func NewPerson(store *Store, id string) (*Person, error) {
 	// TOOD: These hould be Inbox/Outbox kinds but this will do For Now (TM)
 	inbox, err := NewStream(store, id+"/inbox")
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "Creating inbox")
 	}
+
 	outbox, err := NewStream(store, id+"/outbox")
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "Creating outbox")
 	}
 
 	inbox.AttributedTo = jsonld.ToRef(id)
@@ -95,8 +100,29 @@ func NewPerson(store *Store, id string) (*Person, error) {
 	obj.Inbox = jsonld.ToRef(inbox.GetID())
 	obj.Outbox = jsonld.ToRef(outbox.GetID())
 
-	store.Save(inbox)
-	store.Save(outbox)
+	creation, err := NewActivity(store, outbox, []string{as2("Create")})
+	if err != nil {
+		return nil, errors.Wrap(err, "Creating Create activity")
+	}
+
+	creation.Actor = jsonld.ToRef(id)
+	creation.Obj = jsonld.ToRef(id)
+
+	if err := store.Save(inbox); err != nil {
+		return nil, errors.Wrap(err, "Saving inbox")
+	}
+	if err := store.Save(outbox); err != nil {
+		return nil, errors.Wrap(err, "Saving outbox")
+	}
+	if err := store.Save(creation); err != nil {
+		return nil, errors.Wrap(err, "Saving Create")
+	}
+	if _, _, err := stores.StreamItems().TryInsertItem(outbox.GetSnowflake(), creation.GetSnowflake()); err != nil {
+		return nil, errors.Wrap(err, "Inserting Create into Outbox")
+	}
+	if _, _, err := stores.StreamItems().TryInsertItem(inbox.GetSnowflake(), creation.GetSnowflake()); err != nil {
+		return nil, errors.Wrap(err, "Inserting Create into Inbox")
+	}
 
 	return obj, nil
 }

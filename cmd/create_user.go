@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -28,11 +30,15 @@ var createUserCmd = &cobra.Command{
 		}
 		tx := db.Begin()
 
-		rawStore := models.NewEntityStore(tx)
-		store := entities.NewStore(rawStore)
-		userStore := models.NewUserStore(tx)
+		stores := models.NewStores(db, nil, "")
+		store := entities.NewStore(stores.Entities())
+		userStore := stores.Users()
 
-		person, err := entities.NewPerson(store, id)
+		ctx := context.Background()
+		ctx = models.WithStores(ctx, stores)
+		ctx = entities.WithStore(ctx, store)
+
+		person, err := entities.NewPerson(ctx, id)
 		if err != nil {
 			return err
 		}

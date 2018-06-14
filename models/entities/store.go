@@ -94,9 +94,17 @@ func (s *Store) Insert(e Entity) error {
 		return errors.Errorf("Attempt to insert duplicate entity '%s' into store", e.GetID())
 	}
 
-	flake, err := lib.GenSnowflake(config.NodeID())
-	if err != nil {
-		return errors.Wrap(err, "While inserting entity")
+	flake := e.GetSnowflake()
+	if flake == 0 {
+		var err error
+		flake, err = lib.GenSnowflake(config.NodeID())
+		if err != nil {
+			return errors.Wrap(err, "While inserting entity")
+		}
+	} else {
+		if s.liveBySnowflake[flake] != nil {
+			return errors.New("Attempt to insert entity with duplicate snowflake")
+		}
 	}
 
 	s.liveToSnowflake[e] = flake
