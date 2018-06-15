@@ -16,8 +16,8 @@ type Base struct {
 	Type []string `json:"@type"`
 }
 
-func (b *Base) SetSnowflake(id snowflake.ID) {
-	b.Snowflake = id
+func (b Base) Init(_ context.Context) error {
+	return nil
 }
 
 func (b Base) GetSnowflake() snowflake.ID {

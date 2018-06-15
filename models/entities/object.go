@@ -4,9 +4,12 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/jsonld"
-	"github.com/meowpub/meow/lib"
+	"github.com/meowpub/meow/ns"
 	"github.com/meowpub/meow/server/api"
+	"github.com/pkg/errors"
+	"go.uber.org/multierr"
 )
 
 type Object struct {
@@ -44,8 +47,20 @@ var _ Entity = &Object{}
 
 var objectKind = &EntityKind{
 	Name: "object",
-	Unmarshall: func(obj map[string]interface{}) (Entity, error) {
-		v := &Object{}
+	New: func(flake snowflake.ID, id string) (Entity, error) {
+		return &Object{
+			Base: Base{
+				Meta:      jsonld.Meta{},
+				Snowflake: flake,
+				ID:        id,
+				Type:      []string{ns.AS("Object")},
+			},
+		}, nil
+	},
+	Unmarshall: func(flake snowflake.ID, obj map[string]interface{}) (Entity, error) {
+		v := &Object{Base: Base{
+			Snowflake: flake,
+		}}
 		return v, jsonld.Unmarshal(obj, v)
 	},
 	Marshall: func(e Entity) (map[string]interface{}, error) {
@@ -66,38 +81,54 @@ func (*Object) GetKind() *EntityKind {
 
 // Return ourselves
 func (o *Object) HandleRequest(ctx context.Context, req *http.Request) api.Response {
-	d, err := o.Hydrate(ctx)
+	return handleEntityGetRequest(ctx, o, req)
+}
+
+func (self *Object) Hydrate(ctx context.Context, stack []snowflake.ID) (interface{}, error) {
+	stack = append([]snowflake.ID{self.GetSnowflake()}, stack...)
+
+	o, err := jsonld.Marshal(self)
 	if err != nil {
-		return api.ErrorResponse(err)
-	}
-
-	return api.Response{
-		Data: d,
-	}
-}
-
-func (self *Object) Hydrate(ctx context.Context) (map[string]interface{}, error) {
-	if o, err := jsonld.Marshal(self); err == nil {
-		return jsonld.Compact(lib.GetHttpClient(ctx), o.(map[string]interface{}), "", "https://www.w3.org/ns/activitystreams")
-	} else {
-		return nil, err
-	}
-}
-
-func NewObject(store *Store, id string, types []string) (*Object, error) {
-	obj := &Object{
-		Base: Base{
-			Meta: jsonld.Meta{},
-			ID:   id,
-			Type: types,
-		},
-	}
-
-	if err := store.Insert(obj); err != nil {
 		return nil, err
 	}
 
-	return obj, nil
+	hydrateChildren(ctx, o, stack,
+		ns.AS("attachment"),
+		ns.AS("attributedTo"),
+		ns.AS("context"),
+		ns.AS("generator"),
+		ns.AS("icon"),
+		ns.AS("image"),
+		ns.AS("inReplyTo"),
+		ns.AS("location"),
+		ns.AS("preview"),
+		ns.AS("replies"),
+		ns.AS("tag"),
+		ns.AS("url"),
+		ns.LDP("inbox"))
+
+	return o, nil
+}
+
+func (self *Object) GetInbox(ctx context.Context) (*Stream, error) {
+	store := GetStore(ctx)
+	if len(self.Inbox) > 0 {
+		inbox, err := store.GetByID(self.Inbox[0].ID)
+		return inbox.(*Stream), err
+	}
+
+	inbox_, err := store.NewChildEntity(ctx, self, "stream", "inbox")
+	if err != nil {
+		return nil, errors.Wrap(err, "Getting inbox")
+	}
+	inbox := inbox_.(*Stream)
+	inbox.AttributedTo = jsonld.ToRef(self.GetID())
+	self.Inbox = jsonld.ToRef(inbox.GetID())
+
+	return inbox, multierr.Combine(
+		store.Save(self),
+		store.Save(inbox))
+
 }
 
 func init() {

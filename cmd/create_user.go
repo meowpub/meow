@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -28,14 +30,19 @@ var createUserCmd = &cobra.Command{
 		}
 		tx := db.Begin()
 
-		rawStore := models.NewEntityStore(tx)
-		store := entities.NewStore(rawStore)
-		userStore := models.NewUserStore(tx)
+		stores := models.NewStores(tx, nil, "")
+		store := entities.NewStore(stores.Entities())
+		userStore := stores.Users()
 
-		person, err := entities.NewPerson(store, id)
+		ctx := context.Background()
+		ctx = models.WithStores(ctx, stores)
+		ctx = entities.WithStore(ctx, store)
+
+		person_, err := store.NewEntity(ctx, "person", id)
 		if err != nil {
 			return err
 		}
+		person := person_.(*entities.Person)
 
 		if preferredUsername != "" {
 			person.PreferredUsername = jsonld.ToString(preferredUsername)

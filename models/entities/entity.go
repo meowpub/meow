@@ -16,12 +16,11 @@ var (
 type Entity interface {
 	api.Traversible
 
-	// Hydrates the object
-	Hydrate(context.Context) (map[string]interface{}, error)
+	// Initialize a new entity
+	Init(context.Context) error
 
-	// SetSnowflake sets the internal snowflake of the entity if unset
-	// This should only be called by Store
-	SetSnowflake(snowflake.ID)
+	// Hydrates the object
+	Hydrate(context.Context, []snowflake.ID) (interface{}, error)
 
 	// GetSnowflake returns the internal snowflake of the entity, eg. 353894652568535040.
 	GetSnowflake() snowflake.ID
@@ -42,8 +41,13 @@ type EntityKind struct {
 	// The name of the kind (as stored in the database)
 	Name string
 
+	// Make a new entity of this kind
+	// This should only do basic initialization - any complex
+	// initialization should be done in Entity.Init
+	New func(flake snowflake.ID, id string) (Entity, error)
+
 	// Unmarshall this object into an Entity
-	Unmarshall func(map[string]interface{}) (Entity, error)
+	Unmarshall func(snowflake.ID, map[string]interface{}) (Entity, error)
 
 	// Marshall this object into an Entity
 	Marshall func(Entity) (map[string]interface{}, error)

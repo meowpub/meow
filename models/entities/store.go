@@ -20,7 +20,6 @@ type Store struct {
 	rawStore        models.EntityStore
 	liveByID        map[string]Entity
 	liveBySnowflake map[snowflake.ID]Entity
-	liveToSnowflake map[Entity]snowflake.ID
 }
 
 // NewStore creates a new Entity Store on a raw EntityStore
@@ -29,7 +28,6 @@ func NewStore(rawStore models.EntityStore) *Store {
 		rawStore:        rawStore,
 		liveByID:        make(map[string]Entity),
 		liveBySnowflake: make(map[snowflake.ID]Entity),
-		liveToSnowflake: make(map[Entity]snowflake.ID),
 	}
 }
 
@@ -45,15 +43,17 @@ func (s *Store) inflateEntity(raw *models.Entity) (Entity, error) {
 		return nil, errors.Wrap(err, "Unmarshalling JSON data")
 	}
 
-	e, err := kind.Unmarshall(map_)
+	e, err := kind.Unmarshall(raw.ID, map_)
 	if err != nil {
 		return nil, errors.Wrap(err, "Unmarshalling entity")
 	}
 
+	if e.GetSnowflake() != raw.ID {
+		return nil, errors.New("Unmarshalling entity produced wrong snowflake")
+	}
+
 	s.liveByID[e.GetID()] = e
 	s.liveBySnowflake[raw.ID] = e
-	s.liveToSnowflake[e] = raw.ID
-	e.SetSnowflake(raw.ID)
 
 	return e, nil
 }
@@ -84,35 +84,97 @@ func (s *Store) GetByID(id string) (Entity, error) {
 	}
 }
 
-// Insert inserts a new entity
-func (s *Store) Insert(e Entity) error {
-	if _, ok := s.liveToSnowflake[e]; ok {
-		return errors.New("Attempt to insert entity into Store which is already inserted")
-	}
-
-	if _, ok := s.liveByID[e.GetID()]; ok {
-		return errors.Errorf("Attempt to insert duplicate entity '%s' into store", e.GetID())
+// NewEntity creates a new Entity
+func (s *Store) NewEntity(ctx context.Context, kind string, id string) (Entity, error) {
+	k, err := GetKind(kind)
+	if err != nil {
+		return nil, errors.Wrap(err, "Getting kind")
 	}
 
 	flake, err := lib.GenSnowflake(config.NodeID())
 	if err != nil {
-		return errors.Wrap(err, "While inserting entity")
+		return nil, errors.Wrap(err, "Error generating snowflake while creating entity")
 	}
 
-	s.liveToSnowflake[e] = flake
+	n, err := k.New(flake, id)
+	if err != nil {
+		return nil, errors.Wrap(err, "Creating new entity")
+	}
+
+	if err := s.insert(n); err != nil {
+		return nil, err
+	}
+
+	return n, n.Init(ctx)
+}
+
+// NewChildEntity creates a child Entity
+// (will rename on conflict)
+func (s *Store) NewChildEntity(ctx context.Context, parent Entity, kind string, suggestedSuffix string) (Entity, error) {
+	k, err := GetKind(kind)
+	if err != nil {
+		return nil, errors.Wrap(err, "Getting kind")
+	}
+
+	flake, err := lib.GenSnowflake(config.NodeID())
+	if err != nil {
+		return nil, errors.Wrap(err, "Error generating snowflake while creating entity")
+	}
+
+	id := parent.GetID() + "/" + suggestedSuffix
+
+	if suggestedSuffix != "" {
+		_, err := s.GetByID(id)
+		if err != nil {
+			if !models.IsNotFound(err) {
+				return nil, errors.Wrap(err, "While discovering if entity ID conflicts")
+			}
+			// Fallthrough
+		} else {
+			// We found the thing, so uniquify with our snowflake
+			id = id + flake.String()
+		}
+	} else {
+		// No suggested suffix so just use our snowflake
+		id = id + flake.String()
+	}
+
+	n, err := k.New(flake, id)
+	if err != nil {
+		return nil, errors.Wrap(err, "Creating new entity")
+	}
+
+	if err := s.insert(n); err != nil {
+		return nil, err
+	}
+
+	return n, n.Init(ctx)
+}
+
+// Insert inserts a new entity
+func (s *Store) insert(e Entity) error {
+	if _, ok := s.liveByID[e.GetID()]; ok {
+		return errors.Errorf("Attempt to insert duplicate entity '%s' into store", e.GetID())
+	}
+
+	flake := e.GetSnowflake()
+	if flake == 0 {
+		return errors.New("Attempt to insert entity with 0 snowflake!")
+	} else if s.liveBySnowflake[flake] != nil {
+		return errors.New("Attempt to insert entity with duplicate snowflake")
+	}
+
 	s.liveBySnowflake[flake] = e
 	s.liveByID[e.GetID()] = e
-	e.SetSnowflake(flake)
 
 	return nil
 }
 
 // Save saves an entity into the database
 func (s *Store) Save(e Entity) error {
-	flake, ok := s.liveToSnowflake[e]
-	if !ok {
-		return errors.New("Attempt to save live entity which doesn't come from this store")
-	}
+	// Dig out this entity by its snowflake because we need to upcast
+	// else we may accidentally slice the object in half when marshalling
+	e = s.liveBySnowflake[e.GetSnowflake()]
 
 	kind := e.GetKind()
 
@@ -127,7 +189,7 @@ func (s *Store) Save(e Entity) error {
 	}
 
 	r := models.Entity{
-		ID:   flake,
+		ID:   e.GetSnowflake(),
 		Kind: kind.Name,
 		Data: data,
 	}
