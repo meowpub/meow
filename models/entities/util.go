@@ -13,14 +13,6 @@ import (
 	"github.com/meowpub/meow/server/api"
 )
 
-func as2(postfix string) string {
-	return "https://www.w3.org/ns/activitystreams#" + postfix
-}
-
-func ldp(postfix string) string {
-	return "https://www.w3.org/ns/ldp#" + postfix
-}
-
 func compact(ctx context.Context, data interface{}) (interface{}, error) {
 	return jsonld.Compact(lib.GetHttpClient(ctx), data.(map[string]interface{}), "", "https://www.w3.org/ns/activitystreams")
 }

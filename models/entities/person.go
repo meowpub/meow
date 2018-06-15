@@ -7,8 +7,10 @@ import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/jsonld"
 	"github.com/meowpub/meow/models"
+	"github.com/meowpub/meow/ns"
 	"github.com/meowpub/meow/server/api"
 	"github.com/pkg/errors"
+	"go.uber.org/multierr"
 )
 
 type Person struct {
@@ -24,8 +26,22 @@ type Person struct {
 
 var personKind = &EntityKind{
 	Name: "person",
-	Unmarshall: func(obj map[string]interface{}) (Entity, error) {
-		v := &Person{}
+	New: func(flake snowflake.ID, id string) (Entity, error) {
+		return &Person{
+			Object: Object{
+				Base: Base{
+					Meta:      jsonld.Meta{},
+					Snowflake: flake,
+					ID:        id,
+					Type:      []string{ns.AS("Person")},
+				},
+			},
+		}, nil
+	},
+	Unmarshall: func(flake snowflake.ID, obj map[string]interface{}) (Entity, error) {
+		v := &Person{Object: Object{Base: Base{
+			Snowflake: flake,
+		}}}
 		return v, jsonld.Unmarshal(obj, v)
 	},
 	Marshall: func(e Entity) (map[string]interface{}, error) {
@@ -36,6 +52,36 @@ var personKind = &EntityKind{
 			return v.(map[string]interface{}), nil
 		}
 	},
+}
+
+func (self *Person) Init(ctx context.Context) error {
+	store := GetStore(ctx)
+
+	inbox, err := self.GetInbox(ctx)
+	if err != nil {
+		return err
+	}
+
+	outbox, err := self.GetOutbox(ctx)
+	if err != nil {
+		return err
+	}
+
+	creation_, err := store.NewChildEntity(ctx, outbox, "activity", "")
+	if err != nil {
+		return errors.Wrap(err, "Creating Create activity")
+	}
+
+	creation := creation_.(*Activity)
+	creation.Type = []string{ns.AS("Create")}
+	creation.Actor = jsonld.ToRef(self.GetID())
+	creation.Obj = jsonld.ToRef(self.GetID())
+
+	return multierr.Combine(
+		store.Save(creation),
+		outbox.InsertItem(ctx, creation),
+		inbox.InsertItem(ctx, creation),
+		store.Save(self))
 }
 
 func (*Person) GetKind() *EntityKind {
@@ -50,17 +96,17 @@ func (self *Person) Hydrate(ctx context.Context, stack []snowflake.ID) (interfac
 	}
 
 	hydrateChildren(ctx, o, stack,
-		as2("icon"),
-		as2("image"),
-		as2("location"),
-		as2("url"),
-		ldp("inbox"),
-		as2("outbox"),
-		as2("following"),
-		as2("followers"),
-		as2("liked"),
-		as2("streams"),
-		as2("endpoints"))
+		ns.AS("icon"),
+		ns.AS("image"),
+		ns.AS("location"),
+		ns.AS("url"),
+		ns.LDP("inbox"),
+		ns.AS("outbox"),
+		ns.AS("following"),
+		ns.AS("followers"),
+		ns.AS("liked"),
+		ns.AS("streams"),
+		ns.AS("endpoints"))
 
 	return o, nil
 }
@@ -74,65 +120,25 @@ func (o *Person) HandleRequest(ctx context.Context, req *http.Request) api.Respo
 	return handleEntityGetRequest(ctx, o, req)
 }
 
-func NewPerson(ctx context.Context, id string) (*Person, error) {
+func (self *Person) GetOutbox(ctx context.Context) (*Stream, error) {
 	store := GetStore(ctx)
-	stores := models.GetStores(ctx)
-
-	obj := &Person{
-		Object: Object{
-			Base: Base{
-				Meta: jsonld.Meta{},
-				ID:   id,
-				Type: []string{"https://www.w3.org/ns/activitystreams#Person"},
-			},
-		},
+	if len(self.Outbox) > 0 {
+		outbox, err := store.GetByID(self.Outbox[0].ID)
+		return outbox.(*Stream), err
 	}
 
-	if err := store.Insert(obj); err != nil {
-		return nil, err
-	}
-
-	// TOOD: These hould be Inbox/Outbox kinds but this will do For Now (TM)
-	inbox, err := NewStream(store, id+"/inbox")
+	outbox_, err := store.NewChildEntity(ctx, self, "stream", "outbox")
 	if err != nil {
-		return nil, errors.Wrap(err, "Creating inbox")
+		return nil, errors.Wrap(err, "Getting outbox")
 	}
+	outbox := outbox_.(*Stream)
+	outbox.AttributedTo = jsonld.ToRef(self.GetID())
+	self.Outbox = jsonld.ToRef(outbox.GetID())
 
-	outbox, err := NewStream(store, id+"/outbox")
-	if err != nil {
-		return nil, errors.Wrap(err, "Creating outbox")
-	}
+	return outbox, multierr.Combine(
+		store.Save(self),
+		store.Save(outbox))
 
-	inbox.AttributedTo = jsonld.ToRef(id)
-	outbox.AttributedTo = jsonld.ToRef(id)
-	obj.Inbox = jsonld.ToRef(inbox.GetID())
-	obj.Outbox = jsonld.ToRef(outbox.GetID())
-
-	creation, err := NewActivity(store, outbox, []string{as2("Create")})
-	if err != nil {
-		return nil, errors.Wrap(err, "Creating Create activity")
-	}
-
-	creation.Actor = jsonld.ToRef(id)
-	creation.Obj = jsonld.ToRef(id)
-
-	if err := store.Save(inbox); err != nil {
-		return nil, errors.Wrap(err, "Saving inbox")
-	}
-	if err := store.Save(outbox); err != nil {
-		return nil, errors.Wrap(err, "Saving outbox")
-	}
-	if err := store.Save(creation); err != nil {
-		return nil, errors.Wrap(err, "Saving Create")
-	}
-	if _, _, err := stores.StreamItems().TryInsertItem(outbox.GetSnowflake(), creation.GetSnowflake()); err != nil {
-		return nil, errors.Wrap(err, "Inserting Create into Outbox")
-	}
-	if _, _, err := stores.StreamItems().TryInsertItem(inbox.GetSnowflake(), creation.GetSnowflake()); err != nil {
-		return nil, errors.Wrap(err, "Inserting Create into Inbox")
-	}
-
-	return obj, nil
 }
 
 func init() {

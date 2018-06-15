@@ -1,6 +1,7 @@
 package entities
 
 import (
+	"context"
 	"errors"
 	"testing"
 
@@ -10,26 +11,27 @@ import (
 
 	"github.com/meowpub/meow/jsonld"
 	"github.com/meowpub/meow/models"
+	"github.com/meowpub/meow/ns"
 )
 
-func newStore(t *testing.T) (*gomock.Controller, *models.MockEntityStore, *Store) {
+func newStore(t *testing.T) (*gomock.Controller, *models.MockEntityStore, *Store, context.Context) {
 	ctrl := gomock.NewController(t)
 	rawStore := models.NewMockEntityStore(ctrl)
 	store := NewStore(rawStore)
 
-	return ctrl, rawStore, store
+	return ctrl, rawStore, store, WithStore(context.Background(), store)
 }
 
 func TestStore(t *testing.T) {
 	t.Run("Create Entity", func(t *testing.T) {
-		ctrl, raw, store := newStore(t)
+		ctrl, raw, store, ctx := newStore(t)
 		defer ctrl.Finish()
 
-		obj, err := NewObject(store, "https://example.com/", []string{"https://www.w3.org/ns/activitystreams#Note"})
+		obj, err := store.NewEntity(ctx, "object", "https://example.com/")
 		require.NoError(t, err)
 		assert.Equal(t, obj.GetID(), "https://example.com/", "ID should match")
 		if assert.Equal(t, len(obj.GetType()), 1, "Should have one type") {
-			assert.Equal(t, obj.GetType()[0], "https://www.w3.org/ns/activitystreams#Note", "Should be a note")
+			assert.Equal(t, obj.GetType()[0], ns.AS("Object"), "Should be an Object")
 		}
 
 		obj2, err := store.GetByID("https://example.com/")
@@ -41,7 +43,7 @@ func TestStore(t *testing.T) {
 		require.NoError(t, store.Save(obj))
 	})
 	t.Run("Fetch Entity", func(t *testing.T) {
-		ctrl, raw, store := newStore(t)
+		ctrl, raw, store, _ := newStore(t)
 		defer ctrl.Finish()
 
 		raw.EXPECT().GetByID(gomock.Eq("https://example.net/")).Return(&models.Entity{
@@ -74,7 +76,7 @@ func TestStore(t *testing.T) {
 		require.NoError(t, err, "Saving modified entity")
 	})
 	t.Run("Not found", func(t *testing.T) {
-		ctrl, raw, store := newStore(t)
+		ctrl, raw, store, _ := newStore(t)
 		defer ctrl.Finish()
 
 		raw.EXPECT().GetByID(gomock.Eq("https://example.com/")).Return(nil, errors.New("Not there"))

@@ -30,7 +30,7 @@ var createUserCmd = &cobra.Command{
 		}
 		tx := db.Begin()
 
-		stores := models.NewStores(db, nil, "")
+		stores := models.NewStores(tx, nil, "")
 		store := entities.NewStore(stores.Entities())
 		userStore := stores.Users()
 
@@ -38,10 +38,11 @@ var createUserCmd = &cobra.Command{
 		ctx = models.WithStores(ctx, stores)
 		ctx = entities.WithStore(ctx, store)
 
-		person, err := entities.NewPerson(ctx, id)
+		person_, err := store.NewEntity(ctx, "person", id)
 		if err != nil {
 			return err
 		}
+		person := person_.(*entities.Person)
 
 		if preferredUsername != "" {
 			person.PreferredUsername = jsonld.ToString(preferredUsername)
