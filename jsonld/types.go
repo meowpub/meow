@@ -4,8 +4,6 @@ import (
 	"strings"
 )
 
-type ID string
-
 type Type []string
 
 func (t Type) String() string {

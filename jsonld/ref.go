@@ -4,10 +4,9 @@ type Ref []RefItem
 
 type RefItem struct {
 	Meta
-	ID   ID   `json:"@id,omitempty"`
-	Type Type `json:"@type,omitempty"`
+	ID string `json:"@id,omitempty"`
 }
 
-func ToRef(id ID, typ Type) Ref {
-	return Ref{RefItem{ID: id, Type: typ}}
+func ToRef(id string) Ref {
+	return Ref{RefItem{ID: id}}
 }

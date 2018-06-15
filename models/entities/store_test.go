@@ -63,7 +63,7 @@ func TestStore(t *testing.T) {
 		require.Equal(t, "Catgirls: how?", glutenObj.Name.String())
 		require.Equal(t, "my disrespectful teen son somehow got  hold of a gluten product and now he wants to become a cat girl", glutenObj.Content.String())
 
-		glutenObj.Url = jsonld.ToRef("http://catgirl.how/", jsonld.Type{})
+		glutenObj.Url = jsonld.ToRef("http://catgirl.how/")
 
 		raw.EXPECT().Save(gomock.Eq(models.Entity{
 			ID:   353894652568535040,

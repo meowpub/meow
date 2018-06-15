@@ -18,8 +18,8 @@ type Image struct {
 
 type Person struct {
 	Meta
-	ID   ID   `json:"@id"`
-	Type Type `json:"@type"`
+	ID   string `json:"@id"`
+	Type Type   `json:"@type"`
 
 	Name              LangString `json:"https://www.w3.org/ns/activitystreams#name"`
 	PreferredUsername String     `json:"https://www.w3.org/ns/activitystreams#preferredUsername"`
@@ -45,19 +45,19 @@ func TestUnmarshalPerson(t *testing.T) {
 	require.NoError(t, json.Unmarshal(data, &m), "JSON unmarshal")
 	require.NoError(t, Unmarshal(m, &v), "Unmarshal")
 
-	assert.Equal(t, ID("https://example.com/@jsmith"), v.ID)
+	assert.Equal(t, "https://example.com/@jsmith", v.ID)
 	assert.Equal(t, Type{"https://www.w3.org/ns/activitystreams#Person"}, v.Type)
 	assert.Equal(t, ToString("jsmith"), v.PreferredUsername)
 	{
 		assert.Equal(t, Type{"https://www.w3.org/ns/activitystreams#Image"}, v.Icon.Type)
 		assert.Equal(t, ToString("image/jpeg"), v.Icon.MediaType)
-		assert.Equal(t, ToRef(ID("https://example.com/icon.jpg"), nil), v.Icon.URL)
+		assert.Equal(t, ToRef("https://example.com/icon.jpg"), v.Icon.URL)
 	}
 }
 
 type marshalTestStruct struct {
 	Meta
-	ID   ID         `json:"@id"`
+	ID   string     `json:"@id"`
 	Type Type       `json:"@type"`
 	Name LangString `json:"https://www.w3.org/ns/activitystreams#name,omitempty"`
 
@@ -66,7 +66,7 @@ type marshalTestStruct struct {
 
 func TestMarshal(t *testing.T) {
 	v := marshalTestStruct{
-		ID:                ID("https://example.com/jsmith"),
+		ID:                "https://example.com/jsmith",
 		Type:              Type{"https://www.w3.org/ns/activitystreams#Person"},
 		PreferredUsername: ToString("jsmith"),
 	}

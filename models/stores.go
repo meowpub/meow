@@ -14,6 +14,7 @@ type Stores interface {
 	Authorizations() AuthorizationStore
 	AccessTokens() AccessTokenStore
 	RefreshTokens() RefreshTokenStore
+	StreamItems() StreamItemStore
 }
 
 type stores struct {
@@ -27,6 +28,7 @@ type stores struct {
 	authorizationStore AuthorizationStore
 	accessTokenStore   AccessTokenStore
 	refreshTokenStore  RefreshTokenStore
+	streamItemStore    StreamItemStore
 }
 
 func NewStores(db *gorm.DB, r *redis.Client, keyspace string) Stores {
@@ -77,4 +79,11 @@ func (s *stores) RefreshTokens() RefreshTokenStore {
 		s.refreshTokenStore = NewRefreshTokenStore(s.K, s.R)
 	}
 	return s.refreshTokenStore
+}
+
+func (s *stores) StreamItems() StreamItemStore {
+	if s.streamItemStore == nil {
+		s.streamItemStore = NewStreamItemStore(s.DB)
+	}
+	return s.streamItemStore
 }

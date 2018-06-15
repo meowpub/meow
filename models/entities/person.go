@@ -80,7 +80,23 @@ func NewPerson(store *Store, id string) (*Person, error) {
 		return nil, err
 	}
 
-	// Revisit: Create Inbox/Outbox/etc
+	// TOOD: These hould be Inbox/Outbox kinds but this will do For Now (TM)
+	inbox, err := NewStream(store, id+"/inbox")
+	if err != nil {
+		return nil, err
+	}
+	outbox, err := NewStream(store, id+"/outbox")
+	if err != nil {
+		return nil, err
+	}
+
+	inbox.AttributedTo = jsonld.ToRef(id)
+	outbox.AttributedTo = jsonld.ToRef(id)
+	obj.Inbox = jsonld.ToRef(inbox.GetID())
+	obj.Outbox = jsonld.ToRef(outbox.GetID())
+
+	store.Save(inbox)
+	store.Save(outbox)
 
 	return obj, nil
 }

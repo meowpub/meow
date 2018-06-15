@@ -18,6 +18,7 @@ type mockStores struct {
 	authorizationStore AuthorizationStore
 	accessTokenStore   AccessTokenStore
 	refreshTokenStore  RefreshTokenStore
+	streamItemStore    StreamItemStore
 }
 
 func NewMockStores(ctrl *gomock.Controller) Stores {
@@ -64,4 +65,11 @@ func (s *mockStores) RefreshTokens() RefreshTokenStore {
 		s.refreshTokenStore = NewMockRefreshTokenStore(s.ctrl)
 	}
 	return s.refreshTokenStore
+}
+
+func (s *mockStores) StreamItems() StreamItemStore {
+	if s.streamItemStore == nil {
+		s.streamItemStore = NewMockStreamItemStore(s.ctrl)
+	}
+	return s.streamItemStore
 }
