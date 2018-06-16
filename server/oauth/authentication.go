@@ -14,6 +14,9 @@ import (
 )
 
 const BearerPrefix = "Bearer "
+
+const AccessTokenSessionKey = "access_token"
+
 const accessTokenKey ctxKey = "AccessToken"
 
 // Authenticated retrieves the user credentials for the request (if any)
@@ -50,12 +53,8 @@ func WithToken(ctx context.Context, tok *models.AccessToken) context.Context {
 }
 
 func GetToken(ctx context.Context) *models.AccessToken {
-	tok := ctx.Value(accessTokenKey)
-	if tok != nil {
-		return tok.(*models.AccessToken)
-	} else {
-		return nil
-	}
+	tok, _ := ctx.Value(accessTokenKey).(*models.AccessToken)
+	return tok
 }
 
 func AuthenticationMiddleware(next api.Handler) api.Handler {

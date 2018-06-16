@@ -8,7 +8,6 @@ import (
 	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/models/entities"
 	"github.com/meowpub/meow/server/api"
-	"github.com/meowpub/meow/server/middleware"
 	"github.com/meowpub/meow/server/oauth"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
@@ -25,22 +24,31 @@ type LoginRequest struct {
 }
 
 func HandleLogin(ctx context.Context, req *http.Request) api.Response {
-	// If the user is already logged in, redirect to their profile.
+	stores := models.GetStores(ctx)
+
+	// If the user is already logged in, redirect them to their user page.
 	if tok := oauth.GetToken(ctx); tok != nil {
-		uid := tok.UserID
-		stores := models.GetStores(ctx)
-		usr, err := stores.Users().GetBySnowflake(uid)
+		user, err := stores.Users().GetByEntityID(tok.UserID)
 		if err != nil {
-			return api.ErrorResponse(err)
+			if err := oauth.LogOut(ctx); err != nil {
+				return api.Response{Error: err}
+			}
+			if !models.IsNotFound(err) {
+				return api.Response{Error: err}
+			}
+		} else {
+			entity, err := entities.GetStore(ctx).GetBySnowflake(user.EntityID)
+			if err != nil {
+				if err := oauth.LogOut(ctx); err != nil {
+					return api.Response{Error: err}
+				}
+				if !models.IsNotFound(err) {
+					return api.Response{Error: err}
+				}
+			} else {
+				return api.RedirectResponse(entity.GetID())
+			}
 		}
-
-		entities := entities.GetStore(ctx)
-		usrEntity, err := entities.GetBySnowflake(usr.EntityID)
-		if err != nil {
-			return api.ErrorResponse(err)
-		}
-
-		return api.RedirectResponse(usrEntity.GetID())
 	}
 
 	if req.Method == "POST" {
@@ -48,9 +56,6 @@ func HandleLogin(ctx context.Context, req *http.Request) api.Response {
 		if err := api.DecodeForm(req, &body); err != nil {
 			return api.Response{Error: err}
 		}
-
-		stores := models.GetStores(ctx)
-		sess := middleware.GetSession(ctx)
 
 		// Look up the user.
 		user, err := stores.Users().GetByEmail(body.Email)
@@ -73,25 +78,10 @@ func HandleLogin(ctx context.Context, req *http.Request) api.Response {
 			return api.Response{Error: ErrInvalidUsernameOrPassword}
 		}
 
-		// Generate and store an access token.
-		token, err := lib.GenToken()
-		if err != nil {
+		// Log the user in.
+		if err := oauth.LogIn(ctx, user); err != nil {
 			return api.Response{Error: err}
 		}
-		tok := &models.AccessToken{
-			Token:    token,
-			ClientID: oauth.WebClient.GetId(),
-			Scope:    "web",
-			AuthorizationUserData: models.AuthorizationUserData{
-				UserID: user.ID,
-			},
-		}
-		if err := stores.AccessTokens().Set(tok, oauth.WebAccessTokenTTL); err != nil {
-			return api.Response{Error: err}
-		}
-
-		// Store the access token in the session.
-		sess.Values["access_token"] = token
 
 		return api.Response{Data: "OK"}
 	}
