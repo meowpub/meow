@@ -20,19 +20,28 @@ type stackTracer interface {
 
 // Error attaches a status code to an error.
 type statusError struct {
-	error
+	Err        error
 	StatusCode int
 }
 
 func Wrap(err error, code int) error {
-	return statusError{err, code}
+	if err != nil {
+		return statusError{err, code}
+	}
+	return nil
 }
 
-// Cause satisfies causer.
-func (err statusError) Cause() error { return err.error }
+func (err statusError) Error() string { return err.Err.Error() }
 
-// ErrorStatus returns the status code for an error (defaults to 500).
+// Cause satisfies causer.
+func (err statusError) Cause() error { return err.Err }
+
+// ErrorStatus returns the status code for an error (defaults to 500, 200 for a nil error).
 func ErrorStatus(err error) int {
+	if err == nil {
+		return http.StatusOK
+	}
+
 	if e, ok := err.(statusError); ok {
 		return e.StatusCode
 	}
