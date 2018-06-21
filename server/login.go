@@ -70,7 +70,9 @@ func HandleLogin(ctx context.Context, req *http.Request) api.Response {
 		user, err := stores.Users().GetByEmail(body.Email)
 		if err != nil {
 			L.Info("Login attempt with invalid email",
-				zap.String("email", body.Email))
+				zap.String("email", body.Email),
+				zap.Error(err),
+			)
 			return api.Response{Error: ErrInvalidUsernameOrPassword}
 		}
 
@@ -80,6 +82,7 @@ func HandleLogin(ctx context.Context, req *http.Request) api.Response {
 			L.Error("Failed to look up user's profile",
 				zap.Int64("user_id", user.ID.Int64()),
 				zap.Int64("entity_id", user.EntityID.Int64()),
+				zap.Error(err),
 			)
 			return api.Response{Error: err}
 		}
@@ -89,13 +92,17 @@ func HandleLogin(ctx context.Context, req *http.Request) api.Response {
 		if err != nil {
 			L.Error("Password check failed, is the password corrupt in the DB?",
 				zap.String("id", profile.GetID()),
-				zap.Int64("user_id", user.ID.Int64()))
+				zap.Int64("user_id", user.ID.Int64()),
+				zap.Error(err),
+			)
 			return api.Response{Error: err}
 		}
 		if !ok {
 			L.Warn("Login attempt with invalid password",
 				zap.String("id", profile.GetID()),
-				zap.Int64("user_id", user.ID.Int64()))
+				zap.Int64("user_id", user.ID.Int64()),
+				zap.Error(err),
+			)
 			return api.Response{Error: ErrInvalidUsernameOrPassword}
 		}
 
@@ -105,6 +112,7 @@ func HandleLogin(ctx context.Context, req *http.Request) api.Response {
 				zap.String("id", profile.GetID()),
 				zap.Int64("user_id", user.ID.Int64()),
 				zap.Int64("profile_id", user.EntityID.Int64()),
+				zap.Error(err),
 			)
 			return api.Response{Error: err}
 		}
