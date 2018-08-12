@@ -108,9 +108,9 @@ func (obj {{$cls.TypeName}}) {{.TypeName}}() interface{} {
 {{end}}
 {{end}}
 
-var ({{range .Declarations}}{{if eq .RDFType "http://www.w3.org/2000/01/rdf-schema#Class"}}
+var ({{range .Classes}}
 	_ ld.Entity = {{.TypeName}}{}
-	{{- end}}{{end}}
+	{{- end}}
 )
 `[1:]))
 

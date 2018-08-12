@@ -1,5 +1,71 @@
 [
   {
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Idiomatic property used for structured values."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "value"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The subject is an instance of a class."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "type"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
     "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
@@ -27,34 +93,6 @@
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The class of RDF Lists."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "List"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
         "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
       }
@@ -94,39 +132,6 @@
     ]
   },
   {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-      {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The first item in the subject RDF list."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "first"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
-      }
-    ]
-  },
-  {
     "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
@@ -160,58 +165,7 @@
     ]
   },
   {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The datatype of RDF literals storing fragments of HTML content"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "HTML"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/TR/rdf11-concepts/#section-html"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "http://purl.org/dc/elements/1.1/description": [
-      {
-        "@value": "This is the RDF Schema for the RDF vocabulary terms in the RDF Namespace, defined in RDF 1.1 Concepts."
-      }
-    ],
-    "http://purl.org/dc/elements/1.1/title": [
-      {
-        "@value": "The RDF Concepts Vocabulary (RDF)"
-      }
-    ],
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-      {
-        "@id": "http://www.w3.org/2002/07/owl#Ontology"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#object",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
@@ -219,12 +173,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "Idiomatic property used for structured values."
+        "@value": "The object of the subject RDF statement."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
@@ -234,7 +188,7 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "value"
+        "@value": "object"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
@@ -244,15 +198,15 @@
     ]
   },
   {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The class of ordered containers."
+        "@value": "The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
@@ -262,40 +216,7 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Seq"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Container"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The datatype of XML literal values."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "XMLLiteral"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+        "@value": "nil"
       }
     ]
   },
@@ -333,7 +254,25 @@
     ]
   },
   {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#object",
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "http://purl.org/dc/elements/1.1/description": [
+      {
+        "@value": "This is the RDF Schema for the RDF vocabulary terms in the RDF Namespace, defined in RDF 1.1 Concepts."
+      }
+    ],
+    "http://purl.org/dc/elements/1.1/title": [
+      {
+        "@value": "The RDF Concepts Vocabulary (RDF)"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
@@ -341,12 +280,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The object of the subject RDF statement."
+        "@value": "The first item in the subject RDF list."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
@@ -356,12 +295,96 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "object"
+        "@value": "first"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
         "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The datatype of XML literal values."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "XMLLiteral"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of RDF statements."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Statement"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of ordered containers."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Seq"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Container"
       }
     ]
   },
@@ -427,20 +450,15 @@
     ]
   },
   {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The subject is an instance of a class."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+        "@value": "The class of RDF Lists."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
@@ -450,35 +468,7 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "type"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-      {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The class of RDF statements."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Statement"
+        "@value": "List"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
@@ -488,15 +478,15 @@
     ]
   },
   {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt",
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The class of containers of alternatives."
+        "@value": "The datatype of RDF literals storing fragments of HTML content"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
@@ -506,12 +496,17 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Alt"
+        "@value": "HTML"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/TR/rdf11-concepts/#section-html"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "http://www.w3.org/2000/01/rdf-schema#Container"
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
       }
     ]
   },
@@ -544,15 +539,15 @@
     ]
   },
   {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil",
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it."
+        "@value": "The class of containers of alternatives."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
@@ -562,7 +557,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "nil"
+        "@value": "Alt"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Container"
       }
     ]
   }

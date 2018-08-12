@@ -10,6 +10,8 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"sort"
+	"strings"
 	"text/template"
 
 	"github.com/deiu/rdf2go"
@@ -110,6 +112,9 @@ func GenNamespace(ns *Namespace) error {
 	for _, declaration := range declarations {
 		declarrations = append(declarrations, declaration)
 	}
+	sort.SliceStable(declarrations, func(i, j int) bool {
+		return strings.Compare(declarrations[i].ID(), declarrations[j].ID()) > 0
+	})
 	if err := DumpJSON(filepath.Join(outdir, ns.Short+".ld.json"), declarrations); err != nil {
 		return err
 	}
