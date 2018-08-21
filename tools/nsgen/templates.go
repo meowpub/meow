@@ -97,15 +97,21 @@ import (
 )
 
 {{range $i, $cls := .Classes}}
-type {{$cls.TypeName}} *ld.Object
+type {{$cls.TypeName}} struct { O *ld.Object }
 
-func (obj {{$cls.TypeName}}) Obj() *ld.Object {
-	return obj.Object
+func (obj {{$cls.TypeName}}) Obj() *ld.Object { return obj.O }
+func (obj {{$cls.TypeName}}) ID() string { return obj.O.ID() }
+func (obj {{$cls.TypeName}}) Value() string { return obj.O.Value() }
+func (obj {{$cls.TypeName}}) Type() []string { return obj.O.Type() }
+func (obj {{$cls.TypeName}}) Get(key string) interface{} { return obj.O.Get(key) }
+
+func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error {
+	return obj.O.Apply(other, mergeArrays)
 }
 
 {{range $.PropertiesOf $cls}}
 func (obj {{$cls.TypeName}}) {{.TypeName}}() interface{} {
-	return obj.V["{{.ID}}"]
+	return obj.O.V["{{.ID}}"]
 }
 {{end}}
 {{end}}
@@ -120,10 +126,6 @@ var DataTypesTemplate = template.Must(template.New("datatypes.gen.go").Funcs(Fun
 // GENERATED FILE, DO NOT EDIT.
 // Please refer to: tools/nsgen/templates.go
 package {{.Namespace.Short}}
-
-import (
-	"github.com/meowpub/meow/ld"
-)
 
 {{range $i, $dt := .DataTypes}}
 type {{$dt.TypeName}} interface{}

@@ -2,10 +2,6 @@
 // Please refer to: tools/nsgen/templates.go
 package rdf
 
-import (
-	"github.com/meowpub/meow/ld"
-)
-
 type HTML interface{}
 
 type PlainLiteral interface{}
