@@ -93,9 +93,7 @@ import (
 )
 
 {{range $i, $cls := .Classes}}
-type {{$cls.TypeName}} struct {
-	*ld.Object
-}
+type {{$cls.TypeName}} *ld.Object
 
 func (obj {{$cls.TypeName}}) Obj() *ld.Object {
 	return obj.Object

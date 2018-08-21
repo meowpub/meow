@@ -4,25 +4,19 @@ import (
 	"github.com/meowpub/meow/ld"
 )
 
-type Alt struct {
-	*ld.Object
-}
+type Alt *ld.Object
 
 func (obj Alt) Obj() *ld.Object {
 	return obj.Object
 }
 
-type Bag struct {
-	*ld.Object
-}
+type Bag *ld.Object
 
 func (obj Bag) Obj() *ld.Object {
 	return obj.Object
 }
 
-type List struct {
-	*ld.Object
-}
+type List *ld.Object
 
 func (obj List) Obj() *ld.Object {
 	return obj.Object
@@ -36,25 +30,19 @@ func (obj List) Rest() interface{} {
 	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"]
 }
 
-type Property struct {
-	*ld.Object
-}
+type Property *ld.Object
 
 func (obj Property) Obj() *ld.Object {
 	return obj.Object
 }
 
-type Seq struct {
-	*ld.Object
-}
+type Seq *ld.Object
 
 func (obj Seq) Obj() *ld.Object {
 	return obj.Object
 }
 
-type Statement struct {
-	*ld.Object
-}
+type Statement *ld.Object
 
 func (obj Statement) Obj() *ld.Object {
 	return obj.Object

@@ -4,9 +4,7 @@ import (
 	"github.com/meowpub/meow/ld"
 )
 
-type Class struct {
-	*ld.Object
-}
+type Class *ld.Object
 
 func (obj Class) Obj() *ld.Object {
 	return obj.Object
@@ -16,41 +14,31 @@ func (obj Class) SubClassOf() interface{} {
 	return obj.V["http://www.w3.org/2000/01/rdf-schema#subClassOf"]
 }
 
-type Container struct {
-	*ld.Object
-}
+type Container *ld.Object
 
 func (obj Container) Obj() *ld.Object {
 	return obj.Object
 }
 
-type ContainerMembershipProperty struct {
-	*ld.Object
-}
+type ContainerMembershipProperty *ld.Object
 
 func (obj ContainerMembershipProperty) Obj() *ld.Object {
 	return obj.Object
 }
 
-type Datatype struct {
-	*ld.Object
-}
+type Datatype *ld.Object
 
 func (obj Datatype) Obj() *ld.Object {
 	return obj.Object
 }
 
-type Literal struct {
-	*ld.Object
-}
+type Literal *ld.Object
 
 func (obj Literal) Obj() *ld.Object {
 	return obj.Object
 }
 
-type Resource struct {
-	*ld.Object
-}
+type Resource *ld.Object
 
 func (obj Resource) Obj() *ld.Object {
 	return obj.Object
