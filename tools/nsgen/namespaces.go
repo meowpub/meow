@@ -21,6 +21,11 @@ var Namespaces = []*Namespace{
 		Long:   "http://www.w3.org/2000/01/rdf-schema#",
 		Source: "https://www.w3.org/2000/01/rdf-schema",
 	},
+	{
+		Short:  "owl",
+		Long:   "http://www.w3.org/2002/07/owl#",
+		Source: "http://www.w3.org/2002/07/owl",
+	},
 
 	// These aren't available in Turtle anywhere, so we have to implement them manually.
 	// Well, XMLSchema is available in XML schema and... no. Just, no. Not parsing that.
