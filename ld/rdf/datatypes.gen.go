@@ -4,10 +4,10 @@ import (
 	"github.com/meowpub/meow/ld"
 )
 
-type XMLLiteral interface{}
-
-type LangString interface{}
+type PlainLiteral interface{}
 
 type HTML interface{}
 
-type PlainLiteral interface{}
+type XMLLiteral interface{}
+
+type LangString interface{}
