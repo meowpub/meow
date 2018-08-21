@@ -4,31 +4,11 @@ import (
 	"github.com/meowpub/meow/ld"
 )
 
-type Statement struct {
+type Alt struct {
 	*ld.Object
 }
 
-func (obj Statement) Obj() *ld.Object {
-	return obj.Object
-}
-
-func (obj Statement) Predicate() interface{} {
-	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate"]
-}
-
-func (obj Statement) Object() interface{} {
-	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#object"]
-}
-
-func (obj Statement) Subject() interface{} {
-	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"]
-}
-
-type Property struct {
-	*ld.Object
-}
-
-func (obj Property) Obj() *ld.Object {
+func (obj Alt) Obj() *ld.Object {
 	return obj.Object
 }
 
@@ -48,12 +28,20 @@ func (obj List) Obj() *ld.Object {
 	return obj.Object
 }
 
+func (obj List) First() interface{} {
+	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"]
+}
+
 func (obj List) Rest() interface{} {
 	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"]
 }
 
-func (obj List) First() interface{} {
-	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"]
+type Property struct {
+	*ld.Object
+}
+
+func (obj Property) Obj() *ld.Object {
+	return obj.Object
 }
 
 type Seq struct {
@@ -64,19 +52,31 @@ func (obj Seq) Obj() *ld.Object {
 	return obj.Object
 }
 
-type Alt struct {
+type Statement struct {
 	*ld.Object
 }
 
-func (obj Alt) Obj() *ld.Object {
+func (obj Statement) Obj() *ld.Object {
 	return obj.Object
 }
 
+func (obj Statement) Object() interface{} {
+	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#object"]
+}
+
+func (obj Statement) Predicate() interface{} {
+	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate"]
+}
+
+func (obj Statement) Subject() interface{} {
+	return obj.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"]
+}
+
 var (
-	_ ld.Entity = Statement{}
-	_ ld.Entity = Property{}
+	_ ld.Entity = Alt{}
 	_ ld.Entity = Bag{}
 	_ ld.Entity = List{}
+	_ ld.Entity = Property{}
 	_ ld.Entity = Seq{}
-	_ ld.Entity = Alt{}
+	_ ld.Entity = Statement{}
 )

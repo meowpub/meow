@@ -93,47 +93,65 @@ func GenNamespace(ns *Namespace) error {
 		return err
 	}
 
-	// Turn it into JSON-LD, reassemble the fragments into declarations, store it.
+	// Turn it into JSON-LD.
 	ldData, err := TurtleToJSONLD(ns.Long, turtleData)
 	fragments, err := ld.NewObjects(ldData)
 	if err != nil {
 		return err
 	}
-	declarations := make(map[string]*Declaration)
-	for _, fragment := range fragments {
-		id := fragment.ID()
-		if obj := declarations[id]; obj != nil {
-			declarations[id].Apply(fragment, true)
-		} else {
-			declarations[id] = &Declaration{Object: fragment, Namespace: ns}
+	sort.SliceStable(fragments, func(i, j int) bool {
+		// If the IDs are different, compare those.
+		fi := fragments[i]
+		fj := fragments[j]
+		if fi.ID() != fj.ID() {
+			return fi.ID() < fj.ID()
 		}
-	}
-	declarrations := make([]*Declaration, 0, len(declarations))
-	for _, declaration := range declarations {
-		declarrations = append(declarrations, declaration)
-	}
-	sort.SliceStable(declarrations, func(i, j int) bool {
-		return strings.Compare(declarrations[i].ID(), declarrations[j].ID()) > 0
+		// If not, it gets weird: we sort by the first non-@ key.
+		for ki := range fi.V {
+			if strings.HasPrefix(ki, "@") {
+				continue
+			}
+			for kj := range fj.V {
+				if strings.HasPrefix(kj, "@") {
+					continue
+				}
+				return ki < kj
+			}
+		}
+		return false
 	})
-	if err := DumpJSON(filepath.Join(outdir, ns.Short+".ld.json"), declarrations); err != nil {
+	if err := DumpJSON(filepath.Join(outdir, ns.Short+".ld.json"), fragments); err != nil {
 		return err
 	}
 
-	// Filter out excluded declarations.
-	declarrations = nil
-	for _, declaration := range declarations {
+	// Reassemble the fragments into usable Declarations.
+	declMap := make(map[string]*Declaration)
+	orderedKeys := []string{}
+	for _, fragment := range fragments {
+		key := fragment.ID()
+		if obj, ok := declMap[key]; ok {
+			if err := obj.Apply(fragment, true); err != nil {
+				return err
+			}
+		} else {
+			declMap[key] = &Declaration{fragment, ns}
+			orderedKeys = append(orderedKeys, key)
+		}
+	}
+	declarations := make([]*Declaration, 0, len(declMap))
+	for _, key := range orderedKeys {
 		for _, exclusion := range ns.Exclude {
-			if declaration.ID() == exclusion {
+			if key == exclusion {
 				continue
 			}
-			declarrations = append(declarrations, declaration)
 		}
+		declarations = append(declarations, declMap[key])
 	}
 
 	// Generate files!
 	rctx := &RenderContext{
 		Namespace:    ns,
-		Declarations: declarrations,
+		Declarations: declarations,
 	}
 	return multierr.Combine(
 		Render(filepath.Join(outdir, "ns.gen.go"), NSTemplate, rctx),
