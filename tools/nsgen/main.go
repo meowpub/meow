@@ -140,12 +140,16 @@ func GenNamespace(ns *Namespace) error {
 	}
 	declarations := make([]*Declaration, 0, len(declMap))
 	for _, key := range orderedKeys {
+		isExcluded := false
 		for _, exclusion := range ns.Exclude {
 			if key == exclusion {
-				continue
+				isExcluded = true
+				break
 			}
 		}
-		declarations = append(declarations, declMap[key])
+		if !isExcluded {
+			declarations = append(declarations, declMap[key])
+		}
 	}
 
 	// Generate files!
