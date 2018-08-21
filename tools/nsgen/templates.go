@@ -76,6 +76,8 @@ func (rctx RenderContext) Misc() (matches []*Declaration) {
 }
 
 var NSTemplate = template.Must(template.New("ns.gen.go").Funcs(Funcs).Parse(`
+// GENERATED FILE, DO NOT EDIT.
+// Please refer to: tools/nsgen/templates.go
 package {{.Namespace.Short}}
 
 const Namespace = "{{.Namespace.Long}}"
@@ -86,6 +88,8 @@ const Namespace = "{{.Namespace.Long}}"
 `[1:]))
 
 var ClassesTemplate = template.Must(template.New("classes.gen.go").Funcs(Funcs).Parse(`
+// GENERATED FILE, DO NOT EDIT.
+// Please refer to: tools/nsgen/templates.go
 package {{.Namespace.Short}}
 
 import (
@@ -113,6 +117,8 @@ var ({{range .Classes}}
 `[1:]))
 
 var DataTypesTemplate = template.Must(template.New("datatypes.gen.go").Funcs(Funcs).Parse(`
+// GENERATED FILE, DO NOT EDIT.
+// Please refer to: tools/nsgen/templates.go
 package {{.Namespace.Short}}
 
 import (
