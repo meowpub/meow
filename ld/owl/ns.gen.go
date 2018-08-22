@@ -8,7 +8,7 @@ const Namespace = "http://www.w3.org/2002/07/owl#"
 
 // http://www.w3.org/2002/07/owl#Thing - http://www.w3.org/2002/07/owl#Class
 
-// http://www.w3.org/2002/07/owl#backwardCompatibleWith - http://www.w3.org/2002/07/owl#OntologyProperty
+// http://www.w3.org/2002/07/owl#backwardCompatibleWith - http://www.w3.org/2002/07/owl#AnnotationProperty
 
 // http://www.w3.org/2002/07/owl#bottomDataProperty - http://www.w3.org/2002/07/owl#DatatypeProperty
 
@@ -20,7 +20,7 @@ const Namespace = "http://www.w3.org/2002/07/owl#"
 
 // http://www.w3.org/2002/07/owl#incompatibleWith - http://www.w3.org/2002/07/owl#AnnotationProperty
 
-// http://www.w3.org/2002/07/owl#priorVersion - http://www.w3.org/2002/07/owl#OntologyProperty
+// http://www.w3.org/2002/07/owl#priorVersion - http://www.w3.org/2002/07/owl#AnnotationProperty
 
 // http://www.w3.org/2002/07/owl#topDataProperty - http://www.w3.org/2002/07/owl#DatatypeProperty
 

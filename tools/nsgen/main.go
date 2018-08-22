@@ -11,7 +11,6 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
-	"strings"
 	"text/template"
 
 	"github.com/deiu/rdf2go"
@@ -100,25 +99,15 @@ func GenNamespace(ns *Namespace) error {
 		return err
 	}
 	sort.SliceStable(fragments, func(i, j int) bool {
-		// If the IDs are different, compare those.
-		fi := fragments[i]
-		fj := fragments[j]
-		if fi.ID() != fj.ID() {
-			return fi.ID() < fj.ID()
+		idata, err := json.Marshal(fragments[i])
+		if err != nil {
+			panic(err)
 		}
-		// If not, it gets weird: we sort by the first non-@ key.
-		for ki := range fi.V {
-			if strings.HasPrefix(ki, "@") {
-				continue
-			}
-			for kj := range fj.V {
-				if strings.HasPrefix(kj, "@") {
-					continue
-				}
-				return ki < kj
-			}
+		jdata, err := json.Marshal(fragments[j])
+		if err != nil {
+			panic(err)
 		}
-		return false
+		return string(idata) < string(jdata)
 	})
 	if err := DumpJSON(filepath.Join(outdir, ns.Short+".ld.json"), fragments); err != nil {
 		return err

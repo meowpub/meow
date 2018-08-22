@@ -1275,7 +1275,7 @@
     "@id": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
-        "@id": "http://www.w3.org/2002/07/owl#OntologyProperty"
+        "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
       }
     ]
   },
@@ -1283,7 +1283,7 @@
     "@id": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
-        "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+        "@id": "http://www.w3.org/2002/07/owl#OntologyProperty"
       }
     ]
   },
@@ -2075,14 +2075,6 @@
     "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
       {
-        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-syntax/"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
         "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-mapping-to-rdf/"
       }
     ]
@@ -2097,9 +2089,9 @@
   },
   {
     "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
       {
-        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-rdf-based-semantics/#table-axiomatic-properties"
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-syntax/"
       }
     ]
   },
@@ -2108,6 +2100,14 @@
     "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
       {
         "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-rdf-based-semantics/#table-axiomatic-classes"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-rdf-based-semantics/#table-axiomatic-properties"
       }
     ]
   },
@@ -2875,7 +2875,7 @@
     "@id": "http://www.w3.org/2002/07/owl#priorVersion",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
-        "@id": "http://www.w3.org/2002/07/owl#OntologyProperty"
+        "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
       }
     ]
   },
@@ -2883,7 +2883,7 @@
     "@id": "http://www.w3.org/2002/07/owl#priorVersion",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
-        "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+        "@id": "http://www.w3.org/2002/07/owl#OntologyProperty"
       }
     ]
   },
