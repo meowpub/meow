@@ -10,6 +10,22 @@ func ToString(raw interface{}) string {
 		return ""
 	case string:
 		return v
+	case []interface{}:
+		out := ""
+		for i, vv := range v {
+			s := ToString(vv)
+			if i == 0 {
+				out = s
+			} else {
+				out = out + "," + s
+			}
+		}
+		return out
+	case map[string]interface{}:
+		if s := ToString(v["@value"]); s != "" {
+			return s
+		}
+		return fmt.Sprint(v)
 	case fmt.Stringer:
 		return v.String()
 	default:

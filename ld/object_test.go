@@ -43,7 +43,7 @@ func TestObjectID(t *testing.T) {
 			"@id": ["https://example.com/1", "https://example.com/2"]
 		}`))
 		require.NoError(t, err)
-		assert.Equal(t, `[https://example.com/1 https://example.com/2]`, obj.ID())
+		assert.Equal(t, `https://example.com/1,https://example.com/2`, obj.ID())
 	})
 }
 
