@@ -165,7 +165,7 @@ package resolve
 
 import (
 	"github.com/meowpub/meow/ld"{{range .}}
-	"github.com/meowpub/meow/ld/{{.Short}}"{{end}}
+	"github.com/meowpub/meow/ld/ns/{{.Short}}"{{end}}
 )
 
 var Namespaces = map[string]*ld.Namespace{ {{range .}}

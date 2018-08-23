@@ -77,7 +77,7 @@ func TurtleToJSONLD(namespace string, data []byte) ([]byte, error) {
 }
 
 func GenNamespace(ns *Namespace) error {
-	outdir := filepath.Join(MeowBasePath, "ld", ns.Short)
+	outdir := filepath.Join(MeowBasePath, "ld", "ns", ns.Short)
 
 	// Make sure the output path exists.
 	if err := os.MkdirAll(outdir, 0755); err != nil {
@@ -164,7 +164,7 @@ func Main() error {
 	}
 
 	log.Printf("Generating index...")
-	indexPath := filepath.Join(MeowBasePath, "ld", "resolve", "index.gen.go")
+	indexPath := filepath.Join(MeowBasePath, "ld", "ns", "index.gen.go")
 	return Render(indexPath, IndexTemplate, Namespaces)
 }
 

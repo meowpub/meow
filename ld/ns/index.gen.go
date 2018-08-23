@@ -4,11 +4,11 @@ package resolve
 
 import (
 	"github.com/meowpub/meow/ld"
-	"github.com/meowpub/meow/ld/ldp"
-	"github.com/meowpub/meow/ld/owl"
-	"github.com/meowpub/meow/ld/rdf"
-	"github.com/meowpub/meow/ld/rdfs"
-	"github.com/meowpub/meow/ld/xsd"
+	"github.com/meowpub/meow/ld/ns/ldp"
+	"github.com/meowpub/meow/ld/ns/owl"
+	"github.com/meowpub/meow/ld/ns/rdf"
+	"github.com/meowpub/meow/ld/ns/rdfs"
+	"github.com/meowpub/meow/ld/ns/xsd"
 )
 
 var Namespaces = map[string]*ld.Namespace{
