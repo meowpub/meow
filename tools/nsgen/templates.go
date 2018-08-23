@@ -161,7 +161,7 @@ type {{$dt.TypeName}} interface{}
 var IndexTemplate = template.Must(template.New("index.gen.go").Funcs(Funcs).Parse(`
 // GENERATED FILE, DO NOT EDIT.
 // Please refer to: tools/nsgen/templates.go
-package resolve
+package ns
 
 import (
 	"github.com/meowpub/meow/ld"{{range .}}
