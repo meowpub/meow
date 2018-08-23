@@ -80,6 +80,10 @@ var NSTemplate = template.Must(template.New("ns.gen.go").Funcs(Funcs).Parse(`
 // Please refer to: tools/nsgen/templates.go
 package {{.Namespace.Short}}
 
+import (
+	"github.com/meowpub/meow/ld"
+)
+
 const Namespace = "{{.Namespace.Long}}"
 
 {{if .Properties}}
@@ -89,6 +93,20 @@ const (
 	{{end}}
 )
 {{end}}
+
+// Namespace.
+var NS = &ld.Namespace{
+	ID: "{{.Namespace.Long}}",
+	Short: "{{.Namespace.Short}}",
+	Props: map[string]string{ {{range .Properties}}
+		"{{.Short}}": "{{.ID}}",
+		{{- end}}
+	},
+	Classes: map[string]func(ld.Entity) ld.Entity{ {{range .Classes}}
+		"{{.Short}}": func(e ld.Entity) ld.Entity { return &{{.TypeName}}{O: e.Obj() } },
+		{{- end}}
+	},
+}
 
 {{range .Misc}}
 // {{.ID}} - {{.RDFType}}
@@ -138,4 +156,20 @@ package {{.Namespace.Short}}
 {{range $i, $dt := .DataTypes}}
 type {{$dt.TypeName}} interface{}
 {{end}}
+`[1:]))
+
+var IndexTemplate = template.Must(template.New("index.gen.go").Funcs(Funcs).Parse(`
+// GENERATED FILE, DO NOT EDIT.
+// Please refer to: tools/nsgen/templates.go
+package resolve
+
+import (
+	"github.com/meowpub/meow/ld"{{range .}}
+	"github.com/meowpub/meow/ld/{{.Short}}"{{end}}
+)
+
+var Namespaces = map[string]*ld.Namespace{ {{range .}}
+	"{{.Long}}": {{.Short}}.NS,
+	"{{.Short}}": {{.Short}}.NS, {{end}}
+}
 `[1:]))

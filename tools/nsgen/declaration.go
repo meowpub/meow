@@ -31,12 +31,15 @@ func (t Declaration) Obj() *ld.Object {
 	return t.Object
 }
 
+func (t Declaration) Short() string {
+	return strings.TrimPrefix(t.ID(), t.Namespace.Long)
+}
+
 func (t Declaration) TypeName() string {
-	s := strings.TrimPrefix(t.ID(), t.Namespace.Long)
-	if len(s) > 0 {
-		s = strings.ToUpper(s[0:1]) + s[1:]
+	if s := t.Short(); s != "" {
+		return strings.ToUpper(s[0:1]) + s[1:]
 	}
-	return s
+	return ""
 }
 
 func (t Declaration) RDFType() string {

@@ -15,7 +15,6 @@ import (
 
 	"github.com/deiu/rdf2go"
 	"github.com/pkg/errors"
-	"github.com/spf13/pflag"
 	"go.uber.org/multierr"
 
 	"github.com/meowpub/meow/ld"
@@ -51,7 +50,7 @@ func DumpJSON(path string, v interface{}) error {
 	return ioutil.WriteFile(path, data, 0644)
 }
 
-func Render(path string, tmpl *template.Template, rctx *RenderContext) error {
+func Render(path string, tmpl *template.Template, rctx interface{}) error {
 	var buf bytes.Buffer
 	if err := tmpl.Execute(&buf, rctx); err != nil {
 		return errors.Wrap(err, "render")
@@ -147,27 +146,15 @@ func GenNamespace(ns *Namespace) error {
 		Declarations: declarations,
 	}
 	return multierr.Combine(
-		Render(filepath.Join(outdir, "ns.gen.go"), NSTemplate, rctx),
-		Render(filepath.Join(outdir, "classes.gen.go"), ClassesTemplate, rctx),
-		Render(filepath.Join(outdir, "datatypes.gen.go"), DataTypesTemplate, rctx),
+		errors.Wrap(Render(filepath.Join(outdir, "ns.gen.go"), NSTemplate, rctx), "ns.gen.go"),
+		errors.Wrap(Render(filepath.Join(outdir, "classes.gen.go"), ClassesTemplate, rctx), "classes.gen.go"),
+		errors.Wrap(Render(filepath.Join(outdir, "datatypes.gen.go"), DataTypesTemplate, rctx), "datatypes.gen.go"),
 	)
 }
 
 func Main() error {
-	pflag.Parse()
-	names := pflag.Args()
 	for _, ns := range Namespaces {
 		if ns.Source == "" {
-			continue
-		}
-		shouldGen := len(names) == 0
-		for _, name := range names {
-			if name == ns.Short {
-				shouldGen = true
-			}
-		}
-		if !shouldGen {
-			log.Printf("Skipping: \"%s\" (%s)", ns.Short, ns.Long)
 			continue
 		}
 		log.Printf("Generating: \"%s\" (%s)", ns.Short, ns.Long)
@@ -175,7 +162,10 @@ func Main() error {
 			return err
 		}
 	}
-	return nil
+
+	log.Printf("Generating index...")
+	indexPath := filepath.Join(MeowBasePath, "ld", "resolve", "index.gen.go")
+	return Render(indexPath, IndexTemplate, Namespaces)
 }
 
 func main() {
