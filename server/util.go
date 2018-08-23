@@ -1,14 +1,13 @@
 package server
 
 import (
-	"net/http"
 	"net/url"
 
 	"github.com/pkg/errors"
 )
 
 // Safety checks a redirect URI to prevent open redirection vulnerabilities.
-func SanitizeRedirectURI(rawuri string, req *http.Request) (string, error) {
+func SanitizeRedirectURI(rawuri string) (string, error) {
 	if rawuri == "" {
 		return "", nil
 	}

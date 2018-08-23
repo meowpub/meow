@@ -1,7 +1,6 @@
 package server
 
 import (
-	"net/http/httptest"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,19 +9,16 @@ import (
 
 func TestSanitiseRedirectURIs(t *testing.T) {
 	t.Run("Relative", func(t *testing.T) {
-		req := httptest.NewRequest("GET", "https://example.com/page", nil)
-		u, err := SanitizeRedirectURI("/some/page", req)
+		u, err := SanitizeRedirectURI("/some/page")
 		require.NoError(t, err)
 		assert.Equal(t, "/some/page", u)
 	})
 	t.Run("Absolute", func(t *testing.T) {
-		req := httptest.NewRequest("GET", "https://example.com/page", nil)
-		_, err := SanitizeRedirectURI("https://example.com/some/page", req)
+		_, err := SanitizeRedirectURI("https://example.com/some/page")
 		require.EqualError(t, err, "absolute urls not allowed in redirect uris: https://example.com/some/page")
 	})
 	t.Run("Invalid", func(t *testing.T) {
-		req := httptest.NewRequest("GET", "https://example.com/page", nil)
-		_, err := SanitizeRedirectURI("://", req)
+		_, err := SanitizeRedirectURI("://")
 		require.EqualError(t, err, "parse ://: missing protocol scheme")
 	})
 }

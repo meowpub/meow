@@ -1,7 +1,6 @@
 package server
 
 import (
-	"context"
 	"net/http"
 
 	"github.com/meowpub/meow/lib"
@@ -29,26 +28,24 @@ type LoginResponse struct {
 	RedirectURI string `form:"redirect_uri"`
 }
 
-func HandleLogin(ctx context.Context, req *http.Request) api.Response {
-	L := lib.GetLogger(ctx)
-	stores := models.GetStores(ctx)
+func HandleLogin(req api.Request) api.Response {
+	L := lib.GetLogger(req)
+	stores := models.GetStores(req)
 
 	// If the user is already logged in, redirect them to their user page.
-	// This gets a little bit hairy, because we need to catch invalid sessions and expired tokens,
-	// otherwise the login page 404s which isn't really all that helpful.
-	if tok := oauth.GetToken(ctx); tok != nil {
+	if tok := oauth.GetToken(req); tok != nil {
 		user, err := stores.Users().GetByEntityID(tok.UserID)
 		if err != nil {
-			if err := oauth.LogOut(ctx); err != nil {
+			if err := oauth.LogOut(req); err != nil {
 				return api.Response{Error: err}
 			}
 			if !models.IsNotFound(err) {
 				return api.Response{Error: err}
 			}
 		} else {
-			entity, err := entities.GetStore(ctx).GetBySnowflake(user.EntityID)
+			entity, err := entities.GetStore(req).GetBySnowflake(user.EntityID)
 			if err != nil {
-				if err := oauth.LogOut(ctx); err != nil {
+				if err := oauth.LogOut(req); err != nil {
 					return api.Response{Error: err}
 				}
 				if !models.IsNotFound(err) {
@@ -77,7 +74,7 @@ func HandleLogin(ctx context.Context, req *http.Request) api.Response {
 		}
 
 		// Look up the user's profile.
-		profile, err := entities.GetStore(ctx).GetBySnowflake(user.EntityID)
+		profile, err := entities.GetStore(req).GetBySnowflake(user.EntityID)
 		if err != nil {
 			L.Error("Failed to look up user's profile",
 				zap.Int64("user_id", user.ID.Int64()),
@@ -107,7 +104,7 @@ func HandleLogin(ctx context.Context, req *http.Request) api.Response {
 		}
 
 		// Log the user in.
-		if err := oauth.LogIn(ctx, user); err != nil {
+		if err := oauth.LogIn(req, user); err != nil {
 			L.Error("User authenticated successfully, but session login failed",
 				zap.String("id", profile.GetID()),
 				zap.Int64("user_id", user.ID.Int64()),
@@ -126,7 +123,7 @@ func HandleLogin(ctx context.Context, req *http.Request) api.Response {
 		// Redirect to the user's profile, or to a given redirect URI *if it's safe*.
 		redirectURI := profile.GetID()
 		if body.RedirectURI != "" {
-			uri, err := SanitizeRedirectURI(body.RedirectURI, req)
+			uri, err := SanitizeRedirectURI(body.RedirectURI)
 			if err != nil {
 				L.Warn("Ignoring unsafe redirect URI",
 					zap.String("uri", body.RedirectURI),

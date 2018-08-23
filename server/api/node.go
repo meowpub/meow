@@ -13,9 +13,9 @@ type Node struct {
 	Children map[string]Handler
 }
 
-func (n Node) HandleRequest(ctx context.Context, req *http.Request) Response {
+func (n Node) HandleRequest(req Request) Response {
 	if n.Self != nil {
-		return n.Self.HandleRequest(ctx, req)
+		return n.Self.HandleRequest(req)
 	}
 	return Response{Status: http.StatusNotFound}
 }
