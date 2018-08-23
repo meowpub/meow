@@ -82,6 +82,14 @@ package {{.Namespace.Short}}
 
 const Namespace = "{{.Namespace.Long}}"
 
+{{if .Properties}}
+const (
+	{{range .Properties}}
+	Prop{{.TypeName}} = "{{.ID}}"
+	{{end}}
+)
+{{end}}
+
 {{range .Misc}}
 // {{.ID}} - {{.RDFType}}
 {{end}}
