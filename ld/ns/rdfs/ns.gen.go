@@ -9,22 +9,31 @@ import (
 const Namespace = "http://www.w3.org/2000/01/rdf-schema#"
 
 const (
+	// A description of the subject resource.
 	PropComment = "http://www.w3.org/2000/01/rdf-schema#comment"
 
+	// A domain of the subject property.
 	PropDomain = "http://www.w3.org/2000/01/rdf-schema#domain"
 
+	// The defininition of the subject resource.
 	PropIsDefinedBy = "http://www.w3.org/2000/01/rdf-schema#isDefinedBy"
 
+	// A human-readable name for the subject.
 	PropLabel = "http://www.w3.org/2000/01/rdf-schema#label"
 
+	// A member of the subject resource.
 	PropMember = "http://www.w3.org/2000/01/rdf-schema#member"
 
+	// A range of the subject property.
 	PropRange = "http://www.w3.org/2000/01/rdf-schema#range"
 
+	// Further information about the subject resource.
 	PropSeeAlso = "http://www.w3.org/2000/01/rdf-schema#seeAlso"
 
+	// The subject is a subclass of a class.
 	PropSubClassOf = "http://www.w3.org/2000/01/rdf-schema#subClassOf"
 
+	// The subject is a subproperty of a property.
 	PropSubPropertyOf = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
 )
 

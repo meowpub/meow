@@ -6,6 +6,7 @@ import (
 	"github.com/meowpub/meow/ld"
 )
 
+// The class of containers of alternatives.
 type Alt struct{ O *ld.Object }
 
 func (obj Alt) Obj() *ld.Object            { return obj.O }
@@ -18,6 +19,7 @@ func (obj Alt) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The class of unordered containers.
 type Bag struct{ O *ld.Object }
 
 func (obj Bag) Obj() *ld.Object            { return obj.O }
@@ -30,6 +32,7 @@ func (obj Bag) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The class of RDF Lists.
 type List struct{ O *ld.Object }
 
 func (obj List) Obj() *ld.Object            { return obj.O }
@@ -42,14 +45,17 @@ func (obj List) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The first item in the subject RDF list.
 func (obj List) First() interface{} {
 	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"]
 }
 
+// The rest of the subject RDF list after the first item.
 func (obj List) Rest() interface{} {
 	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"]
 }
 
+// The class of RDF properties.
 type Property struct{ O *ld.Object }
 
 func (obj Property) Obj() *ld.Object            { return obj.O }
@@ -62,6 +68,7 @@ func (obj Property) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The class of ordered containers.
 type Seq struct{ O *ld.Object }
 
 func (obj Seq) Obj() *ld.Object            { return obj.O }
@@ -74,6 +81,7 @@ func (obj Seq) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The class of RDF statements.
 type Statement struct{ O *ld.Object }
 
 func (obj Statement) Obj() *ld.Object            { return obj.O }
@@ -86,14 +94,17 @@ func (obj Statement) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The object of the subject RDF statement.
 func (obj Statement) Object() interface{} {
 	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#object"]
 }
 
+// The predicate of the subject RDF statement.
 func (obj Statement) Predicate() interface{} {
 	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate"]
 }
 
+// The subject of the subject RDF statement.
 func (obj Statement) Subject() interface{} {
 	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"]
 }

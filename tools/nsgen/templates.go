@@ -1,9 +1,11 @@
 package main
 
 import (
+	"strings"
 	"text/template"
 
 	"github.com/meowpub/meow/ld"
+	"github.com/meowpub/meow/ld/ns"
 )
 
 var Funcs = template.FuncMap{
@@ -12,6 +14,16 @@ var Funcs = template.FuncMap{
 	"tovalue": func(v interface{}) string {
 		if obj := ld.ToObject(v); obj != nil {
 			return obj.Value()
+		}
+		return ""
+	},
+	"comment": func(v interface{}) string {
+		if s := ld.ToString(v); s != "" {
+			lines := strings.Split(s, "\n")
+			for i, line := range lines {
+				lines[i] = strings.TrimSpace(line)
+			}
+			return "// " + strings.Join(lines, "\n// ")
 		}
 		return ""
 	},
@@ -75,6 +87,10 @@ func (rctx RenderContext) Misc() (matches []*Declaration) {
 	return
 }
 
+func (rctx RenderContext) NS() map[string]*ld.Namespace {
+	return ns.Namespaces
+}
+
 var NSTemplate = template.Must(template.New("ns.gen.go").Funcs(Funcs).Parse(`
 // GENERATED FILE, DO NOT EDIT.
 // Please refer to: tools/nsgen/templates.go
@@ -87,8 +103,8 @@ import (
 const Namespace = "{{.Namespace.Long}}"
 
 {{if .Properties}}
-const (
-	{{range .Properties}}
+const ( {{range .Properties}}
+	{{comment (.Get $.NS.rdfs.Props.comment)}}
 	Prop{{.TypeName}} = "{{.ID}}"
 	{{end}}
 )
@@ -109,6 +125,7 @@ var NS = &ld.Namespace{
 }
 
 {{range .Misc}}
+{{comment (.Get $.NS.rdfs.Props.comment)}}
 // {{.ID}} - {{.RDFType}}
 {{end}}
 `[1:]))
@@ -123,6 +140,7 @@ import (
 )
 
 {{range $i, $cls := .Classes}}
+{{comment ($cls.Get $.NS.rdfs.Props.comment)}}
 type {{$cls.TypeName}} struct { O *ld.Object }
 
 func (obj {{$cls.TypeName}}) Obj() *ld.Object { return obj.O }
@@ -136,6 +154,7 @@ func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 {{range $.PropertiesOf $cls}}
+{{comment (.Get $.NS.rdfs.Props.comment)}}
 func (obj {{$cls.TypeName}}) {{.TypeName}}() interface{} {
 	return obj.O.V["{{.ID}}"]
 }
@@ -154,6 +173,7 @@ var DataTypesTemplate = template.Must(template.New("datatypes.gen.go").Funcs(Fun
 package {{.Namespace.Short}}
 
 {{range $i, $dt := .DataTypes}}
+{{comment ($dt.Get $.NS.rdfs.Props.comment)}}
 type {{$dt.TypeName}} interface{}
 {{end}}
 `[1:]))

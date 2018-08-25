@@ -9,18 +9,25 @@ import (
 const Namespace = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 
 const (
+	// The first item in the subject RDF list.
 	PropFirst = "http://www.w3.org/1999/02/22-rdf-syntax-ns#first"
 
+	// The object of the subject RDF statement.
 	PropObject = "http://www.w3.org/1999/02/22-rdf-syntax-ns#object"
 
+	// The predicate of the subject RDF statement.
 	PropPredicate = "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate"
 
+	// The rest of the subject RDF list after the first item.
 	PropRest = "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"
 
+	// The subject of the subject RDF statement.
 	PropSubject = "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"
 
+	// The subject is an instance of a class.
 	PropType = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
 
+	// Idiomatic property used for structured values.
 	PropValue = "http://www.w3.org/1999/02/22-rdf-syntax-ns#value"
 )
 

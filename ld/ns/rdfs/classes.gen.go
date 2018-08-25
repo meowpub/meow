@@ -6,6 +6,7 @@ import (
 	"github.com/meowpub/meow/ld"
 )
 
+// The class of classes.
 type Class struct{ O *ld.Object }
 
 func (obj Class) Obj() *ld.Object            { return obj.O }
@@ -18,10 +19,12 @@ func (obj Class) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The subject is a subclass of a class.
 func (obj Class) SubClassOf() interface{} {
 	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#subClassOf"]
 }
 
+// The class of RDF containers.
 type Container struct{ O *ld.Object }
 
 func (obj Container) Obj() *ld.Object            { return obj.O }
@@ -34,6 +37,8 @@ func (obj Container) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The class of container membership properties, rdf:_1, rdf:_2, ...,
+// all of which are sub-properties of 'member'.
 type ContainerMembershipProperty struct{ O *ld.Object }
 
 func (obj ContainerMembershipProperty) Obj() *ld.Object            { return obj.O }
@@ -46,6 +51,7 @@ func (obj ContainerMembershipProperty) Apply(other ld.Entity, mergeArrays bool) 
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The class of RDF datatypes.
 type Datatype struct{ O *ld.Object }
 
 func (obj Datatype) Obj() *ld.Object            { return obj.O }
@@ -58,6 +64,7 @@ func (obj Datatype) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The class of literal values, eg. textual strings and integers.
 type Literal struct{ O *ld.Object }
 
 func (obj Literal) Obj() *ld.Object            { return obj.O }
@@ -70,6 +77,7 @@ func (obj Literal) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// The class resource, everything.
 type Resource struct{ O *ld.Object }
 
 func (obj Resource) Obj() *ld.Object            { return obj.O }
@@ -82,22 +90,27 @@ func (obj Resource) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
 
+// A description of the subject resource.
 func (obj Resource) Comment() interface{} {
 	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#comment"]
 }
 
+// The defininition of the subject resource.
 func (obj Resource) IsDefinedBy() interface{} {
 	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#isDefinedBy"]
 }
 
+// A human-readable name for the subject.
 func (obj Resource) Label() interface{} {
 	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#label"]
 }
 
+// A member of the subject resource.
 func (obj Resource) Member() interface{} {
 	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#member"]
 }
 
+// Further information about the subject resource.
 func (obj Resource) SeeAlso() interface{} {
 	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#seeAlso"]
 }
