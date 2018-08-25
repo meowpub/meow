@@ -30,7 +30,7 @@ func Authorize(ctx context.Context, scope *Scope) error {
 	scopes := strings.Split(token.Scope, " ")
 	if scope != nil && !CheckScope(scopes, scope) {
 		return api.Wrap(
-			errors.Errorf("this endpoint requires the %s scope, but you only have grants for %s", strings.Join(scopes, ", ")),
+			errors.Errorf("this endpoint requires the %s scope, but you only have grants for %s", scope.ID, strings.Join(scopes, ", ")),
 			http.StatusForbidden,
 		)
 	}
