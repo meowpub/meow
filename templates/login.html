@@ -1,6 +1,7 @@
 <form method="POST">
   <input type="email" name="email" placeholder="user@example.com" />
   <input type="password" name="password" placeholder="password" />
+  <input type="hidden" name="redirect_uri" value="{{ .RedirectURI }}" />
   <button type="submit">Log in</button>
 </form>
 

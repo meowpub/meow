@@ -40,6 +40,10 @@ func WithNamedLogger(ctx context.Context, name string) context.Context {
 	return context.WithValue(ctx, ctxKeyLogger, GetLogger(ctx).Named(name))
 }
 
+func WithLoggerFields(ctx context.Context, f ...zap.Field) context.Context {
+	return context.WithValue(ctx, ctxKeyLogger, GetLogger(ctx).With(f...))
+}
+
 // GetDB returns the DB associated with the context, or nil.
 func GetDB(ctx context.Context) *gorm.DB {
 	db, _ := ctx.Value(ctxKeyDB).(*gorm.DB)
