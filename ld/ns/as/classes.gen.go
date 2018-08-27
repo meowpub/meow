@@ -14,7 +14,7 @@ func AsAccept(obj *ld.Object) Accept {
 }
 
 func IsAccept(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Accept")
+	return ld.Is(obj, TypeAccept)
 }
 
 // An Object representing some form of Action that has been taken
@@ -25,7 +25,7 @@ func AsActivity(obj *ld.Object) Activity {
 }
 
 func IsActivity(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Activity")
+	return ld.Is(obj, TypeActivity)
 }
 
 // Subproperty of as:attributedTo that identifies the primary actor
@@ -63,7 +63,7 @@ func AsAdd(obj *ld.Object) Add {
 }
 
 func IsAdd(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Add")
+	return ld.Is(obj, TypeAdd)
 }
 
 // Actor announces the object to the target
@@ -74,7 +74,7 @@ func AsAnnounce(obj *ld.Object) Announce {
 }
 
 func IsAnnounce(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Announce")
+	return ld.Is(obj, TypeAnnounce)
 }
 
 // Represents a software application of any sort
@@ -85,7 +85,7 @@ func AsApplication(obj *ld.Object) Application {
 }
 
 func IsApplication(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Application")
+	return ld.Is(obj, TypeApplication)
 }
 
 // To Arrive Somewhere (can be used, for instance, to indicate that a particular entity is currently located somewhere, e.g. a "check-in")
@@ -96,7 +96,7 @@ func AsArrive(obj *ld.Object) Arrive {
 }
 
 func IsArrive(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Arrive")
+	return ld.Is(obj, TypeArrive)
 }
 
 // A written work. Typically several paragraphs long. For example, a blog post or a news article.
@@ -107,7 +107,7 @@ func AsArticle(obj *ld.Object) Article {
 }
 
 func IsArticle(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Article")
+	return ld.Is(obj, TypeArticle)
 }
 
 // An audio file
@@ -118,7 +118,7 @@ func AsAudio(obj *ld.Object) Audio {
 }
 
 func IsAudio(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Audio")
+	return ld.Is(obj, TypeAudio)
 }
 
 type Block struct{ Ignore }
@@ -128,7 +128,7 @@ func AsBlock(obj *ld.Object) Block {
 }
 
 func IsBlock(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Block")
+	return ld.Is(obj, TypeBlock)
 }
 
 // An ordered or unordered collection of Objects or Links
@@ -139,7 +139,7 @@ func AsCollection(obj *ld.Object) Collection {
 }
 
 func IsCollection(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Collection")
+	return ld.Is(obj, TypeCollection)
 }
 
 func (obj Collection) Current() interface{} {
@@ -171,7 +171,7 @@ func AsCollectionPage(obj *ld.Object) CollectionPage {
 }
 
 func IsCollectionPage(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#CollectionPage")
+	return ld.Is(obj, TypeCollectionPage)
 }
 
 func (obj CollectionPage) Next() interface{} {
@@ -194,7 +194,7 @@ func AsCreate(obj *ld.Object) Create {
 }
 
 func IsCreate(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Create")
+	return ld.Is(obj, TypeCreate)
 }
 
 // To Delete Something
@@ -205,7 +205,7 @@ func AsDelete(obj *ld.Object) Delete {
 }
 
 func IsDelete(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Delete")
+	return ld.Is(obj, TypeDelete)
 }
 
 // The actor dislikes the object
@@ -216,7 +216,7 @@ func AsDislike(obj *ld.Object) Dislike {
 }
 
 func IsDislike(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Dislike")
+	return ld.Is(obj, TypeDislike)
 }
 
 // Represents a digital document/file of any sort
@@ -227,7 +227,7 @@ func AsDocument(obj *ld.Object) Document {
 }
 
 func IsDocument(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Document")
+	return ld.Is(obj, TypeDocument)
 }
 
 // An Event of any kind
@@ -238,7 +238,7 @@ func AsEvent(obj *ld.Object) Event {
 }
 
 func IsEvent(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Event")
+	return ld.Is(obj, TypeEvent)
 }
 
 // To flag something (e.g. flag as inappropriate, flag as spam, etc)
@@ -249,7 +249,7 @@ func AsFlag(obj *ld.Object) Flag {
 }
 
 func IsFlag(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Flag")
+	return ld.Is(obj, TypeFlag)
 }
 
 // To Express Interest in Something
@@ -260,7 +260,7 @@ func AsFollow(obj *ld.Object) Follow {
 }
 
 func IsFollow(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Follow")
+	return ld.Is(obj, TypeFollow)
 }
 
 // A Group of any kind.
@@ -271,7 +271,7 @@ func AsGroup(obj *ld.Object) Group {
 }
 
 func IsGroup(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Group")
+	return ld.Is(obj, TypeGroup)
 }
 
 // Actor is ignoring the Object
@@ -282,7 +282,7 @@ func AsIgnore(obj *ld.Object) Ignore {
 }
 
 func IsIgnore(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Ignore")
+	return ld.Is(obj, TypeIgnore)
 }
 
 // An Image file
@@ -293,7 +293,7 @@ func AsImage(obj *ld.Object) Image {
 }
 
 func IsImage(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Image")
+	return ld.Is(obj, TypeImage)
 }
 
 // An Activity that has no direct object
@@ -304,7 +304,7 @@ func AsIntransitiveActivity(obj *ld.Object) IntransitiveActivity {
 }
 
 func IsIntransitiveActivity(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#IntransitiveActivity")
+	return ld.Is(obj, TypeIntransitiveActivity)
 }
 
 // To invite someone or something to something
@@ -315,7 +315,7 @@ func AsInvite(obj *ld.Object) Invite {
 }
 
 func IsInvite(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Invite")
+	return ld.Is(obj, TypeInvite)
 }
 
 // To Join Something
@@ -326,7 +326,7 @@ func AsJoin(obj *ld.Object) Join {
 }
 
 func IsJoin(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Join")
+	return ld.Is(obj, TypeJoin)
 }
 
 // To Leave Something
@@ -337,7 +337,7 @@ func AsLeave(obj *ld.Object) Leave {
 }
 
 func IsLeave(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Leave")
+	return ld.Is(obj, TypeLeave)
 }
 
 // To Like Something
@@ -348,7 +348,7 @@ func AsLike(obj *ld.Object) Like {
 }
 
 func IsLike(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Like")
+	return ld.Is(obj, TypeLike)
 }
 
 // Represents a qualified reference to another resource. Patterned after the RFC5988 Web Linking Model
@@ -359,7 +359,7 @@ func AsLink(obj *ld.Object) Link {
 }
 
 func IsLink(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Link")
+	return ld.Is(obj, TypeLink)
 }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -423,7 +423,7 @@ func AsListen(obj *ld.Object) Listen {
 }
 
 func IsListen(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Listen")
+	return ld.Is(obj, TypeListen)
 }
 
 // A specialized Link that represents an @mention
@@ -434,7 +434,7 @@ func AsMention(obj *ld.Object) Mention {
 }
 
 func IsMention(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Mention")
+	return ld.Is(obj, TypeMention)
 }
 
 // The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from.
@@ -445,7 +445,7 @@ func AsMove(obj *ld.Object) Move {
 }
 
 func IsMove(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Move")
+	return ld.Is(obj, TypeMove)
 }
 
 // A Short note, typically less than a single paragraph. A "tweet" is an example, or a "status update"
@@ -456,7 +456,7 @@ func AsNote(obj *ld.Object) Note {
 }
 
 func IsNote(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Note")
+	return ld.Is(obj, TypeNote)
 }
 
 type Object struct{ o *ld.Object }
@@ -466,7 +466,7 @@ func AsObject(obj *ld.Object) Object {
 }
 
 func IsObject(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Object")
+	return ld.Is(obj, TypeObject)
 }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -636,7 +636,7 @@ func AsOffer(obj *ld.Object) Offer {
 }
 
 func IsOffer(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Offer")
+	return ld.Is(obj, TypeOffer)
 }
 
 // A variation of Collection in which items are strictly ordered
@@ -647,7 +647,7 @@ func AsOrderedCollection(obj *ld.Object) OrderedCollection {
 }
 
 func IsOrderedCollection(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#OrderedCollection")
+	return ld.Is(obj, TypeOrderedCollection)
 }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -689,7 +689,7 @@ func AsOrderedCollectionPage(obj *ld.Object) OrderedCollectionPage {
 }
 
 func IsOrderedCollectionPage(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#OrderedCollectionPage")
+	return ld.Is(obj, TypeOrderedCollectionPage)
 }
 
 // In a strictly ordered logical collection, specifies the index position of the first item in the items list
@@ -705,7 +705,7 @@ func AsOrderedItems(obj *ld.Object) OrderedItems {
 }
 
 func IsOrderedItems(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#OrderedItems")
+	return ld.Is(obj, TypeOrderedItems)
 }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -744,7 +744,7 @@ func AsOrganization(obj *ld.Object) Organization {
 }
 
 func IsOrganization(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Organization")
+	return ld.Is(obj, TypeOrganization)
 }
 
 // A Web Page
@@ -755,7 +755,7 @@ func AsPage(obj *ld.Object) Page {
 }
 
 func IsPage(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Page")
+	return ld.Is(obj, TypePage)
 }
 
 // A Person
@@ -766,7 +766,7 @@ func AsPerson(obj *ld.Object) Person {
 }
 
 func IsPerson(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Person")
+	return ld.Is(obj, TypePerson)
 }
 
 // A physical or logical location
@@ -777,7 +777,7 @@ func AsPlace(obj *ld.Object) Place {
 }
 
 func IsPlace(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Place")
+	return ld.Is(obj, TypePlace)
 }
 
 // Specifies the accuracy around the point established by the longitude and latitude
@@ -818,7 +818,7 @@ func AsProfile(obj *ld.Object) Profile {
 }
 
 func IsProfile(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Profile")
+	return ld.Is(obj, TypeProfile)
 }
 
 // On a Profile object, describes the object described by the profile
@@ -834,7 +834,7 @@ func AsQuestion(obj *ld.Object) Question {
 }
 
 func IsQuestion(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Question")
+	return ld.Is(obj, TypeQuestion)
 }
 
 // Describes a possible inclusive answer or option for a question.
@@ -855,7 +855,7 @@ func AsRead(obj *ld.Object) Read {
 }
 
 func IsRead(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Read")
+	return ld.Is(obj, TypeRead)
 }
 
 // Actor rejects the Object
@@ -866,7 +866,7 @@ func AsReject(obj *ld.Object) Reject {
 }
 
 func IsReject(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Reject")
+	return ld.Is(obj, TypeReject)
 }
 
 // Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)
@@ -877,7 +877,7 @@ func AsRelationship(obj *ld.Object) Relationship {
 }
 
 func IsRelationship(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Relationship")
+	return ld.Is(obj, TypeRelationship)
 }
 
 // On a Relationship object, describes the type of relationship
@@ -898,7 +898,7 @@ func AsRemove(obj *ld.Object) Remove {
 }
 
 func IsRemove(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Remove")
+	return ld.Is(obj, TypeRemove)
 }
 
 // A service provided by some entity
@@ -909,7 +909,7 @@ func AsService(obj *ld.Object) Service {
 }
 
 func IsService(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Service")
+	return ld.Is(obj, TypeService)
 }
 
 // Actor tentatively accepts the Object
@@ -920,7 +920,7 @@ func AsTentativeAccept(obj *ld.Object) TentativeAccept {
 }
 
 func IsTentativeAccept(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#TentativeAccept")
+	return ld.Is(obj, TypeTentativeAccept)
 }
 
 // Actor tentatively rejects the object
@@ -931,7 +931,7 @@ func AsTentativeReject(obj *ld.Object) TentativeReject {
 }
 
 func IsTentativeReject(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#TentativeReject")
+	return ld.Is(obj, TypeTentativeReject)
 }
 
 // A placeholder for a deleted object
@@ -942,7 +942,7 @@ func AsTombstone(obj *ld.Object) Tombstone {
 }
 
 func IsTombstone(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Tombstone")
+	return ld.Is(obj, TypeTombstone)
 }
 
 // Specifies the date and time the object was deleted
@@ -963,7 +963,7 @@ func AsTravel(obj *ld.Object) Travel {
 }
 
 func IsTravel(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Travel")
+	return ld.Is(obj, TypeTravel)
 }
 
 // To Undo Something. This would typically be used to indicate that a previous Activity has been undone.
@@ -974,7 +974,7 @@ func AsUndo(obj *ld.Object) Undo {
 }
 
 func IsUndo(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Undo")
+	return ld.Is(obj, TypeUndo)
 }
 
 // To Update/Modify Something
@@ -985,7 +985,7 @@ func AsUpdate(obj *ld.Object) Update {
 }
 
 func IsUpdate(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Update")
+	return ld.Is(obj, TypeUpdate)
 }
 
 // A Video document of any kind.
@@ -996,7 +996,7 @@ func AsVideo(obj *ld.Object) Video {
 }
 
 func IsVideo(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#Video")
+	return ld.Is(obj, TypeVideo)
 }
 
 // The actor viewed the object
@@ -1007,7 +1007,7 @@ func AsView(obj *ld.Object) View {
 }
 
 func IsView(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/ns/activitystreams#View")
+	return ld.Is(obj, TypeView)
 }
 
 var (

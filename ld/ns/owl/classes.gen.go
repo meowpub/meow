@@ -15,7 +15,7 @@ func AsAllDifferent(obj *ld.Object) AllDifferent {
 }
 
 func IsAllDifferent(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#AllDifferent")
+	return ld.Is(obj, TypeAllDifferent)
 }
 
 // The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.
@@ -31,7 +31,7 @@ func AsAllDisjointClasses(obj *ld.Object) AllDisjointClasses {
 }
 
 func IsAllDisjointClasses(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#AllDisjointClasses")
+	return ld.Is(obj, TypeAllDisjointClasses)
 }
 
 // The class of collections of pairwise disjoint properties.
@@ -42,7 +42,7 @@ func AsAllDisjointProperties(obj *ld.Object) AllDisjointProperties {
 }
 
 func IsAllDisjointProperties(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#AllDisjointProperties")
+	return ld.Is(obj, TypeAllDisjointProperties)
 }
 
 // The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.
@@ -53,7 +53,7 @@ func AsAnnotation(obj *ld.Object) Annotation {
 }
 
 func IsAnnotation(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#Annotation")
+	return ld.Is(obj, TypeAnnotation)
 }
 
 // The class of annotation properties.
@@ -64,7 +64,7 @@ func AsAnnotationProperty(obj *ld.Object) AnnotationProperty {
 }
 
 func IsAnnotationProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#AnnotationProperty")
+	return ld.Is(obj, TypeAnnotationProperty)
 }
 
 // The class of asymmetric properties.
@@ -75,7 +75,7 @@ func AsAsymmetricProperty(obj *ld.Object) AsymmetricProperty {
 }
 
 func IsAsymmetricProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#AsymmetricProperty")
+	return ld.Is(obj, TypeAsymmetricProperty)
 }
 
 // The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.
@@ -86,7 +86,7 @@ func AsAxiom(obj *ld.Object) Axiom {
 }
 
 func IsAxiom(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#Axiom")
+	return ld.Is(obj, TypeAxiom)
 }
 
 // The class of OWL classes.
@@ -97,7 +97,7 @@ func AsClass(obj *ld.Object) Class {
 }
 
 func IsClass(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#Class")
+	return ld.Is(obj, TypeClass)
 }
 
 // The property that determines that a given class is the complement of another class.
@@ -128,7 +128,7 @@ func AsDataRange(obj *ld.Object) DataRange {
 }
 
 func IsDataRange(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#DataRange")
+	return ld.Is(obj, TypeDataRange)
 }
 
 // The class of data properties.
@@ -139,7 +139,7 @@ func AsDatatypeProperty(obj *ld.Object) DatatypeProperty {
 }
 
 func IsDatatypeProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#DatatypeProperty")
+	return ld.Is(obj, TypeDatatypeProperty)
 }
 
 // The class of deprecated classes.
@@ -150,7 +150,7 @@ func AsDeprecatedClass(obj *ld.Object) DeprecatedClass {
 }
 
 func IsDeprecatedClass(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#DeprecatedClass")
+	return ld.Is(obj, TypeDeprecatedClass)
 }
 
 // The class of deprecated properties.
@@ -161,7 +161,7 @@ func AsDeprecatedProperty(obj *ld.Object) DeprecatedProperty {
 }
 
 func IsDeprecatedProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#DeprecatedProperty")
+	return ld.Is(obj, TypeDeprecatedProperty)
 }
 
 // The class of functional properties.
@@ -172,7 +172,7 @@ func AsFunctionalProperty(obj *ld.Object) FunctionalProperty {
 }
 
 func IsFunctionalProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#FunctionalProperty")
+	return ld.Is(obj, TypeFunctionalProperty)
 }
 
 // The class of inverse-functional properties.
@@ -183,7 +183,7 @@ func AsInverseFunctionalProperty(obj *ld.Object) InverseFunctionalProperty {
 }
 
 func IsInverseFunctionalProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#InverseFunctionalProperty")
+	return ld.Is(obj, TypeInverseFunctionalProperty)
 }
 
 // The class of irreflexive properties.
@@ -194,7 +194,7 @@ func AsIrreflexiveProperty(obj *ld.Object) IrreflexiveProperty {
 }
 
 func IsIrreflexiveProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#IrreflexiveProperty")
+	return ld.Is(obj, TypeIrreflexiveProperty)
 }
 
 // The class of named individuals.
@@ -205,7 +205,7 @@ func AsNamedIndividual(obj *ld.Object) NamedIndividual {
 }
 
 func IsNamedIndividual(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#NamedIndividual")
+	return ld.Is(obj, TypeNamedIndividual)
 }
 
 // The class of negative property assertions.
@@ -216,7 +216,7 @@ func AsNegativePropertyAssertion(obj *ld.Object) NegativePropertyAssertion {
 }
 
 func IsNegativePropertyAssertion(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#NegativePropertyAssertion")
+	return ld.Is(obj, TypeNegativePropertyAssertion)
 }
 
 // The property that determines the predicate of a negative property assertion.
@@ -247,7 +247,7 @@ func AsNothing(obj *ld.Object) Nothing {
 }
 
 func IsNothing(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#Nothing")
+	return ld.Is(obj, TypeNothing)
 }
 
 // The class of object properties.
@@ -258,7 +258,7 @@ func AsObjectProperty(obj *ld.Object) ObjectProperty {
 }
 
 func IsObjectProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#ObjectProperty")
+	return ld.Is(obj, TypeObjectProperty)
 }
 
 // The property that determines that two given properties are inverse.
@@ -279,7 +279,7 @@ func AsOntology(obj *ld.Object) Ontology {
 }
 
 func IsOntology(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#Ontology")
+	return ld.Is(obj, TypeOntology)
 }
 
 // The annotation property that indicates that a given ontology is backward compatible with another ontology.
@@ -315,7 +315,7 @@ func AsOntologyProperty(obj *ld.Object) OntologyProperty {
 }
 
 func IsOntologyProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#OntologyProperty")
+	return ld.Is(obj, TypeOntologyProperty)
 }
 
 // The class of reflexive properties.
@@ -326,7 +326,7 @@ func AsReflexiveProperty(obj *ld.Object) ReflexiveProperty {
 }
 
 func IsReflexiveProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#ReflexiveProperty")
+	return ld.Is(obj, TypeReflexiveProperty)
 }
 
 // The class of property restrictions.
@@ -337,7 +337,7 @@ func AsRestriction(obj *ld.Object) Restriction {
 }
 
 func IsRestriction(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#Restriction")
+	return ld.Is(obj, TypeRestriction)
 }
 
 // The property that determines the class that a universal property restriction refers to.
@@ -418,7 +418,7 @@ func AsSymmetricProperty(obj *ld.Object) SymmetricProperty {
 }
 
 func IsSymmetricProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#SymmetricProperty")
+	return ld.Is(obj, TypeSymmetricProperty)
 }
 
 // The class of OWL individuals.
@@ -429,7 +429,7 @@ func AsThing(obj *ld.Object) Thing {
 }
 
 func IsThing(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#Thing")
+	return ld.Is(obj, TypeThing)
 }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -498,7 +498,7 @@ func AsTransitiveProperty(obj *ld.Object) TransitiveProperty {
 }
 
 func IsTransitiveProperty(obj *ld.Object) bool {
-	return ld.Is(obj, "http://www.w3.org/2002/07/owl#TransitiveProperty")
+	return ld.Is(obj, TypeTransitiveProperty)
 }
 
 var (

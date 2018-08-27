@@ -186,7 +186,7 @@ func As{{$cls.TypeName}}(obj *ld.Object) {{$cls.TypeName}} {
 }
 
 func Is{{$cls.TypeName}}(obj *ld.Object) bool {
-	return ld.Is(obj, "{{.ID}}")
+	return ld.Is(obj, Type{{.TypeName}})
 }
 
 {{if not .SubClassOf}}
