@@ -17,12 +17,12 @@ type List struct{ Resource }
 
 // The first item in the subject RDF list.
 func (obj List) First() interface{} {
-	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"]
+	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#first")
 }
 
 // The rest of the subject RDF list after the first item.
 func (obj List) Rest() interface{} {
-	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"]
+	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest")
 }
 
 // The class of RDF properties.
@@ -30,17 +30,17 @@ type Property struct{ Resource }
 
 // A domain of the subject property.
 func (obj Property) Domain() interface{} {
-	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#domain"]
+	return obj.Get("http://www.w3.org/2000/01/rdf-schema#domain")
 }
 
 // A range of the subject property.
 func (obj Property) Range() interface{} {
-	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#range"]
+	return obj.Get("http://www.w3.org/2000/01/rdf-schema#range")
 }
 
 // The subject is a subproperty of a property.
 func (obj Property) SubPropertyOf() interface{} {
-	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#subPropertyOf"]
+	return obj.Get("http://www.w3.org/2000/01/rdf-schema#subPropertyOf")
 }
 
 // The class of ordered containers.
@@ -51,17 +51,17 @@ type Statement struct{ Resource }
 
 // The object of the subject RDF statement.
 func (obj Statement) Object() interface{} {
-	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#object"]
+	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#object")
 }
 
 // The predicate of the subject RDF statement.
 func (obj Statement) Predicate() interface{} {
-	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate"]
+	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate")
 }
 
 // The subject of the subject RDF statement.
 func (obj Statement) Subject() interface{} {
-	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"]
+	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#subject")
 }
 
 // The class of classes.
@@ -69,7 +69,7 @@ type Class struct{ Resource }
 
 // The subject is a subclass of a class.
 func (obj Class) SubClassOf() interface{} {
-	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#subClassOf"]
+	return obj.Get("http://www.w3.org/2000/01/rdf-schema#subClassOf")
 }
 
 // The class of RDF containers.
@@ -118,37 +118,37 @@ func (obj Resource) Apply(other ld.Entity, mergeArrays bool) error {
 
 // The subject is an instance of a class.
 func (obj Resource) Type_() interface{} {
-	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
+	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
 }
 
 // Idiomatic property used for structured values.
 func (obj Resource) Value_() interface{} {
-	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#value"]
+	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#value")
 }
 
 // A description of the subject resource.
 func (obj Resource) Comment() interface{} {
-	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#comment"]
+	return obj.Get("http://www.w3.org/2000/01/rdf-schema#comment")
 }
 
 // The defininition of the subject resource.
 func (obj Resource) IsDefinedBy() interface{} {
-	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#isDefinedBy"]
+	return obj.Get("http://www.w3.org/2000/01/rdf-schema#isDefinedBy")
 }
 
 // A human-readable name for the subject.
 func (obj Resource) Label() interface{} {
-	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#label"]
+	return obj.Get("http://www.w3.org/2000/01/rdf-schema#label")
 }
 
 // A member of the subject resource.
 func (obj Resource) Member() interface{} {
-	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#member"]
+	return obj.Get("http://www.w3.org/2000/01/rdf-schema#member")
 }
 
 // Further information about the subject resource.
 func (obj Resource) SeeAlso() interface{} {
-	return obj.O.V["http://www.w3.org/2000/01/rdf-schema#seeAlso"]
+	return obj.Get("http://www.w3.org/2000/01/rdf-schema#seeAlso")
 }
 
 var (

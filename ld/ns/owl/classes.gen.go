@@ -12,7 +12,7 @@ type AllDifferent struct{ rdf.Resource }
 
 // The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.
 func (obj AllDifferent) DistinctMembers() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#distinctMembers"]
+	return obj.Get("http://www.w3.org/2002/07/owl#distinctMembers")
 }
 
 // The class of collections of pairwise disjoint classes.
@@ -38,22 +38,22 @@ type Class struct{ rdf.Class }
 
 // The property that determines that a given class is the complement of another class.
 func (obj Class) ComplementOf() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#complementOf"]
+	return obj.Get("http://www.w3.org/2002/07/owl#complementOf")
 }
 
 // The property that determines that a given class is equivalent to the disjoint union of a collection of other classes.
 func (obj Class) DisjointUnionOf() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#disjointUnionOf"]
+	return obj.Get("http://www.w3.org/2002/07/owl#disjointUnionOf")
 }
 
 // The property that determines that two given classes are disjoint.
 func (obj Class) DisjointWith() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#disjointWith"]
+	return obj.Get("http://www.w3.org/2002/07/owl#disjointWith")
 }
 
 // The property that determines the collection of properties that jointly build a key.
 func (obj Class) HasKey() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#hasKey"]
+	return obj.Get("http://www.w3.org/2002/07/owl#hasKey")
 }
 
 // The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.
@@ -85,22 +85,22 @@ type NegativePropertyAssertion struct{ rdf.Resource }
 
 // The property that determines the predicate of a negative property assertion.
 func (obj NegativePropertyAssertion) AssertionProperty() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#assertionProperty"]
+	return obj.Get("http://www.w3.org/2002/07/owl#assertionProperty")
 }
 
 // The property that determines the subject of a negative property assertion.
 func (obj NegativePropertyAssertion) SourceIndividual() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#sourceIndividual"]
+	return obj.Get("http://www.w3.org/2002/07/owl#sourceIndividual")
 }
 
 // The property that determines the object of a negative object property assertion.
 func (obj NegativePropertyAssertion) TargetIndividual() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#targetIndividual"]
+	return obj.Get("http://www.w3.org/2002/07/owl#targetIndividual")
 }
 
 // The property that determines the value of a negative data property assertion.
 func (obj NegativePropertyAssertion) TargetValue() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#targetValue"]
+	return obj.Get("http://www.w3.org/2002/07/owl#targetValue")
 }
 
 // This is the empty class.
@@ -111,12 +111,12 @@ type ObjectProperty struct{ rdf.Property }
 
 // The property that determines that two given properties are inverse.
 func (obj ObjectProperty) InverseOf() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#inverseOf"]
+	return obj.Get("http://www.w3.org/2002/07/owl#inverseOf")
 }
 
 // The property that determines the n-tuple of properties that build a sub property chain of a given property.
 func (obj ObjectProperty) PropertyChainAxiom() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#propertyChainAxiom"]
+	return obj.Get("http://www.w3.org/2002/07/owl#propertyChainAxiom")
 }
 
 // The class of ontologies.
@@ -124,27 +124,27 @@ type Ontology struct{ rdf.Resource }
 
 // The annotation property that indicates that a given ontology is backward compatible with another ontology.
 func (obj Ontology) BackwardCompatibleWith() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#backwardCompatibleWith"]
+	return obj.Get("http://www.w3.org/2002/07/owl#backwardCompatibleWith")
 }
 
 // The property that is used for importing other ontologies into a given ontology.
 func (obj Ontology) Imports() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#imports"]
+	return obj.Get("http://www.w3.org/2002/07/owl#imports")
 }
 
 // The annotation property that indicates that a given ontology is incompatible with another ontology.
 func (obj Ontology) IncompatibleWith() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#incompatibleWith"]
+	return obj.Get("http://www.w3.org/2002/07/owl#incompatibleWith")
 }
 
 // The annotation property that indicates the predecessor ontology of a given ontology.
 func (obj Ontology) PriorVersion() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#priorVersion"]
+	return obj.Get("http://www.w3.org/2002/07/owl#priorVersion")
 }
 
 // The property that identifies the version IRI of an ontology.
 func (obj Ontology) VersionIRI() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#versionIRI"]
+	return obj.Get("http://www.w3.org/2002/07/owl#versionIRI")
 }
 
 // The class of ontology properties.
@@ -158,72 +158,72 @@ type Restriction struct{ Class }
 
 // The property that determines the class that a universal property restriction refers to.
 func (obj Restriction) AllValuesFrom() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#allValuesFrom"]
+	return obj.Get("http://www.w3.org/2002/07/owl#allValuesFrom")
 }
 
 // The property that determines the cardinality of an exact cardinality restriction.
 func (obj Restriction) Cardinality() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#cardinality"]
+	return obj.Get("http://www.w3.org/2002/07/owl#cardinality")
 }
 
 // The property that determines the property that a self restriction refers to.
 func (obj Restriction) HasSelf() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#hasSelf"]
+	return obj.Get("http://www.w3.org/2002/07/owl#hasSelf")
 }
 
 // The property that determines the individual that a has-value restriction refers to.
 func (obj Restriction) HasValue() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#hasValue"]
+	return obj.Get("http://www.w3.org/2002/07/owl#hasValue")
 }
 
 // The property that determines the cardinality of a maximum cardinality restriction.
 func (obj Restriction) MaxCardinality() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#maxCardinality"]
+	return obj.Get("http://www.w3.org/2002/07/owl#maxCardinality")
 }
 
 // The property that determines the cardinality of a maximum qualified cardinality restriction.
 func (obj Restriction) MaxQualifiedCardinality() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#maxQualifiedCardinality"]
+	return obj.Get("http://www.w3.org/2002/07/owl#maxQualifiedCardinality")
 }
 
 // The property that determines the cardinality of a minimum cardinality restriction.
 func (obj Restriction) MinCardinality() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#minCardinality"]
+	return obj.Get("http://www.w3.org/2002/07/owl#minCardinality")
 }
 
 // The property that determines the cardinality of a minimum qualified cardinality restriction.
 func (obj Restriction) MinQualifiedCardinality() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#minQualifiedCardinality"]
+	return obj.Get("http://www.w3.org/2002/07/owl#minQualifiedCardinality")
 }
 
 // The property that determines the class that a qualified object cardinality restriction refers to.
 func (obj Restriction) OnClass() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#onClass"]
+	return obj.Get("http://www.w3.org/2002/07/owl#onClass")
 }
 
 // The property that determines the data range that a qualified data cardinality restriction refers to.
 func (obj Restriction) OnDataRange() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#onDataRange"]
+	return obj.Get("http://www.w3.org/2002/07/owl#onDataRange")
 }
 
 // The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to.
 func (obj Restriction) OnProperties() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#onProperties"]
+	return obj.Get("http://www.w3.org/2002/07/owl#onProperties")
 }
 
 // The property that determines the property that a property restriction refers to.
 func (obj Restriction) OnProperty() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#onProperty"]
+	return obj.Get("http://www.w3.org/2002/07/owl#onProperty")
 }
 
 // The property that determines the cardinality of an exact qualified cardinality restriction.
 func (obj Restriction) QualifiedCardinality() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#qualifiedCardinality"]
+	return obj.Get("http://www.w3.org/2002/07/owl#qualifiedCardinality")
 }
 
 // The property that determines the class that an existential property restriction refers to.
 func (obj Restriction) SomeValuesFrom() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#someValuesFrom"]
+	return obj.Get("http://www.w3.org/2002/07/owl#someValuesFrom")
 }
 
 // The class of symmetric properties.
@@ -262,32 +262,32 @@ func (obj Thing) Apply(other ld.Entity, mergeArrays bool) error {
 
 // The data property that does not relate any individual to any data value.
 func (obj Thing) BottomDataProperty() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#bottomDataProperty"]
+	return obj.Get("http://www.w3.org/2002/07/owl#bottomDataProperty")
 }
 
 // The object property that does not relate any two individuals.
 func (obj Thing) BottomObjectProperty() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#bottomObjectProperty"]
+	return obj.Get("http://www.w3.org/2002/07/owl#bottomObjectProperty")
 }
 
 // The property that determines that two given individuals are different.
 func (obj Thing) DifferentFrom() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#differentFrom"]
+	return obj.Get("http://www.w3.org/2002/07/owl#differentFrom")
 }
 
 // The property that determines that two given individuals are equal.
 func (obj Thing) SameAs() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#sameAs"]
+	return obj.Get("http://www.w3.org/2002/07/owl#sameAs")
 }
 
 // The data property that relates every individual to every data value.
 func (obj Thing) TopDataProperty() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#topDataProperty"]
+	return obj.Get("http://www.w3.org/2002/07/owl#topDataProperty")
 }
 
 // The object property that relates every two individuals.
 func (obj Thing) TopObjectProperty() interface{} {
-	return obj.O.V["http://www.w3.org/2002/07/owl#topObjectProperty"]
+	return obj.Get("http://www.w3.org/2002/07/owl#topObjectProperty")
 }
 
 // The class of transitive properties.

@@ -202,7 +202,7 @@ func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error {
 {{range $.PropertiesOf $cls}}
 {{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 func (obj {{$cls.TypeName}}) {{.FuncName}}() interface{} {
-	return obj.O.V["{{.ID}}"]
+	return obj.Get("{{.ID}}")
 }
 {{end}}
 {{end}}
