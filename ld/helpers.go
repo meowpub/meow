@@ -1,7 +1,7 @@
 package ld
 
-func Is(obj *Object, typ string) bool {
-	for _, typ2 := range obj.Type() {
+func Is(e Entity, typ string) bool {
+	for _, typ2 := range e.Type() {
 		if typ == typ2 {
 			return true
 		}

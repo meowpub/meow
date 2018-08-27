@@ -11,10 +11,10 @@ import (
 type AllDifferent struct{ rdf.Resource }
 
 // Ducktypes the object into a(n) AllDifferent.
-func AsAllDifferent(obj *ld.Object) AllDifferent { return AllDifferent{rdf.AsResource(obj)} }
+func AsAllDifferent(e ld.Entity) AllDifferent { return AllDifferent{rdf.AsResource(e)} }
 
 // Does the object quack like a(n) AllDifferent?
-func IsAllDifferent(obj *ld.Object) bool { return ld.Is(obj, TypeAllDifferent) }
+func IsAllDifferent(e ld.Entity) bool { return ld.Is(e, TypeAllDifferent) }
 
 // The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.
 func (obj AllDifferent) DistinctMembers() interface{} { return obj.Get(PropDistinctMembers) }
@@ -23,72 +23,72 @@ func (obj AllDifferent) DistinctMembers() interface{} { return obj.Get(PropDisti
 type AllDisjointClasses struct{ rdf.Resource }
 
 // Ducktypes the object into a(n) AllDisjointClasses.
-func AsAllDisjointClasses(obj *ld.Object) AllDisjointClasses {
-	return AllDisjointClasses{rdf.AsResource(obj)}
+func AsAllDisjointClasses(e ld.Entity) AllDisjointClasses {
+	return AllDisjointClasses{rdf.AsResource(e)}
 }
 
 // Does the object quack like a(n) AllDisjointClasses?
-func IsAllDisjointClasses(obj *ld.Object) bool { return ld.Is(obj, TypeAllDisjointClasses) }
+func IsAllDisjointClasses(e ld.Entity) bool { return ld.Is(e, TypeAllDisjointClasses) }
 
 // The class of collections of pairwise disjoint properties.
 type AllDisjointProperties struct{ rdf.Resource }
 
 // Ducktypes the object into a(n) AllDisjointProperties.
-func AsAllDisjointProperties(obj *ld.Object) AllDisjointProperties {
-	return AllDisjointProperties{rdf.AsResource(obj)}
+func AsAllDisjointProperties(e ld.Entity) AllDisjointProperties {
+	return AllDisjointProperties{rdf.AsResource(e)}
 }
 
 // Does the object quack like a(n) AllDisjointProperties?
-func IsAllDisjointProperties(obj *ld.Object) bool { return ld.Is(obj, TypeAllDisjointProperties) }
+func IsAllDisjointProperties(e ld.Entity) bool { return ld.Is(e, TypeAllDisjointProperties) }
 
 // The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.
 type Annotation struct{ rdf.Resource }
 
 // Ducktypes the object into a(n) Annotation.
-func AsAnnotation(obj *ld.Object) Annotation { return Annotation{rdf.AsResource(obj)} }
+func AsAnnotation(e ld.Entity) Annotation { return Annotation{rdf.AsResource(e)} }
 
 // Does the object quack like a(n) Annotation?
-func IsAnnotation(obj *ld.Object) bool { return ld.Is(obj, TypeAnnotation) }
+func IsAnnotation(e ld.Entity) bool { return ld.Is(e, TypeAnnotation) }
 
 // The class of annotation properties.
 type AnnotationProperty struct{ rdf.Property }
 
 // Ducktypes the object into a(n) AnnotationProperty.
-func AsAnnotationProperty(obj *ld.Object) AnnotationProperty {
-	return AnnotationProperty{rdf.AsProperty(obj)}
+func AsAnnotationProperty(e ld.Entity) AnnotationProperty {
+	return AnnotationProperty{rdf.AsProperty(e)}
 }
 
 // Does the object quack like a(n) AnnotationProperty?
-func IsAnnotationProperty(obj *ld.Object) bool { return ld.Is(obj, TypeAnnotationProperty) }
+func IsAnnotationProperty(e ld.Entity) bool { return ld.Is(e, TypeAnnotationProperty) }
 
 // The class of asymmetric properties.
 type AsymmetricProperty struct{ ObjectProperty }
 
 // Ducktypes the object into a(n) AsymmetricProperty.
-func AsAsymmetricProperty(obj *ld.Object) AsymmetricProperty {
-	return AsymmetricProperty{AsObjectProperty(obj)}
+func AsAsymmetricProperty(e ld.Entity) AsymmetricProperty {
+	return AsymmetricProperty{AsObjectProperty(e)}
 }
 
 // Does the object quack like a(n) AsymmetricProperty?
-func IsAsymmetricProperty(obj *ld.Object) bool { return ld.Is(obj, TypeAsymmetricProperty) }
+func IsAsymmetricProperty(e ld.Entity) bool { return ld.Is(e, TypeAsymmetricProperty) }
 
 // The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.
 type Axiom struct{ rdf.Resource }
 
 // Ducktypes the object into a(n) Axiom.
-func AsAxiom(obj *ld.Object) Axiom { return Axiom{rdf.AsResource(obj)} }
+func AsAxiom(e ld.Entity) Axiom { return Axiom{rdf.AsResource(e)} }
 
 // Does the object quack like a(n) Axiom?
-func IsAxiom(obj *ld.Object) bool { return ld.Is(obj, TypeAxiom) }
+func IsAxiom(e ld.Entity) bool { return ld.Is(e, TypeAxiom) }
 
 // The class of OWL classes.
 type Class struct{ rdf.Class }
 
 // Ducktypes the object into a(n) Class.
-func AsClass(obj *ld.Object) Class { return Class{rdf.AsClass(obj)} }
+func AsClass(e ld.Entity) Class { return Class{rdf.AsClass(e)} }
 
 // Does the object quack like a(n) Class?
-func IsClass(obj *ld.Object) bool { return ld.Is(obj, TypeClass) }
+func IsClass(e ld.Entity) bool { return ld.Is(e, TypeClass) }
 
 // The property that determines that a given class is the complement of another class.
 func (obj Class) ComplementOf() interface{} { return obj.Get(PropComplementOf) }
@@ -106,96 +106,92 @@ func (obj Class) HasKey() interface{} { return obj.Get(PropHasKey) }
 type DataRange struct{ rdf.Datatype }
 
 // Ducktypes the object into a(n) DataRange.
-func AsDataRange(obj *ld.Object) DataRange { return DataRange{rdf.AsDatatype(obj)} }
+func AsDataRange(e ld.Entity) DataRange { return DataRange{rdf.AsDatatype(e)} }
 
 // Does the object quack like a(n) DataRange?
-func IsDataRange(obj *ld.Object) bool { return ld.Is(obj, TypeDataRange) }
+func IsDataRange(e ld.Entity) bool { return ld.Is(e, TypeDataRange) }
 
 // The class of data properties.
 type DatatypeProperty struct{ rdf.Property }
 
 // Ducktypes the object into a(n) DatatypeProperty.
-func AsDatatypeProperty(obj *ld.Object) DatatypeProperty { return DatatypeProperty{rdf.AsProperty(obj)} }
+func AsDatatypeProperty(e ld.Entity) DatatypeProperty { return DatatypeProperty{rdf.AsProperty(e)} }
 
 // Does the object quack like a(n) DatatypeProperty?
-func IsDatatypeProperty(obj *ld.Object) bool { return ld.Is(obj, TypeDatatypeProperty) }
+func IsDatatypeProperty(e ld.Entity) bool { return ld.Is(e, TypeDatatypeProperty) }
 
 // The class of deprecated classes.
 type DeprecatedClass struct{ rdf.Class }
 
 // Ducktypes the object into a(n) DeprecatedClass.
-func AsDeprecatedClass(obj *ld.Object) DeprecatedClass { return DeprecatedClass{rdf.AsClass(obj)} }
+func AsDeprecatedClass(e ld.Entity) DeprecatedClass { return DeprecatedClass{rdf.AsClass(e)} }
 
 // Does the object quack like a(n) DeprecatedClass?
-func IsDeprecatedClass(obj *ld.Object) bool { return ld.Is(obj, TypeDeprecatedClass) }
+func IsDeprecatedClass(e ld.Entity) bool { return ld.Is(e, TypeDeprecatedClass) }
 
 // The class of deprecated properties.
 type DeprecatedProperty struct{ rdf.Property }
 
 // Ducktypes the object into a(n) DeprecatedProperty.
-func AsDeprecatedProperty(obj *ld.Object) DeprecatedProperty {
-	return DeprecatedProperty{rdf.AsProperty(obj)}
+func AsDeprecatedProperty(e ld.Entity) DeprecatedProperty {
+	return DeprecatedProperty{rdf.AsProperty(e)}
 }
 
 // Does the object quack like a(n) DeprecatedProperty?
-func IsDeprecatedProperty(obj *ld.Object) bool { return ld.Is(obj, TypeDeprecatedProperty) }
+func IsDeprecatedProperty(e ld.Entity) bool { return ld.Is(e, TypeDeprecatedProperty) }
 
 // The class of functional properties.
 type FunctionalProperty struct{ rdf.Property }
 
 // Ducktypes the object into a(n) FunctionalProperty.
-func AsFunctionalProperty(obj *ld.Object) FunctionalProperty {
-	return FunctionalProperty{rdf.AsProperty(obj)}
+func AsFunctionalProperty(e ld.Entity) FunctionalProperty {
+	return FunctionalProperty{rdf.AsProperty(e)}
 }
 
 // Does the object quack like a(n) FunctionalProperty?
-func IsFunctionalProperty(obj *ld.Object) bool { return ld.Is(obj, TypeFunctionalProperty) }
+func IsFunctionalProperty(e ld.Entity) bool { return ld.Is(e, TypeFunctionalProperty) }
 
 // The class of inverse-functional properties.
 type InverseFunctionalProperty struct{ ObjectProperty }
 
 // Ducktypes the object into a(n) InverseFunctionalProperty.
-func AsInverseFunctionalProperty(obj *ld.Object) InverseFunctionalProperty {
-	return InverseFunctionalProperty{AsObjectProperty(obj)}
+func AsInverseFunctionalProperty(e ld.Entity) InverseFunctionalProperty {
+	return InverseFunctionalProperty{AsObjectProperty(e)}
 }
 
 // Does the object quack like a(n) InverseFunctionalProperty?
-func IsInverseFunctionalProperty(obj *ld.Object) bool {
-	return ld.Is(obj, TypeInverseFunctionalProperty)
-}
+func IsInverseFunctionalProperty(e ld.Entity) bool { return ld.Is(e, TypeInverseFunctionalProperty) }
 
 // The class of irreflexive properties.
 type IrreflexiveProperty struct{ ObjectProperty }
 
 // Ducktypes the object into a(n) IrreflexiveProperty.
-func AsIrreflexiveProperty(obj *ld.Object) IrreflexiveProperty {
-	return IrreflexiveProperty{AsObjectProperty(obj)}
+func AsIrreflexiveProperty(e ld.Entity) IrreflexiveProperty {
+	return IrreflexiveProperty{AsObjectProperty(e)}
 }
 
 // Does the object quack like a(n) IrreflexiveProperty?
-func IsIrreflexiveProperty(obj *ld.Object) bool { return ld.Is(obj, TypeIrreflexiveProperty) }
+func IsIrreflexiveProperty(e ld.Entity) bool { return ld.Is(e, TypeIrreflexiveProperty) }
 
 // The class of named individuals.
 type NamedIndividual struct{ Thing }
 
 // Ducktypes the object into a(n) NamedIndividual.
-func AsNamedIndividual(obj *ld.Object) NamedIndividual { return NamedIndividual{AsThing(obj)} }
+func AsNamedIndividual(e ld.Entity) NamedIndividual { return NamedIndividual{AsThing(e)} }
 
 // Does the object quack like a(n) NamedIndividual?
-func IsNamedIndividual(obj *ld.Object) bool { return ld.Is(obj, TypeNamedIndividual) }
+func IsNamedIndividual(e ld.Entity) bool { return ld.Is(e, TypeNamedIndividual) }
 
 // The class of negative property assertions.
 type NegativePropertyAssertion struct{ rdf.Resource }
 
 // Ducktypes the object into a(n) NegativePropertyAssertion.
-func AsNegativePropertyAssertion(obj *ld.Object) NegativePropertyAssertion {
-	return NegativePropertyAssertion{rdf.AsResource(obj)}
+func AsNegativePropertyAssertion(e ld.Entity) NegativePropertyAssertion {
+	return NegativePropertyAssertion{rdf.AsResource(e)}
 }
 
 // Does the object quack like a(n) NegativePropertyAssertion?
-func IsNegativePropertyAssertion(obj *ld.Object) bool {
-	return ld.Is(obj, TypeNegativePropertyAssertion)
-}
+func IsNegativePropertyAssertion(e ld.Entity) bool { return ld.Is(e, TypeNegativePropertyAssertion) }
 
 // The property that determines the predicate of a negative property assertion.
 func (obj NegativePropertyAssertion) AssertionProperty() interface{} {
@@ -219,19 +215,19 @@ func (obj NegativePropertyAssertion) TargetValue() interface{} { return obj.Get(
 type Nothing struct{ Thing }
 
 // Ducktypes the object into a(n) Nothing.
-func AsNothing(obj *ld.Object) Nothing { return Nothing{AsThing(obj)} }
+func AsNothing(e ld.Entity) Nothing { return Nothing{AsThing(e)} }
 
 // Does the object quack like a(n) Nothing?
-func IsNothing(obj *ld.Object) bool { return ld.Is(obj, TypeNothing) }
+func IsNothing(e ld.Entity) bool { return ld.Is(e, TypeNothing) }
 
 // The class of object properties.
 type ObjectProperty struct{ rdf.Property }
 
 // Ducktypes the object into a(n) ObjectProperty.
-func AsObjectProperty(obj *ld.Object) ObjectProperty { return ObjectProperty{rdf.AsProperty(obj)} }
+func AsObjectProperty(e ld.Entity) ObjectProperty { return ObjectProperty{rdf.AsProperty(e)} }
 
 // Does the object quack like a(n) ObjectProperty?
-func IsObjectProperty(obj *ld.Object) bool { return ld.Is(obj, TypeObjectProperty) }
+func IsObjectProperty(e ld.Entity) bool { return ld.Is(e, TypeObjectProperty) }
 
 // The property that determines that two given properties are inverse.
 func (obj ObjectProperty) InverseOf() interface{} { return obj.Get(PropInverseOf) }
@@ -243,10 +239,10 @@ func (obj ObjectProperty) PropertyChainAxiom() interface{} { return obj.Get(Prop
 type Ontology struct{ rdf.Resource }
 
 // Ducktypes the object into a(n) Ontology.
-func AsOntology(obj *ld.Object) Ontology { return Ontology{rdf.AsResource(obj)} }
+func AsOntology(e ld.Entity) Ontology { return Ontology{rdf.AsResource(e)} }
 
 // Does the object quack like a(n) Ontology?
-func IsOntology(obj *ld.Object) bool { return ld.Is(obj, TypeOntology) }
+func IsOntology(e ld.Entity) bool { return ld.Is(e, TypeOntology) }
 
 // The annotation property that indicates that a given ontology is backward compatible with another ontology.
 func (obj Ontology) BackwardCompatibleWith() interface{} { return obj.Get(PropBackwardCompatibleWith) }
@@ -267,30 +263,28 @@ func (obj Ontology) VersionIRI() interface{} { return obj.Get(PropVersionIRI) }
 type OntologyProperty struct{ rdf.Property }
 
 // Ducktypes the object into a(n) OntologyProperty.
-func AsOntologyProperty(obj *ld.Object) OntologyProperty { return OntologyProperty{rdf.AsProperty(obj)} }
+func AsOntologyProperty(e ld.Entity) OntologyProperty { return OntologyProperty{rdf.AsProperty(e)} }
 
 // Does the object quack like a(n) OntologyProperty?
-func IsOntologyProperty(obj *ld.Object) bool { return ld.Is(obj, TypeOntologyProperty) }
+func IsOntologyProperty(e ld.Entity) bool { return ld.Is(e, TypeOntologyProperty) }
 
 // The class of reflexive properties.
 type ReflexiveProperty struct{ ObjectProperty }
 
 // Ducktypes the object into a(n) ReflexiveProperty.
-func AsReflexiveProperty(obj *ld.Object) ReflexiveProperty {
-	return ReflexiveProperty{AsObjectProperty(obj)}
-}
+func AsReflexiveProperty(e ld.Entity) ReflexiveProperty { return ReflexiveProperty{AsObjectProperty(e)} }
 
 // Does the object quack like a(n) ReflexiveProperty?
-func IsReflexiveProperty(obj *ld.Object) bool { return ld.Is(obj, TypeReflexiveProperty) }
+func IsReflexiveProperty(e ld.Entity) bool { return ld.Is(e, TypeReflexiveProperty) }
 
 // The class of property restrictions.
 type Restriction struct{ Class }
 
 // Ducktypes the object into a(n) Restriction.
-func AsRestriction(obj *ld.Object) Restriction { return Restriction{AsClass(obj)} }
+func AsRestriction(e ld.Entity) Restriction { return Restriction{AsClass(e)} }
 
 // Does the object quack like a(n) Restriction?
-func IsRestriction(obj *ld.Object) bool { return ld.Is(obj, TypeRestriction) }
+func IsRestriction(e ld.Entity) bool { return ld.Is(e, TypeRestriction) }
 
 // The property that determines the class that a universal property restriction refers to.
 func (obj Restriction) AllValuesFrom() interface{} { return obj.Get(PropAllValuesFrom) }
@@ -342,21 +336,19 @@ func (obj Restriction) SomeValuesFrom() interface{} { return obj.Get(PropSomeVal
 type SymmetricProperty struct{ ObjectProperty }
 
 // Ducktypes the object into a(n) SymmetricProperty.
-func AsSymmetricProperty(obj *ld.Object) SymmetricProperty {
-	return SymmetricProperty{AsObjectProperty(obj)}
-}
+func AsSymmetricProperty(e ld.Entity) SymmetricProperty { return SymmetricProperty{AsObjectProperty(e)} }
 
 // Does the object quack like a(n) SymmetricProperty?
-func IsSymmetricProperty(obj *ld.Object) bool { return ld.Is(obj, TypeSymmetricProperty) }
+func IsSymmetricProperty(e ld.Entity) bool { return ld.Is(e, TypeSymmetricProperty) }
 
 // The class of OWL individuals.
 type Thing struct{ o *ld.Object }
 
 // Ducktypes the object into a(n) Thing.
-func AsThing(obj *ld.Object) Thing { return Thing{o: obj} }
+func AsThing(e ld.Entity) Thing { return Thing{o: e.Obj()} }
 
 // Does the object quack like a(n) Thing?
-func IsThing(obj *ld.Object) bool { return ld.Is(obj, TypeThing) }
+func IsThing(e ld.Entity) bool { return ld.Is(e, TypeThing) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Thing) Obj() *ld.Object { return obj.o }
@@ -400,12 +392,12 @@ func (obj Thing) TopObjectProperty() interface{} { return obj.Get(PropTopObjectP
 type TransitiveProperty struct{ ObjectProperty }
 
 // Ducktypes the object into a(n) TransitiveProperty.
-func AsTransitiveProperty(obj *ld.Object) TransitiveProperty {
-	return TransitiveProperty{AsObjectProperty(obj)}
+func AsTransitiveProperty(e ld.Entity) TransitiveProperty {
+	return TransitiveProperty{AsObjectProperty(e)}
 }
 
 // Does the object quack like a(n) TransitiveProperty?
-func IsTransitiveProperty(obj *ld.Object) bool { return ld.Is(obj, TypeTransitiveProperty) }
+func IsTransitiveProperty(e ld.Entity) bool { return ld.Is(e, TypeTransitiveProperty) }
 
 var (
 	_ ld.Entity = AllDifferent{}

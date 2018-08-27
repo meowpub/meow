@@ -183,10 +183,10 @@ import (
 type {{$cls.TypeName}} struct { {{range .SubClassOf}}{{$.Resolve .}}; {{else}}o *ld.Object{{end}} }
 
 // Ducktypes the object into a(n) {{.TypeName}}.
-func As{{$cls.TypeName}}(obj *ld.Object) {{$cls.TypeName}} { return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(obj),{{else}}o: obj{{end}} } }
+func As{{$cls.TypeName}}(e ld.Entity) {{$cls.TypeName}} { return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(e),{{else}}o: e.Obj(){{end}} } }
 
 // Does the object quack like a(n) {{.TypeName}}?
-func Is{{$cls.TypeName}}(obj *ld.Object) bool { return ld.Is(obj, Type{{.TypeName}}) }
+func Is{{$cls.TypeName}}(e ld.Entity) bool { return ld.Is(e, Type{{.TypeName}}) }
 
 {{if not .SubClassOf}}
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
