@@ -41,12 +41,12 @@ func IsList(obj *ld.Object) bool {
 
 // The first item in the subject RDF list.
 func (obj List) First() interface{} {
-	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#first")
+	return obj.Get(PropFirst)
 }
 
 // The rest of the subject RDF list after the first item.
 func (obj List) Rest() interface{} {
-	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#rest")
+	return obj.Get(PropRest)
 }
 
 // The class of RDF properties.
@@ -62,17 +62,17 @@ func IsProperty(obj *ld.Object) bool {
 
 // A domain of the subject property.
 func (obj Property) Domain() interface{} {
-	return obj.Get("http://www.w3.org/2000/01/rdf-schema#domain")
+	return obj.Get(PropDomain)
 }
 
 // A range of the subject property.
 func (obj Property) Range() interface{} {
-	return obj.Get("http://www.w3.org/2000/01/rdf-schema#range")
+	return obj.Get(PropRange)
 }
 
 // The subject is a subproperty of a property.
 func (obj Property) SubPropertyOf() interface{} {
-	return obj.Get("http://www.w3.org/2000/01/rdf-schema#subPropertyOf")
+	return obj.Get(PropSubPropertyOf)
 }
 
 // The class of ordered containers.
@@ -99,17 +99,17 @@ func IsStatement(obj *ld.Object) bool {
 
 // The object of the subject RDF statement.
 func (obj Statement) Object() interface{} {
-	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#object")
+	return obj.Get(PropObject)
 }
 
 // The predicate of the subject RDF statement.
 func (obj Statement) Predicate() interface{} {
-	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate")
+	return obj.Get(PropPredicate)
 }
 
 // The subject of the subject RDF statement.
 func (obj Statement) Subject() interface{} {
-	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#subject")
+	return obj.Get(PropSubject)
 }
 
 // The class of classes.
@@ -125,7 +125,7 @@ func IsClass(obj *ld.Object) bool {
 
 // The subject is a subclass of a class.
 func (obj Class) SubClassOf() interface{} {
-	return obj.Get("http://www.w3.org/2000/01/rdf-schema#subClassOf")
+	return obj.Get(PropSubClassOf)
 }
 
 // The class of RDF containers.
@@ -214,37 +214,37 @@ func (obj Resource) Apply(other ld.Entity, mergeArrays bool) error {
 
 // The subject is an instance of a class.
 func (obj Resource) Type_() interface{} {
-	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
+	return obj.Get(PropType)
 }
 
 // Idiomatic property used for structured values.
 func (obj Resource) Value_() interface{} {
-	return obj.Get("http://www.w3.org/1999/02/22-rdf-syntax-ns#value")
+	return obj.Get(PropValue)
 }
 
 // A description of the subject resource.
 func (obj Resource) Comment() interface{} {
-	return obj.Get("http://www.w3.org/2000/01/rdf-schema#comment")
+	return obj.Get(PropComment)
 }
 
 // The defininition of the subject resource.
 func (obj Resource) IsDefinedBy() interface{} {
-	return obj.Get("http://www.w3.org/2000/01/rdf-schema#isDefinedBy")
+	return obj.Get(PropIsDefinedBy)
 }
 
 // A human-readable name for the subject.
 func (obj Resource) Label() interface{} {
-	return obj.Get("http://www.w3.org/2000/01/rdf-schema#label")
+	return obj.Get(PropLabel)
 }
 
 // A member of the subject resource.
 func (obj Resource) Member() interface{} {
-	return obj.Get("http://www.w3.org/2000/01/rdf-schema#member")
+	return obj.Get(PropMember)
 }
 
 // Further information about the subject resource.
 func (obj Resource) SeeAlso() interface{} {
-	return obj.Get("http://www.w3.org/2000/01/rdf-schema#seeAlso")
+	return obj.Get(PropSeeAlso)
 }
 
 var (

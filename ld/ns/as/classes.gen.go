@@ -30,29 +30,29 @@ func IsActivity(obj *ld.Object) bool {
 
 // Subproperty of as:attributedTo that identifies the primary actor
 func (obj Activity) Actor() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#actor")
+	return obj.Get(PropActor)
 }
 
 // Indentifies an object used (or to be used) to complete an activity
 func (obj Activity) Instrument() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#instrument")
+	return obj.Get(PropInstrument)
 }
 
 // For certain activities, specifies the entity from which the action is directed.
 func (obj Activity) Origin() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#origin")
+	return obj.Get(PropOrigin)
 }
 
 func (obj Activity) Result() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#result")
+	return obj.Get(PropResult)
 }
 
 func (obj Activity) Target() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#target")
+	return obj.Get(PropTarget)
 }
 
 func (obj Activity) Verb() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#verb")
+	return obj.Get(PropVerb)
 }
 
 // To Add an Object or Link to Something
@@ -143,24 +143,24 @@ func IsCollection(obj *ld.Object) bool {
 }
 
 func (obj Collection) Current() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#current")
+	return obj.Get(PropCurrent)
 }
 
 func (obj Collection) First() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#first")
+	return obj.Get(PropFirst)
 }
 
 func (obj Collection) Items() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#items")
+	return obj.Get(PropItems)
 }
 
 func (obj Collection) Last() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#last")
+	return obj.Get(PropLast)
 }
 
 // The total number of items in a logical collection
 func (obj Collection) TotalItems() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#totalItems")
+	return obj.Get(PropTotalItems)
 }
 
 // A subset of items from a Collection
@@ -175,15 +175,15 @@ func IsCollectionPage(obj *ld.Object) bool {
 }
 
 func (obj CollectionPage) Next() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#next")
+	return obj.Get(PropNext)
 }
 
 func (obj CollectionPage) PartOf() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#partOf")
+	return obj.Get(PropPartOf)
 }
 
 func (obj CollectionPage) Prev() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#prev")
+	return obj.Get(PropPrev)
 }
 
 // To Create Something
@@ -392,27 +392,27 @@ func (obj Link) Apply(other ld.Entity, mergeArrays bool) error {
 
 // The display height expressed as device independent pixels
 func (obj Link) Height() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#height")
+	return obj.Get(PropHeight)
 }
 
 // The target URI of the Link
 func (obj Link) Href() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#href")
+	return obj.Get(PropHref)
 }
 
 // A hint about the language of the referenced resource
 func (obj Link) Hreflang() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#hreflang")
+	return obj.Get(PropHreflang)
 }
 
 // The RFC 5988 or HTML5 Link Relation associated with the Link
 func (obj Link) Rel() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#rel")
+	return obj.Get(PropRel)
 }
 
 // Specifies the preferred display width of the content, expressed in terms of device independent pixels.
 func (obj Link) Width() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#width")
+	return obj.Get(PropWidth)
 }
 
 // The actor listened to the object
@@ -498,134 +498,134 @@ func (obj Object) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 func (obj Object) Attachment() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#attachment")
+	return obj.Get(PropAttachment)
 }
 
 func (obj Object) Attachments() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#attachments")
+	return obj.Get(PropAttachments)
 }
 
 func (obj Object) Audience() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#audience")
+	return obj.Get(PropAudience)
 }
 
 // Identifies the author of an object. Deprecated. Use as:attributedTo instead
 func (obj Object) Author() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#author")
+	return obj.Get(PropAuthor)
 }
 
 func (obj Object) Bcc() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#bcc")
+	return obj.Get(PropBcc)
 }
 
 func (obj Object) Bto() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#bto")
+	return obj.Get(PropBto)
 }
 
 func (obj Object) Cc() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#cc")
+	return obj.Get(PropCc)
 }
 
 // The content of the object.
 func (obj Object) Content() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#content")
+	return obj.Get(PropContent)
 }
 
 // Specifies the context within which an object exists or an activity was performed
 func (obj Object) Context() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#context")
+	return obj.Get(PropContext)
 }
 
 func (obj Object) DownstreamDuplicates() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#downstreamDuplicates")
+	return obj.Get(PropDownstreamDuplicates)
 }
 
 // The duration of the object
 func (obj Object) Duration() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#duration")
+	return obj.Get(PropDuration)
 }
 
 // The ending time of the object
 func (obj Object) EndTime() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#endTime")
+	return obj.Get(PropEndTime)
 }
 
 func (obj Object) Generator() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#generator")
+	return obj.Get(PropGenerator)
 }
 
 func (obj Object) Icon() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#icon")
+	return obj.Get(PropIcon)
 }
 
 func (obj Object) Image() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#image")
+	return obj.Get(PropImage)
 }
 
 func (obj Object) InReplyTo() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#inReplyTo")
+	return obj.Get(PropInReplyTo)
 }
 
 func (obj Object) Location() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#location")
+	return obj.Get(PropLocation)
 }
 
 func (obj Object) ObjectType() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#objectType")
+	return obj.Get(PropObjectType)
 }
 
 func (obj Object) Provider() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#provider")
+	return obj.Get(PropProvider)
 }
 
 // Specifies the date and time the object was published
 func (obj Object) Published() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#published")
+	return obj.Get(PropPublished)
 }
 
 // A numeric rating (>= 0.0, <= 5.0) for the object
 func (obj Object) Rating() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#rating")
+	return obj.Get(PropRating)
 }
 
 func (obj Object) Replies() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#replies")
+	return obj.Get(PropReplies)
 }
 
 // The starting time of the object
 func (obj Object) StartTime() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#startTime")
+	return obj.Get(PropStartTime)
 }
 
 // A short summary of the object
 func (obj Object) Summary() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#summary")
+	return obj.Get(PropSummary)
 }
 
 func (obj Object) Tag() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#tag")
+	return obj.Get(PropTag)
 }
 
 func (obj Object) Tags() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#tags")
+	return obj.Get(PropTags)
 }
 
 func (obj Object) To() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#to")
+	return obj.Get(PropTo)
 }
 
 // Specifies when the object was last updated
 func (obj Object) Updated() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#updated")
+	return obj.Get(PropUpdated)
 }
 
 func (obj Object) UpstreamDuplicates() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#upstreamDuplicates")
+	return obj.Get(PropUpstreamDuplicates)
 }
 
 // Specifies a link to a specific representation of the Object
 func (obj Object) Url() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#url")
+	return obj.Get(PropUrl)
 }
 
 // To Offer something to someone or something
@@ -694,7 +694,7 @@ func IsOrderedCollectionPage(obj *ld.Object) bool {
 
 // In a strictly ordered logical collection, specifies the index position of the first item in the items list
 func (obj OrderedCollectionPage) StartIndex() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#startIndex")
+	return obj.Get(PropStartIndex)
 }
 
 // A rdf:List variant for Objects and Links
@@ -782,32 +782,32 @@ func IsPlace(obj *ld.Object) bool {
 
 // Specifies the accuracy around the point established by the longitude and latitude
 func (obj Place) Accuracy() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#accuracy")
+	return obj.Get(PropAccuracy)
 }
 
 // The altitude of a place
 func (obj Place) Altitude() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#altitude")
+	return obj.Get(PropAltitude)
 }
 
 // The latitude
 func (obj Place) Latitude() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#latitude")
+	return obj.Get(PropLatitude)
 }
 
 // The longitude
 func (obj Place) Longitude() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#longitude")
+	return obj.Get(PropLongitude)
 }
 
 // Specifies a radius around the point established by the longitude and latitude
 func (obj Place) Radius() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#radius")
+	return obj.Get(PropRadius)
 }
 
 // Identifies the unit of measurement used by the radius, altitude and accuracy properties. The value can be expressed either as one of a set of predefined units or as a well-known common URI that identifies units.
 func (obj Place) Units() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#units")
+	return obj.Get(PropUnits)
 }
 
 // A Profile Document
@@ -823,7 +823,7 @@ func IsProfile(obj *ld.Object) bool {
 
 // On a Profile object, describes the object described by the profile
 func (obj Profile) Describes() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#describes")
+	return obj.Get(PropDescribes)
 }
 
 // A question of any sort.
@@ -839,12 +839,12 @@ func IsQuestion(obj *ld.Object) bool {
 
 // Describes a possible inclusive answer or option for a question.
 func (obj Question) AnyOf() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#anyOf")
+	return obj.Get(PropAnyOf)
 }
 
 // Describes a possible exclusive answer or option for a question.
 func (obj Question) OneOf() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#oneOf")
+	return obj.Get(PropOneOf)
 }
 
 // The actor read the object
@@ -882,12 +882,12 @@ func IsRelationship(obj *ld.Object) bool {
 
 // On a Relationship object, describes the type of relationship
 func (obj Relationship) Relationship() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#relationship")
+	return obj.Get(PropRelationship)
 }
 
 // On a Relationship object, identifies the subject. e.g. when saying "John is connected to Sally", 'subject' refers to 'John'
 func (obj Relationship) Subject() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#subject")
+	return obj.Get(PropSubject)
 }
 
 // To Remove Something
@@ -947,12 +947,12 @@ func IsTombstone(obj *ld.Object) bool {
 
 // Specifies the date and time the object was deleted
 func (obj Tombstone) Deleted() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#deleted")
+	return obj.Get(PropDeleted)
 }
 
 // On a Tombstone object, describes the former type of the deleted object
 func (obj Tombstone) FormerType() interface{} {
-	return obj.Get("http://www.w3.org/ns/activitystreams#formerType")
+	return obj.Get(PropFormerType)
 }
 
 // The actor is traveling to the target. The origin specifies where the actor is traveling from.
