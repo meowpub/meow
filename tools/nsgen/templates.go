@@ -146,6 +146,7 @@ import (
 {{comment ($cls.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 type {{$cls.TypeName}} struct { {{if .SubClassOf}}{{$.Resolve .SubClassOf}}{{else}}O *ld.Object{{end}} }
 
+{{if not .SubClassOf}}
 func (obj {{$cls.TypeName}}) Obj() *ld.Object { return obj.O }
 func (obj {{$cls.TypeName}}) ID() string { return obj.O.ID() }
 func (obj {{$cls.TypeName}}) Value() string { return obj.O.Value() }
@@ -155,6 +156,7 @@ func (obj {{$cls.TypeName}}) Get(key string) interface{} { return obj.O.Get(key)
 func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
+{{end}}
 
 {{range $.PropertiesOf $cls}}
 {{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
