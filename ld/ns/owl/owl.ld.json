@@ -1,0 +1,3602 @@
+[
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDifferent",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDifferent",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of collections of pairwise different individuals."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDifferent",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDifferent",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "AllDifferent"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDifferent",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointClasses",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointClasses",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of collections of pairwise disjoint classes."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointClasses",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointClasses",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "AllDisjointClasses"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointClasses",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointProperties",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointProperties",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of collections of pairwise disjoint properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointProperties",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointProperties",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "AllDisjointProperties"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AllDisjointProperties",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Annotation",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Annotation",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Annotation",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Annotation",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Annotation"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Annotation",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of annotation properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "AnnotationProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AsymmetricProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AsymmetricProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of asymmetric properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AsymmetricProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AsymmetricProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "AsymmetricProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#AsymmetricProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Axiom",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Axiom",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Axiom",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Axiom",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Axiom"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Axiom",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of OWL classes."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DataRange",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DataRange",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DataRange",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DataRange",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "DataRange"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DataRange",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of data properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "DatatypeProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedClass",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedClass",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of deprecated classes."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedClass",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedClass",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "DeprecatedClass"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedClass",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of deprecated properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "DeprecatedProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of functional properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "FunctionalProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#InverseFunctionalProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#InverseFunctionalProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of inverse-functional properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#InverseFunctionalProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#InverseFunctionalProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "InverseFunctionalProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#InverseFunctionalProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#IrreflexiveProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#IrreflexiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of irreflexive properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#IrreflexiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#IrreflexiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "IrreflexiveProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#IrreflexiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of named individuals."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "NamedIndividual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of negative property assertions."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "NegativePropertyAssertion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Nothing",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Nothing",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "This is the empty class."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Nothing",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Nothing",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Nothing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Nothing",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of object properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of ontologies."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#OntologyProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#OntologyProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of ontology properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#OntologyProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#OntologyProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "OntologyProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#OntologyProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ReflexiveProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ReflexiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of reflexive properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ReflexiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ReflexiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "ReflexiveProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#ReflexiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Restriction",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Restriction",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of property restrictions."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Restriction",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Restriction",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Restriction",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#SymmetricProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#SymmetricProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of symmetric properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#SymmetricProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#SymmetricProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "SymmetricProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#SymmetricProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Thing",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Thing",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of OWL individuals."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Thing",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#Thing",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#TransitiveProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#TransitiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The class of transitive properties."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#TransitiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#TransitiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "TransitiveProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#TransitiveProperty",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#allValuesFrom",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#allValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the class that a universal property restriction refers to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#allValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#allValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#allValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "allValuesFrom"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#allValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the predicate of an annotated axiom or annotated annotation."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "annotatedProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedSource",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedSource",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the subject of an annotated axiom or annotated annotation."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedSource",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedSource",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedSource",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "annotatedSource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedSource",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedTarget",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedTarget",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the object of an annotated axiom or annotated annotation."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedTarget",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedTarget",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedTarget",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "annotatedTarget"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#annotatedTarget",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#assertionProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#assertionProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the predicate of a negative property assertion."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#assertionProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#assertionProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#assertionProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "assertionProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#assertionProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#OntologyProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The annotation property that indicates that a given ontology is backward compatible with another ontology."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "backwardCompatibleWith"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#backwardCompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomDataProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The data property that does not relate any individual to any data value."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "bottomDataProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomObjectProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The object property that does not relate any two individuals."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "bottomObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#bottomObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#cardinality",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#cardinality",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the cardinality of an exact cardinality restriction."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#cardinality",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#cardinality",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#cardinality",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "cardinality"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#cardinality",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#complementOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#complementOf",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that a given class is the complement of another class."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#complementOf",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#complementOf",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#complementOf",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "complementOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#complementOf",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#datatypeComplementOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#datatypeComplementOf",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that a given data range is the complement of another data range with respect to the data domain."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#datatypeComplementOf",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#datatypeComplementOf",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#datatypeComplementOf",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "datatypeComplementOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#datatypeComplementOf",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#deprecated",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#deprecated",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The annotation property that indicates that a given entity has been deprecated."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#deprecated",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#deprecated",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#deprecated",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "deprecated"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#deprecated",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#differentFrom",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#differentFrom",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that two given individuals are different."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#differentFrom",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#differentFrom",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#differentFrom",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "differentFrom"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#differentFrom",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointUnionOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointUnionOf",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that a given class is equivalent to the disjoint union of a collection of other classes."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointUnionOf",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointUnionOf",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointUnionOf",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "disjointUnionOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointUnionOf",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointWith",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that two given classes are disjoint."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "disjointWith"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#disjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#distinctMembers",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#distinctMembers",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#distinctMembers",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#AllDifferent"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#distinctMembers",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#distinctMembers",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "distinctMembers"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#distinctMembers",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentClass",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentClass",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that two given classes are equivalent, and that is used to specify datatype definitions."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentClass",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentClass",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentClass",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "equivalentClass"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentClass",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that two given properties are equivalent."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "equivalentProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#equivalentProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasKey",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasKey",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the collection of properties that jointly build a key."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasKey",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasKey",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasKey",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "hasKey"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasKey",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasSelf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasSelf",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the property that a self restriction refers to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasSelf",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasSelf",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasSelf",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "hasSelf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasSelf",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasValue",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasValue",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the individual that a has-value restriction refers to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasValue",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasValue",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasValue",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "hasValue"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#hasValue",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://purl.org/dc/elements/1.1/title": [
+      {
+        "@value": "The OWL 2 Schema vocabulary (OWL 2)"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "\r\n  This ontology partially describes the built-in classes and\r\n  properties that together form the basis of the RDF/XML syntax of OWL 2.\r\n  The content of this ontology is based on Tables 6.1 and 6.2\r\n  in Section 6.4 of the OWL 2 RDF-Based Semantics specification,\r\n  available at http://www.w3.org/TR/owl2-rdf-based-semantics/.\r\n  Please note that those tables do not include the different annotations\r\n  (labels, comments and rdfs:isDefinedBy links) used in this file.\r\n  Also note that the descriptions provided in this ontology do not\r\n  provide a complete and correct formal description of either the syntax\r\n  or the semantics of the introduced terms (please see the OWL 2\r\n  recommendations for the complete and normative specifications).\r\n  Furthermore, the information provided by this ontology may be\r\n  misleading if not used with care. This ontology SHOULD NOT be imported\r\n  into OWL ontologies. Importing this file into an OWL 2 DL ontology\r\n  will cause it to become an OWL 2 Full ontology and may have other,\r\n  unexpected, consequences.\r\n   "
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-mapping-to-rdf/"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-rdf-based-semantics/"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-syntax/"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-rdf-based-semantics/#table-axiomatic-classes"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/TR/owl2-rdf-based-semantics/#table-axiomatic-properties"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2002/07/owl#imports": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2000/01/rdf-schema"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2002/07/owl#versionIRI": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2002/07/owl#versionInfo": [
+      {
+        "@value": "$Date: 2009/11/15 10:54:12 $"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl",
+    "http://www.w3.org/2003/g/data-view#namespaceTransformation": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://dev.w3.org/cvsweb/2009/owl-grddl/owx2rdf.xsl"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#imports",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#OntologyProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#imports",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that is used for importing other ontologies into a given ontology."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#imports",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#imports",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#imports",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "imports"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#imports",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#incompatibleWith",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#incompatibleWith",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#OntologyProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#incompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The annotation property that indicates that a given ontology is incompatible with another ontology."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#incompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#incompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#incompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "incompatibleWith"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#incompatibleWith",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#intersectionOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#intersectionOf",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the collection of classes or data ranges that build an intersection."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#intersectionOf",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#intersectionOf",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#intersectionOf",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "intersectionOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#intersectionOf",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#inverseOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#inverseOf",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that two given properties are inverse."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#inverseOf",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#inverseOf",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#inverseOf",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "inverseOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#inverseOf",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxCardinality",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the cardinality of a maximum cardinality restriction."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "maxCardinality"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the cardinality of a maximum qualified cardinality restriction."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "maxQualifiedCardinality"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#members",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#members",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#members",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#members",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#members",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "members"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#members",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minCardinality",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the cardinality of a minimum cardinality restriction."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "minCardinality"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the cardinality of a minimum qualified cardinality restriction."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "minQualifiedCardinality"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onClass",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onClass",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the class that a qualified object cardinality restriction refers to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onClass",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onClass",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onClass",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "onClass"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onClass",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDataRange",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDataRange",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the data range that a qualified data cardinality restriction refers to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDataRange",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDataRange",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDataRange",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "onDataRange"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDataRange",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDatatype",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDatatype",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the datatype that a datatype restriction refers to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDatatype",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDatatype",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDatatype",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "onDatatype"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onDatatype",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperties",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperties",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperties",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperties",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperties",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "onProperties"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperties",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the property that a property restriction refers to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "onProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#onProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#oneOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#oneOf",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the collection of individuals or data values that build an enumeration."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#oneOf",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#oneOf",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#oneOf",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "oneOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#oneOf",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#priorVersion",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#priorVersion",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#OntologyProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#priorVersion",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The annotation property that indicates the predecessor ontology of a given ontology."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#priorVersion",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#priorVersion",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#priorVersion",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "priorVersion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#priorVersion",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the n-tuple of properties that build a sub property chain of a given property."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "propertyChainAxiom"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyDisjointWith",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyDisjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that two given properties are disjoint."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyDisjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyDisjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyDisjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "propertyDisjointWith"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#propertyDisjointWith",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#qualifiedCardinality",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#qualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the cardinality of an exact qualified cardinality restriction."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#qualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#qualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#qualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "qualifiedCardinality"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#qualifiedCardinality",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sameAs",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sameAs",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines that two given individuals are equal."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sameAs",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sameAs",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sameAs",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "sameAs"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sameAs",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#someValuesFrom",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#someValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the class that an existential property restriction refers to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#someValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#someValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#someValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "someValuesFrom"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#someValuesFrom",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sourceIndividual",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sourceIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the subject of a negative property assertion."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sourceIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sourceIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sourceIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "sourceIndividual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#sourceIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetIndividual",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the object of a negative object property assertion."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "targetIndividual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetIndividual",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetValue",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetValue",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the value of a negative data property assertion."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetValue",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#NegativePropertyAssertion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetValue",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetValue",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "targetValue"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#targetValue",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topDataProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The data property that relates every individual to every data value."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "topDataProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topDataProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The object property that relates every two individuals."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "topObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#unionOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#unionOf",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the collection of classes or data ranges that build a union."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#unionOf",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#unionOf",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#unionOf",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "unionOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#unionOf",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionIRI",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#OntologyProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionIRI",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that identifies the version IRI of an ontology."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionIRI",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionIRI",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionIRI",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "versionIRI"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionIRI",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionInfo",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionInfo",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The annotation property that provides version information for an ontology or another OWL construct."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionInfo",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionInfo",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionInfo",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "versionInfo"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#versionInfo",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#withRestrictions",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#withRestrictions",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The property that determines the collection of facet-value pairs that define a datatype restriction."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#withRestrictions",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#withRestrictions",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#http://www.w3.org/2002/07/owl#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#withRestrictions",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "withRestrictions"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2002/07/owl#withRestrictions",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  }
+]
