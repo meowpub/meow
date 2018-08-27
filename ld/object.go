@@ -55,6 +55,9 @@ func (obj *Object) Obj() *Object {
 
 // Returns the object's @id, or "".
 func (obj *Object) ID() string {
+	if obj == nil {
+		return ""
+	}
 	if obj.id == "" {
 		obj.id = ToString(obj.Get("@id"))
 	}
@@ -63,6 +66,9 @@ func (obj *Object) ID() string {
 
 // Returns the object's @value, or "".
 func (obj *Object) Value() string {
+	if obj == nil {
+		return ""
+	}
 	if obj.value == "" {
 		obj.value = ToString(obj.Get("@value"))
 	}
@@ -71,6 +77,9 @@ func (obj *Object) Value() string {
 
 // Returns the object's @type, or nil.
 func (obj *Object) Type() []string {
+	if obj == nil {
+		return nil
+	}
 	if obj.typ == nil {
 		obj.typ = ToStringArray(obj.Get("@type"))
 	}
