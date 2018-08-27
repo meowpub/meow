@@ -76,3 +76,22 @@ func ToObject(raw interface{}) *Object {
 		return nil
 	}
 }
+
+func ToObjects(raw interface{}) []*Object {
+	switch v := raw.(type) {
+	case nil:
+		return nil
+	case map[string]interface{}:
+		return []*Object{&Object{V: v}}
+	case []interface{}:
+		var objs []*Object
+		for _, item := range v {
+			if obj := ToObject(item); obj != nil {
+				objs = append(objs, obj)
+			}
+		}
+		return objs
+	default:
+		return nil
+	}
+}
