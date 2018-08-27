@@ -5,7 +5,6 @@ import (
 	"text/template"
 
 	"github.com/meowpub/meow/ld"
-	"github.com/meowpub/meow/ld/ns"
 )
 
 var Funcs = template.FuncMap{
@@ -30,7 +29,8 @@ var Funcs = template.FuncMap{
 }
 
 type RenderContext struct {
-	Namespace    *Namespace
+	Package      string
+	Namespaces   []*Namespace
 	Declarations []*Declaration
 }
 
@@ -87,45 +87,29 @@ func (rctx RenderContext) Misc() (matches []*Declaration) {
 	return
 }
 
-func (rctx RenderContext) NS() map[string]*ld.Namespace {
-	return ns.Namespaces
-}
+// func (rctx RenderContext) NS() map[string]*ld.Namespace {
+// 	return ns.Namespaces
+// }
 
 var NSTemplate = template.Must(template.New("ns.gen.go").Funcs(Funcs).Parse(`
 // GENERATED FILE, DO NOT EDIT.
 // Please refer to: tools/nsgen/templates.go
-package {{.Namespace.Short}}
+package {{.Package}}
 
 import (
 	"github.com/meowpub/meow/ld"
 )
 
-const Namespace = "{{.Namespace.Long}}"
-
 {{if .Properties}}
 const ( {{range .Properties}}
-	{{comment (.Get $.NS.rdfs.Props.comment)}}
+	{{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 	Prop{{.TypeName}} = "{{.ID}}"
 	{{end}}
 )
 {{end}}
 
-// Namespace.
-var NS = &ld.Namespace{
-	ID: "{{.Namespace.Long}}",
-	Short: "{{.Namespace.Short}}",
-	Props: map[string]string{ {{range .Properties}}
-		"{{.Short}}": "{{.ID}}",
-		{{- end}}
-	},
-	Classes: map[string]func(ld.Entity) ld.Entity{ {{range .Classes}}
-		"{{.Short}}": func(e ld.Entity) ld.Entity { return &{{.TypeName}}{O: e.Obj() } },
-		{{- end}}
-	},
-}
-
 {{range .Misc}}
-{{comment (.Get $.NS.rdfs.Props.comment)}}
+{{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 // {{.ID}} - {{.RDFType}}
 {{end}}
 `[1:]))
@@ -133,14 +117,14 @@ var NS = &ld.Namespace{
 var ClassesTemplate = template.Must(template.New("classes.gen.go").Funcs(Funcs).Parse(`
 // GENERATED FILE, DO NOT EDIT.
 // Please refer to: tools/nsgen/templates.go
-package {{.Namespace.Short}}
+package {{.Package}}
 
 import (
 	"github.com/meowpub/meow/ld"
 )
 
 {{range $i, $cls := .Classes}}
-{{comment ($cls.Get $.NS.rdfs.Props.comment)}}
+{{comment ($cls.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 type {{$cls.TypeName}} struct { O *ld.Object }
 
 func (obj {{$cls.TypeName}}) Obj() *ld.Object { return obj.O }
@@ -154,7 +138,7 @@ func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 {{range $.PropertiesOf $cls}}
-{{comment (.Get $.NS.rdfs.Props.comment)}}
+{{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 func (obj {{$cls.TypeName}}) {{.TypeName}}() interface{} {
 	return obj.O.V["{{.ID}}"]
 }
@@ -170,26 +154,38 @@ var ({{range .Classes}}
 var DataTypesTemplate = template.Must(template.New("datatypes.gen.go").Funcs(Funcs).Parse(`
 // GENERATED FILE, DO NOT EDIT.
 // Please refer to: tools/nsgen/templates.go
-package {{.Namespace.Short}}
+package {{.Package}}
 
 {{range $i, $dt := .DataTypes}}
-{{comment ($dt.Get $.NS.rdfs.Props.comment)}}
+{{comment ($dt.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 type {{$dt.TypeName}} interface{}
 {{end}}
 `[1:]))
 
-var IndexTemplate = template.Must(template.New("index.gen.go").Funcs(Funcs).Parse(`
-// GENERATED FILE, DO NOT EDIT.
-// Please refer to: tools/nsgen/templates.go
-package ns
+// var IndexTemplate = template.Must(template.New("index.gen.go").Funcs(Funcs).Parse(`
+// // GENERATED FILE, DO NOT EDIT.
+// // Please refer to: tools/nsgen/templates.go
+// package ns
 
-import (
-	"github.com/meowpub/meow/ld"{{range .}}
-	"github.com/meowpub/meow/ld/ns/{{.Short}}"{{end}}
-)
+// import (
+// 	"github.com/meowpub/meow/ld"{{range .}}
+// 	"github.com/meowpub/meow/ld/ns/{{.Short}}"{{end}}
+// )
 
-var Namespaces = map[string]*ld.Namespace{ {{range .}}
-	"{{.Long}}": {{.Short}}.NS,
-	"{{.Short}}": {{.Short}}.NS, {{end}}
-}
-`[1:]))
+// // Namespace.
+// {{range .}}
+// var ns_{{.Short}} = &ld.Namespace{
+// 	ID: "{{.Long}}",
+// 	Short: "{{.Short}}",
+// 	Props: map[string]string{ {{range .Properties}}
+// 		"{{.Short}}": "{{.ID}}",
+// 		{{- end}}
+// 	},
+// }
+// {{end}}
+
+// var Namespaces = map[string]*ld.Namespace{ {{range .}}
+// 	"{{.Long}}": ns_{{.Short}},
+// 	"{{.Short}}": ns_{{.Short}}, {{end}}
+// }
+// `[1:]))

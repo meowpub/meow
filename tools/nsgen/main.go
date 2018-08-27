@@ -4,18 +4,19 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"go/format"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"text/template"
 
 	"github.com/deiu/rdf2go"
 	"github.com/pkg/errors"
 	"go.uber.org/multierr"
+	"golang.org/x/tools/imports"
 
 	"github.com/meowpub/meow/ld"
 )
@@ -56,12 +57,11 @@ func Render(path string, tmpl *template.Template, rctx interface{}) error {
 		return errors.Wrap(err, "render")
 	}
 	data := buf.Bytes()
-	src, err := format.Source(buf.Bytes())
+	data, err := imports.Process(path, data, nil)
 	if err != nil {
-		err = errors.Wrap(err, "gofmt")
-		src = data
+		return errors.Wrap(err, "goimports")
 	}
-	return multierr.Append(err, ioutil.WriteFile(path, src, 0644))
+	return ioutil.WriteFile(path, data, 0644)
 }
 
 func TurtleToJSONLD(namespace string, data []byte) ([]byte, error) {
@@ -76,26 +76,29 @@ func TurtleToJSONLD(namespace string, data []byte) ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
-func GenNamespace(ns *Namespace) error {
-	outdir := filepath.Join(MeowBasePath, "ld", "ns", ns.Short)
+func GetAndCreatePackagePath(pkg string) (string, error) {
+	outdir := filepath.Join(MeowBasePath, "ld", "ns", pkg)
+	return outdir, os.MkdirAll(outdir, 0755)
+}
 
-	// Make sure the output path exists.
-	if err := os.MkdirAll(outdir, 0755); err != nil {
-		return err
+func NamespaceFragments(ns *Namespace) ([]*ld.Object, error) {
+	pkgdir, err := GetAndCreatePackagePath(ns.Package)
+	if err != nil {
+		return nil, err
 	}
 
 	// Load and store the turtle data.
-	turtlePath := filepath.Join(outdir, ns.Short+".ttl")
+	turtlePath := filepath.Join(pkgdir, ns.Short+".ttl")
 	turtleData, err := LoadWithCache(ns.Source, turtlePath)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	// Turn it into JSON-LD.
+	// Turn it into JSON-LD fragments.
 	ldData, err := TurtleToJSONLD(ns.Long, turtleData)
 	fragments, err := ld.NewObjects(ldData)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	sort.SliceStable(fragments, func(i, j int) bool {
 		idata, err := json.Marshal(fragments[i])
@@ -108,11 +111,26 @@ func GenNamespace(ns *Namespace) error {
 		}
 		return string(idata) < string(jdata)
 	})
-	if err := DumpJSON(filepath.Join(outdir, ns.Short+".ld.json"), fragments); err != nil {
-		return err
+
+	return fragments, DumpJSON(filepath.Join(pkgdir, ns.Short+".ld.json"), fragments)
+}
+
+func Main() error {
+	var fragments []*ld.Object
+	for _, ns := range Namespaces {
+		if ns.Source == "" {
+			continue
+		}
+		log.Printf("Loading: %s: %s", ns.Short, ns.Long)
+		nsFragments, err := NamespaceFragments(ns)
+		if err != nil {
+			return errors.Wrap(err, ns.Short)
+		}
+		fragments = append(fragments, nsFragments...)
 	}
 
 	// Reassemble the fragments into usable Declarations.
+	log.Printf("Reassembling fragments...")
 	declMap := make(map[string]*Declaration)
 	orderedKeys := []string{}
 	for _, fragment := range fragments {
@@ -122,50 +140,57 @@ func GenNamespace(ns *Namespace) error {
 				return err
 			}
 		} else {
-			declMap[key] = &Declaration{fragment, ns}
+			declMap[key] = &Declaration{fragment}
 			orderedKeys = append(orderedKeys, key)
 		}
 	}
 	declarations := make([]*Declaration, 0, len(declMap))
 	for _, key := range orderedKeys {
-		isExcluded := false
-		for _, exclusion := range ns.Exclude {
-			if key == exclusion {
-				isExcluded = true
-				break
+		declarations = append(declarations, declMap[key])
+	}
+	if err := DumpJSON(filepath.Join(MeowBasePath, "ld", "blah.json"), declarations); err != nil {
+		return err
+	}
+
+	// Generate packages!
+	pkgs := make(map[string][]*Namespace)
+	for _, ns := range Namespaces {
+		pkgs[ns.Package] = append(pkgs[ns.Package], ns)
+	}
+	var errs []error
+	for pkg, nss := range pkgs {
+		outdir, err := GetAndCreatePackagePath(pkg)
+		if err != nil {
+			return errors.Wrap(err, pkg)
+		}
+		log.Printf("Generating package: %s: %s", pkg, outdir)
+		var pkgdecls []*Declaration
+		for _, ns := range nss {
+			for _, decl := range declarations {
+				if strings.HasPrefix(decl.ID(), ns.Long) {
+					pkgdecls = append(pkgdecls, decl)
+				}
 			}
 		}
-		if !isExcluded {
-			declarations = append(declarations, declMap[key])
+		rctx := &RenderContext{
+			Package:      pkg,
+			Namespaces:   nss,
+			Declarations: pkgdecls,
 		}
+		errs = append(errs,
+			errors.Wrap(Render(filepath.Join(outdir, "ns.gen.go"), NSTemplate, rctx), "ns.gen.go"),
+			errors.Wrap(Render(filepath.Join(outdir, "classes.gen.go"), ClassesTemplate, rctx), "classes.gen.go"),
+			errors.Wrap(Render(filepath.Join(outdir, "datatypes.gen.go"), DataTypesTemplate, rctx), "datatypes.gen.go"),
+		)
 	}
+	// if err := multierr.Combine(errs...); err != nil {
+	// 	return err
+	// }
 
-	// Generate files!
-	rctx := &RenderContext{
-		Namespace:    ns,
-		Declarations: declarations,
-	}
-	return multierr.Combine(
-		errors.Wrap(Render(filepath.Join(outdir, "ns.gen.go"), NSTemplate, rctx), "ns.gen.go"),
-		errors.Wrap(Render(filepath.Join(outdir, "classes.gen.go"), ClassesTemplate, rctx), "classes.gen.go"),
-		errors.Wrap(Render(filepath.Join(outdir, "datatypes.gen.go"), DataTypesTemplate, rctx), "datatypes.gen.go"),
-	)
-}
-
-func Main() error {
-	for _, ns := range Namespaces {
-		if ns.Source == "" {
-			continue
-		}
-		log.Printf("Generating: \"%s\" (%s)", ns.Short, ns.Long)
-		if err := GenNamespace(ns); err != nil {
-			return err
-		}
-	}
-
-	log.Printf("Generating index...")
-	indexPath := filepath.Join(MeowBasePath, "ld", "ns", "index.gen.go")
-	return Render(indexPath, IndexTemplate, Namespaces)
+	// log.Printf("Generating index...")
+	// indexPath := filepath.Join(MeowBasePath, "ld", "ns", "index.gen.go")
+	// return Render(indexPath, IndexTemplate, Namespaces)
+	return multierr.Combine(errs...)
 }
 
 func main() {

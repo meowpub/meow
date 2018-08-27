@@ -12,7 +12,6 @@ var _ ld.Entity = Declaration{}
 
 type Declaration struct {
 	*ld.Object
-	Namespace *Namespace
 }
 
 func (t Declaration) Obj() *ld.Object {
@@ -20,7 +19,7 @@ func (t Declaration) Obj() *ld.Object {
 }
 
 func (t Declaration) Short() string {
-	return strings.TrimPrefix(t.ID(), t.Namespace.Long)
+	return strings.SplitN(t.ID(), "#", 2)[1]
 }
 
 func (t Declaration) TypeName() string {

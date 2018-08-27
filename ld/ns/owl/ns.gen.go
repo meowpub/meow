@@ -2,12 +2,6 @@
 // Please refer to: tools/nsgen/templates.go
 package owl
 
-import (
-	"github.com/meowpub/meow/ld"
-)
-
-const Namespace = "http://www.w3.org/2002/07/owl#"
-
 const (
 	// The property that determines the class that a universal property restriction refers to.
 	PropAllValuesFrom = "http://www.w3.org/2002/07/owl#allValuesFrom"
@@ -129,80 +123,6 @@ const (
 	// The property that determines the collection of facet-value pairs that define a datatype restriction.
 	PropWithRestrictions = "http://www.w3.org/2002/07/owl#withRestrictions"
 )
-
-// Namespace.
-var NS = &ld.Namespace{
-	ID:    "http://www.w3.org/2002/07/owl#",
-	Short: "owl",
-	Props: map[string]string{
-		"allValuesFrom":           "http://www.w3.org/2002/07/owl#allValuesFrom",
-		"annotatedProperty":       "http://www.w3.org/2002/07/owl#annotatedProperty",
-		"annotatedSource":         "http://www.w3.org/2002/07/owl#annotatedSource",
-		"annotatedTarget":         "http://www.w3.org/2002/07/owl#annotatedTarget",
-		"assertionProperty":       "http://www.w3.org/2002/07/owl#assertionProperty",
-		"cardinality":             "http://www.w3.org/2002/07/owl#cardinality",
-		"complementOf":            "http://www.w3.org/2002/07/owl#complementOf",
-		"datatypeComplementOf":    "http://www.w3.org/2002/07/owl#datatypeComplementOf",
-		"differentFrom":           "http://www.w3.org/2002/07/owl#differentFrom",
-		"disjointUnionOf":         "http://www.w3.org/2002/07/owl#disjointUnionOf",
-		"disjointWith":            "http://www.w3.org/2002/07/owl#disjointWith",
-		"distinctMembers":         "http://www.w3.org/2002/07/owl#distinctMembers",
-		"equivalentClass":         "http://www.w3.org/2002/07/owl#equivalentClass",
-		"equivalentProperty":      "http://www.w3.org/2002/07/owl#equivalentProperty",
-		"hasKey":                  "http://www.w3.org/2002/07/owl#hasKey",
-		"hasSelf":                 "http://www.w3.org/2002/07/owl#hasSelf",
-		"hasValue":                "http://www.w3.org/2002/07/owl#hasValue",
-		"intersectionOf":          "http://www.w3.org/2002/07/owl#intersectionOf",
-		"inverseOf":               "http://www.w3.org/2002/07/owl#inverseOf",
-		"maxCardinality":          "http://www.w3.org/2002/07/owl#maxCardinality",
-		"maxQualifiedCardinality": "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
-		"members":                 "http://www.w3.org/2002/07/owl#members",
-		"minCardinality":          "http://www.w3.org/2002/07/owl#minCardinality",
-		"minQualifiedCardinality": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
-		"onClass":                 "http://www.w3.org/2002/07/owl#onClass",
-		"onDataRange":             "http://www.w3.org/2002/07/owl#onDataRange",
-		"onDatatype":              "http://www.w3.org/2002/07/owl#onDatatype",
-		"onProperties":            "http://www.w3.org/2002/07/owl#onProperties",
-		"onProperty":              "http://www.w3.org/2002/07/owl#onProperty",
-		"oneOf":                   "http://www.w3.org/2002/07/owl#oneOf",
-		"propertyChainAxiom":      "http://www.w3.org/2002/07/owl#propertyChainAxiom",
-		"propertyDisjointWith":    "http://www.w3.org/2002/07/owl#propertyDisjointWith",
-		"qualifiedCardinality":    "http://www.w3.org/2002/07/owl#qualifiedCardinality",
-		"sameAs":                  "http://www.w3.org/2002/07/owl#sameAs",
-		"someValuesFrom":          "http://www.w3.org/2002/07/owl#someValuesFrom",
-		"sourceIndividual":        "http://www.w3.org/2002/07/owl#sourceIndividual",
-		"targetIndividual":        "http://www.w3.org/2002/07/owl#targetIndividual",
-		"targetValue":             "http://www.w3.org/2002/07/owl#targetValue",
-		"unionOf":                 "http://www.w3.org/2002/07/owl#unionOf",
-		"withRestrictions":        "http://www.w3.org/2002/07/owl#withRestrictions",
-	},
-	Classes: map[string]func(ld.Entity) ld.Entity{
-		"AllDifferent":              func(e ld.Entity) ld.Entity { return &AllDifferent{O: e.Obj()} },
-		"AllDisjointClasses":        func(e ld.Entity) ld.Entity { return &AllDisjointClasses{O: e.Obj()} },
-		"AllDisjointProperties":     func(e ld.Entity) ld.Entity { return &AllDisjointProperties{O: e.Obj()} },
-		"Annotation":                func(e ld.Entity) ld.Entity { return &Annotation{O: e.Obj()} },
-		"AnnotationProperty":        func(e ld.Entity) ld.Entity { return &AnnotationProperty{O: e.Obj()} },
-		"AsymmetricProperty":        func(e ld.Entity) ld.Entity { return &AsymmetricProperty{O: e.Obj()} },
-		"Axiom":                     func(e ld.Entity) ld.Entity { return &Axiom{O: e.Obj()} },
-		"Class":                     func(e ld.Entity) ld.Entity { return &Class{O: e.Obj()} },
-		"DataRange":                 func(e ld.Entity) ld.Entity { return &DataRange{O: e.Obj()} },
-		"DatatypeProperty":          func(e ld.Entity) ld.Entity { return &DatatypeProperty{O: e.Obj()} },
-		"DeprecatedClass":           func(e ld.Entity) ld.Entity { return &DeprecatedClass{O: e.Obj()} },
-		"DeprecatedProperty":        func(e ld.Entity) ld.Entity { return &DeprecatedProperty{O: e.Obj()} },
-		"FunctionalProperty":        func(e ld.Entity) ld.Entity { return &FunctionalProperty{O: e.Obj()} },
-		"InverseFunctionalProperty": func(e ld.Entity) ld.Entity { return &InverseFunctionalProperty{O: e.Obj()} },
-		"IrreflexiveProperty":       func(e ld.Entity) ld.Entity { return &IrreflexiveProperty{O: e.Obj()} },
-		"NamedIndividual":           func(e ld.Entity) ld.Entity { return &NamedIndividual{O: e.Obj()} },
-		"NegativePropertyAssertion": func(e ld.Entity) ld.Entity { return &NegativePropertyAssertion{O: e.Obj()} },
-		"ObjectProperty":            func(e ld.Entity) ld.Entity { return &ObjectProperty{O: e.Obj()} },
-		"Ontology":                  func(e ld.Entity) ld.Entity { return &Ontology{O: e.Obj()} },
-		"OntologyProperty":          func(e ld.Entity) ld.Entity { return &OntologyProperty{O: e.Obj()} },
-		"ReflexiveProperty":         func(e ld.Entity) ld.Entity { return &ReflexiveProperty{O: e.Obj()} },
-		"Restriction":               func(e ld.Entity) ld.Entity { return &Restriction{O: e.Obj()} },
-		"SymmetricProperty":         func(e ld.Entity) ld.Entity { return &SymmetricProperty{O: e.Obj()} },
-		"TransitiveProperty":        func(e ld.Entity) ld.Entity { return &TransitiveProperty{O: e.Obj()} },
-	},
-}
 
 // This is the empty class.
 // http://www.w3.org/2002/07/owl#Nothing - http://www.w3.org/2002/07/owl#Class
