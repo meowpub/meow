@@ -181,49 +181,33 @@ import (
 {{comment ($cls.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 type {{$cls.TypeName}} struct { {{range .SubClassOf}}{{$.Resolve .}}; {{else}}o *ld.Object{{end}} }
 
-func As{{$cls.TypeName}}(obj *ld.Object) {{$cls.TypeName}} {
-	return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(obj),{{else}}o: obj{{end}} }
-}
+func As{{$cls.TypeName}}(obj *ld.Object) {{$cls.TypeName}} { return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(obj),{{else}}o: obj{{end}} } }
 
-func Is{{$cls.TypeName}}(obj *ld.Object) bool {
-	return ld.Is(obj, Type{{.TypeName}})
-}
+func Is{{$cls.TypeName}}(obj *ld.Object) bool { return ld.Is(obj, Type{{.TypeName}}) }
 
 {{if not .SubClassOf}}
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
-func (obj {{$cls.TypeName}}) Obj() *ld.Object {
-	return obj.o
-}
+func (obj {{$cls.TypeName}}) Obj() *ld.Object { return obj.o }
 
 // Returns the object's @id. Implements ld.Entity.
-func (obj {{$cls.TypeName}}) ID() string {
-	return obj.o.ID()
-}
+func (obj {{$cls.TypeName}}) ID() string { return obj.o.ID() }
 
 // Returns the object's @value. Implements ld.Entity.
-func (obj {{$cls.TypeName}}) Value() string {
-	return obj.o.Value()
-}
+func (obj {{$cls.TypeName}}) Value() string { return obj.o.Value() }
 
 // Returns the object's @type. Implements ld.Entity.
-func (obj {{$cls.TypeName}}) Type() []string {
-	return obj.o.Type()
-}
+func (obj {{$cls.TypeName}}) Type() []string { return obj.o.Type() }
 
 // Returns the named attribute. Implements ld.Entity.
 func (obj {{$cls.TypeName}}) Get(key string) interface{} { return obj.o.Get(key) }
 
 // Applies another object as a patch to this one. Implements ld.Entity.
-func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error {
-	return obj.o.Apply(other, mergeArrays)
-}
+func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error { return obj.o.Apply(other, mergeArrays) }
 {{end}}
 
 {{range $.PropertiesOf $cls}}
 {{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
-func (obj {{$cls.TypeName}}) {{.FuncName}}() interface{} {
-	return obj.Get({{$.ResolvePrefix .ID "Prop"}})
-}
+func (obj {{$cls.TypeName}}) {{.FuncName}}() interface{} { return obj.Get({{$.ResolvePrefix .ID "Prop"}}) }
 {{end}}
 {{end}}
 
