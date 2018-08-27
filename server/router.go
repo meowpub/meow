@@ -18,6 +18,7 @@ import (
 	"github.com/meowpub/meow/server/api"
 	"github.com/meowpub/meow/server/middleware"
 	"github.com/meowpub/meow/server/oauth"
+	"github.com/meowpub/meow/server/well_known"
 )
 
 // New returns a new API router.
@@ -37,6 +38,7 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 	mux.Use(oauth.AuthenticationMiddleware)
 
 	mux.Mount("favicon.ico", nil)
+	mux.Mount(".well-known", well_known.WellKnown)
 	mux.Mount("-", &api.Node{
 		Self: api.HandlerFunc(func(req api.Request) api.Response {
 			return api.Response{Data: "hi"}

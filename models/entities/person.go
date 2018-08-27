@@ -2,9 +2,11 @@ package entities
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/jsonld"
+	"github.com/meowpub/meow/lib/xrd"
 	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/ns"
 	"github.com/meowpub/meow/server/api"
@@ -117,6 +119,48 @@ func (p *Person) GetUser(store models.UserStore) (*models.User, error) {
 // Return ourselves
 func (o *Person) HandleRequest(req api.Request) api.Response {
 	return handleEntityGetRequest(req, o)
+}
+
+func (o *Person) Finger(req api.Request) (*xrd.XRD, error) {
+	url := req.ResourceURL()
+
+	acctUrl := fmt.Sprintf("acct:%s@%s", o.PreferredUsername.String(), url.Hostname())
+	return &xrd.XRD{
+		Subject: url.String(),
+		Aliases: []string{
+			acctUrl,
+		},
+		Links: []xrd.Link{
+			xrd.Link{
+				Rel:  "http://webfinger.net/rel/profile-page",
+				Type: "text/html",
+				HRef: url.String(),
+			},
+			xrd.Link{
+				Rel:  "self",
+				Type: "text/html",
+				HRef: url.String(),
+			},
+			xrd.Link{
+				Rel:  "self",
+				Type: "application/activity+json",
+				HRef: url.String(),
+			},
+			xrd.Link{
+				Rel:  "self",
+				Type: "application/ld+json; profile=\"https://www.w3.org/ns/activitystreams\"",
+				HRef: url.String(),
+			},
+			xrd.Link{
+				Rel:  "self",
+				HRef: acctUrl,
+			},
+			xrd.Link{
+				Rel:  "canonical",
+				HRef: url.String(),
+			},
+		},
+	}, nil
 }
 
 func (self *Person) GetOutbox(ctx context.Context) (*Stream, error) {
