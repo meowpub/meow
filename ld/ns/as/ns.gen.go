@@ -342,36 +342,3 @@ const (
 	// The actor viewed the object
 	TypeView = "http://www.w3.org/ns/activitystreams#View"
 )
-
-// Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)
-// http://www.w3.org/ns/activitystreams#Relationship - [http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement http://www.w3.org/2002/07/owl#Class]
-
-// http://www.w3.org/ns/activitystreams#attachments - [http://www.w3.org/2002/07/owl#DeprecatedProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// Identifies the author of an object. Deprecated. Use as:attributedTo instead
-// http://www.w3.org/ns/activitystreams#author - [http://www.w3.org/2002/07/owl#DeprecatedProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// http://www.w3.org/ns/activitystreams#current - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// On a Profile object, describes the object described by the profile
-// http://www.w3.org/ns/activitystreams#describes - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// http://www.w3.org/ns/activitystreams#first - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// On a Tombstone object, describes the former type of the deleted object
-// http://www.w3.org/ns/activitystreams#formerType - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// http://www.w3.org/ns/activitystreams#last - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// http://www.w3.org/ns/activitystreams#next - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// http://www.w3.org/ns/activitystreams#partOf - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// http://www.w3.org/ns/activitystreams#prev - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// http://www.w3.org/ns/activitystreams#provider - [http://www.w3.org/2002/07/owl#DeprecatedProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// On a Relationship object, identifies the subject. e.g. when saying "John is connected to Sally", 'subject' refers to 'John'
-// http://www.w3.org/ns/activitystreams#subject - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
-
-// http://www.w3.org/ns/activitystreams#tags - [http://www.w3.org/2002/07/owl#DeprecatedProperty http://www.w3.org/2002/07/owl#ObjectProperty]

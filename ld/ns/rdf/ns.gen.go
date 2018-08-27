@@ -93,6 +93,3 @@ const (
 
 // The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.
 // http://www.w3.org/1999/02/22-rdf-syntax-ns#nil - [http://www.w3.org/1999/02/22-rdf-syntax-ns#List http://www.w3.org/ns/activitystreams#OrderedItems]
-
-// The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.
-// http://www.w3.org/1999/02/22-rdf-syntax-ns#nil - [http://www.w3.org/1999/02/22-rdf-syntax-ns#List http://www.w3.org/ns/activitystreams#OrderedItems]

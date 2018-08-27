@@ -109,8 +109,8 @@ func (rctx RenderContext) DataTypes() []*Declaration {
 }
 
 func (rctx RenderContext) Misc() (matches []*Declaration) {
-nextDecl:
 	for _, decl := range rctx.Declarations {
+		isMisc := true
 		for _, rdfT := range decl.RDFTypes() {
 			switch rdfT {
 			case "http://www.w3.org/2000/01/rdf-schema#Class",
@@ -122,10 +122,11 @@ nextDecl:
 				"http://www.w3.org/2002/07/owl#DatatypeProperty",
 				"http://www.w3.org/2002/07/owl#ObjectProperty",
 				"http://www.w3.org/2002/07/owl#OntologyProperty":
-				continue nextDecl
-			default:
-				matches = append(matches, decl)
+				isMisc = false
 			}
+		}
+		if isMisc {
+			matches = append(matches, decl)
 		}
 	}
 	return
