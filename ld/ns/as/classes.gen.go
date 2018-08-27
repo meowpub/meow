@@ -62,8 +62,20 @@ type Block struct{ Ignore }
 // An ordered or unordered collection of Objects or Links
 type Collection struct{ Object }
 
+func (obj Collection) Current() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#current"]
+}
+
+func (obj Collection) First() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#first"]
+}
+
 func (obj Collection) Items() interface{} {
 	return obj.O.V["http://www.w3.org/ns/activitystreams#items"]
+}
+
+func (obj Collection) Last() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#last"]
 }
 
 // The total number of items in a logical collection
@@ -73,6 +85,18 @@ func (obj Collection) TotalItems() interface{} {
 
 // A subset of items from a Collection
 type CollectionPage struct{ Collection }
+
+func (obj CollectionPage) Next() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#next"]
+}
+
+func (obj CollectionPage) PartOf() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#partOf"]
+}
+
+func (obj CollectionPage) Prev() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#prev"]
+}
 
 // To Create Something
 type Create struct{ Activity }
@@ -221,8 +245,17 @@ func (obj Object) Attachment() interface{} {
 	return obj.O.V["http://www.w3.org/ns/activitystreams#attachment"]
 }
 
+func (obj Object) Attachments() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#attachments"]
+}
+
 func (obj Object) Audience() interface{} {
 	return obj.O.V["http://www.w3.org/ns/activitystreams#audience"]
+}
+
+// Identifies the author of an object. Deprecated. Use as:attributedTo instead
+func (obj Object) Author() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#author"]
 }
 
 func (obj Object) Bcc() interface{} {
@@ -285,6 +318,10 @@ func (obj Object) ObjectType() interface{} {
 	return obj.O.V["http://www.w3.org/ns/activitystreams#objectType"]
 }
 
+func (obj Object) Provider() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#provider"]
+}
+
 // Specifies the date and time the object was published
 func (obj Object) Published() interface{} {
 	return obj.O.V["http://www.w3.org/ns/activitystreams#published"]
@@ -311,6 +348,10 @@ func (obj Object) Summary() interface{} {
 
 func (obj Object) Tag() interface{} {
 	return obj.O.V["http://www.w3.org/ns/activitystreams#tag"]
+}
+
+func (obj Object) Tags() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#tags"]
 }
 
 func (obj Object) To() interface{} {
@@ -449,6 +490,11 @@ func (obj Place) Units() interface{} {
 // A Profile Document
 type Profile struct{ Object }
 
+// On a Profile object, describes the object described by the profile
+func (obj Profile) Describes() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#describes"]
+}
+
 // A question of any sort.
 type Question struct{ IntransitiveActivity }
 
@@ -468,6 +514,19 @@ type Read struct{ Activity }
 // Actor rejects the Object
 type Reject struct{ Activity }
 
+// Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)
+type Relationship struct{ Object }
+
+// On a Relationship object, describes the type of relationship
+func (obj Relationship) Relationship() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#relationship"]
+}
+
+// On a Relationship object, identifies the subject. e.g. when saying "John is connected to Sally", 'subject' refers to 'John'
+func (obj Relationship) Subject() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#subject"]
+}
+
 // To Remove Something
 type Remove struct{ Activity }
 
@@ -486,6 +545,11 @@ type Tombstone struct{ Object }
 // Specifies the date and time the object was deleted
 func (obj Tombstone) Deleted() interface{} {
 	return obj.O.V["http://www.w3.org/ns/activitystreams#deleted"]
+}
+
+// On a Tombstone object, describes the former type of the deleted object
+func (obj Tombstone) FormerType() interface{} {
+	return obj.O.V["http://www.w3.org/ns/activitystreams#formerType"]
 }
 
 // The actor is traveling to the target. The origin specifies where the actor is traveling from.
@@ -548,6 +612,7 @@ var (
 	_ ld.Entity = Question{}
 	_ ld.Entity = Read{}
 	_ ld.Entity = Reject{}
+	_ ld.Entity = Relationship{}
 	_ ld.Entity = Remove{}
 	_ ld.Entity = Service{}
 	_ ld.Entity = TentativeAccept{}

@@ -52,11 +52,15 @@ func (rctx RenderContext) Resolve(id string) string {
 }
 
 func (rctx RenderContext) OfType(ts ...string) (matches []*Declaration) {
+nextDecl:
 	for _, decl := range rctx.Declarations {
+		rdfTypes := decl.RDFTypes()
 		for _, t := range ts {
-			if decl.RDFType() == t {
-				matches = append(matches, decl)
-				break
+			for _, rdfT := range rdfTypes {
+				if rdfT == t {
+					matches = append(matches, decl)
+					continue nextDecl
+				}
 			}
 		}
 	}
@@ -64,10 +68,8 @@ func (rctx RenderContext) OfType(ts ...string) (matches []*Declaration) {
 }
 
 func (rctx RenderContext) Ontology() *Declaration {
-	for _, decl := range rctx.Declarations {
-		if decl.RDFType() == "http://www.w3.org/2002/07/owl#Ontology" {
-			return decl
-		}
+	for _, decl := range rctx.OfType("http://www.w3.org/2002/07/owl#Ontology") {
+		return decl
 	}
 	return nil
 }
@@ -103,19 +105,23 @@ func (rctx RenderContext) DataTypes() []*Declaration {
 }
 
 func (rctx RenderContext) Misc() (matches []*Declaration) {
+nextDecl:
 	for _, decl := range rctx.Declarations {
-		switch decl.RDFType() {
-		case "http://www.w3.org/2000/01/rdf-schema#Class":
-		case "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property":
-		case "http://www.w3.org/2000/01/rdf-schema#Datatype":
-		case "http://www.w3.org/2002/07/owl#Ontology":
-		case "http://www.w3.org/2002/07/owl#Class":
-		case "http://www.w3.org/2002/07/owl#AnnotationProperty":
-		case "http://www.w3.org/2002/07/owl#DatatypeProperty":
-		case "http://www.w3.org/2002/07/owl#ObjectProperty":
-		case "http://www.w3.org/2002/07/owl#OntologyProperty":
-		default:
-			matches = append(matches, decl)
+		for _, rdfT := range decl.RDFTypes() {
+			switch rdfT {
+			case "http://www.w3.org/2000/01/rdf-schema#Class",
+				"http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+				"http://www.w3.org/2000/01/rdf-schema#Datatype",
+				"http://www.w3.org/2002/07/owl#Ontology",
+				"http://www.w3.org/2002/07/owl#Class",
+				"http://www.w3.org/2002/07/owl#AnnotationProperty",
+				"http://www.w3.org/2002/07/owl#DatatypeProperty",
+				"http://www.w3.org/2002/07/owl#ObjectProperty",
+				"http://www.w3.org/2002/07/owl#OntologyProperty":
+				continue nextDecl
+			default:
+				matches = append(matches, decl)
+			}
 		}
 	}
 	return
@@ -145,7 +151,7 @@ const ( {{range .Properties}}
 
 {{range .Misc}}
 {{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
-// {{.ID}} - {{.RDFType}}
+// {{.ID}} - {{.RDFTypes}}
 {{end}}
 `[1:]))
 

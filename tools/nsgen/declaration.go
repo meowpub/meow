@@ -40,8 +40,13 @@ func (t Declaration) FuncName() string {
 	}
 }
 
-func (t Declaration) RDFType() string {
-	return ld.ToObject(t.V[rdf.PropType]).ID()
+func (t Declaration) RDFTypes() []string {
+	objs := ld.ToObjects(t.V[rdf.PropType])
+	ids := make([]string, len(objs))
+	for i, obj := range objs {
+		ids[i] = obj.ID()
+	}
+	return ids
 }
 
 func (t Declaration) Domain() string {

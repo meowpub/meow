@@ -17,10 +17,15 @@ const (
 
 	PropAttachment = "http://www.w3.org/ns/activitystreams#attachment"
 
+	PropAttachments = "http://www.w3.org/ns/activitystreams#attachments"
+
 	// Identifies an entity to which an object is attributed
 	PropAttributedTo = "http://www.w3.org/ns/activitystreams#attributedTo"
 
 	PropAudience = "http://www.w3.org/ns/activitystreams#audience"
+
+	// Identifies the author of an object. Deprecated. Use as:attributedTo instead
+	PropAuthor = "http://www.w3.org/ns/activitystreams#author"
 
 	PropBcc = "http://www.w3.org/ns/activitystreams#bcc"
 
@@ -34,8 +39,13 @@ const (
 	// Specifies the context within which an object exists or an activity was performed
 	PropContext = "http://www.w3.org/ns/activitystreams#context"
 
+	PropCurrent = "http://www.w3.org/ns/activitystreams#current"
+
 	// Specifies the date and time the object was deleted
 	PropDeleted = "http://www.w3.org/ns/activitystreams#deleted"
+
+	// On a Profile object, describes the object described by the profile
+	PropDescribes = "http://www.w3.org/ns/activitystreams#describes"
 
 	PropDownstreamDuplicates = "http://www.w3.org/ns/activitystreams#downstreamDuplicates"
 
@@ -44,6 +54,11 @@ const (
 
 	// The ending time of the object
 	PropEndTime = "http://www.w3.org/ns/activitystreams#endTime"
+
+	PropFirst = "http://www.w3.org/ns/activitystreams#first"
+
+	// On a Tombstone object, describes the former type of the deleted object
+	PropFormerType = "http://www.w3.org/ns/activitystreams#formerType"
 
 	PropGenerator = "http://www.w3.org/ns/activitystreams#generator"
 
@@ -69,6 +84,8 @@ const (
 
 	PropItems = "http://www.w3.org/ns/activitystreams#items"
 
+	PropLast = "http://www.w3.org/ns/activitystreams#last"
+
 	// The latitude
 	PropLatitude = "http://www.w3.org/ns/activitystreams#latitude"
 
@@ -82,6 +99,8 @@ const (
 
 	PropName = "http://www.w3.org/ns/activitystreams#name"
 
+	PropNext = "http://www.w3.org/ns/activitystreams#next"
+
 	PropObject = "http://www.w3.org/ns/activitystreams#object"
 
 	PropObjectType = "http://www.w3.org/ns/activitystreams#objectType"
@@ -92,7 +111,13 @@ const (
 	// For certain activities, specifies the entity from which the action is directed.
 	PropOrigin = "http://www.w3.org/ns/activitystreams#origin"
 
+	PropPartOf = "http://www.w3.org/ns/activitystreams#partOf"
+
+	PropPrev = "http://www.w3.org/ns/activitystreams#prev"
+
 	PropPreview = "http://www.w3.org/ns/activitystreams#preview"
+
+	PropProvider = "http://www.w3.org/ns/activitystreams#provider"
 
 	// Specifies the date and time the object was published
 	PropPublished = "http://www.w3.org/ns/activitystreams#published"
@@ -119,10 +144,15 @@ const (
 	// The starting time of the object
 	PropStartTime = "http://www.w3.org/ns/activitystreams#startTime"
 
+	// On a Relationship object, identifies the subject. e.g. when saying "John is connected to Sally", 'subject' refers to 'John'
+	PropSubject = "http://www.w3.org/ns/activitystreams#subject"
+
 	// A short summary of the object
 	PropSummary = "http://www.w3.org/ns/activitystreams#summary"
 
 	PropTag = "http://www.w3.org/ns/activitystreams#tag"
+
+	PropTags = "http://www.w3.org/ns/activitystreams#tags"
 
 	PropTarget = "http://www.w3.org/ns/activitystreams#target"
 
@@ -149,34 +179,34 @@ const (
 )
 
 // Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)
-// http://www.w3.org/ns/activitystreams#Relationship - http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement
+// http://www.w3.org/ns/activitystreams#Relationship - [http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement http://www.w3.org/2002/07/owl#Class]
 
-// http://www.w3.org/ns/activitystreams#attachments - http://www.w3.org/2002/07/owl#DeprecatedProperty
+// http://www.w3.org/ns/activitystreams#attachments - [http://www.w3.org/2002/07/owl#DeprecatedProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
 // Identifies the author of an object. Deprecated. Use as:attributedTo instead
-// http://www.w3.org/ns/activitystreams#author - http://www.w3.org/2002/07/owl#DeprecatedProperty
+// http://www.w3.org/ns/activitystreams#author - [http://www.w3.org/2002/07/owl#DeprecatedProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
-// http://www.w3.org/ns/activitystreams#current - http://www.w3.org/2002/07/owl#FunctionalProperty
+// http://www.w3.org/ns/activitystreams#current - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
 // On a Profile object, describes the object described by the profile
-// http://www.w3.org/ns/activitystreams#describes - http://www.w3.org/2002/07/owl#FunctionalProperty
+// http://www.w3.org/ns/activitystreams#describes - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
-// http://www.w3.org/ns/activitystreams#first - http://www.w3.org/2002/07/owl#FunctionalProperty
+// http://www.w3.org/ns/activitystreams#first - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
 // On a Tombstone object, describes the former type of the deleted object
-// http://www.w3.org/ns/activitystreams#formerType - http://www.w3.org/2002/07/owl#FunctionalProperty
+// http://www.w3.org/ns/activitystreams#formerType - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
-// http://www.w3.org/ns/activitystreams#last - http://www.w3.org/2002/07/owl#FunctionalProperty
+// http://www.w3.org/ns/activitystreams#last - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
-// http://www.w3.org/ns/activitystreams#next - http://www.w3.org/2002/07/owl#FunctionalProperty
+// http://www.w3.org/ns/activitystreams#next - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
-// http://www.w3.org/ns/activitystreams#partOf - http://www.w3.org/2002/07/owl#FunctionalProperty
+// http://www.w3.org/ns/activitystreams#partOf - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
-// http://www.w3.org/ns/activitystreams#prev - http://www.w3.org/2002/07/owl#FunctionalProperty
+// http://www.w3.org/ns/activitystreams#prev - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
-// http://www.w3.org/ns/activitystreams#provider - http://www.w3.org/2002/07/owl#DeprecatedProperty
+// http://www.w3.org/ns/activitystreams#provider - [http://www.w3.org/2002/07/owl#DeprecatedProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
 // On a Relationship object, identifies the subject. e.g. when saying "John is connected to Sally", 'subject' refers to 'John'
-// http://www.w3.org/ns/activitystreams#subject - http://www.w3.org/2002/07/owl#FunctionalProperty
+// http://www.w3.org/ns/activitystreams#subject - [http://www.w3.org/2002/07/owl#FunctionalProperty http://www.w3.org/2002/07/owl#ObjectProperty]
 
-// http://www.w3.org/ns/activitystreams#tags - http://www.w3.org/2002/07/owl#DeprecatedProperty
+// http://www.w3.org/ns/activitystreams#tags - [http://www.w3.org/2002/07/owl#DeprecatedProperty http://www.w3.org/2002/07/owl#ObjectProperty]
