@@ -115,7 +115,7 @@ func (rctx RenderContext) Constants() []*Declaration {
 
 func (rctx RenderContext) Misc() (matches []*Declaration) {
 	for _, decl := range rctx.Declarations {
-		isMisc := true
+		isMisc := len(decl.RDFTypes()) > 0
 		for _, rdfT := range decl.RDFTypes() {
 			switch rdfT {
 			case "http://www.w3.org/2000/01/rdf-schema#Class",

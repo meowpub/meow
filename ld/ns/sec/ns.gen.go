@@ -55,5 +55,3 @@ const (
 
 	TypeSignature = "https://w3id.org/security#Signature"
 )
-
-// https://w3id.org/security#https://web-payments.org/vocabs/security - []
