@@ -9,11 +9,23 @@ import (
 // The class of containers of alternatives.
 type Alt struct{ Container }
 
+func AsAlt(obj *ld.Object) Alt {
+	return Alt{AsContainer(obj)}
+}
+
 // The class of unordered containers.
 type Bag struct{ Container }
 
+func AsBag(obj *ld.Object) Bag {
+	return Bag{AsContainer(obj)}
+}
+
 // The class of RDF Lists.
 type List struct{ Resource }
+
+func AsList(obj *ld.Object) List {
+	return List{AsResource(obj)}
+}
 
 // The first item in the subject RDF list.
 func (obj List) First() interface{} {
@@ -27,6 +39,10 @@ func (obj List) Rest() interface{} {
 
 // The class of RDF properties.
 type Property struct{ Resource }
+
+func AsProperty(obj *ld.Object) Property {
+	return Property{AsResource(obj)}
+}
 
 // A domain of the subject property.
 func (obj Property) Domain() interface{} {
@@ -46,8 +62,16 @@ func (obj Property) SubPropertyOf() interface{} {
 // The class of ordered containers.
 type Seq struct{ Container }
 
+func AsSeq(obj *ld.Object) Seq {
+	return Seq{AsContainer(obj)}
+}
+
 // The class of RDF statements.
 type Statement struct{ Resource }
+
+func AsStatement(obj *ld.Object) Statement {
+	return Statement{AsResource(obj)}
+}
 
 // The object of the subject RDF statement.
 func (obj Statement) Object() interface{} {
@@ -67,6 +91,10 @@ func (obj Statement) Subject() interface{} {
 // The class of classes.
 type Class struct{ Resource }
 
+func AsClass(obj *ld.Object) Class {
+	return Class{AsResource(obj)}
+}
+
 // The subject is a subclass of a class.
 func (obj Class) SubClassOf() interface{} {
 	return obj.Get("http://www.w3.org/2000/01/rdf-schema#subClassOf")
@@ -75,18 +103,38 @@ func (obj Class) SubClassOf() interface{} {
 // The class of RDF containers.
 type Container struct{ Resource }
 
+func AsContainer(obj *ld.Object) Container {
+	return Container{AsResource(obj)}
+}
+
 // The class of container membership properties, rdf:_1, rdf:_2, ...,
 // all of which are sub-properties of 'member'.
 type ContainerMembershipProperty struct{ Property }
 
+func AsContainerMembershipProperty(obj *ld.Object) ContainerMembershipProperty {
+	return ContainerMembershipProperty{AsProperty(obj)}
+}
+
 // The class of RDF datatypes.
 type Datatype struct{ Class }
+
+func AsDatatype(obj *ld.Object) Datatype {
+	return Datatype{AsClass(obj)}
+}
 
 // The class of literal values, eg. textual strings and integers.
 type Literal struct{ Resource }
 
+func AsLiteral(obj *ld.Object) Literal {
+	return Literal{AsResource(obj)}
+}
+
 // The class resource, everything.
 type Resource struct{ o *ld.Object }
+
+func AsResource(obj *ld.Object) Resource {
+	return Resource{o: obj}
+}
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Resource) Obj() *ld.Object {

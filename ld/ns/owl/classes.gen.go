@@ -10,6 +10,10 @@ import (
 // The class of collections of pairwise different individuals.
 type AllDifferent struct{ rdf.Resource }
 
+func AsAllDifferent(obj *ld.Object) AllDifferent {
+	return AllDifferent{rdf.AsResource(obj)}
+}
+
 // The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.
 func (obj AllDifferent) DistinctMembers() interface{} {
 	return obj.Get("http://www.w3.org/2002/07/owl#distinctMembers")
@@ -18,23 +22,51 @@ func (obj AllDifferent) DistinctMembers() interface{} {
 // The class of collections of pairwise disjoint classes.
 type AllDisjointClasses struct{ rdf.Resource }
 
+func AsAllDisjointClasses(obj *ld.Object) AllDisjointClasses {
+	return AllDisjointClasses{rdf.AsResource(obj)}
+}
+
 // The class of collections of pairwise disjoint properties.
 type AllDisjointProperties struct{ rdf.Resource }
+
+func AsAllDisjointProperties(obj *ld.Object) AllDisjointProperties {
+	return AllDisjointProperties{rdf.AsResource(obj)}
+}
 
 // The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.
 type Annotation struct{ rdf.Resource }
 
+func AsAnnotation(obj *ld.Object) Annotation {
+	return Annotation{rdf.AsResource(obj)}
+}
+
 // The class of annotation properties.
 type AnnotationProperty struct{ rdf.Property }
+
+func AsAnnotationProperty(obj *ld.Object) AnnotationProperty {
+	return AnnotationProperty{rdf.AsProperty(obj)}
+}
 
 // The class of asymmetric properties.
 type AsymmetricProperty struct{ ObjectProperty }
 
+func AsAsymmetricProperty(obj *ld.Object) AsymmetricProperty {
+	return AsymmetricProperty{AsObjectProperty(obj)}
+}
+
 // The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.
 type Axiom struct{ rdf.Resource }
 
+func AsAxiom(obj *ld.Object) Axiom {
+	return Axiom{rdf.AsResource(obj)}
+}
+
 // The class of OWL classes.
 type Class struct{ rdf.Class }
+
+func AsClass(obj *ld.Object) Class {
+	return Class{rdf.AsClass(obj)}
+}
 
 // The property that determines that a given class is the complement of another class.
 func (obj Class) ComplementOf() interface{} {
@@ -59,29 +91,65 @@ func (obj Class) HasKey() interface{} {
 // The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.
 type DataRange struct{ rdf.Datatype }
 
+func AsDataRange(obj *ld.Object) DataRange {
+	return DataRange{rdf.AsDatatype(obj)}
+}
+
 // The class of data properties.
 type DatatypeProperty struct{ rdf.Property }
+
+func AsDatatypeProperty(obj *ld.Object) DatatypeProperty {
+	return DatatypeProperty{rdf.AsProperty(obj)}
+}
 
 // The class of deprecated classes.
 type DeprecatedClass struct{ rdf.Class }
 
+func AsDeprecatedClass(obj *ld.Object) DeprecatedClass {
+	return DeprecatedClass{rdf.AsClass(obj)}
+}
+
 // The class of deprecated properties.
 type DeprecatedProperty struct{ rdf.Property }
+
+func AsDeprecatedProperty(obj *ld.Object) DeprecatedProperty {
+	return DeprecatedProperty{rdf.AsProperty(obj)}
+}
 
 // The class of functional properties.
 type FunctionalProperty struct{ rdf.Property }
 
+func AsFunctionalProperty(obj *ld.Object) FunctionalProperty {
+	return FunctionalProperty{rdf.AsProperty(obj)}
+}
+
 // The class of inverse-functional properties.
 type InverseFunctionalProperty struct{ ObjectProperty }
+
+func AsInverseFunctionalProperty(obj *ld.Object) InverseFunctionalProperty {
+	return InverseFunctionalProperty{AsObjectProperty(obj)}
+}
 
 // The class of irreflexive properties.
 type IrreflexiveProperty struct{ ObjectProperty }
 
+func AsIrreflexiveProperty(obj *ld.Object) IrreflexiveProperty {
+	return IrreflexiveProperty{AsObjectProperty(obj)}
+}
+
 // The class of named individuals.
 type NamedIndividual struct{ Thing }
 
+func AsNamedIndividual(obj *ld.Object) NamedIndividual {
+	return NamedIndividual{AsThing(obj)}
+}
+
 // The class of negative property assertions.
 type NegativePropertyAssertion struct{ rdf.Resource }
+
+func AsNegativePropertyAssertion(obj *ld.Object) NegativePropertyAssertion {
+	return NegativePropertyAssertion{rdf.AsResource(obj)}
+}
 
 // The property that determines the predicate of a negative property assertion.
 func (obj NegativePropertyAssertion) AssertionProperty() interface{} {
@@ -106,8 +174,16 @@ func (obj NegativePropertyAssertion) TargetValue() interface{} {
 // This is the empty class.
 type Nothing struct{ Thing }
 
+func AsNothing(obj *ld.Object) Nothing {
+	return Nothing{AsThing(obj)}
+}
+
 // The class of object properties.
 type ObjectProperty struct{ rdf.Property }
+
+func AsObjectProperty(obj *ld.Object) ObjectProperty {
+	return ObjectProperty{rdf.AsProperty(obj)}
+}
 
 // The property that determines that two given properties are inverse.
 func (obj ObjectProperty) InverseOf() interface{} {
@@ -121,6 +197,10 @@ func (obj ObjectProperty) PropertyChainAxiom() interface{} {
 
 // The class of ontologies.
 type Ontology struct{ rdf.Resource }
+
+func AsOntology(obj *ld.Object) Ontology {
+	return Ontology{rdf.AsResource(obj)}
+}
 
 // The annotation property that indicates that a given ontology is backward compatible with another ontology.
 func (obj Ontology) BackwardCompatibleWith() interface{} {
@@ -150,11 +230,23 @@ func (obj Ontology) VersionIRI() interface{} {
 // The class of ontology properties.
 type OntologyProperty struct{ rdf.Property }
 
+func AsOntologyProperty(obj *ld.Object) OntologyProperty {
+	return OntologyProperty{rdf.AsProperty(obj)}
+}
+
 // The class of reflexive properties.
 type ReflexiveProperty struct{ ObjectProperty }
 
+func AsReflexiveProperty(obj *ld.Object) ReflexiveProperty {
+	return ReflexiveProperty{AsObjectProperty(obj)}
+}
+
 // The class of property restrictions.
 type Restriction struct{ Class }
+
+func AsRestriction(obj *ld.Object) Restriction {
+	return Restriction{AsClass(obj)}
+}
 
 // The property that determines the class that a universal property restriction refers to.
 func (obj Restriction) AllValuesFrom() interface{} {
@@ -229,8 +321,16 @@ func (obj Restriction) SomeValuesFrom() interface{} {
 // The class of symmetric properties.
 type SymmetricProperty struct{ ObjectProperty }
 
+func AsSymmetricProperty(obj *ld.Object) SymmetricProperty {
+	return SymmetricProperty{AsObjectProperty(obj)}
+}
+
 // The class of OWL individuals.
 type Thing struct{ o *ld.Object }
+
+func AsThing(obj *ld.Object) Thing {
+	return Thing{o: obj}
+}
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Thing) Obj() *ld.Object {
@@ -292,6 +392,10 @@ func (obj Thing) TopObjectProperty() interface{} {
 
 // The class of transitive properties.
 type TransitiveProperty struct{ ObjectProperty }
+
+func AsTransitiveProperty(obj *ld.Object) TransitiveProperty {
+	return TransitiveProperty{AsObjectProperty(obj)}
+}
 
 var (
 	_ ld.Entity = AllDifferent{}

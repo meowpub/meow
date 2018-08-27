@@ -9,8 +9,16 @@ import (
 // Actor accepts the Object
 type Accept struct{ Activity }
 
+func AsAccept(obj *ld.Object) Accept {
+	return Accept{AsActivity(obj)}
+}
+
 // An Object representing some form of Action that has been taken
 type Activity struct{ Object }
+
+func AsActivity(obj *ld.Object) Activity {
+	return Activity{AsObject(obj)}
+}
 
 // Subproperty of as:attributedTo that identifies the primary actor
 func (obj Activity) Actor() interface{} {
@@ -42,25 +50,57 @@ func (obj Activity) Verb() interface{} {
 // To Add an Object or Link to Something
 type Add struct{ Activity }
 
+func AsAdd(obj *ld.Object) Add {
+	return Add{AsActivity(obj)}
+}
+
 // Actor announces the object to the target
 type Announce struct{ Activity }
+
+func AsAnnounce(obj *ld.Object) Announce {
+	return Announce{AsActivity(obj)}
+}
 
 // Represents a software application of any sort
 type Application struct{ Object }
 
+func AsApplication(obj *ld.Object) Application {
+	return Application{AsObject(obj)}
+}
+
 // To Arrive Somewhere (can be used, for instance, to indicate that a particular entity is currently located somewhere, e.g. a "check-in")
 type Arrive struct{ IntransitiveActivity }
+
+func AsArrive(obj *ld.Object) Arrive {
+	return Arrive{AsIntransitiveActivity(obj)}
+}
 
 // A written work. Typically several paragraphs long. For example, a blog post or a news article.
 type Article struct{ Object }
 
+func AsArticle(obj *ld.Object) Article {
+	return Article{AsObject(obj)}
+}
+
 // An audio file
 type Audio struct{ Document }
 
+func AsAudio(obj *ld.Object) Audio {
+	return Audio{AsDocument(obj)}
+}
+
 type Block struct{ Ignore }
+
+func AsBlock(obj *ld.Object) Block {
+	return Block{AsIgnore(obj)}
+}
 
 // An ordered or unordered collection of Objects or Links
 type Collection struct{ Object }
+
+func AsCollection(obj *ld.Object) Collection {
+	return Collection{AsObject(obj)}
+}
 
 func (obj Collection) Current() interface{} {
 	return obj.Get("http://www.w3.org/ns/activitystreams#current")
@@ -86,6 +126,10 @@ func (obj Collection) TotalItems() interface{} {
 // A subset of items from a Collection
 type CollectionPage struct{ Collection }
 
+func AsCollectionPage(obj *ld.Object) CollectionPage {
+	return CollectionPage{AsCollection(obj)}
+}
+
 func (obj CollectionPage) Next() interface{} {
 	return obj.Get("http://www.w3.org/ns/activitystreams#next")
 }
@@ -101,50 +145,114 @@ func (obj CollectionPage) Prev() interface{} {
 // To Create Something
 type Create struct{ Activity }
 
+func AsCreate(obj *ld.Object) Create {
+	return Create{AsActivity(obj)}
+}
+
 // To Delete Something
 type Delete struct{ Activity }
+
+func AsDelete(obj *ld.Object) Delete {
+	return Delete{AsActivity(obj)}
+}
 
 // The actor dislikes the object
 type Dislike struct{ Activity }
 
+func AsDislike(obj *ld.Object) Dislike {
+	return Dislike{AsActivity(obj)}
+}
+
 // Represents a digital document/file of any sort
 type Document struct{ Object }
+
+func AsDocument(obj *ld.Object) Document {
+	return Document{AsObject(obj)}
+}
 
 // An Event of any kind
 type Event struct{ Object }
 
+func AsEvent(obj *ld.Object) Event {
+	return Event{AsObject(obj)}
+}
+
 // To flag something (e.g. flag as inappropriate, flag as spam, etc)
 type Flag struct{ Activity }
+
+func AsFlag(obj *ld.Object) Flag {
+	return Flag{AsActivity(obj)}
+}
 
 // To Express Interest in Something
 type Follow struct{ Activity }
 
+func AsFollow(obj *ld.Object) Follow {
+	return Follow{AsActivity(obj)}
+}
+
 // A Group of any kind.
 type Group struct{ Object }
+
+func AsGroup(obj *ld.Object) Group {
+	return Group{AsObject(obj)}
+}
 
 // Actor is ignoring the Object
 type Ignore struct{ Activity }
 
+func AsIgnore(obj *ld.Object) Ignore {
+	return Ignore{AsActivity(obj)}
+}
+
 // An Image file
 type Image struct{ Document }
+
+func AsImage(obj *ld.Object) Image {
+	return Image{AsDocument(obj)}
+}
 
 // An Activity that has no direct object
 type IntransitiveActivity struct{ Activity }
 
+func AsIntransitiveActivity(obj *ld.Object) IntransitiveActivity {
+	return IntransitiveActivity{AsActivity(obj)}
+}
+
 // To invite someone or something to something
 type Invite struct{ Offer }
+
+func AsInvite(obj *ld.Object) Invite {
+	return Invite{AsOffer(obj)}
+}
 
 // To Join Something
 type Join struct{ Activity }
 
+func AsJoin(obj *ld.Object) Join {
+	return Join{AsActivity(obj)}
+}
+
 // To Leave Something
 type Leave struct{ Activity }
+
+func AsLeave(obj *ld.Object) Leave {
+	return Leave{AsActivity(obj)}
+}
 
 // To Like Something
 type Like struct{ Activity }
 
+func AsLike(obj *ld.Object) Like {
+	return Like{AsActivity(obj)}
+}
+
 // Represents a qualified reference to another resource. Patterned after the RFC5988 Web Linking Model
 type Link struct{ o *ld.Object }
+
+func AsLink(obj *ld.Object) Link {
+	return Link{o: obj}
+}
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Link) Obj() *ld.Object {
@@ -202,16 +310,36 @@ func (obj Link) Width() interface{} {
 // The actor listened to the object
 type Listen struct{ Activity }
 
+func AsListen(obj *ld.Object) Listen {
+	return Listen{AsActivity(obj)}
+}
+
 // A specialized Link that represents an @mention
 type Mention struct{ Link }
+
+func AsMention(obj *ld.Object) Mention {
+	return Mention{AsLink(obj)}
+}
 
 // The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from.
 type Move struct{ Activity }
 
+func AsMove(obj *ld.Object) Move {
+	return Move{AsActivity(obj)}
+}
+
 // A Short note, typically less than a single paragraph. A "tweet" is an example, or a "status update"
 type Note struct{ Object }
 
+func AsNote(obj *ld.Object) Note {
+	return Note{AsObject(obj)}
+}
+
 type Object struct{ o *ld.Object }
+
+func AsObject(obj *ld.Object) Object {
+	return Object{o: obj}
+}
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Object) Obj() *ld.Object {
@@ -375,8 +503,16 @@ func (obj Object) Url() interface{} {
 // To Offer something to someone or something
 type Offer struct{ Activity }
 
+func AsOffer(obj *ld.Object) Offer {
+	return Offer{AsActivity(obj)}
+}
+
 // A variation of Collection in which items are strictly ordered
 type OrderedCollection struct{ o *ld.Object }
+
+func AsOrderedCollection(obj *ld.Object) OrderedCollection {
+	return OrderedCollection{o: obj}
+}
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj OrderedCollection) Obj() *ld.Object {
@@ -412,6 +548,10 @@ type OrderedCollectionPage struct {
 	OrderedCollection
 }
 
+func AsOrderedCollectionPage(obj *ld.Object) OrderedCollectionPage {
+	return OrderedCollectionPage{AsCollectionPage(obj), AsOrderedCollection(obj)}
+}
+
 // In a strictly ordered logical collection, specifies the index position of the first item in the items list
 func (obj OrderedCollectionPage) StartIndex() interface{} {
 	return obj.Get("http://www.w3.org/ns/activitystreams#startIndex")
@@ -419,6 +559,10 @@ func (obj OrderedCollectionPage) StartIndex() interface{} {
 
 // A rdf:List variant for Objects and Links
 type OrderedItems struct{ o *ld.Object }
+
+func AsOrderedItems(obj *ld.Object) OrderedItems {
+	return OrderedItems{o: obj}
+}
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj OrderedItems) Obj() *ld.Object {
@@ -451,14 +595,30 @@ func (obj OrderedItems) Apply(other ld.Entity, mergeArrays bool) error {
 // An Organization
 type Organization struct{ Object }
 
+func AsOrganization(obj *ld.Object) Organization {
+	return Organization{AsObject(obj)}
+}
+
 // A Web Page
 type Page struct{ Object }
+
+func AsPage(obj *ld.Object) Page {
+	return Page{AsObject(obj)}
+}
 
 // A Person
 type Person struct{ Object }
 
+func AsPerson(obj *ld.Object) Person {
+	return Person{AsObject(obj)}
+}
+
 // A physical or logical location
 type Place struct{ Object }
+
+func AsPlace(obj *ld.Object) Place {
+	return Place{AsObject(obj)}
+}
 
 // Specifies the accuracy around the point established by the longitude and latitude
 func (obj Place) Accuracy() interface{} {
@@ -493,6 +653,10 @@ func (obj Place) Units() interface{} {
 // A Profile Document
 type Profile struct{ Object }
 
+func AsProfile(obj *ld.Object) Profile {
+	return Profile{AsObject(obj)}
+}
+
 // On a Profile object, describes the object described by the profile
 func (obj Profile) Describes() interface{} {
 	return obj.Get("http://www.w3.org/ns/activitystreams#describes")
@@ -500,6 +664,10 @@ func (obj Profile) Describes() interface{} {
 
 // A question of any sort.
 type Question struct{ IntransitiveActivity }
+
+func AsQuestion(obj *ld.Object) Question {
+	return Question{AsIntransitiveActivity(obj)}
+}
 
 // Describes a possible inclusive answer or option for a question.
 func (obj Question) AnyOf() interface{} {
@@ -514,11 +682,23 @@ func (obj Question) OneOf() interface{} {
 // The actor read the object
 type Read struct{ Activity }
 
+func AsRead(obj *ld.Object) Read {
+	return Read{AsActivity(obj)}
+}
+
 // Actor rejects the Object
 type Reject struct{ Activity }
 
+func AsReject(obj *ld.Object) Reject {
+	return Reject{AsActivity(obj)}
+}
+
 // Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)
 type Relationship struct{ Object }
+
+func AsRelationship(obj *ld.Object) Relationship {
+	return Relationship{AsObject(obj)}
+}
 
 // On a Relationship object, describes the type of relationship
 func (obj Relationship) Relationship() interface{} {
@@ -533,17 +713,37 @@ func (obj Relationship) Subject() interface{} {
 // To Remove Something
 type Remove struct{ Activity }
 
+func AsRemove(obj *ld.Object) Remove {
+	return Remove{AsActivity(obj)}
+}
+
 // A service provided by some entity
 type Service struct{ Object }
+
+func AsService(obj *ld.Object) Service {
+	return Service{AsObject(obj)}
+}
 
 // Actor tentatively accepts the Object
 type TentativeAccept struct{ Accept }
 
+func AsTentativeAccept(obj *ld.Object) TentativeAccept {
+	return TentativeAccept{AsAccept(obj)}
+}
+
 // Actor tentatively rejects the object
 type TentativeReject struct{ Reject }
 
+func AsTentativeReject(obj *ld.Object) TentativeReject {
+	return TentativeReject{AsReject(obj)}
+}
+
 // A placeholder for a deleted object
 type Tombstone struct{ Object }
+
+func AsTombstone(obj *ld.Object) Tombstone {
+	return Tombstone{AsObject(obj)}
+}
 
 // Specifies the date and time the object was deleted
 func (obj Tombstone) Deleted() interface{} {
@@ -558,17 +758,37 @@ func (obj Tombstone) FormerType() interface{} {
 // The actor is traveling to the target. The origin specifies where the actor is traveling from.
 type Travel struct{ IntransitiveActivity }
 
+func AsTravel(obj *ld.Object) Travel {
+	return Travel{AsIntransitiveActivity(obj)}
+}
+
 // To Undo Something. This would typically be used to indicate that a previous Activity has been undone.
 type Undo struct{ Activity }
+
+func AsUndo(obj *ld.Object) Undo {
+	return Undo{AsActivity(obj)}
+}
 
 // To Update/Modify Something
 type Update struct{ Activity }
 
+func AsUpdate(obj *ld.Object) Update {
+	return Update{AsActivity(obj)}
+}
+
 // A Video document of any kind.
 type Video struct{ Document }
 
+func AsVideo(obj *ld.Object) Video {
+	return Video{AsDocument(obj)}
+}
+
 // The actor viewed the object
 type View struct{ Activity }
+
+func AsView(obj *ld.Object) View {
+	return View{AsActivity(obj)}
+}
 
 var (
 	_ ld.Entity = Accept{}

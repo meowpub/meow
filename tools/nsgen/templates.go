@@ -36,11 +36,11 @@ type RenderContext struct {
 	Packages   map[string][]*Declaration
 }
 
-func (rctx RenderContext) Resolve(id string) string {
+func (rctx RenderContext) ResolvePrefix(id, pfx string) string {
 	for pkg, decls := range rctx.Packages {
 		for _, decl := range decls {
 			if decl.ID() == id {
-				t := decl.TypeName()
+				t := pfx + decl.TypeName()
 				if pkg != rctx.Package {
 					t = pkg + "." + t
 				}
@@ -49,6 +49,10 @@ func (rctx RenderContext) Resolve(id string) string {
 		}
 	}
 	panic(id)
+}
+
+func (rctx RenderContext) Resolve(id string) string {
+	return rctx.ResolvePrefix(id, "")
 }
 
 func (rctx RenderContext) OfType(ts ...string) (matches []*Declaration) {
@@ -168,6 +172,10 @@ import (
 {{range $i, $cls := .Classes}}
 {{comment ($cls.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 type {{$cls.TypeName}} struct { {{range .SubClassOf}}{{$.Resolve .}}; {{else}}o *ld.Object{{end}} }
+
+func As{{$cls.TypeName}}(obj *ld.Object) {{$cls.TypeName}} {
+	return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(obj),{{else}}o: obj{{end}} }
+}
 
 {{if not .SubClassOf}}
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
