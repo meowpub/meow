@@ -177,6 +177,10 @@ func As{{$cls.TypeName}}(obj *ld.Object) {{$cls.TypeName}} {
 	return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(obj),{{else}}o: obj{{end}} }
 }
 
+func Is{{$cls.TypeName}}(obj *ld.Object) bool {
+	return ld.Is(obj, "{{.ID}}")
+}
+
 {{if not .SubClassOf}}
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj {{$cls.TypeName}}) Obj() *ld.Object {

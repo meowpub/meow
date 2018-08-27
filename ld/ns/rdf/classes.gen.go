@@ -13,6 +13,10 @@ func AsAlt(obj *ld.Object) Alt {
 	return Alt{AsContainer(obj)}
 }
 
+func IsAlt(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt")
+}
+
 // The class of unordered containers.
 type Bag struct{ Container }
 
@@ -20,11 +24,19 @@ func AsBag(obj *ld.Object) Bag {
 	return Bag{AsContainer(obj)}
 }
 
+func IsBag(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag")
+}
+
 // The class of RDF Lists.
 type List struct{ Resource }
 
 func AsList(obj *ld.Object) List {
 	return List{AsResource(obj)}
+}
+
+func IsList(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/1999/02/22-rdf-syntax-ns#List")
 }
 
 // The first item in the subject RDF list.
@@ -42,6 +54,10 @@ type Property struct{ Resource }
 
 func AsProperty(obj *ld.Object) Property {
 	return Property{AsResource(obj)}
+}
+
+func IsProperty(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property")
 }
 
 // A domain of the subject property.
@@ -66,11 +82,19 @@ func AsSeq(obj *ld.Object) Seq {
 	return Seq{AsContainer(obj)}
 }
 
+func IsSeq(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq")
+}
+
 // The class of RDF statements.
 type Statement struct{ Resource }
 
 func AsStatement(obj *ld.Object) Statement {
 	return Statement{AsResource(obj)}
+}
+
+func IsStatement(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement")
 }
 
 // The object of the subject RDF statement.
@@ -95,6 +119,10 @@ func AsClass(obj *ld.Object) Class {
 	return Class{AsResource(obj)}
 }
 
+func IsClass(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/2000/01/rdf-schema#Class")
+}
+
 // The subject is a subclass of a class.
 func (obj Class) SubClassOf() interface{} {
 	return obj.Get("http://www.w3.org/2000/01/rdf-schema#subClassOf")
@@ -107,12 +135,20 @@ func AsContainer(obj *ld.Object) Container {
 	return Container{AsResource(obj)}
 }
 
+func IsContainer(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/2000/01/rdf-schema#Container")
+}
+
 // The class of container membership properties, rdf:_1, rdf:_2, ...,
 // all of which are sub-properties of 'member'.
 type ContainerMembershipProperty struct{ Property }
 
 func AsContainerMembershipProperty(obj *ld.Object) ContainerMembershipProperty {
 	return ContainerMembershipProperty{AsProperty(obj)}
+}
+
+func IsContainerMembershipProperty(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty")
 }
 
 // The class of RDF datatypes.
@@ -122,6 +158,10 @@ func AsDatatype(obj *ld.Object) Datatype {
 	return Datatype{AsClass(obj)}
 }
 
+func IsDatatype(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/2000/01/rdf-schema#Datatype")
+}
+
 // The class of literal values, eg. textual strings and integers.
 type Literal struct{ Resource }
 
@@ -129,11 +169,19 @@ func AsLiteral(obj *ld.Object) Literal {
 	return Literal{AsResource(obj)}
 }
 
+func IsLiteral(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/2000/01/rdf-schema#Literal")
+}
+
 // The class resource, everything.
 type Resource struct{ o *ld.Object }
 
 func AsResource(obj *ld.Object) Resource {
 	return Resource{o: obj}
+}
+
+func IsResource(obj *ld.Object) bool {
+	return ld.Is(obj, "http://www.w3.org/2000/01/rdf-schema#Resource")
 }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
