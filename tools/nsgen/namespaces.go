@@ -42,5 +42,4 @@ var Namespaces = []*Namespace{
 	// These aren't available in Turtle anywhere, so we have to implement them manually.
 	// Well, XMLSchema is available in XML schema and... no. Just, no. Not parsing that.
 	// {Package: "xsd", Short: "xsd", Long: "http://www.w3.org/2001/XMLSchema#"},
-	// {Package: "ldp", Short: "ldp", Long: "http://www.w3.org/ns/ldp#"},
 }
