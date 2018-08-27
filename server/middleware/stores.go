@@ -1,9 +1,6 @@
 package middleware
 
 import (
-	"context"
-	"net/http"
-
 	"github.com/go-redis/redis"
 	"github.com/jinzhu/gorm"
 
@@ -16,38 +13,38 @@ import (
 
 func AddDB(db *gorm.DB) func(next api.Handler) api.Handler {
 	return func(next api.Handler) api.Handler {
-		return api.HandlerFunc(func(ctx context.Context, req *http.Request) api.Response {
-			ctx = lib.WithDB(ctx, db)
+		return api.HandlerFunc(func(req api.Request) api.Response {
+			ctx := lib.WithDB(req.Context(), db)
 			req = req.WithContext(ctx)
-			return next.HandleRequest(ctx, req)
+			return next.HandleRequest(req.WithContext(lib.WithDB(req.Context(), db)))
 		})
 	}
 }
 
 func AddRedis(r *redis.Client) func(next api.Handler) api.Handler {
 	return func(next api.Handler) api.Handler {
-		return api.HandlerFunc(func(ctx context.Context, req *http.Request) api.Response {
-			ctx = lib.WithRedis(ctx, r)
+		return api.HandlerFunc(func(req api.Request) api.Response {
+			ctx := lib.WithRedis(req.Context(), r)
 			req = req.WithContext(ctx)
-			return next.HandleRequest(ctx, req)
+			return next.HandleRequest(req)
 		})
 	}
 }
 
 func AddStores() func(next api.Handler) api.Handler {
 	return func(next api.Handler) api.Handler {
-		return api.HandlerFunc(func(ctx context.Context, req *http.Request) api.Response {
+		return api.HandlerFunc(func(req api.Request) api.Response {
 			stores := models.NewStores(
-				lib.GetDB(ctx),
-				lib.GetRedis(ctx),
+				lib.GetDB(req),
+				lib.GetRedis(req),
 				config.RedisKeyspace(),
 			)
 			estore := entities.NewStore(stores.Entities())
 
-			ctx = models.WithStores(ctx, stores)
+			ctx := models.WithStores(req.Context(), stores)
 			ctx = entities.WithStore(ctx, estore)
 			req = req.WithContext(ctx)
-			return next.HandleRequest(ctx, req)
+			return next.HandleRequest(req)
 		})
 	}
 }

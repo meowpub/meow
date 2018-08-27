@@ -18,7 +18,7 @@ import (
 func TestRouterHandleRequest(t *testing.T) {
 	roots := map[string]*Node{
 		"https://example.com": &Node{
-			Self: HandlerFunc(func(ctx context.Context, req *http.Request) Response {
+			Self: HandlerFunc(func(req Request) Response {
 				return Response{Data: "OK"}
 			}),
 		},
@@ -32,43 +32,43 @@ func TestRouterHandleRequest(t *testing.T) {
 
 	r.Mount("-", &Node{
 		Children: map[string]Handler{
-			"route": HandlerFunc(func(ctx context.Context, req *http.Request) Response {
+			"route": HandlerFunc(func(req Request) Response {
 				return Response{Status: http.StatusTeapot, Data: "i'm a teapot"}
 			}),
 		},
 	})
 
 	t.Run("Root", func(t *testing.T) {
-		req := httptest.NewRequest("GET", "https://example.com/", nil)
-		assert.Equal(t, Response{Data: "OK"}, r.HandleRequest(req.Context(), req))
+		req := Request{httptest.NewRequest("GET", "https://example.com/", nil)}
+		assert.Equal(t, Response{Data: "OK"}, r.HandleRequest(req))
 
 		t.Run("-", func(t *testing.T) {
-			req := httptest.NewRequest("GET", "https://example.com/-/", nil)
-			assert.Equal(t, Response{Status: http.StatusNotFound}, r.HandleRequest(req.Context(), req))
+			req := Request{httptest.NewRequest("GET", "https://example.com/-/", nil)}
+			assert.Equal(t, Response{Status: http.StatusNotFound}, r.HandleRequest(req))
 
 			t.Run("route", func(t *testing.T) {
-				req := httptest.NewRequest("GET", "https://example.com/-/route", nil)
-				assert.Equal(t, Response{Status: http.StatusTeapot, Data: "i'm a teapot"}, r.HandleRequest(req.Context(), req))
+				req := Request{httptest.NewRequest("GET", "https://example.com/-/route", nil)}
+				assert.Equal(t, Response{Status: http.StatusTeapot, Data: "i'm a teapot"}, r.HandleRequest(req))
 			})
 		})
 	})
 
 	t.Run("Host with Port", func(t *testing.T) {
-		req := httptest.NewRequest("GET", "https://example.com:443/", nil)
-		assert.Equal(t, Response{Data: "OK"}, r.HandleRequest(req.Context(), req))
+		req := Request{httptest.NewRequest("GET", "https://example.com:443/", nil)}
+		assert.Equal(t, Response{Data: "OK"}, r.HandleRequest(req))
 	})
 
 	t.Run("Nonexistent Root", func(t *testing.T) {
-		req := httptest.NewRequest("GET", "https://example.co.uk/", nil)
-		assert.Equal(t, Response{Status: http.StatusNotFound}, r.HandleRequest(req.Context(), req))
+		req := Request{httptest.NewRequest("GET", "https://example.co.uk/", nil)}
+		assert.Equal(t, Response{Status: http.StatusNotFound}, r.HandleRequest(req))
 
 		t.Run("-", func(t *testing.T) {
-			req := httptest.NewRequest("GET", "https://example.co.uk/-/", nil)
-			assert.Equal(t, Response{Status: http.StatusNotFound}, r.HandleRequest(req.Context(), req))
+			req := Request{httptest.NewRequest("GET", "https://example.co.uk/-/", nil)}
+			assert.Equal(t, Response{Status: http.StatusNotFound}, r.HandleRequest(req))
 
 			t.Run("route", func(t *testing.T) {
-				req := httptest.NewRequest("GET", "https://example.co.uk/-/route", nil)
-				assert.Equal(t, Response{Status: http.StatusNotFound}, r.HandleRequest(req.Context(), req))
+				req := Request{httptest.NewRequest("GET", "https://example.co.uk/-/route", nil)}
+				assert.Equal(t, Response{Status: http.StatusNotFound}, r.HandleRequest(req))
 			})
 		})
 	})
@@ -114,7 +114,7 @@ func TestRouterServe(t *testing.T) {
 			}
 			for instatus, outstatus := range statuses {
 				t.Run(strconv.Itoa(instatus), func(t *testing.T) {
-					root.Self = HandlerFunc(func(ctx context.Context, req *http.Request) Response {
+					root.Self = HandlerFunc(func(req Request) Response {
 						return Response{Status: instatus, Data: tdata.Data}
 					})
 
@@ -128,7 +128,7 @@ func TestRouterServe(t *testing.T) {
 	}
 
 	t.Run("Template", func(t *testing.T) {
-		root.Self = HandlerFunc(func(ctx context.Context, req *http.Request) Response {
+		root.Self = HandlerFunc(func(req Request) Response {
 			return Response{Data: "World", Template: "template"}
 		})
 
@@ -139,7 +139,7 @@ func TestRouterServe(t *testing.T) {
 	})
 
 	t.Run("Headers", func(t *testing.T) {
-		root.Self = HandlerFunc(func(ctx context.Context, req *http.Request) Response {
+		root.Self = HandlerFunc(func(req Request) Response {
 			resp := Response{}
 			resp.Header().Set("X-My-Header", "value")
 			resp.WriteHeader(http.StatusTeapot)
@@ -155,7 +155,7 @@ func TestRouterServe(t *testing.T) {
 	})
 
 	t.Run("Error", func(t *testing.T) {
-		root.Self = HandlerFunc(func(ctx context.Context, req *http.Request) Response {
+		root.Self = HandlerFunc(func(req Request) Response {
 			return Response{Error: Wrap(errors.New("i'm a teapot"), http.StatusTeapot)}
 		})
 
@@ -170,7 +170,7 @@ func TestRouterServe(t *testing.T) {
 	})
 
 	t.Run("Template Error", func(t *testing.T) {
-		root.Self = HandlerFunc(func(ctx context.Context, req *http.Request) Response {
+		root.Self = HandlerFunc(func(req Request) Response {
 			return Response{Template: "nonexistent"}
 		})
 
@@ -188,20 +188,20 @@ func TestRouterServe(t *testing.T) {
 
 func TestRouterUse(t *testing.T) {
 	r := NewRouter(func(ctx context.Context, url string) (Traversible, error) {
-		return Node{Self: HandlerFunc(func(ctx context.Context, req *http.Request) Response {
+		return Node{Self: HandlerFunc(func(req Request) Response {
 			return Response{Data: "hi"}
 		})}, nil
 	})
 	r.Use(func(next Handler) Handler {
-		return HandlerFunc(func(ctx context.Context, req *http.Request) Response {
-			resp := next.HandleRequest(ctx, req)
+		return HandlerFunc(func(req Request) Response {
+			resp := next.HandleRequest(req)
 			resp.Status = http.StatusTeapot
 			return resp
 		})
 	})
 	r.Use(func(next Handler) Handler {
-		return HandlerFunc(func(ctx context.Context, req *http.Request) Response {
-			resp := next.HandleRequest(ctx, req)
+		return HandlerFunc(func(req Request) Response {
+			resp := next.HandleRequest(req)
 			resp.Header().Set("X-My-Header", "value")
 			return resp
 		})
