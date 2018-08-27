@@ -103,6 +103,9 @@ func (obj NegativePropertyAssertion) TargetValue() interface{} {
 	return obj.O.V["http://www.w3.org/2002/07/owl#targetValue"]
 }
 
+// This is the empty class.
+type Nothing struct{ Thing }
+
 // The class of object properties.
 type ObjectProperty struct{ rdf.Property }
 
@@ -118,6 +121,31 @@ func (obj ObjectProperty) PropertyChainAxiom() interface{} {
 
 // The class of ontologies.
 type Ontology struct{ rdf.Resource }
+
+// The annotation property that indicates that a given ontology is backward compatible with another ontology.
+func (obj Ontology) BackwardCompatibleWith() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#backwardCompatibleWith"]
+}
+
+// The property that is used for importing other ontologies into a given ontology.
+func (obj Ontology) Imports() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#imports"]
+}
+
+// The annotation property that indicates that a given ontology is incompatible with another ontology.
+func (obj Ontology) IncompatibleWith() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#incompatibleWith"]
+}
+
+// The annotation property that indicates the predecessor ontology of a given ontology.
+func (obj Ontology) PriorVersion() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#priorVersion"]
+}
+
+// The property that identifies the version IRI of an ontology.
+func (obj Ontology) VersionIRI() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#versionIRI"]
+}
 
 // The class of ontology properties.
 type OntologyProperty struct{ rdf.Property }
@@ -201,6 +229,67 @@ func (obj Restriction) SomeValuesFrom() interface{} {
 // The class of symmetric properties.
 type SymmetricProperty struct{ ObjectProperty }
 
+// The class of OWL individuals.
+type Thing struct{ O *ld.Object }
+
+// Returns the wrapped plain ld.Object. Implements ld.Entity.
+func (obj Thing) Obj() *ld.Object {
+	return obj.O
+}
+
+// Returns the object's @id. Implements ld.Entity.
+func (obj Thing) ID() string {
+	return obj.O.ID()
+}
+
+// Returns the object's @value. Implements ld.Entity.
+func (obj Thing) Value() string {
+	return obj.O.Value()
+}
+
+// Returns the object's @type. Implements ld.Entity.
+func (obj Thing) Type() []string {
+	return obj.O.Type()
+}
+
+// Returns the named attribute. Implements ld.Entity.
+func (obj Thing) Get(key string) interface{} { return obj.O.Get(key) }
+
+// Applies another object as a patch to this one. Implements ld.Entity.
+func (obj Thing) Apply(other ld.Entity, mergeArrays bool) error {
+	return obj.O.Apply(other, mergeArrays)
+}
+
+// The data property that does not relate any individual to any data value.
+func (obj Thing) BottomDataProperty() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#bottomDataProperty"]
+}
+
+// The object property that does not relate any two individuals.
+func (obj Thing) BottomObjectProperty() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#bottomObjectProperty"]
+}
+
+// The property that determines that two given individuals are different.
+func (obj Thing) DifferentFrom() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#differentFrom"]
+}
+
+// The property that determines that two given individuals are equal.
+func (obj Thing) SameAs() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#sameAs"]
+}
+
+// The data property that relates every individual to every data value.
+func (obj Thing) TopDataProperty() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#topDataProperty"]
+}
+
+// The object property that relates every two individuals.
+func (obj Thing) TopObjectProperty() interface{} {
+	return obj.O.V["http://www.w3.org/2002/07/owl#topObjectProperty"]
+}
+
 // The class of transitive properties.
 type TransitiveProperty struct{ ObjectProperty }
 
@@ -222,11 +311,13 @@ var (
 	_ ld.Entity = IrreflexiveProperty{}
 	_ ld.Entity = NamedIndividual{}
 	_ ld.Entity = NegativePropertyAssertion{}
+	_ ld.Entity = Nothing{}
 	_ ld.Entity = ObjectProperty{}
 	_ ld.Entity = Ontology{}
 	_ ld.Entity = OntologyProperty{}
 	_ ld.Entity = ReflexiveProperty{}
 	_ ld.Entity = Restriction{}
 	_ ld.Entity = SymmetricProperty{}
+	_ ld.Entity = Thing{}
 	_ ld.Entity = TransitiveProperty{}
 )

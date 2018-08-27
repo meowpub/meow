@@ -18,6 +18,15 @@ const (
 	// The property that determines the predicate of a negative property assertion.
 	PropAssertionProperty = "http://www.w3.org/2002/07/owl#assertionProperty"
 
+	// The annotation property that indicates that a given ontology is backward compatible with another ontology.
+	PropBackwardCompatibleWith = "http://www.w3.org/2002/07/owl#backwardCompatibleWith"
+
+	// The data property that does not relate any individual to any data value.
+	PropBottomDataProperty = "http://www.w3.org/2002/07/owl#bottomDataProperty"
+
+	// The object property that does not relate any two individuals.
+	PropBottomObjectProperty = "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+
 	// The property that determines the cardinality of an exact cardinality restriction.
 	PropCardinality = "http://www.w3.org/2002/07/owl#cardinality"
 
@@ -26,6 +35,9 @@ const (
 
 	// The property that determines that a given data range is the complement of another data range with respect to the data domain.
 	PropDatatypeComplementOf = "http://www.w3.org/2002/07/owl#datatypeComplementOf"
+
+	// The annotation property that indicates that a given entity has been deprecated.
+	PropDeprecated = "http://www.w3.org/2002/07/owl#deprecated"
 
 	// The property that determines that two given individuals are different.
 	PropDifferentFrom = "http://www.w3.org/2002/07/owl#differentFrom"
@@ -53,6 +65,12 @@ const (
 
 	// The property that determines the individual that a has-value restriction refers to.
 	PropHasValue = "http://www.w3.org/2002/07/owl#hasValue"
+
+	// The property that is used for importing other ontologies into a given ontology.
+	PropImports = "http://www.w3.org/2002/07/owl#imports"
+
+	// The annotation property that indicates that a given ontology is incompatible with another ontology.
+	PropIncompatibleWith = "http://www.w3.org/2002/07/owl#incompatibleWith"
 
 	// The property that determines the collection of classes or data ranges that build an intersection.
 	PropIntersectionOf = "http://www.w3.org/2002/07/owl#intersectionOf"
@@ -93,6 +111,9 @@ const (
 	// The property that determines the collection of individuals or data values that build an enumeration.
 	PropOneOf = "http://www.w3.org/2002/07/owl#oneOf"
 
+	// The annotation property that indicates the predecessor ontology of a given ontology.
+	PropPriorVersion = "http://www.w3.org/2002/07/owl#priorVersion"
+
 	// The property that determines the n-tuple of properties that build a sub property chain of a given property.
 	PropPropertyChainAxiom = "http://www.w3.org/2002/07/owl#propertyChainAxiom"
 
@@ -117,48 +138,21 @@ const (
 	// The property that determines the value of a negative data property assertion.
 	PropTargetValue = "http://www.w3.org/2002/07/owl#targetValue"
 
+	// The data property that relates every individual to every data value.
+	PropTopDataProperty = "http://www.w3.org/2002/07/owl#topDataProperty"
+
+	// The object property that relates every two individuals.
+	PropTopObjectProperty = "http://www.w3.org/2002/07/owl#topObjectProperty"
+
 	// The property that determines the collection of classes or data ranges that build a union.
 	PropUnionOf = "http://www.w3.org/2002/07/owl#unionOf"
+
+	// The property that identifies the version IRI of an ontology.
+	PropVersionIRI = "http://www.w3.org/2002/07/owl#versionIRI"
+
+	// The annotation property that provides version information for an ontology or another OWL construct.
+	PropVersionInfo = "http://www.w3.org/2002/07/owl#versionInfo"
 
 	// The property that determines the collection of facet-value pairs that define a datatype restriction.
 	PropWithRestrictions = "http://www.w3.org/2002/07/owl#withRestrictions"
 )
-
-// This is the empty class.
-// http://www.w3.org/2002/07/owl#Nothing - http://www.w3.org/2002/07/owl#Class
-
-// The class of OWL individuals.
-// http://www.w3.org/2002/07/owl#Thing - http://www.w3.org/2002/07/owl#Class
-
-// The annotation property that indicates that a given ontology is backward compatible with another ontology.
-// http://www.w3.org/2002/07/owl#backwardCompatibleWith - http://www.w3.org/2002/07/owl#AnnotationProperty
-
-// The data property that does not relate any individual to any data value.
-// http://www.w3.org/2002/07/owl#bottomDataProperty - http://www.w3.org/2002/07/owl#DatatypeProperty
-
-// The object property that does not relate any two individuals.
-// http://www.w3.org/2002/07/owl#bottomObjectProperty - http://www.w3.org/2002/07/owl#ObjectProperty
-
-// The annotation property that indicates that a given entity has been deprecated.
-// http://www.w3.org/2002/07/owl#deprecated - http://www.w3.org/2002/07/owl#AnnotationProperty
-
-// The property that is used for importing other ontologies into a given ontology.
-// http://www.w3.org/2002/07/owl#imports - http://www.w3.org/2002/07/owl#OntologyProperty
-
-// The annotation property that indicates that a given ontology is incompatible with another ontology.
-// http://www.w3.org/2002/07/owl#incompatibleWith - http://www.w3.org/2002/07/owl#AnnotationProperty
-
-// The annotation property that indicates the predecessor ontology of a given ontology.
-// http://www.w3.org/2002/07/owl#priorVersion - http://www.w3.org/2002/07/owl#AnnotationProperty
-
-// The data property that relates every individual to every data value.
-// http://www.w3.org/2002/07/owl#topDataProperty - http://www.w3.org/2002/07/owl#DatatypeProperty
-
-// The object property that relates every two individuals.
-// http://www.w3.org/2002/07/owl#topObjectProperty - http://www.w3.org/2002/07/owl#ObjectProperty
-
-// The property that identifies the version IRI of an ontology.
-// http://www.w3.org/2002/07/owl#versionIRI - http://www.w3.org/2002/07/owl#OntologyProperty
-
-// The annotation property that provides version information for an ontology or another OWL construct.
-// http://www.w3.org/2002/07/owl#versionInfo - http://www.w3.org/2002/07/owl#AnnotationProperty

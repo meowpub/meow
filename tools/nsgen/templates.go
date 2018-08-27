@@ -51,10 +51,13 @@ func (rctx RenderContext) Resolve(id string) string {
 	panic(id)
 }
 
-func (rctx RenderContext) OfType(t string) (matches []*Declaration) {
+func (rctx RenderContext) OfType(ts ...string) (matches []*Declaration) {
 	for _, decl := range rctx.Declarations {
-		if decl.RDFType() == t {
-			matches = append(matches, decl)
+		for _, t := range ts {
+			if decl.RDFType() == t {
+				matches = append(matches, decl)
+				break
+			}
 		}
 	}
 	return
@@ -70,11 +73,20 @@ func (rctx RenderContext) Ontology() *Declaration {
 }
 
 func (rctx RenderContext) Classes() []*Declaration {
-	return rctx.OfType("http://www.w3.org/2000/01/rdf-schema#Class")
+	return rctx.OfType(
+		"http://www.w3.org/2000/01/rdf-schema#Class",
+		"http://www.w3.org/2002/07/owl#Class",
+	)
 }
 
 func (rctx RenderContext) Properties() []*Declaration {
-	return rctx.OfType("http://www.w3.org/1999/02/22-rdf-syntax-ns#Property")
+	return rctx.OfType(
+		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+		"http://www.w3.org/2002/07/owl#AnnotationProperty",
+		"http://www.w3.org/2002/07/owl#DatatypeProperty",
+		"http://www.w3.org/2002/07/owl#ObjectProperty",
+		"http://www.w3.org/2002/07/owl#OntologyProperty",
+	)
 }
 
 func (rctx RenderContext) PropertiesOf(of *Declaration) (matches []*Declaration) {
@@ -97,6 +109,11 @@ func (rctx RenderContext) Misc() (matches []*Declaration) {
 		case "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property":
 		case "http://www.w3.org/2000/01/rdf-schema#Datatype":
 		case "http://www.w3.org/2002/07/owl#Ontology":
+		case "http://www.w3.org/2002/07/owl#Class":
+		case "http://www.w3.org/2002/07/owl#AnnotationProperty":
+		case "http://www.w3.org/2002/07/owl#DatatypeProperty":
+		case "http://www.w3.org/2002/07/owl#ObjectProperty":
+		case "http://www.w3.org/2002/07/owl#OntologyProperty":
 		default:
 			matches = append(matches, decl)
 		}
