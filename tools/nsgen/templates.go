@@ -181,8 +181,10 @@ import (
 {{comment ($cls.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 type {{$cls.TypeName}} struct { {{range .SubClassOf}}{{$.Resolve .}}; {{else}}o *ld.Object{{end}} }
 
+// Ducktypes the object into a {{.TypeName}}.
 func As{{$cls.TypeName}}(obj *ld.Object) {{$cls.TypeName}} { return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(obj),{{else}}o: obj{{end}} } }
 
+// Does the object quack like a {{.TypeName}}?
 func Is{{$cls.TypeName}}(obj *ld.Object) bool { return ld.Is(obj, Type{{.TypeName}}) }
 
 {{if not .SubClassOf}}
