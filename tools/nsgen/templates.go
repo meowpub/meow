@@ -108,6 +108,11 @@ func (rctx RenderContext) DataTypes() []*Declaration {
 	return rctx.OfType("http://www.w3.org/2000/01/rdf-schema#Datatype")
 }
 
+func (rctx RenderContext) Constants() []*Declaration {
+	// This isn't even a real type. NamedIndividual is a thing, Individual isn't. Pls.
+	return rctx.OfType("http://www.w3.org/2002/07/owl#Individual")
+}
+
 func (rctx RenderContext) Misc() (matches []*Declaration) {
 	for _, decl := range rctx.Declarations {
 		isMisc := true
@@ -121,7 +126,8 @@ func (rctx RenderContext) Misc() (matches []*Declaration) {
 				"http://www.w3.org/2002/07/owl#AnnotationProperty",
 				"http://www.w3.org/2002/07/owl#DatatypeProperty",
 				"http://www.w3.org/2002/07/owl#ObjectProperty",
-				"http://www.w3.org/2002/07/owl#OntologyProperty":
+				"http://www.w3.org/2002/07/owl#OntologyProperty",
+				"http://www.w3.org/2002/07/owl#Individual":
 				isMisc = false
 			}
 		}
@@ -158,6 +164,14 @@ const ( {{range .Properties}}
 const ( {{range .Classes}}
 	{{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 	Type{{.TypeName}} = "{{.ID}}"
+	{{end}}
+)
+{{end}}
+
+{{if .Constants}}
+const ( {{range .Constants}}
+	{{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
+	{{.TypeName}} = "{{.ID}}"
 	{{end}}
 )
 {{end}}
