@@ -86,34 +86,34 @@ type Datatype struct{ Class }
 type Literal struct{ Resource }
 
 // The class resource, everything.
-type Resource struct{ O *ld.Object }
+type Resource struct{ o *ld.Object }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Resource) Obj() *ld.Object {
-	return obj.O
+	return obj.o
 }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj Resource) ID() string {
-	return obj.O.ID()
+	return obj.o.ID()
 }
 
 // Returns the object's @value. Implements ld.Entity.
 func (obj Resource) Value() string {
-	return obj.O.Value()
+	return obj.o.Value()
 }
 
 // Returns the object's @type. Implements ld.Entity.
 func (obj Resource) Type() []string {
-	return obj.O.Type()
+	return obj.o.Type()
 }
 
 // Returns the named attribute. Implements ld.Entity.
-func (obj Resource) Get(key string) interface{} { return obj.O.Get(key) }
+func (obj Resource) Get(key string) interface{} { return obj.o.Get(key) }
 
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj Resource) Apply(other ld.Entity, mergeArrays bool) error {
-	return obj.O.Apply(other, mergeArrays)
+	return obj.o.Apply(other, mergeArrays)
 }
 
 // The subject is an instance of a class.

@@ -144,34 +144,34 @@ type Leave struct{ Activity }
 type Like struct{ Activity }
 
 // Represents a qualified reference to another resource. Patterned after the RFC5988 Web Linking Model
-type Link struct{ O *ld.Object }
+type Link struct{ o *ld.Object }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Link) Obj() *ld.Object {
-	return obj.O
+	return obj.o
 }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj Link) ID() string {
-	return obj.O.ID()
+	return obj.o.ID()
 }
 
 // Returns the object's @value. Implements ld.Entity.
 func (obj Link) Value() string {
-	return obj.O.Value()
+	return obj.o.Value()
 }
 
 // Returns the object's @type. Implements ld.Entity.
 func (obj Link) Type() []string {
-	return obj.O.Type()
+	return obj.o.Type()
 }
 
 // Returns the named attribute. Implements ld.Entity.
-func (obj Link) Get(key string) interface{} { return obj.O.Get(key) }
+func (obj Link) Get(key string) interface{} { return obj.o.Get(key) }
 
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj Link) Apply(other ld.Entity, mergeArrays bool) error {
-	return obj.O.Apply(other, mergeArrays)
+	return obj.o.Apply(other, mergeArrays)
 }
 
 // The display height expressed as device independent pixels
@@ -211,34 +211,34 @@ type Move struct{ Activity }
 // A Short note, typically less than a single paragraph. A "tweet" is an example, or a "status update"
 type Note struct{ Object }
 
-type Object struct{ O *ld.Object }
+type Object struct{ o *ld.Object }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Object) Obj() *ld.Object {
-	return obj.O
+	return obj.o
 }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj Object) ID() string {
-	return obj.O.ID()
+	return obj.o.ID()
 }
 
 // Returns the object's @value. Implements ld.Entity.
 func (obj Object) Value() string {
-	return obj.O.Value()
+	return obj.o.Value()
 }
 
 // Returns the object's @type. Implements ld.Entity.
 func (obj Object) Type() []string {
-	return obj.O.Type()
+	return obj.o.Type()
 }
 
 // Returns the named attribute. Implements ld.Entity.
-func (obj Object) Get(key string) interface{} { return obj.O.Get(key) }
+func (obj Object) Get(key string) interface{} { return obj.o.Get(key) }
 
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj Object) Apply(other ld.Entity, mergeArrays bool) error {
-	return obj.O.Apply(other, mergeArrays)
+	return obj.o.Apply(other, mergeArrays)
 }
 
 func (obj Object) Attachment() interface{} {
@@ -376,34 +376,34 @@ func (obj Object) Url() interface{} {
 type Offer struct{ Activity }
 
 // A variation of Collection in which items are strictly ordered
-type OrderedCollection struct{ O *ld.Object }
+type OrderedCollection struct{ o *ld.Object }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj OrderedCollection) Obj() *ld.Object {
-	return obj.O
+	return obj.o
 }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj OrderedCollection) ID() string {
-	return obj.O.ID()
+	return obj.o.ID()
 }
 
 // Returns the object's @value. Implements ld.Entity.
 func (obj OrderedCollection) Value() string {
-	return obj.O.Value()
+	return obj.o.Value()
 }
 
 // Returns the object's @type. Implements ld.Entity.
 func (obj OrderedCollection) Type() []string {
-	return obj.O.Type()
+	return obj.o.Type()
 }
 
 // Returns the named attribute. Implements ld.Entity.
-func (obj OrderedCollection) Get(key string) interface{} { return obj.O.Get(key) }
+func (obj OrderedCollection) Get(key string) interface{} { return obj.o.Get(key) }
 
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj OrderedCollection) Apply(other ld.Entity, mergeArrays bool) error {
-	return obj.O.Apply(other, mergeArrays)
+	return obj.o.Apply(other, mergeArrays)
 }
 
 // An ordered subset of items from an OrderedCollection
@@ -415,34 +415,34 @@ func (obj OrderedCollectionPage) StartIndex() interface{} {
 }
 
 // A rdf:List variant for Objects and Links
-type OrderedItems struct{ O *ld.Object }
+type OrderedItems struct{ o *ld.Object }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj OrderedItems) Obj() *ld.Object {
-	return obj.O
+	return obj.o
 }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj OrderedItems) ID() string {
-	return obj.O.ID()
+	return obj.o.ID()
 }
 
 // Returns the object's @value. Implements ld.Entity.
 func (obj OrderedItems) Value() string {
-	return obj.O.Value()
+	return obj.o.Value()
 }
 
 // Returns the object's @type. Implements ld.Entity.
 func (obj OrderedItems) Type() []string {
-	return obj.O.Type()
+	return obj.o.Type()
 }
 
 // Returns the named attribute. Implements ld.Entity.
-func (obj OrderedItems) Get(key string) interface{} { return obj.O.Get(key) }
+func (obj OrderedItems) Get(key string) interface{} { return obj.o.Get(key) }
 
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj OrderedItems) Apply(other ld.Entity, mergeArrays bool) error {
-	return obj.O.Apply(other, mergeArrays)
+	return obj.o.Apply(other, mergeArrays)
 }
 
 // An Organization
