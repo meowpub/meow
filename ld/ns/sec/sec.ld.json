@@ -1,0 +1,410 @@
+[
+  {
+    "@id": "https://w3id.org/security#Digest",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Digest",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#EncryptedMessage",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#EncryptedMessage",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#GraphSignature2012",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#GraphSignature2012",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Key",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Key",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#LinkedDataSignature2015",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#LinkedDataSignature2015",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Signature",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Signature",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#canonicalizationAlgorithm",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#canonicalizationAlgorithm",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherAlgorithm",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherAlgorithm",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherData",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherData",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherKey",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherKey",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#digestAlgorithm",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#digestAlgorithm",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#digestValue",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#digestValue",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#expires",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#expires",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#https://web-payments.org/vocabs/security",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#initializationVector",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#initializationVector",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#nonce",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#nonce",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#owner",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#owner",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#password",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#password",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#privateKeyPem",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#privateKeyPem",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKey",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKey",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKeyPem",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKeyPem",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKeyService",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKeyService",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "unstable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#revoked",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#revoked",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signature",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signature",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signatureAlgorithm",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signatureAlgorithm",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "unstable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signatureValue",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signatureValue",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  }
+]

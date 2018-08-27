@@ -38,6 +38,12 @@ var Namespaces = []*Namespace{
 		Long:    "http://www.w3.org/ns/ldp#",
 		Source:  "http://www.w3.org/ns/ldp.ttl",
 	},
+	{
+		Package: "sec",
+		Short:   "sec",
+		Long:    "https://w3id.org/security#",
+		Source:  "https://www.w3.org/2012/pyRdfa/extract?uri=https://web-payments.org/vocabs/security",
+	},
 
 	// These aren't available in Turtle anywhere, so we have to implement them manually.
 	// Well, XMLSchema is available in XML schema and... no. Just, no. Not parsing that.
