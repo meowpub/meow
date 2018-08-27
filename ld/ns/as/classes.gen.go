@@ -407,7 +407,10 @@ func (obj OrderedCollection) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // An ordered subset of items from an OrderedCollection
-type OrderedCollectionPage struct{ CollectionPage }
+type OrderedCollectionPage struct {
+	CollectionPage
+	OrderedCollection
+}
 
 // In a strictly ordered logical collection, specifies the index position of the first item in the items list
 func (obj OrderedCollectionPage) StartIndex() interface{} {

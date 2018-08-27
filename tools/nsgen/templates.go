@@ -167,7 +167,7 @@ import (
 
 {{range $i, $cls := .Classes}}
 {{comment ($cls.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
-type {{$cls.TypeName}} struct { {{if .SubClassOf}}{{$.Resolve .SubClassOf}}{{else}}O *ld.Object{{end}} }
+type {{$cls.TypeName}} struct { {{range .SubClassOf}}{{$.Resolve .}}; {{else}}o *ld.Object{{end}} }
 
 {{if not .SubClassOf}}
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
