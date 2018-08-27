@@ -29,3 +29,7 @@ func (n Node) Traverse(ctx context.Context, pathElement string) (Handler, error)
 	}
 	return nil, nil
 }
+
+func (n Node) UnwrapHandler() Handler {
+	return n.Self
+}
