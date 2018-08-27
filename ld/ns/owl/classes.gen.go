@@ -10,10 +10,10 @@ import (
 // The class of collections of pairwise different individuals.
 type AllDifferent struct{ rdf.Resource }
 
-// Ducktypes the object into a AllDifferent.
+// Ducktypes the object into a(n) AllDifferent.
 func AsAllDifferent(obj *ld.Object) AllDifferent { return AllDifferent{rdf.AsResource(obj)} }
 
-// Does the object quack like a AllDifferent?
+// Does the object quack like a(n) AllDifferent?
 func IsAllDifferent(obj *ld.Object) bool { return ld.Is(obj, TypeAllDifferent) }
 
 // The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.
@@ -22,72 +22,72 @@ func (obj AllDifferent) DistinctMembers() interface{} { return obj.Get(PropDisti
 // The class of collections of pairwise disjoint classes.
 type AllDisjointClasses struct{ rdf.Resource }
 
-// Ducktypes the object into a AllDisjointClasses.
+// Ducktypes the object into a(n) AllDisjointClasses.
 func AsAllDisjointClasses(obj *ld.Object) AllDisjointClasses {
 	return AllDisjointClasses{rdf.AsResource(obj)}
 }
 
-// Does the object quack like a AllDisjointClasses?
+// Does the object quack like a(n) AllDisjointClasses?
 func IsAllDisjointClasses(obj *ld.Object) bool { return ld.Is(obj, TypeAllDisjointClasses) }
 
 // The class of collections of pairwise disjoint properties.
 type AllDisjointProperties struct{ rdf.Resource }
 
-// Ducktypes the object into a AllDisjointProperties.
+// Ducktypes the object into a(n) AllDisjointProperties.
 func AsAllDisjointProperties(obj *ld.Object) AllDisjointProperties {
 	return AllDisjointProperties{rdf.AsResource(obj)}
 }
 
-// Does the object quack like a AllDisjointProperties?
+// Does the object quack like a(n) AllDisjointProperties?
 func IsAllDisjointProperties(obj *ld.Object) bool { return ld.Is(obj, TypeAllDisjointProperties) }
 
 // The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.
 type Annotation struct{ rdf.Resource }
 
-// Ducktypes the object into a Annotation.
+// Ducktypes the object into a(n) Annotation.
 func AsAnnotation(obj *ld.Object) Annotation { return Annotation{rdf.AsResource(obj)} }
 
-// Does the object quack like a Annotation?
+// Does the object quack like a(n) Annotation?
 func IsAnnotation(obj *ld.Object) bool { return ld.Is(obj, TypeAnnotation) }
 
 // The class of annotation properties.
 type AnnotationProperty struct{ rdf.Property }
 
-// Ducktypes the object into a AnnotationProperty.
+// Ducktypes the object into a(n) AnnotationProperty.
 func AsAnnotationProperty(obj *ld.Object) AnnotationProperty {
 	return AnnotationProperty{rdf.AsProperty(obj)}
 }
 
-// Does the object quack like a AnnotationProperty?
+// Does the object quack like a(n) AnnotationProperty?
 func IsAnnotationProperty(obj *ld.Object) bool { return ld.Is(obj, TypeAnnotationProperty) }
 
 // The class of asymmetric properties.
 type AsymmetricProperty struct{ ObjectProperty }
 
-// Ducktypes the object into a AsymmetricProperty.
+// Ducktypes the object into a(n) AsymmetricProperty.
 func AsAsymmetricProperty(obj *ld.Object) AsymmetricProperty {
 	return AsymmetricProperty{AsObjectProperty(obj)}
 }
 
-// Does the object quack like a AsymmetricProperty?
+// Does the object quack like a(n) AsymmetricProperty?
 func IsAsymmetricProperty(obj *ld.Object) bool { return ld.Is(obj, TypeAsymmetricProperty) }
 
 // The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.
 type Axiom struct{ rdf.Resource }
 
-// Ducktypes the object into a Axiom.
+// Ducktypes the object into a(n) Axiom.
 func AsAxiom(obj *ld.Object) Axiom { return Axiom{rdf.AsResource(obj)} }
 
-// Does the object quack like a Axiom?
+// Does the object quack like a(n) Axiom?
 func IsAxiom(obj *ld.Object) bool { return ld.Is(obj, TypeAxiom) }
 
 // The class of OWL classes.
 type Class struct{ rdf.Class }
 
-// Ducktypes the object into a Class.
+// Ducktypes the object into a(n) Class.
 func AsClass(obj *ld.Object) Class { return Class{rdf.AsClass(obj)} }
 
-// Does the object quack like a Class?
+// Does the object quack like a(n) Class?
 func IsClass(obj *ld.Object) bool { return ld.Is(obj, TypeClass) }
 
 // The property that determines that a given class is the complement of another class.
@@ -105,61 +105,61 @@ func (obj Class) HasKey() interface{} { return obj.Get(PropHasKey) }
 // The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.
 type DataRange struct{ rdf.Datatype }
 
-// Ducktypes the object into a DataRange.
+// Ducktypes the object into a(n) DataRange.
 func AsDataRange(obj *ld.Object) DataRange { return DataRange{rdf.AsDatatype(obj)} }
 
-// Does the object quack like a DataRange?
+// Does the object quack like a(n) DataRange?
 func IsDataRange(obj *ld.Object) bool { return ld.Is(obj, TypeDataRange) }
 
 // The class of data properties.
 type DatatypeProperty struct{ rdf.Property }
 
-// Ducktypes the object into a DatatypeProperty.
+// Ducktypes the object into a(n) DatatypeProperty.
 func AsDatatypeProperty(obj *ld.Object) DatatypeProperty { return DatatypeProperty{rdf.AsProperty(obj)} }
 
-// Does the object quack like a DatatypeProperty?
+// Does the object quack like a(n) DatatypeProperty?
 func IsDatatypeProperty(obj *ld.Object) bool { return ld.Is(obj, TypeDatatypeProperty) }
 
 // The class of deprecated classes.
 type DeprecatedClass struct{ rdf.Class }
 
-// Ducktypes the object into a DeprecatedClass.
+// Ducktypes the object into a(n) DeprecatedClass.
 func AsDeprecatedClass(obj *ld.Object) DeprecatedClass { return DeprecatedClass{rdf.AsClass(obj)} }
 
-// Does the object quack like a DeprecatedClass?
+// Does the object quack like a(n) DeprecatedClass?
 func IsDeprecatedClass(obj *ld.Object) bool { return ld.Is(obj, TypeDeprecatedClass) }
 
 // The class of deprecated properties.
 type DeprecatedProperty struct{ rdf.Property }
 
-// Ducktypes the object into a DeprecatedProperty.
+// Ducktypes the object into a(n) DeprecatedProperty.
 func AsDeprecatedProperty(obj *ld.Object) DeprecatedProperty {
 	return DeprecatedProperty{rdf.AsProperty(obj)}
 }
 
-// Does the object quack like a DeprecatedProperty?
+// Does the object quack like a(n) DeprecatedProperty?
 func IsDeprecatedProperty(obj *ld.Object) bool { return ld.Is(obj, TypeDeprecatedProperty) }
 
 // The class of functional properties.
 type FunctionalProperty struct{ rdf.Property }
 
-// Ducktypes the object into a FunctionalProperty.
+// Ducktypes the object into a(n) FunctionalProperty.
 func AsFunctionalProperty(obj *ld.Object) FunctionalProperty {
 	return FunctionalProperty{rdf.AsProperty(obj)}
 }
 
-// Does the object quack like a FunctionalProperty?
+// Does the object quack like a(n) FunctionalProperty?
 func IsFunctionalProperty(obj *ld.Object) bool { return ld.Is(obj, TypeFunctionalProperty) }
 
 // The class of inverse-functional properties.
 type InverseFunctionalProperty struct{ ObjectProperty }
 
-// Ducktypes the object into a InverseFunctionalProperty.
+// Ducktypes the object into a(n) InverseFunctionalProperty.
 func AsInverseFunctionalProperty(obj *ld.Object) InverseFunctionalProperty {
 	return InverseFunctionalProperty{AsObjectProperty(obj)}
 }
 
-// Does the object quack like a InverseFunctionalProperty?
+// Does the object quack like a(n) InverseFunctionalProperty?
 func IsInverseFunctionalProperty(obj *ld.Object) bool {
 	return ld.Is(obj, TypeInverseFunctionalProperty)
 }
@@ -167,32 +167,32 @@ func IsInverseFunctionalProperty(obj *ld.Object) bool {
 // The class of irreflexive properties.
 type IrreflexiveProperty struct{ ObjectProperty }
 
-// Ducktypes the object into a IrreflexiveProperty.
+// Ducktypes the object into a(n) IrreflexiveProperty.
 func AsIrreflexiveProperty(obj *ld.Object) IrreflexiveProperty {
 	return IrreflexiveProperty{AsObjectProperty(obj)}
 }
 
-// Does the object quack like a IrreflexiveProperty?
+// Does the object quack like a(n) IrreflexiveProperty?
 func IsIrreflexiveProperty(obj *ld.Object) bool { return ld.Is(obj, TypeIrreflexiveProperty) }
 
 // The class of named individuals.
 type NamedIndividual struct{ Thing }
 
-// Ducktypes the object into a NamedIndividual.
+// Ducktypes the object into a(n) NamedIndividual.
 func AsNamedIndividual(obj *ld.Object) NamedIndividual { return NamedIndividual{AsThing(obj)} }
 
-// Does the object quack like a NamedIndividual?
+// Does the object quack like a(n) NamedIndividual?
 func IsNamedIndividual(obj *ld.Object) bool { return ld.Is(obj, TypeNamedIndividual) }
 
 // The class of negative property assertions.
 type NegativePropertyAssertion struct{ rdf.Resource }
 
-// Ducktypes the object into a NegativePropertyAssertion.
+// Ducktypes the object into a(n) NegativePropertyAssertion.
 func AsNegativePropertyAssertion(obj *ld.Object) NegativePropertyAssertion {
 	return NegativePropertyAssertion{rdf.AsResource(obj)}
 }
 
-// Does the object quack like a NegativePropertyAssertion?
+// Does the object quack like a(n) NegativePropertyAssertion?
 func IsNegativePropertyAssertion(obj *ld.Object) bool {
 	return ld.Is(obj, TypeNegativePropertyAssertion)
 }
@@ -218,19 +218,19 @@ func (obj NegativePropertyAssertion) TargetValue() interface{} { return obj.Get(
 // This is the empty class.
 type Nothing struct{ Thing }
 
-// Ducktypes the object into a Nothing.
+// Ducktypes the object into a(n) Nothing.
 func AsNothing(obj *ld.Object) Nothing { return Nothing{AsThing(obj)} }
 
-// Does the object quack like a Nothing?
+// Does the object quack like a(n) Nothing?
 func IsNothing(obj *ld.Object) bool { return ld.Is(obj, TypeNothing) }
 
 // The class of object properties.
 type ObjectProperty struct{ rdf.Property }
 
-// Ducktypes the object into a ObjectProperty.
+// Ducktypes the object into a(n) ObjectProperty.
 func AsObjectProperty(obj *ld.Object) ObjectProperty { return ObjectProperty{rdf.AsProperty(obj)} }
 
-// Does the object quack like a ObjectProperty?
+// Does the object quack like a(n) ObjectProperty?
 func IsObjectProperty(obj *ld.Object) bool { return ld.Is(obj, TypeObjectProperty) }
 
 // The property that determines that two given properties are inverse.
@@ -242,10 +242,10 @@ func (obj ObjectProperty) PropertyChainAxiom() interface{} { return obj.Get(Prop
 // The class of ontologies.
 type Ontology struct{ rdf.Resource }
 
-// Ducktypes the object into a Ontology.
+// Ducktypes the object into a(n) Ontology.
 func AsOntology(obj *ld.Object) Ontology { return Ontology{rdf.AsResource(obj)} }
 
-// Does the object quack like a Ontology?
+// Does the object quack like a(n) Ontology?
 func IsOntology(obj *ld.Object) bool { return ld.Is(obj, TypeOntology) }
 
 // The annotation property that indicates that a given ontology is backward compatible with another ontology.
@@ -266,30 +266,30 @@ func (obj Ontology) VersionIRI() interface{} { return obj.Get(PropVersionIRI) }
 // The class of ontology properties.
 type OntologyProperty struct{ rdf.Property }
 
-// Ducktypes the object into a OntologyProperty.
+// Ducktypes the object into a(n) OntologyProperty.
 func AsOntologyProperty(obj *ld.Object) OntologyProperty { return OntologyProperty{rdf.AsProperty(obj)} }
 
-// Does the object quack like a OntologyProperty?
+// Does the object quack like a(n) OntologyProperty?
 func IsOntologyProperty(obj *ld.Object) bool { return ld.Is(obj, TypeOntologyProperty) }
 
 // The class of reflexive properties.
 type ReflexiveProperty struct{ ObjectProperty }
 
-// Ducktypes the object into a ReflexiveProperty.
+// Ducktypes the object into a(n) ReflexiveProperty.
 func AsReflexiveProperty(obj *ld.Object) ReflexiveProperty {
 	return ReflexiveProperty{AsObjectProperty(obj)}
 }
 
-// Does the object quack like a ReflexiveProperty?
+// Does the object quack like a(n) ReflexiveProperty?
 func IsReflexiveProperty(obj *ld.Object) bool { return ld.Is(obj, TypeReflexiveProperty) }
 
 // The class of property restrictions.
 type Restriction struct{ Class }
 
-// Ducktypes the object into a Restriction.
+// Ducktypes the object into a(n) Restriction.
 func AsRestriction(obj *ld.Object) Restriction { return Restriction{AsClass(obj)} }
 
-// Does the object quack like a Restriction?
+// Does the object quack like a(n) Restriction?
 func IsRestriction(obj *ld.Object) bool { return ld.Is(obj, TypeRestriction) }
 
 // The property that determines the class that a universal property restriction refers to.
@@ -341,21 +341,21 @@ func (obj Restriction) SomeValuesFrom() interface{} { return obj.Get(PropSomeVal
 // The class of symmetric properties.
 type SymmetricProperty struct{ ObjectProperty }
 
-// Ducktypes the object into a SymmetricProperty.
+// Ducktypes the object into a(n) SymmetricProperty.
 func AsSymmetricProperty(obj *ld.Object) SymmetricProperty {
 	return SymmetricProperty{AsObjectProperty(obj)}
 }
 
-// Does the object quack like a SymmetricProperty?
+// Does the object quack like a(n) SymmetricProperty?
 func IsSymmetricProperty(obj *ld.Object) bool { return ld.Is(obj, TypeSymmetricProperty) }
 
 // The class of OWL individuals.
 type Thing struct{ o *ld.Object }
 
-// Ducktypes the object into a Thing.
+// Ducktypes the object into a(n) Thing.
 func AsThing(obj *ld.Object) Thing { return Thing{o: obj} }
 
-// Does the object quack like a Thing?
+// Does the object quack like a(n) Thing?
 func IsThing(obj *ld.Object) bool { return ld.Is(obj, TypeThing) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -399,12 +399,12 @@ func (obj Thing) TopObjectProperty() interface{} { return obj.Get(PropTopObjectP
 // The class of transitive properties.
 type TransitiveProperty struct{ ObjectProperty }
 
-// Ducktypes the object into a TransitiveProperty.
+// Ducktypes the object into a(n) TransitiveProperty.
 func AsTransitiveProperty(obj *ld.Object) TransitiveProperty {
 	return TransitiveProperty{AsObjectProperty(obj)}
 }
 
-// Does the object quack like a TransitiveProperty?
+// Does the object quack like a(n) TransitiveProperty?
 func IsTransitiveProperty(obj *ld.Object) bool { return ld.Is(obj, TypeTransitiveProperty) }
 
 var (

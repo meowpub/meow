@@ -9,28 +9,28 @@ import (
 // The class of containers of alternatives.
 type Alt struct{ Container }
 
-// Ducktypes the object into a Alt.
+// Ducktypes the object into a(n) Alt.
 func AsAlt(obj *ld.Object) Alt { return Alt{AsContainer(obj)} }
 
-// Does the object quack like a Alt?
+// Does the object quack like a(n) Alt?
 func IsAlt(obj *ld.Object) bool { return ld.Is(obj, TypeAlt) }
 
 // The class of unordered containers.
 type Bag struct{ Container }
 
-// Ducktypes the object into a Bag.
+// Ducktypes the object into a(n) Bag.
 func AsBag(obj *ld.Object) Bag { return Bag{AsContainer(obj)} }
 
-// Does the object quack like a Bag?
+// Does the object quack like a(n) Bag?
 func IsBag(obj *ld.Object) bool { return ld.Is(obj, TypeBag) }
 
 // The class of RDF Lists.
 type List struct{ Resource }
 
-// Ducktypes the object into a List.
+// Ducktypes the object into a(n) List.
 func AsList(obj *ld.Object) List { return List{AsResource(obj)} }
 
-// Does the object quack like a List?
+// Does the object quack like a(n) List?
 func IsList(obj *ld.Object) bool { return ld.Is(obj, TypeList) }
 
 // The first item in the subject RDF list.
@@ -42,10 +42,10 @@ func (obj List) Rest() interface{} { return obj.Get(PropRest) }
 // The class of RDF properties.
 type Property struct{ Resource }
 
-// Ducktypes the object into a Property.
+// Ducktypes the object into a(n) Property.
 func AsProperty(obj *ld.Object) Property { return Property{AsResource(obj)} }
 
-// Does the object quack like a Property?
+// Does the object quack like a(n) Property?
 func IsProperty(obj *ld.Object) bool { return ld.Is(obj, TypeProperty) }
 
 // A domain of the subject property.
@@ -60,19 +60,19 @@ func (obj Property) SubPropertyOf() interface{} { return obj.Get(PropSubProperty
 // The class of ordered containers.
 type Seq struct{ Container }
 
-// Ducktypes the object into a Seq.
+// Ducktypes the object into a(n) Seq.
 func AsSeq(obj *ld.Object) Seq { return Seq{AsContainer(obj)} }
 
-// Does the object quack like a Seq?
+// Does the object quack like a(n) Seq?
 func IsSeq(obj *ld.Object) bool { return ld.Is(obj, TypeSeq) }
 
 // The class of RDF statements.
 type Statement struct{ Resource }
 
-// Ducktypes the object into a Statement.
+// Ducktypes the object into a(n) Statement.
 func AsStatement(obj *ld.Object) Statement { return Statement{AsResource(obj)} }
 
-// Does the object quack like a Statement?
+// Does the object quack like a(n) Statement?
 func IsStatement(obj *ld.Object) bool { return ld.Is(obj, TypeStatement) }
 
 // The object of the subject RDF statement.
@@ -87,10 +87,10 @@ func (obj Statement) Subject() interface{} { return obj.Get(PropSubject) }
 // The class of classes.
 type Class struct{ Resource }
 
-// Ducktypes the object into a Class.
+// Ducktypes the object into a(n) Class.
 func AsClass(obj *ld.Object) Class { return Class{AsResource(obj)} }
 
-// Does the object quack like a Class?
+// Does the object quack like a(n) Class?
 func IsClass(obj *ld.Object) bool { return ld.Is(obj, TypeClass) }
 
 // The subject is a subclass of a class.
@@ -99,22 +99,22 @@ func (obj Class) SubClassOf() interface{} { return obj.Get(PropSubClassOf) }
 // The class of RDF containers.
 type Container struct{ Resource }
 
-// Ducktypes the object into a Container.
+// Ducktypes the object into a(n) Container.
 func AsContainer(obj *ld.Object) Container { return Container{AsResource(obj)} }
 
-// Does the object quack like a Container?
+// Does the object quack like a(n) Container?
 func IsContainer(obj *ld.Object) bool { return ld.Is(obj, TypeContainer) }
 
 // The class of container membership properties, rdf:_1, rdf:_2, ...,
 // all of which are sub-properties of 'member'.
 type ContainerMembershipProperty struct{ Property }
 
-// Ducktypes the object into a ContainerMembershipProperty.
+// Ducktypes the object into a(n) ContainerMembershipProperty.
 func AsContainerMembershipProperty(obj *ld.Object) ContainerMembershipProperty {
 	return ContainerMembershipProperty{AsProperty(obj)}
 }
 
-// Does the object quack like a ContainerMembershipProperty?
+// Does the object quack like a(n) ContainerMembershipProperty?
 func IsContainerMembershipProperty(obj *ld.Object) bool {
 	return ld.Is(obj, TypeContainerMembershipProperty)
 }
@@ -122,28 +122,28 @@ func IsContainerMembershipProperty(obj *ld.Object) bool {
 // The class of RDF datatypes.
 type Datatype struct{ Class }
 
-// Ducktypes the object into a Datatype.
+// Ducktypes the object into a(n) Datatype.
 func AsDatatype(obj *ld.Object) Datatype { return Datatype{AsClass(obj)} }
 
-// Does the object quack like a Datatype?
+// Does the object quack like a(n) Datatype?
 func IsDatatype(obj *ld.Object) bool { return ld.Is(obj, TypeDatatype) }
 
 // The class of literal values, eg. textual strings and integers.
 type Literal struct{ Resource }
 
-// Ducktypes the object into a Literal.
+// Ducktypes the object into a(n) Literal.
 func AsLiteral(obj *ld.Object) Literal { return Literal{AsResource(obj)} }
 
-// Does the object quack like a Literal?
+// Does the object quack like a(n) Literal?
 func IsLiteral(obj *ld.Object) bool { return ld.Is(obj, TypeLiteral) }
 
 // The class resource, everything.
 type Resource struct{ o *ld.Object }
 
-// Ducktypes the object into a Resource.
+// Ducktypes the object into a(n) Resource.
 func AsResource(obj *ld.Object) Resource { return Resource{o: obj} }
 
-// Does the object quack like a Resource?
+// Does the object quack like a(n) Resource?
 func IsResource(obj *ld.Object) bool { return ld.Is(obj, TypeResource) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.

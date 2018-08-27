@@ -9,19 +9,19 @@ import (
 // Actor accepts the Object
 type Accept struct{ Activity }
 
-// Ducktypes the object into a Accept.
+// Ducktypes the object into a(n) Accept.
 func AsAccept(obj *ld.Object) Accept { return Accept{AsActivity(obj)} }
 
-// Does the object quack like a Accept?
+// Does the object quack like a(n) Accept?
 func IsAccept(obj *ld.Object) bool { return ld.Is(obj, TypeAccept) }
 
 // An Object representing some form of Action that has been taken
 type Activity struct{ Object }
 
-// Ducktypes the object into a Activity.
+// Ducktypes the object into a(n) Activity.
 func AsActivity(obj *ld.Object) Activity { return Activity{AsObject(obj)} }
 
-// Does the object quack like a Activity?
+// Does the object quack like a(n) Activity?
 func IsActivity(obj *ld.Object) bool { return ld.Is(obj, TypeActivity) }
 
 // Subproperty of as:attributedTo that identifies the primary actor
@@ -42,72 +42,72 @@ func (obj Activity) Verb() interface{} { return obj.Get(PropVerb) }
 // To Add an Object or Link to Something
 type Add struct{ Activity }
 
-// Ducktypes the object into a Add.
+// Ducktypes the object into a(n) Add.
 func AsAdd(obj *ld.Object) Add { return Add{AsActivity(obj)} }
 
-// Does the object quack like a Add?
+// Does the object quack like a(n) Add?
 func IsAdd(obj *ld.Object) bool { return ld.Is(obj, TypeAdd) }
 
 // Actor announces the object to the target
 type Announce struct{ Activity }
 
-// Ducktypes the object into a Announce.
+// Ducktypes the object into a(n) Announce.
 func AsAnnounce(obj *ld.Object) Announce { return Announce{AsActivity(obj)} }
 
-// Does the object quack like a Announce?
+// Does the object quack like a(n) Announce?
 func IsAnnounce(obj *ld.Object) bool { return ld.Is(obj, TypeAnnounce) }
 
 // Represents a software application of any sort
 type Application struct{ Object }
 
-// Ducktypes the object into a Application.
+// Ducktypes the object into a(n) Application.
 func AsApplication(obj *ld.Object) Application { return Application{AsObject(obj)} }
 
-// Does the object quack like a Application?
+// Does the object quack like a(n) Application?
 func IsApplication(obj *ld.Object) bool { return ld.Is(obj, TypeApplication) }
 
 // To Arrive Somewhere (can be used, for instance, to indicate that a particular entity is currently located somewhere, e.g. a "check-in")
 type Arrive struct{ IntransitiveActivity }
 
-// Ducktypes the object into a Arrive.
+// Ducktypes the object into a(n) Arrive.
 func AsArrive(obj *ld.Object) Arrive { return Arrive{AsIntransitiveActivity(obj)} }
 
-// Does the object quack like a Arrive?
+// Does the object quack like a(n) Arrive?
 func IsArrive(obj *ld.Object) bool { return ld.Is(obj, TypeArrive) }
 
 // A written work. Typically several paragraphs long. For example, a blog post or a news article.
 type Article struct{ Object }
 
-// Ducktypes the object into a Article.
+// Ducktypes the object into a(n) Article.
 func AsArticle(obj *ld.Object) Article { return Article{AsObject(obj)} }
 
-// Does the object quack like a Article?
+// Does the object quack like a(n) Article?
 func IsArticle(obj *ld.Object) bool { return ld.Is(obj, TypeArticle) }
 
 // An audio file
 type Audio struct{ Document }
 
-// Ducktypes the object into a Audio.
+// Ducktypes the object into a(n) Audio.
 func AsAudio(obj *ld.Object) Audio { return Audio{AsDocument(obj)} }
 
-// Does the object quack like a Audio?
+// Does the object quack like a(n) Audio?
 func IsAudio(obj *ld.Object) bool { return ld.Is(obj, TypeAudio) }
 
 type Block struct{ Ignore }
 
-// Ducktypes the object into a Block.
+// Ducktypes the object into a(n) Block.
 func AsBlock(obj *ld.Object) Block { return Block{AsIgnore(obj)} }
 
-// Does the object quack like a Block?
+// Does the object quack like a(n) Block?
 func IsBlock(obj *ld.Object) bool { return ld.Is(obj, TypeBlock) }
 
 // An ordered or unordered collection of Objects or Links
 type Collection struct{ Object }
 
-// Ducktypes the object into a Collection.
+// Ducktypes the object into a(n) Collection.
 func AsCollection(obj *ld.Object) Collection { return Collection{AsObject(obj)} }
 
-// Does the object quack like a Collection?
+// Does the object quack like a(n) Collection?
 func IsCollection(obj *ld.Object) bool { return ld.Is(obj, TypeCollection) }
 
 func (obj Collection) Current() interface{} { return obj.Get(PropCurrent) }
@@ -124,10 +124,10 @@ func (obj Collection) TotalItems() interface{} { return obj.Get(PropTotalItems) 
 // A subset of items from a Collection
 type CollectionPage struct{ Collection }
 
-// Ducktypes the object into a CollectionPage.
+// Ducktypes the object into a(n) CollectionPage.
 func AsCollectionPage(obj *ld.Object) CollectionPage { return CollectionPage{AsCollection(obj)} }
 
-// Does the object quack like a CollectionPage?
+// Does the object quack like a(n) CollectionPage?
 func IsCollectionPage(obj *ld.Object) bool { return ld.Is(obj, TypeCollectionPage) }
 
 func (obj CollectionPage) Next() interface{} { return obj.Get(PropNext) }
@@ -139,147 +139,147 @@ func (obj CollectionPage) Prev() interface{} { return obj.Get(PropPrev) }
 // To Create Something
 type Create struct{ Activity }
 
-// Ducktypes the object into a Create.
+// Ducktypes the object into a(n) Create.
 func AsCreate(obj *ld.Object) Create { return Create{AsActivity(obj)} }
 
-// Does the object quack like a Create?
+// Does the object quack like a(n) Create?
 func IsCreate(obj *ld.Object) bool { return ld.Is(obj, TypeCreate) }
 
 // To Delete Something
 type Delete struct{ Activity }
 
-// Ducktypes the object into a Delete.
+// Ducktypes the object into a(n) Delete.
 func AsDelete(obj *ld.Object) Delete { return Delete{AsActivity(obj)} }
 
-// Does the object quack like a Delete?
+// Does the object quack like a(n) Delete?
 func IsDelete(obj *ld.Object) bool { return ld.Is(obj, TypeDelete) }
 
 // The actor dislikes the object
 type Dislike struct{ Activity }
 
-// Ducktypes the object into a Dislike.
+// Ducktypes the object into a(n) Dislike.
 func AsDislike(obj *ld.Object) Dislike { return Dislike{AsActivity(obj)} }
 
-// Does the object quack like a Dislike?
+// Does the object quack like a(n) Dislike?
 func IsDislike(obj *ld.Object) bool { return ld.Is(obj, TypeDislike) }
 
 // Represents a digital document/file of any sort
 type Document struct{ Object }
 
-// Ducktypes the object into a Document.
+// Ducktypes the object into a(n) Document.
 func AsDocument(obj *ld.Object) Document { return Document{AsObject(obj)} }
 
-// Does the object quack like a Document?
+// Does the object quack like a(n) Document?
 func IsDocument(obj *ld.Object) bool { return ld.Is(obj, TypeDocument) }
 
 // An Event of any kind
 type Event struct{ Object }
 
-// Ducktypes the object into a Event.
+// Ducktypes the object into a(n) Event.
 func AsEvent(obj *ld.Object) Event { return Event{AsObject(obj)} }
 
-// Does the object quack like a Event?
+// Does the object quack like a(n) Event?
 func IsEvent(obj *ld.Object) bool { return ld.Is(obj, TypeEvent) }
 
 // To flag something (e.g. flag as inappropriate, flag as spam, etc)
 type Flag struct{ Activity }
 
-// Ducktypes the object into a Flag.
+// Ducktypes the object into a(n) Flag.
 func AsFlag(obj *ld.Object) Flag { return Flag{AsActivity(obj)} }
 
-// Does the object quack like a Flag?
+// Does the object quack like a(n) Flag?
 func IsFlag(obj *ld.Object) bool { return ld.Is(obj, TypeFlag) }
 
 // To Express Interest in Something
 type Follow struct{ Activity }
 
-// Ducktypes the object into a Follow.
+// Ducktypes the object into a(n) Follow.
 func AsFollow(obj *ld.Object) Follow { return Follow{AsActivity(obj)} }
 
-// Does the object quack like a Follow?
+// Does the object quack like a(n) Follow?
 func IsFollow(obj *ld.Object) bool { return ld.Is(obj, TypeFollow) }
 
 // A Group of any kind.
 type Group struct{ Object }
 
-// Ducktypes the object into a Group.
+// Ducktypes the object into a(n) Group.
 func AsGroup(obj *ld.Object) Group { return Group{AsObject(obj)} }
 
-// Does the object quack like a Group?
+// Does the object quack like a(n) Group?
 func IsGroup(obj *ld.Object) bool { return ld.Is(obj, TypeGroup) }
 
 // Actor is ignoring the Object
 type Ignore struct{ Activity }
 
-// Ducktypes the object into a Ignore.
+// Ducktypes the object into a(n) Ignore.
 func AsIgnore(obj *ld.Object) Ignore { return Ignore{AsActivity(obj)} }
 
-// Does the object quack like a Ignore?
+// Does the object quack like a(n) Ignore?
 func IsIgnore(obj *ld.Object) bool { return ld.Is(obj, TypeIgnore) }
 
 // An Image file
 type Image struct{ Document }
 
-// Ducktypes the object into a Image.
+// Ducktypes the object into a(n) Image.
 func AsImage(obj *ld.Object) Image { return Image{AsDocument(obj)} }
 
-// Does the object quack like a Image?
+// Does the object quack like a(n) Image?
 func IsImage(obj *ld.Object) bool { return ld.Is(obj, TypeImage) }
 
 // An Activity that has no direct object
 type IntransitiveActivity struct{ Activity }
 
-// Ducktypes the object into a IntransitiveActivity.
+// Ducktypes the object into a(n) IntransitiveActivity.
 func AsIntransitiveActivity(obj *ld.Object) IntransitiveActivity {
 	return IntransitiveActivity{AsActivity(obj)}
 }
 
-// Does the object quack like a IntransitiveActivity?
+// Does the object quack like a(n) IntransitiveActivity?
 func IsIntransitiveActivity(obj *ld.Object) bool { return ld.Is(obj, TypeIntransitiveActivity) }
 
 // To invite someone or something to something
 type Invite struct{ Offer }
 
-// Ducktypes the object into a Invite.
+// Ducktypes the object into a(n) Invite.
 func AsInvite(obj *ld.Object) Invite { return Invite{AsOffer(obj)} }
 
-// Does the object quack like a Invite?
+// Does the object quack like a(n) Invite?
 func IsInvite(obj *ld.Object) bool { return ld.Is(obj, TypeInvite) }
 
 // To Join Something
 type Join struct{ Activity }
 
-// Ducktypes the object into a Join.
+// Ducktypes the object into a(n) Join.
 func AsJoin(obj *ld.Object) Join { return Join{AsActivity(obj)} }
 
-// Does the object quack like a Join?
+// Does the object quack like a(n) Join?
 func IsJoin(obj *ld.Object) bool { return ld.Is(obj, TypeJoin) }
 
 // To Leave Something
 type Leave struct{ Activity }
 
-// Ducktypes the object into a Leave.
+// Ducktypes the object into a(n) Leave.
 func AsLeave(obj *ld.Object) Leave { return Leave{AsActivity(obj)} }
 
-// Does the object quack like a Leave?
+// Does the object quack like a(n) Leave?
 func IsLeave(obj *ld.Object) bool { return ld.Is(obj, TypeLeave) }
 
 // To Like Something
 type Like struct{ Activity }
 
-// Ducktypes the object into a Like.
+// Ducktypes the object into a(n) Like.
 func AsLike(obj *ld.Object) Like { return Like{AsActivity(obj)} }
 
-// Does the object quack like a Like?
+// Does the object quack like a(n) Like?
 func IsLike(obj *ld.Object) bool { return ld.Is(obj, TypeLike) }
 
 // Represents a qualified reference to another resource. Patterned after the RFC5988 Web Linking Model
 type Link struct{ o *ld.Object }
 
-// Ducktypes the object into a Link.
+// Ducktypes the object into a(n) Link.
 func AsLink(obj *ld.Object) Link { return Link{o: obj} }
 
-// Does the object quack like a Link?
+// Does the object quack like a(n) Link?
 func IsLink(obj *ld.Object) bool { return ld.Is(obj, TypeLink) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -318,45 +318,45 @@ func (obj Link) Width() interface{} { return obj.Get(PropWidth) }
 // The actor listened to the object
 type Listen struct{ Activity }
 
-// Ducktypes the object into a Listen.
+// Ducktypes the object into a(n) Listen.
 func AsListen(obj *ld.Object) Listen { return Listen{AsActivity(obj)} }
 
-// Does the object quack like a Listen?
+// Does the object quack like a(n) Listen?
 func IsListen(obj *ld.Object) bool { return ld.Is(obj, TypeListen) }
 
 // A specialized Link that represents an @mention
 type Mention struct{ Link }
 
-// Ducktypes the object into a Mention.
+// Ducktypes the object into a(n) Mention.
 func AsMention(obj *ld.Object) Mention { return Mention{AsLink(obj)} }
 
-// Does the object quack like a Mention?
+// Does the object quack like a(n) Mention?
 func IsMention(obj *ld.Object) bool { return ld.Is(obj, TypeMention) }
 
 // The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from.
 type Move struct{ Activity }
 
-// Ducktypes the object into a Move.
+// Ducktypes the object into a(n) Move.
 func AsMove(obj *ld.Object) Move { return Move{AsActivity(obj)} }
 
-// Does the object quack like a Move?
+// Does the object quack like a(n) Move?
 func IsMove(obj *ld.Object) bool { return ld.Is(obj, TypeMove) }
 
 // A Short note, typically less than a single paragraph. A "tweet" is an example, or a "status update"
 type Note struct{ Object }
 
-// Ducktypes the object into a Note.
+// Ducktypes the object into a(n) Note.
 func AsNote(obj *ld.Object) Note { return Note{AsObject(obj)} }
 
-// Does the object quack like a Note?
+// Does the object quack like a(n) Note?
 func IsNote(obj *ld.Object) bool { return ld.Is(obj, TypeNote) }
 
 type Object struct{ o *ld.Object }
 
-// Ducktypes the object into a Object.
+// Ducktypes the object into a(n) Object.
 func AsObject(obj *ld.Object) Object { return Object{o: obj} }
 
-// Does the object quack like a Object?
+// Does the object quack like a(n) Object?
 func IsObject(obj *ld.Object) bool { return ld.Is(obj, TypeObject) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -453,19 +453,19 @@ func (obj Object) Url() interface{} { return obj.Get(PropUrl) }
 // To Offer something to someone or something
 type Offer struct{ Activity }
 
-// Ducktypes the object into a Offer.
+// Ducktypes the object into a(n) Offer.
 func AsOffer(obj *ld.Object) Offer { return Offer{AsActivity(obj)} }
 
-// Does the object quack like a Offer?
+// Does the object quack like a(n) Offer?
 func IsOffer(obj *ld.Object) bool { return ld.Is(obj, TypeOffer) }
 
 // A variation of Collection in which items are strictly ordered
 type OrderedCollection struct{ o *ld.Object }
 
-// Ducktypes the object into a OrderedCollection.
+// Ducktypes the object into a(n) OrderedCollection.
 func AsOrderedCollection(obj *ld.Object) OrderedCollection { return OrderedCollection{o: obj} }
 
-// Does the object quack like a OrderedCollection?
+// Does the object quack like a(n) OrderedCollection?
 func IsOrderedCollection(obj *ld.Object) bool { return ld.Is(obj, TypeOrderedCollection) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -494,12 +494,12 @@ type OrderedCollectionPage struct {
 	OrderedCollection
 }
 
-// Ducktypes the object into a OrderedCollectionPage.
+// Ducktypes the object into a(n) OrderedCollectionPage.
 func AsOrderedCollectionPage(obj *ld.Object) OrderedCollectionPage {
 	return OrderedCollectionPage{AsCollectionPage(obj), AsOrderedCollection(obj)}
 }
 
-// Does the object quack like a OrderedCollectionPage?
+// Does the object quack like a(n) OrderedCollectionPage?
 func IsOrderedCollectionPage(obj *ld.Object) bool { return ld.Is(obj, TypeOrderedCollectionPage) }
 
 // In a strictly ordered logical collection, specifies the index position of the first item in the items list
@@ -508,10 +508,10 @@ func (obj OrderedCollectionPage) StartIndex() interface{} { return obj.Get(PropS
 // A rdf:List variant for Objects and Links
 type OrderedItems struct{ o *ld.Object }
 
-// Ducktypes the object into a OrderedItems.
+// Ducktypes the object into a(n) OrderedItems.
 func AsOrderedItems(obj *ld.Object) OrderedItems { return OrderedItems{o: obj} }
 
-// Does the object quack like a OrderedItems?
+// Does the object quack like a(n) OrderedItems?
 func IsOrderedItems(obj *ld.Object) bool { return ld.Is(obj, TypeOrderedItems) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -537,37 +537,37 @@ func (obj OrderedItems) Apply(other ld.Entity, mergeArrays bool) error {
 // An Organization
 type Organization struct{ Object }
 
-// Ducktypes the object into a Organization.
+// Ducktypes the object into a(n) Organization.
 func AsOrganization(obj *ld.Object) Organization { return Organization{AsObject(obj)} }
 
-// Does the object quack like a Organization?
+// Does the object quack like a(n) Organization?
 func IsOrganization(obj *ld.Object) bool { return ld.Is(obj, TypeOrganization) }
 
 // A Web Page
 type Page struct{ Object }
 
-// Ducktypes the object into a Page.
+// Ducktypes the object into a(n) Page.
 func AsPage(obj *ld.Object) Page { return Page{AsObject(obj)} }
 
-// Does the object quack like a Page?
+// Does the object quack like a(n) Page?
 func IsPage(obj *ld.Object) bool { return ld.Is(obj, TypePage) }
 
 // A Person
 type Person struct{ Object }
 
-// Ducktypes the object into a Person.
+// Ducktypes the object into a(n) Person.
 func AsPerson(obj *ld.Object) Person { return Person{AsObject(obj)} }
 
-// Does the object quack like a Person?
+// Does the object quack like a(n) Person?
 func IsPerson(obj *ld.Object) bool { return ld.Is(obj, TypePerson) }
 
 // A physical or logical location
 type Place struct{ Object }
 
-// Ducktypes the object into a Place.
+// Ducktypes the object into a(n) Place.
 func AsPlace(obj *ld.Object) Place { return Place{AsObject(obj)} }
 
-// Does the object quack like a Place?
+// Does the object quack like a(n) Place?
 func IsPlace(obj *ld.Object) bool { return ld.Is(obj, TypePlace) }
 
 // Specifies the accuracy around the point established by the longitude and latitude
@@ -591,10 +591,10 @@ func (obj Place) Units() interface{} { return obj.Get(PropUnits) }
 // A Profile Document
 type Profile struct{ Object }
 
-// Ducktypes the object into a Profile.
+// Ducktypes the object into a(n) Profile.
 func AsProfile(obj *ld.Object) Profile { return Profile{AsObject(obj)} }
 
-// Does the object quack like a Profile?
+// Does the object quack like a(n) Profile?
 func IsProfile(obj *ld.Object) bool { return ld.Is(obj, TypeProfile) }
 
 // On a Profile object, describes the object described by the profile
@@ -603,10 +603,10 @@ func (obj Profile) Describes() interface{} { return obj.Get(PropDescribes) }
 // A question of any sort.
 type Question struct{ IntransitiveActivity }
 
-// Ducktypes the object into a Question.
+// Ducktypes the object into a(n) Question.
 func AsQuestion(obj *ld.Object) Question { return Question{AsIntransitiveActivity(obj)} }
 
-// Does the object quack like a Question?
+// Does the object quack like a(n) Question?
 func IsQuestion(obj *ld.Object) bool { return ld.Is(obj, TypeQuestion) }
 
 // Describes a possible inclusive answer or option for a question.
@@ -618,28 +618,28 @@ func (obj Question) OneOf() interface{} { return obj.Get(PropOneOf) }
 // The actor read the object
 type Read struct{ Activity }
 
-// Ducktypes the object into a Read.
+// Ducktypes the object into a(n) Read.
 func AsRead(obj *ld.Object) Read { return Read{AsActivity(obj)} }
 
-// Does the object quack like a Read?
+// Does the object quack like a(n) Read?
 func IsRead(obj *ld.Object) bool { return ld.Is(obj, TypeRead) }
 
 // Actor rejects the Object
 type Reject struct{ Activity }
 
-// Ducktypes the object into a Reject.
+// Ducktypes the object into a(n) Reject.
 func AsReject(obj *ld.Object) Reject { return Reject{AsActivity(obj)} }
 
-// Does the object quack like a Reject?
+// Does the object quack like a(n) Reject?
 func IsReject(obj *ld.Object) bool { return ld.Is(obj, TypeReject) }
 
 // Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)
 type Relationship struct{ Object }
 
-// Ducktypes the object into a Relationship.
+// Ducktypes the object into a(n) Relationship.
 func AsRelationship(obj *ld.Object) Relationship { return Relationship{AsObject(obj)} }
 
-// Does the object quack like a Relationship?
+// Does the object quack like a(n) Relationship?
 func IsRelationship(obj *ld.Object) bool { return ld.Is(obj, TypeRelationship) }
 
 // On a Relationship object, describes the type of relationship
@@ -651,46 +651,46 @@ func (obj Relationship) Subject() interface{} { return obj.Get(PropSubject) }
 // To Remove Something
 type Remove struct{ Activity }
 
-// Ducktypes the object into a Remove.
+// Ducktypes the object into a(n) Remove.
 func AsRemove(obj *ld.Object) Remove { return Remove{AsActivity(obj)} }
 
-// Does the object quack like a Remove?
+// Does the object quack like a(n) Remove?
 func IsRemove(obj *ld.Object) bool { return ld.Is(obj, TypeRemove) }
 
 // A service provided by some entity
 type Service struct{ Object }
 
-// Ducktypes the object into a Service.
+// Ducktypes the object into a(n) Service.
 func AsService(obj *ld.Object) Service { return Service{AsObject(obj)} }
 
-// Does the object quack like a Service?
+// Does the object quack like a(n) Service?
 func IsService(obj *ld.Object) bool { return ld.Is(obj, TypeService) }
 
 // Actor tentatively accepts the Object
 type TentativeAccept struct{ Accept }
 
-// Ducktypes the object into a TentativeAccept.
+// Ducktypes the object into a(n) TentativeAccept.
 func AsTentativeAccept(obj *ld.Object) TentativeAccept { return TentativeAccept{AsAccept(obj)} }
 
-// Does the object quack like a TentativeAccept?
+// Does the object quack like a(n) TentativeAccept?
 func IsTentativeAccept(obj *ld.Object) bool { return ld.Is(obj, TypeTentativeAccept) }
 
 // Actor tentatively rejects the object
 type TentativeReject struct{ Reject }
 
-// Ducktypes the object into a TentativeReject.
+// Ducktypes the object into a(n) TentativeReject.
 func AsTentativeReject(obj *ld.Object) TentativeReject { return TentativeReject{AsReject(obj)} }
 
-// Does the object quack like a TentativeReject?
+// Does the object quack like a(n) TentativeReject?
 func IsTentativeReject(obj *ld.Object) bool { return ld.Is(obj, TypeTentativeReject) }
 
 // A placeholder for a deleted object
 type Tombstone struct{ Object }
 
-// Ducktypes the object into a Tombstone.
+// Ducktypes the object into a(n) Tombstone.
 func AsTombstone(obj *ld.Object) Tombstone { return Tombstone{AsObject(obj)} }
 
-// Does the object quack like a Tombstone?
+// Does the object quack like a(n) Tombstone?
 func IsTombstone(obj *ld.Object) bool { return ld.Is(obj, TypeTombstone) }
 
 // Specifies the date and time the object was deleted
@@ -702,46 +702,46 @@ func (obj Tombstone) FormerType() interface{} { return obj.Get(PropFormerType) }
 // The actor is traveling to the target. The origin specifies where the actor is traveling from.
 type Travel struct{ IntransitiveActivity }
 
-// Ducktypes the object into a Travel.
+// Ducktypes the object into a(n) Travel.
 func AsTravel(obj *ld.Object) Travel { return Travel{AsIntransitiveActivity(obj)} }
 
-// Does the object quack like a Travel?
+// Does the object quack like a(n) Travel?
 func IsTravel(obj *ld.Object) bool { return ld.Is(obj, TypeTravel) }
 
 // To Undo Something. This would typically be used to indicate that a previous Activity has been undone.
 type Undo struct{ Activity }
 
-// Ducktypes the object into a Undo.
+// Ducktypes the object into a(n) Undo.
 func AsUndo(obj *ld.Object) Undo { return Undo{AsActivity(obj)} }
 
-// Does the object quack like a Undo?
+// Does the object quack like a(n) Undo?
 func IsUndo(obj *ld.Object) bool { return ld.Is(obj, TypeUndo) }
 
 // To Update/Modify Something
 type Update struct{ Activity }
 
-// Ducktypes the object into a Update.
+// Ducktypes the object into a(n) Update.
 func AsUpdate(obj *ld.Object) Update { return Update{AsActivity(obj)} }
 
-// Does the object quack like a Update?
+// Does the object quack like a(n) Update?
 func IsUpdate(obj *ld.Object) bool { return ld.Is(obj, TypeUpdate) }
 
 // A Video document of any kind.
 type Video struct{ Document }
 
-// Ducktypes the object into a Video.
+// Ducktypes the object into a(n) Video.
 func AsVideo(obj *ld.Object) Video { return Video{AsDocument(obj)} }
 
-// Does the object quack like a Video?
+// Does the object quack like a(n) Video?
 func IsVideo(obj *ld.Object) bool { return ld.Is(obj, TypeVideo) }
 
 // The actor viewed the object
 type View struct{ Activity }
 
-// Ducktypes the object into a View.
+// Ducktypes the object into a(n) View.
 func AsView(obj *ld.Object) View { return View{AsActivity(obj)} }
 
-// Does the object quack like a View?
+// Does the object quack like a(n) View?
 func IsView(obj *ld.Object) bool { return ld.Is(obj, TypeView) }
 
 var (
