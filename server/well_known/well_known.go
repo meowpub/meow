@@ -32,8 +32,8 @@ func RenderXRD(req api.Request, xrd *xrd.XRD, defaultFormat string) api.Response
 		strings.HasSuffix(req.URL.Path, ".jrd"):
 		format = "jrd"
 
-	case strings.HasSuffix(req.URL.Path, "xml"),
-		strings.HasSuffix(req.URL.Path, "xrd"):
+	case strings.HasSuffix(req.URL.Path, ".xml"),
+		strings.HasSuffix(req.URL.Path, ".xrd"):
 		format = "xrd"
 	}
 
