@@ -148,9 +148,6 @@ func Main() error {
 	for _, key := range orderedKeys {
 		declarations = append(declarations, declMap[key])
 	}
-	if err := DumpJSON(filepath.Join(MeowBasePath, "ld", "blah.json"), declarations); err != nil {
-		return err
-	}
 
 	// Generate packages!
 	pkgs := make(map[string][]*Declaration)
