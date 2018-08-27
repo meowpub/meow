@@ -26,6 +26,12 @@ var Namespaces = []*Namespace{
 		Long:    "http://www.w3.org/2002/07/owl#",
 		Source:  "http://www.w3.org/2002/07/owl",
 	},
+	{
+		Package: "as",
+		Short:   "as",
+		Long:    "http://www.w3.org/ns/activitystreams#",
+		Source:  "https://raw.githubusercontent.com/w3c/activitystreams/master/vocabulary/activitystreams2.owl",
+	},
 
 	// These aren't available in Turtle anywhere, so we have to implement them manually.
 	// Well, XMLSchema is available in XML schema and... no. Just, no. Not parsing that.

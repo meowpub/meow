@@ -317,6 +317,9 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      },
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
@@ -350,6 +353,9 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#OrderedItems"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
@@ -3518,6 +3524,3911 @@
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "_:n0",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#first": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+      },
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#anyURI"
+      },
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      },
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      },
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Collection"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Collection"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#CollectionPage"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#CollectionPage"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#CollectionPage"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#CollectionPage"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#CollectionPage"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Image"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Image"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#OrderedItems"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#OrderedItems"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Relationship"
+      },
+      {
+        "@value": "cm"
+      },
+      {
+        "@value": "feet"
+      },
+      {
+        "@value": "inches"
+      },
+      {
+        "@value": "km"
+      },
+      {
+        "@value": "m"
+      },
+      {
+        "@value": "miles"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      },
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      },
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      },
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      },
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Restriction"
+      }
+    ],
+    "http://www.w3.org/2001/XMLSchema#maxInclusive": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#float",
+        "@value": "5.0"
+      }
+    ],
+    "http://www.w3.org/2001/XMLSchema#minInclusive": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#float",
+        "@value": "0.0"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#float",
+        "@value": "0.0"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#float",
+        "@value": "0.0"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#allValuesFrom": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#OrderedItems"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#maxCardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "0"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onDatatype": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#float"
+      },
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#float"
+      },
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#float"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first"
+      },
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#items"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2001/XMLSchema#duration",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Extended Activity Streams 2.0 Vocabulary"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Activity Streams 2.0"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#imports": [
+      {
+        "@id": "http://www.w3.org/ns/prov"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Accept",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Actor accepts the Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Accept"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Activity",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "An Object representing some form of Action that has been taken"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Activity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Add",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Add an Object or Link to Something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Add"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Announce",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Actor announces the object to the target"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Announce"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Application",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Represents a software application of any sort"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Application"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Arrive",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Arrive Somewhere (can be used, for instance, to indicate that a particular entity is currently located somewhere, e.g. a \"check-in\")"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Arrive"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#IntransitiveActivity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Article",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A written work. Typically several paragraphs long. For example, a blog post or a news article."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Article"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Audio",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "An audio file"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Audio"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Document"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Block",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Block"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Ignore"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Collection",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "An ordered or unordered collection of Objects or Links"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Collection"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#CollectionPage",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A subset of items from a Collection"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "CollectionPage"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Collection"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Create",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Create Something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Create"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Delete",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Delete Something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Delete"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Dislike",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The actor dislikes the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Dislike"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Document",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Represents a digital document/file of any sort"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Document"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Event",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "An Event of any kind"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Event"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Flag",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To flag something (e.g. flag as inappropriate, flag as spam, etc)"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Flag"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Follow",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Express Interest in Something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Follow"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Group",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A Group of any kind."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Group"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Ignore",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Actor is ignoring the Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Ignore"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Image",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "An Image file"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Image"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Document"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#IntransitiveActivity",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "An Activity that has no direct object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "IntransitiveActivity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Invite",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To invite someone or something to something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Invite"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Offer"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Join",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Join Something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Join"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Leave",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Leave Something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Leave"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Like",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Like Something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Like"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Link",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Represents a qualified reference to another resource. Patterned after the RFC5988 Web Linking Model"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Link"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#disjointWith": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Listen",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The actor listened to the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Listen"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Mention",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A specialized Link that represents an @mention"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Mention"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Move",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Move"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Note",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A Short note, typically less than a single paragraph. A \"tweet\" is an example, or a \"status update\""
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Note"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Object",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Offer",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Offer something to someone or something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Offer"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#OrderedCollection",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A variation of Collection in which items are strictly ordered"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "OrderedCollection"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#OrderedCollectionPage",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "An ordered subset of items from an OrderedCollection"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "OrderedCollectionPage"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#CollectionPage"
+      },
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#OrderedCollection"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#OrderedItems",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A rdf:List variant for Objects and Links"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "OrderedItems"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Organization",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "An Organization"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Organization"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Page",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A Web Page"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Page"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Person",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A Person"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Person"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Place",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A physical or logical location"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Place"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Profile",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A Profile Document"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Profile"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Question",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A question of any sort."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Question"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#IntransitiveActivity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Read",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The actor read the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Read"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Reject",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Actor rejects the Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Reject"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Relationship",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Relationship"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Remove",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Remove Something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Remove"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Service",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A service provided by some entity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Service"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#TentativeAccept",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Actor tentatively accepts the Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "TentativeAccept"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Accept"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#TentativeReject",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Actor tentatively rejects the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "TentativeReject"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Reject"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Tombstone",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A placeholder for a deleted object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Tombstone"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Travel",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The actor is traveling to the target. The origin specifies where the actor is traveling from."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Travel"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#IntransitiveActivity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Undo",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Undo Something. This would typically be used to indicate that a previous Activity has been undone."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Undo"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Update",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "To Update/Modify Something"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Update"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#Video",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A Video document of any kind."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Video"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Document"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#View",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Class"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The actor viewed the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "View"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#accuracy",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Specifies the accuracy around the point established by the longitude and latitude"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Place"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "accuracy"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#actor",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Subproperty of as:attributedTo that identifies the primary actor"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "actor"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#attributedTo"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#altitude",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The altitude of a place"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Place"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "altitude"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#float"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#anyOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Describes a possible inclusive answer or option for a question."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Question"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "oneOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#attachment",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "attachment"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentProperty": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#attachments"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#attachments",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "attachments"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#attributedTo",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Identifies an entity to which an object is attributed"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "attributedTo"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#audience",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "audience"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#author",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Identifies the author of an object. Deprecated. Use as:attributedTo instead"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "author"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#attributedTo"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#bcc",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "bcc"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#bto",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "bto"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#cc",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "cc"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#content",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The content of the object."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "content"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#context",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Specifies the context within which an object exists or an activity was performed"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "context"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#current",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Collection"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "current"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#deleted",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Specifies the date and time the object was deleted"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Tombstone"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "deleted"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#describes",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "On a Profile object, describes the object described by the profile"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Profile"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "describes"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#downstreamDuplicates",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "downstreamDuplicates"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#anyURI"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#duration",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The duration of the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "duration"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#duration"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#endTime",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The ending time of the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "endTime"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#first",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Collection"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "first"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#formerType",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "On a Tombstone object, describes the former type of the deleted object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Tombstone"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "formerType"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#generator",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "generator"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#height",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The display height expressed as device independent pixels"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "height"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#href",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The target URI of the Link"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "href"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#anyURI"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#hreflang",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A hint about the language of the referenced resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "hreflang"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#language"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#icon",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "icon"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#id",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "id"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#anyURI"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#image",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "image"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#inReplyTo",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "inReplyTo"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#instrument",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Indentifies an object used (or to be used) to complete an activity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "instrument"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#items",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Collection"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "items"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#last",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Collection"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "last"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#latitude",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The latitude"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Place"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "latitude"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#float"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#location",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "location"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#longitude",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The longitude"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Place"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "longitude"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#float"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#mediaType",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The MIME Media Type"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "mediaType"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#name",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "name"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#name": [
+      {
+        "@language": "en",
+        "@value": "The default, plain-text display name of the object or link."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#next",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#CollectionPage"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "next"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#object",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "object"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#objectType",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "objectType"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#anyURI"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#oneOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Describes a possible exclusive answer or option for a question."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Question"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "oneOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#origin",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "For certain activities, specifies the entity from which the action is directed."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "origin"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#partOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#CollectionPage"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "partOf"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#prev",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#CollectionPage"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "prev"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#preview",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "preview"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#provider",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "provider"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#published",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Specifies the date and time the object was published"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "published"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#radius",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Specifies a radius around the point established by the longitude and latitude"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Place"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "radius"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#rating",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A numeric rating (\u003e= 0.0, \u003c= 5.0) for the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "rating"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#rel",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The RFC 5988 or HTML5 Link Relation associated with the Link"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "rel"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#relationship",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "On a Relationship object, describes the type of relationship"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Relationship"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "relationship"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#replies",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "replies"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Collection"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#result",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "result"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#startIndex",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "In a strictly ordered logical collection, specifies the index position of the first item in the items list"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#OrderedCollectionPage"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "startIndex"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#startTime",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The starting time of the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "startTime"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#subject",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "On a Relationship object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'subject' refers to 'John'"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Relationship"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "a"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#summary",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A short summary of the object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "summary"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#tag",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "tag"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#tags",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "tags"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentProperty": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#tag"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#target",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "target"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#to",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "to"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#totalItems",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "The total number of items in a logical collection"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Collection"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "totalItems"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#units",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Identifies the unit of measurement used by the radius, altitude and accuracy properties. The value can be expressed either as one of a set of predefined units or as a well-known common URI that identifies units."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Place"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "units"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#updated",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Specifies when the object was last updated"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "updated"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#upstreamDuplicates",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "upstreamDuplicates"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#anyURI"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#url",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Specifies a link to a specific representation of the Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "url"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#verb",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Activity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "verb"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#anyURI"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/activitystreams#width",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      },
+      {
+        "@id": "http://www.w3.org/2002/07/owl#FunctionalProperty"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Specifies the preferred display width of the content, expressed in terms of device independent pixels."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/activitystreams#Link"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "width"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
       }
     ]
   }
