@@ -5,7 +5,6 @@ import (
 
 	"github.com/meowpub/meow/ld"
 	"github.com/meowpub/meow/ld/ns/rdf"
-	"github.com/meowpub/meow/ld/ns/rdfs"
 )
 
 var _ ld.Entity = Declaration{}
@@ -29,10 +28,22 @@ func (t Declaration) TypeName() string {
 	return ""
 }
 
+func (t Declaration) FuncName() string {
+	tname := t.TypeName()
+	switch tname {
+	case "Value":
+		return "Value_"
+	case "Type":
+		return "Type_"
+	default:
+		return tname
+	}
+}
+
 func (t Declaration) RDFType() string {
 	return ld.ToObject(t.V[rdf.PropType]).ID()
 }
 
 func (t Declaration) Domain() string {
-	return ld.ToObject(t.V[rdfs.PropDomain]).ID()
+	return ld.ToObject(t.V[rdf.PropDomain]).ID()
 }

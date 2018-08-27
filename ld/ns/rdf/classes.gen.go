@@ -209,12 +209,12 @@ func (obj Resource) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The subject is an instance of a class.
-func (obj Resource) Type() interface{} {
+func (obj Resource) Type_() interface{} {
 	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
 }
 
 // Idiomatic property used for structured values.
-func (obj Resource) Value() interface{} {
+func (obj Resource) Value_() interface{} {
 	return obj.O.V["http://www.w3.org/1999/02/22-rdf-syntax-ns#value"]
 }
 
