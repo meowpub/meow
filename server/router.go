@@ -3,9 +3,7 @@ package server
 import (
 	"context"
 	"errors"
-	"net"
 	"net/http"
-	"strings"
 
 	"github.com/go-redis/redis"
 	"github.com/gorilla/sessions"
@@ -40,7 +38,7 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 
 	mux.Mount("favicon.ico", nil)
 	mux.Mount("-", &api.Node{
-		Self: api.HandlerFunc(func(ctx context.Context, req *http.Request) api.Response {
+		Self: api.HandlerFunc(func(req api.Request) api.Response {
 			return api.Response{Data: "hi"}
 		}),
 		Children: map[string]api.Handler{
@@ -51,7 +49,7 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 	return mux
 }
 
-func HandleNotFound(ctx context.Context, req *http.Request) api.Response {
+func HandleNotFound(req api.Request) api.Response {
 	return api.Response{Error: api.Wrap(errors.New("not found"), http.StatusNotFound)}
 }
 
@@ -66,39 +64,4 @@ func Lookup(ctx context.Context, url string) (api.Traversible, error) {
 		return nil, nil
 	}
 	return e, nil
-}
-
-func RouteRequest(ctx context.Context, req *http.Request) api.Response {
-	host, _, err := net.SplitHostPort(req.Host)
-	if err != nil {
-		return api.ErrorResponse(err)
-	}
-
-	// Normalize the url
-	url := *req.URL
-	url.Scheme = "https"
-	url.Host = host
-	url = lib.NormalizeURL(url)
-
-	// Build the Url of the root object for traversal
-	rootUrl := url
-	rootUrl.Path = ""
-	rootUrl.RawPath = rootUrl.EscapedPath()
-
-	// Grab the root object to start traversing from
-	store := entities.GetStore(ctx)
-	root, err := store.GetByID(rootUrl.String())
-
-	if err != nil {
-		return api.ErrorResponse(err)
-	}
-
-	path := strings.Split(url.Path, "/")
-	tc, err := api.TraverseFrom(ctx, root, path)
-	if err != nil {
-		return api.ErrorResponse(err)
-	}
-
-	ctx = api.WithTraversalContext(ctx, tc)
-	return tc.FoundHandler.HandleRequest(ctx, req)
 }

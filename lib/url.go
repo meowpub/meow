@@ -17,3 +17,11 @@ func NormalizeURL(u url.URL) url.URL {
 
 	return u
 }
+
+func RootURL(url url.URL) url.URL {
+	// Build the Url of the root object for traversal
+	rootURL := url
+	rootURL.Path = ""
+	rootURL.RawPath = rootURL.EscapedPath()
+	return rootURL
+}

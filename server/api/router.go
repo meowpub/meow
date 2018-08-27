@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net"
 	"net/http"
 	"strings"
 
@@ -56,35 +55,22 @@ func (r *Router) Use(mw ...Middleware) {
 }
 
 func (r Router) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
-	r.Render(rw, req, r.HandleRequest(req.Context(), req))
+	apiReq := Request{req}
+	r.Render(rw, apiReq, r.HandleRequest(apiReq))
 }
 
-func (r Router) HandleRequest(ctx context.Context, req *http.Request) Response {
+func (r Router) HandleRequest(req Request) Response {
 	// Just wrap handleRequest in our own middleware stack and invoke that.
 	// This ensures that lookups, etc. get middlewares applied properly.
-	return Chain(HandlerFunc(r.handleRequest), r.mw...).HandleRequest(ctx, req)
+	return Chain(HandlerFunc(r.handleRequest), r.mw...).HandleRequest(req)
 }
 
-func (r Router) handleRequest(ctx context.Context, req *http.Request) Response {
-	// Request URLs' URLs don't actually need to contain a correct hostname.
-	host := req.Host
-	if h, _, err := net.SplitHostPort(req.Host); err == nil {
-		host = h
-	}
-
-	// Normalize the URL.
-	url := *req.URL
-	url.Scheme = "https"
-	url.Host = host
-	url = lib.NormalizeURL(url)
-
-	// Build the URL of the root object for traversal.
-	rootUrl := url
-	rootUrl.Path = ""
-	rootUrl.RawPath = rootUrl.EscapedPath()
+func (r Router) handleRequest(req Request) Response {
+	url := req.ResourceURL()
+	rootUrl := lib.RootURL(url)
 
 	// Find the root for the domain, make a Node out of it to reuse existing hard route logic.
-	root, err := r.lookup(ctx, rootUrl.String())
+	root, err := r.lookup(req, rootUrl.String())
 	if err != nil {
 		return Response{Error: err}
 	}
@@ -95,16 +81,18 @@ func (r Router) handleRequest(ctx context.Context, req *http.Request) Response {
 
 	// Traverse the node, find a handler.
 	path := strings.Split(url.Path, "/")
-	tc, err := TraverseFrom(ctx, node, path)
+	tc, err := TraverseFrom(req, node, path)
 	if err != nil {
 		return Response{Error: err}
 	}
 
-	return tc.FoundHandler.HandleRequest(ctx, req)
+	ctx := WithTraversalContext(req.Context(), tc)
+	req = req.WithContext(ctx)
+	return tc.FoundHandler.HandleRequest(req)
 }
 
-func (r *Router) Render(rw http.ResponseWriter, req *http.Request, resp Response) {
-	L := lib.GetLogger(req.Context()).With(
+func (r *Router) Render(rw http.ResponseWriter, req Request, resp Response) {
+	L := lib.GetLogger(req).With(
 		zap.String("method", req.Method),
 		zap.String("path", req.URL.Path),
 		zap.Int("status", resp.Status),
@@ -156,7 +144,7 @@ func (r *Router) Render(rw http.ResponseWriter, req *http.Request, resp Response
 	L.Info("Request finished")
 }
 
-func (r *Router) RenderError(rw http.ResponseWriter, req *http.Request, status int, err error) {
+func (r *Router) RenderError(rw http.ResponseWriter, req Request, status int, err error) {
 	if status == 0 {
 		status = ErrorStatus(err)
 	}

@@ -2,7 +2,6 @@ package entities
 
 import (
 	"context"
-	"net/http"
 
 	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/jsonld"
@@ -116,8 +115,8 @@ func (p *Person) GetUser(store models.UserStore) (*models.User, error) {
 }
 
 // Return ourselves
-func (o *Person) HandleRequest(ctx context.Context, req *http.Request) api.Response {
-	return handleEntityGetRequest(ctx, o, req)
+func (o *Person) HandleRequest(req api.Request) api.Response {
+	return handleEntityGetRequest(req, o)
 }
 
 func (self *Person) GetOutbox(ctx context.Context) (*Stream, error) {

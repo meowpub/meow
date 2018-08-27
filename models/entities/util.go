@@ -17,7 +17,7 @@ func compact(ctx context.Context, data interface{}) (interface{}, error) {
 	return jsonld.Compact(lib.GetHttpClient(ctx), data.(map[string]interface{}), "", "https://www.w3.org/ns/activitystreams")
 }
 
-func handleEntityGetRequest(ctx context.Context, e Entity, req *http.Request) api.Response {
+func handleEntityGetRequest(req api.Request, e Entity) api.Response {
 	if req.Method != http.MethodGet && req.Method != http.MethodOptions && req.Method != http.MethodHead {
 		return api.Response{
 			Status: http.StatusMethodNotAllowed,
@@ -25,12 +25,12 @@ func handleEntityGetRequest(ctx context.Context, e Entity, req *http.Request) ap
 		}
 	}
 
-	d, err := e.Hydrate(ctx, []snowflake.ID{})
+	d, err := e.Hydrate(req, []snowflake.ID{})
 	if err != nil {
 		return api.ErrorResponse(err)
 	}
 
-	o, err := compact(ctx, d)
+	o, err := compact(req, d)
 	if err != nil {
 		return api.ErrorResponse(err)
 	}

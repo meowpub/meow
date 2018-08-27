@@ -2,7 +2,6 @@ package oauth
 
 import (
 	"context"
-	"net/http"
 	"strings"
 
 	"go.uber.org/zap"
@@ -20,21 +19,21 @@ const AccessTokenSessionKey = "access_token"
 const accessTokenKey ctxKey = "AccessToken"
 
 // Authenticated retrieves the user credentials for the request (if any)
-func Authenticate(ctx context.Context, req *http.Request) (*models.AccessToken, error) {
-	l := lib.GetLogger(ctx)
+func Authenticate(req api.Request) (*models.AccessToken, error) {
+	l := lib.GetLogger(req)
 
 	// Pull an access token from either the Authorization header (with the "Bearer " prefix),
 	// or failing that, from the "access_token" session variable (no prefix).
 	accessToken := strings.TrimPrefix(req.Header.Get("Authorization"), BearerPrefix)
 	if accessToken == "" {
-		accessToken, _ = middleware.GetSession(ctx).Values["access_token"].(string)
+		accessToken, _ = middleware.GetSession(req).Values["access_token"].(string)
 	}
 	if accessToken == "" {
 		return nil, nil
 	}
 
 	// Look up the token data, reject as unauthorized if not found.
-	token, err := models.GetStores(ctx).AccessTokens().Get(accessToken)
+	token, err := models.GetStores(req).AccessTokens().Get(accessToken)
 	if err != nil {
 		if !models.IsNotFound(err) {
 			l.Error("Access Token lookup failed", zap.Error(err), zap.String("token", accessToken))
@@ -58,14 +57,13 @@ func GetToken(ctx context.Context) *models.AccessToken {
 }
 
 func AuthenticationMiddleware(next api.Handler) api.Handler {
-	return api.HandlerFunc(func(ctx context.Context, req *http.Request) api.Response {
-		tok, err := Authenticate(ctx, req)
+	return api.HandlerFunc(func(req api.Request) api.Response {
+		tok, err := Authenticate(req)
 		if err != nil {
 			return api.ErrorResponse(err)
 		}
 
-		ctx = WithToken(ctx, tok)
-
-		return next.HandleRequest(ctx, req)
+		req = req.WithContext(WithToken(req.Context(), tok))
+		return next.HandleRequest(req)
 	})
 }

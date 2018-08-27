@@ -22,15 +22,14 @@ func GetSession(ctx context.Context) *sessions.Session {
 
 func AddSession(store sessions.Store) func(next api.Handler) api.Handler {
 	return func(next api.Handler) api.Handler {
-		return api.HandlerFunc(func(ctx context.Context, req *http.Request) api.Response {
-			sess, err := store.Get(req, "session")
+		return api.HandlerFunc(func(req api.Request) api.Response {
+			sess, err := store.Get(req.Request, "session")
 			if err != nil {
 				return api.Response{Error: api.Wrap(err, http.StatusBadRequest)}
 			}
-			ctx = WithSession(ctx, sess)
-			req = req.WithContext(ctx)
-			resp := next.HandleRequest(ctx, req)
-			if err := sess.Save(req, &resp); err != nil {
+			req = req.WithContext(WithSession(req.Context(), sess))
+			resp := next.HandleRequest(req)
+			if err := sess.Save(req.Request, &resp); err != nil {
 				return api.Response{Error: api.Wrap(err, http.StatusBadRequest)}
 			}
 			return resp

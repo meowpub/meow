@@ -2,7 +2,6 @@ package entities
 
 import (
 	"context"
-	"net/http"
 
 	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/jsonld"
@@ -80,8 +79,8 @@ func (*Object) GetKind() *EntityKind {
 // api.Handler
 
 // Return ourselves
-func (o *Object) HandleRequest(ctx context.Context, req *http.Request) api.Response {
-	return handleEntityGetRequest(ctx, o, req)
+func (o *Object) HandleRequest(req api.Request) api.Response {
+	return handleEntityGetRequest(req, o)
 }
 
 func (self *Object) Hydrate(ctx context.Context, stack []snowflake.ID) (interface{}, error) {

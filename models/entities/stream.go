@@ -2,7 +2,6 @@ package entities
 
 import (
 	"context"
-	"net/http"
 
 	"github.com/bwmarrin/snowflake"
 	"github.com/meowpub/meow/jsonld"
@@ -101,8 +100,8 @@ func (self *Stream) InsertItem(ctx context.Context, ent Entity) error {
 }
 
 // Return ourselves
-func (o *Stream) HandleRequest(ctx context.Context, req *http.Request) api.Response {
-	return handleEntityGetRequest(ctx, o, req)
+func (o *Stream) HandleRequest(req api.Request) api.Response {
+	return handleEntityGetRequest(req, o)
 }
 
 func init() {
