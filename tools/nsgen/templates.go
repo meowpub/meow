@@ -30,8 +30,25 @@ var Funcs = template.FuncMap{
 
 type RenderContext struct {
 	Package      string
-	Namespaces   []*Namespace
 	Declarations []*Declaration
+
+	Namespaces []*Namespace
+	Packages   map[string][]*Declaration
+}
+
+func (rctx RenderContext) Resolve(id string) string {
+	for pkg, decls := range rctx.Packages {
+		for _, decl := range decls {
+			if decl.ID() == id {
+				t := decl.TypeName()
+				if pkg != rctx.Package {
+					t = pkg + "." + t
+				}
+				return t
+			}
+		}
+	}
+	panic(id)
 }
 
 func (rctx RenderContext) OfType(t string) (matches []*Declaration) {
@@ -97,7 +114,8 @@ var NSTemplate = template.Must(template.New("ns.gen.go").Funcs(Funcs).Parse(`
 package {{.Package}}
 
 import (
-	"github.com/meowpub/meow/ld"
+	"github.com/meowpub/meow/ld" {{range .Namespaces}}
+	"github.com/meowpub/meow/ld/ns/{{.Package}}" {{end}}
 )
 
 {{if .Properties}}
@@ -120,12 +138,13 @@ var ClassesTemplate = template.Must(template.New("classes.gen.go").Funcs(Funcs).
 package {{.Package}}
 
 import (
-	"github.com/meowpub/meow/ld"
+	"github.com/meowpub/meow/ld" {{range .Namespaces}}
+	"github.com/meowpub/meow/ld/ns/{{.Package}}" {{end}}
 )
 
 {{range $i, $cls := .Classes}}
 {{comment ($cls.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
-type {{$cls.TypeName}} struct { O *ld.Object }
+type {{$cls.TypeName}} struct { {{if .SubClassOf}}{{$.Resolve .SubClassOf}}{{else}}O *ld.Object{{end}} }
 
 func (obj {{$cls.TypeName}}) Obj() *ld.Object { return obj.O }
 func (obj {{$cls.TypeName}}) ID() string { return obj.O.ID() }

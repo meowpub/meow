@@ -47,3 +47,7 @@ func (t Declaration) RDFType() string {
 func (t Declaration) Domain() string {
 	return ld.ToObject(t.V[rdf.PropDomain]).ID()
 }
+
+func (t Declaration) SubClassOf() string {
+	return ld.ToObject(t.V[rdf.PropSubClassOf]).ID()
+}

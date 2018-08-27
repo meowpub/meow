@@ -4,10 +4,11 @@ package owl
 
 import (
 	"github.com/meowpub/meow/ld"
+	"github.com/meowpub/meow/ld/ns/rdf"
 )
 
 // The class of collections of pairwise different individuals.
-type AllDifferent struct{ O *ld.Object }
+type AllDifferent struct{ rdf.Resource }
 
 func (obj AllDifferent) Obj() *ld.Object            { return obj.O }
 func (obj AllDifferent) ID() string                 { return obj.O.ID() }
@@ -25,7 +26,7 @@ func (obj AllDifferent) DistinctMembers() interface{} {
 }
 
 // The class of collections of pairwise disjoint classes.
-type AllDisjointClasses struct{ O *ld.Object }
+type AllDisjointClasses struct{ rdf.Resource }
 
 func (obj AllDisjointClasses) Obj() *ld.Object            { return obj.O }
 func (obj AllDisjointClasses) ID() string                 { return obj.O.ID() }
@@ -38,7 +39,7 @@ func (obj AllDisjointClasses) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of collections of pairwise disjoint properties.
-type AllDisjointProperties struct{ O *ld.Object }
+type AllDisjointProperties struct{ rdf.Resource }
 
 func (obj AllDisjointProperties) Obj() *ld.Object            { return obj.O }
 func (obj AllDisjointProperties) ID() string                 { return obj.O.ID() }
@@ -51,7 +52,7 @@ func (obj AllDisjointProperties) Apply(other ld.Entity, mergeArrays bool) error 
 }
 
 // The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.
-type Annotation struct{ O *ld.Object }
+type Annotation struct{ rdf.Resource }
 
 func (obj Annotation) Obj() *ld.Object            { return obj.O }
 func (obj Annotation) ID() string                 { return obj.O.ID() }
@@ -64,7 +65,7 @@ func (obj Annotation) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of annotation properties.
-type AnnotationProperty struct{ O *ld.Object }
+type AnnotationProperty struct{ rdf.Property }
 
 func (obj AnnotationProperty) Obj() *ld.Object            { return obj.O }
 func (obj AnnotationProperty) ID() string                 { return obj.O.ID() }
@@ -77,7 +78,7 @@ func (obj AnnotationProperty) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of asymmetric properties.
-type AsymmetricProperty struct{ O *ld.Object }
+type AsymmetricProperty struct{ ObjectProperty }
 
 func (obj AsymmetricProperty) Obj() *ld.Object            { return obj.O }
 func (obj AsymmetricProperty) ID() string                 { return obj.O.ID() }
@@ -90,7 +91,7 @@ func (obj AsymmetricProperty) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.
-type Axiom struct{ O *ld.Object }
+type Axiom struct{ rdf.Resource }
 
 func (obj Axiom) Obj() *ld.Object            { return obj.O }
 func (obj Axiom) ID() string                 { return obj.O.ID() }
@@ -103,7 +104,7 @@ func (obj Axiom) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of OWL classes.
-type Class struct{ O *ld.Object }
+type Class struct{ rdf.Class }
 
 func (obj Class) Obj() *ld.Object            { return obj.O }
 func (obj Class) ID() string                 { return obj.O.ID() }
@@ -136,7 +137,7 @@ func (obj Class) HasKey() interface{} {
 }
 
 // The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.
-type DataRange struct{ O *ld.Object }
+type DataRange struct{ rdf.Datatype }
 
 func (obj DataRange) Obj() *ld.Object            { return obj.O }
 func (obj DataRange) ID() string                 { return obj.O.ID() }
@@ -149,7 +150,7 @@ func (obj DataRange) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of data properties.
-type DatatypeProperty struct{ O *ld.Object }
+type DatatypeProperty struct{ rdf.Property }
 
 func (obj DatatypeProperty) Obj() *ld.Object            { return obj.O }
 func (obj DatatypeProperty) ID() string                 { return obj.O.ID() }
@@ -162,7 +163,7 @@ func (obj DatatypeProperty) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of deprecated classes.
-type DeprecatedClass struct{ O *ld.Object }
+type DeprecatedClass struct{ rdf.Class }
 
 func (obj DeprecatedClass) Obj() *ld.Object            { return obj.O }
 func (obj DeprecatedClass) ID() string                 { return obj.O.ID() }
@@ -175,7 +176,7 @@ func (obj DeprecatedClass) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of deprecated properties.
-type DeprecatedProperty struct{ O *ld.Object }
+type DeprecatedProperty struct{ rdf.Property }
 
 func (obj DeprecatedProperty) Obj() *ld.Object            { return obj.O }
 func (obj DeprecatedProperty) ID() string                 { return obj.O.ID() }
@@ -188,7 +189,7 @@ func (obj DeprecatedProperty) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of functional properties.
-type FunctionalProperty struct{ O *ld.Object }
+type FunctionalProperty struct{ rdf.Property }
 
 func (obj FunctionalProperty) Obj() *ld.Object            { return obj.O }
 func (obj FunctionalProperty) ID() string                 { return obj.O.ID() }
@@ -201,7 +202,7 @@ func (obj FunctionalProperty) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of inverse-functional properties.
-type InverseFunctionalProperty struct{ O *ld.Object }
+type InverseFunctionalProperty struct{ ObjectProperty }
 
 func (obj InverseFunctionalProperty) Obj() *ld.Object            { return obj.O }
 func (obj InverseFunctionalProperty) ID() string                 { return obj.O.ID() }
@@ -214,7 +215,7 @@ func (obj InverseFunctionalProperty) Apply(other ld.Entity, mergeArrays bool) er
 }
 
 // The class of irreflexive properties.
-type IrreflexiveProperty struct{ O *ld.Object }
+type IrreflexiveProperty struct{ ObjectProperty }
 
 func (obj IrreflexiveProperty) Obj() *ld.Object            { return obj.O }
 func (obj IrreflexiveProperty) ID() string                 { return obj.O.ID() }
@@ -227,7 +228,7 @@ func (obj IrreflexiveProperty) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of named individuals.
-type NamedIndividual struct{ O *ld.Object }
+type NamedIndividual struct{ Thing }
 
 func (obj NamedIndividual) Obj() *ld.Object            { return obj.O }
 func (obj NamedIndividual) ID() string                 { return obj.O.ID() }
@@ -240,7 +241,7 @@ func (obj NamedIndividual) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of negative property assertions.
-type NegativePropertyAssertion struct{ O *ld.Object }
+type NegativePropertyAssertion struct{ rdf.Resource }
 
 func (obj NegativePropertyAssertion) Obj() *ld.Object            { return obj.O }
 func (obj NegativePropertyAssertion) ID() string                 { return obj.O.ID() }
@@ -273,7 +274,7 @@ func (obj NegativePropertyAssertion) TargetValue() interface{} {
 }
 
 // The class of object properties.
-type ObjectProperty struct{ O *ld.Object }
+type ObjectProperty struct{ rdf.Property }
 
 func (obj ObjectProperty) Obj() *ld.Object            { return obj.O }
 func (obj ObjectProperty) ID() string                 { return obj.O.ID() }
@@ -296,7 +297,7 @@ func (obj ObjectProperty) PropertyChainAxiom() interface{} {
 }
 
 // The class of ontologies.
-type Ontology struct{ O *ld.Object }
+type Ontology struct{ rdf.Resource }
 
 func (obj Ontology) Obj() *ld.Object            { return obj.O }
 func (obj Ontology) ID() string                 { return obj.O.ID() }
@@ -309,7 +310,7 @@ func (obj Ontology) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of ontology properties.
-type OntologyProperty struct{ O *ld.Object }
+type OntologyProperty struct{ rdf.Property }
 
 func (obj OntologyProperty) Obj() *ld.Object            { return obj.O }
 func (obj OntologyProperty) ID() string                 { return obj.O.ID() }
@@ -322,7 +323,7 @@ func (obj OntologyProperty) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of reflexive properties.
-type ReflexiveProperty struct{ O *ld.Object }
+type ReflexiveProperty struct{ ObjectProperty }
 
 func (obj ReflexiveProperty) Obj() *ld.Object            { return obj.O }
 func (obj ReflexiveProperty) ID() string                 { return obj.O.ID() }
@@ -335,7 +336,7 @@ func (obj ReflexiveProperty) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of property restrictions.
-type Restriction struct{ O *ld.Object }
+type Restriction struct{ Class }
 
 func (obj Restriction) Obj() *ld.Object            { return obj.O }
 func (obj Restriction) ID() string                 { return obj.O.ID() }
@@ -418,7 +419,7 @@ func (obj Restriction) SomeValuesFrom() interface{} {
 }
 
 // The class of symmetric properties.
-type SymmetricProperty struct{ O *ld.Object }
+type SymmetricProperty struct{ ObjectProperty }
 
 func (obj SymmetricProperty) Obj() *ld.Object            { return obj.O }
 func (obj SymmetricProperty) ID() string                 { return obj.O.ID() }
@@ -431,7 +432,7 @@ func (obj SymmetricProperty) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The class of transitive properties.
-type TransitiveProperty struct{ O *ld.Object }
+type TransitiveProperty struct{ ObjectProperty }
 
 func (obj TransitiveProperty) Obj() *ld.Object            { return obj.O }
 func (obj TransitiveProperty) ID() string                 { return obj.O.ID() }

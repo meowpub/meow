@@ -153,29 +153,28 @@ func Main() error {
 	}
 
 	// Generate packages!
-	pkgs := make(map[string][]*Namespace)
+	pkgs := make(map[string][]*Declaration)
+	var namespaces []*Namespace
 	for _, ns := range Namespaces {
-		pkgs[ns.Package] = append(pkgs[ns.Package], ns)
+		namespaces = append(namespaces, ns)
+		for _, decl := range declarations {
+			if strings.HasPrefix(decl.ID(), ns.Long) {
+				pkgs[ns.Package] = append(pkgs[ns.Package], decl)
+			}
+		}
 	}
 	var errs []error
-	for pkg, nss := range pkgs {
+	for pkg, pkgdecls := range pkgs {
 		outdir, err := GetAndCreatePackagePath(pkg)
 		if err != nil {
 			return errors.Wrap(err, pkg)
 		}
 		log.Printf("Generating package: %s: %s", pkg, outdir)
-		var pkgdecls []*Declaration
-		for _, ns := range nss {
-			for _, decl := range declarations {
-				if strings.HasPrefix(decl.ID(), ns.Long) {
-					pkgdecls = append(pkgdecls, decl)
-				}
-			}
-		}
 		rctx := &RenderContext{
 			Package:      pkg,
-			Namespaces:   nss,
 			Declarations: pkgdecls,
+			Packages:     pkgs,
+			Namespaces:   namespaces,
 		}
 		errs = append(errs,
 			errors.Wrap(Render(filepath.Join(outdir, "ns.gen.go"), NSTemplate, rctx), "ns.gen.go"),
