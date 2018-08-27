@@ -182,6 +182,21 @@ const ( {{range .Constants}}
 {{end}}
 `[1:]))
 
+var PropertiesTemplate = template.Must(template.New("properties.gen.go").Funcs(Funcs).Parse(`
+// GENERATED FILE, DO NOT EDIT.
+// Please refer to: tools/nsgen/templates.go
+package {{.Package}}
+
+import (
+	"github.com/meowpub/meow/ld"
+)
+
+{{range .Properties}}
+{{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
+func Get{{.TypeName}}(e ld.Entity) interface{} { return e.Get(Prop{{.TypeName}}) }
+{{end}}
+`[1:]))
+
 var ClassesTemplate = template.Must(template.New("classes.gen.go").Funcs(Funcs).Parse(`
 // GENERATED FILE, DO NOT EDIT.
 // Please refer to: tools/nsgen/templates.go
