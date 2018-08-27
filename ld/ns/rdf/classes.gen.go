@@ -88,12 +88,30 @@ type Literal struct{ Resource }
 // The class resource, everything.
 type Resource struct{ O *ld.Object }
 
-func (obj Resource) Obj() *ld.Object            { return obj.O }
-func (obj Resource) ID() string                 { return obj.O.ID() }
-func (obj Resource) Value() string              { return obj.O.Value() }
-func (obj Resource) Type() []string             { return obj.O.Type() }
+// Returns the wrapped plain ld.Object. Implements ld.Entity.
+func (obj Resource) Obj() *ld.Object {
+	return obj.O
+}
+
+// Returns the object's @id. Implements ld.Entity.
+func (obj Resource) ID() string {
+	return obj.O.ID()
+}
+
+// Returns the object's @value. Implements ld.Entity.
+func (obj Resource) Value() string {
+	return obj.O.Value()
+}
+
+// Returns the object's @type. Implements ld.Entity.
+func (obj Resource) Type() []string {
+	return obj.O.Type()
+}
+
+// Returns the named attribute. Implements ld.Entity.
 func (obj Resource) Get(key string) interface{} { return obj.O.Get(key) }
 
+// Applies another object as a patch to this one. Implements ld.Entity.
 func (obj Resource) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.O.Apply(other, mergeArrays)
 }
