@@ -52,6 +52,45 @@ const (
 	PropSubPropertyOf = "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
 )
 
+const (
+	// The class of containers of alternatives.
+	TypeAlt = "http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt"
+
+	// The class of unordered containers.
+	TypeBag = "http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
+
+	// The class of RDF Lists.
+	TypeList = "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+
+	// The class of RDF properties.
+	TypeProperty = "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+
+	// The class of ordered containers.
+	TypeSeq = "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
+
+	// The class of RDF statements.
+	TypeStatement = "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"
+
+	// The class of classes.
+	TypeClass = "http://www.w3.org/2000/01/rdf-schema#Class"
+
+	// The class of RDF containers.
+	TypeContainer = "http://www.w3.org/2000/01/rdf-schema#Container"
+
+	// The class of container membership properties, rdf:_1, rdf:_2, ...,
+	// all of which are sub-properties of 'member'.
+	TypeContainerMembershipProperty = "http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty"
+
+	// The class of RDF datatypes.
+	TypeDatatype = "http://www.w3.org/2000/01/rdf-schema#Datatype"
+
+	// The class of literal values, eg. textual strings and integers.
+	TypeLiteral = "http://www.w3.org/2000/01/rdf-schema#Literal"
+
+	// The class resource, everything.
+	TypeResource = "http://www.w3.org/2000/01/rdf-schema#Resource"
+)
+
 // The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.
 // http://www.w3.org/1999/02/22-rdf-syntax-ns#nil - [http://www.w3.org/1999/02/22-rdf-syntax-ns#List http://www.w3.org/ns/activitystreams#OrderedItems]
 

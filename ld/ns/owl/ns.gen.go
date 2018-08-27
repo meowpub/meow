@@ -156,3 +156,83 @@ const (
 	// The property that determines the collection of facet-value pairs that define a datatype restriction.
 	PropWithRestrictions = "http://www.w3.org/2002/07/owl#withRestrictions"
 )
+
+const (
+	// The class of collections of pairwise different individuals.
+	TypeAllDifferent = "http://www.w3.org/2002/07/owl#AllDifferent"
+
+	// The class of collections of pairwise disjoint classes.
+	TypeAllDisjointClasses = "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+
+	// The class of collections of pairwise disjoint properties.
+	TypeAllDisjointProperties = "http://www.w3.org/2002/07/owl#AllDisjointProperties"
+
+	// The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.
+	TypeAnnotation = "http://www.w3.org/2002/07/owl#Annotation"
+
+	// The class of annotation properties.
+	TypeAnnotationProperty = "http://www.w3.org/2002/07/owl#AnnotationProperty"
+
+	// The class of asymmetric properties.
+	TypeAsymmetricProperty = "http://www.w3.org/2002/07/owl#AsymmetricProperty"
+
+	// The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.
+	TypeAxiom = "http://www.w3.org/2002/07/owl#Axiom"
+
+	// The class of OWL classes.
+	TypeClass = "http://www.w3.org/2002/07/owl#Class"
+
+	// The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.
+	TypeDataRange = "http://www.w3.org/2002/07/owl#DataRange"
+
+	// The class of data properties.
+	TypeDatatypeProperty = "http://www.w3.org/2002/07/owl#DatatypeProperty"
+
+	// The class of deprecated classes.
+	TypeDeprecatedClass = "http://www.w3.org/2002/07/owl#DeprecatedClass"
+
+	// The class of deprecated properties.
+	TypeDeprecatedProperty = "http://www.w3.org/2002/07/owl#DeprecatedProperty"
+
+	// The class of functional properties.
+	TypeFunctionalProperty = "http://www.w3.org/2002/07/owl#FunctionalProperty"
+
+	// The class of inverse-functional properties.
+	TypeInverseFunctionalProperty = "http://www.w3.org/2002/07/owl#InverseFunctionalProperty"
+
+	// The class of irreflexive properties.
+	TypeIrreflexiveProperty = "http://www.w3.org/2002/07/owl#IrreflexiveProperty"
+
+	// The class of named individuals.
+	TypeNamedIndividual = "http://www.w3.org/2002/07/owl#NamedIndividual"
+
+	// The class of negative property assertions.
+	TypeNegativePropertyAssertion = "http://www.w3.org/2002/07/owl#NegativePropertyAssertion"
+
+	// This is the empty class.
+	TypeNothing = "http://www.w3.org/2002/07/owl#Nothing"
+
+	// The class of object properties.
+	TypeObjectProperty = "http://www.w3.org/2002/07/owl#ObjectProperty"
+
+	// The class of ontologies.
+	TypeOntology = "http://www.w3.org/2002/07/owl#Ontology"
+
+	// The class of ontology properties.
+	TypeOntologyProperty = "http://www.w3.org/2002/07/owl#OntologyProperty"
+
+	// The class of reflexive properties.
+	TypeReflexiveProperty = "http://www.w3.org/2002/07/owl#ReflexiveProperty"
+
+	// The class of property restrictions.
+	TypeRestriction = "http://www.w3.org/2002/07/owl#Restriction"
+
+	// The class of symmetric properties.
+	TypeSymmetricProperty = "http://www.w3.org/2002/07/owl#SymmetricProperty"
+
+	// The class of OWL individuals.
+	TypeThing = "http://www.w3.org/2002/07/owl#Thing"
+
+	// The class of transitive properties.
+	TypeTransitiveProperty = "http://www.w3.org/2002/07/owl#TransitiveProperty"
+)
