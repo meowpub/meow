@@ -1,0 +1,1584 @@
+[
+  {
+    "@id": "_:n0",
+    "http://xmlns.com/foaf/0.1/homepage": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#http://www.w3.org/2012/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "_:n0",
+    "http://xmlns.com/foaf/0.1/name": [
+      {
+        "@value": "Ashok Malhotra"
+      }
+    ]
+  },
+  {
+    "@id": "_:n0",
+    "http://xmlns.com/foaf/0.1/name": [
+      {
+        "@value": "John Arwe"
+      }
+    ]
+  },
+  {
+    "@id": "_:n0",
+    "http://xmlns.com/foaf/0.1/name": [
+      {
+        "@value": "Steve Speicher"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://purl.org/dc/terms/created": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2015-02-26"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "Vocabulary URIs defined in the Linked Data Platform (LDP) namespace."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://purl.org/dc/terms/publisher": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#http://www.w3.org/data#W3C"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "The W3C Linked Data Platform (LDP) Vocabulary"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://purl.org/vocab/vann/preferredNamespacePrefix": [
+      {
+        "@value": "ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://purl.org/vocab/vann/preferredNamespaceUri": [
+      {
+        "@value": "http://www.w3.org/ns/ldp#"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "This ontology provides an informal representation of the concepts and terms as defined in the LDP specification.  Consult the LDP specification for normative reference."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "W3C Linked Data Platform (LDP)"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#http://www.w3.org/2011/09/LinkedData/"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#http://www.w3.org/2012/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#http://www.w3.org/TR/ldp-paging/"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#http://www.w3.org/TR/ldp-ucr/"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#http://www.w3.org/TR/ldp/"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp"
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp"
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp"
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp"
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Ascending",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Individual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Ascending",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Ascending order."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Ascending",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Ascending",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Ascending"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Ascending",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "testing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#BasicContainer",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#BasicContainer",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "An LDPC that uses a predefined predicate to simply link to its contained resources."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#BasicContainer",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#BasicContainer",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "BasicContainer"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#BasicContainer",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Container"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#BasicContainer",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Container",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Container",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A Linked Data Platform RDF Source (LDP-RS) that also conforms to additional patterns and conventions for managing membership. Readers should refer to the specification defining this ontology for the list of behaviors associated with it."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Container",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Container",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Container"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Container",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#RDFSource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Container",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Descending",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Individual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Descending",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Descending order."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Descending",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Descending",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Descending"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Descending",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "testing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#DirectContainer",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#DirectContainer",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "An LDPC that is similar to a LDP-DC but it allows an indirection with the ability to list as member a resource, such as a URI representing a real-world object, that is different from the resource that is created."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#DirectContainer",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#DirectContainer",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "DirectContainer"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#DirectContainer",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Container"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#DirectContainer",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#IndirectContainer",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#IndirectContainer",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "An LDPC that has the flexibility of choosing what form the membership triples take."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#IndirectContainer",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#IndirectContainer",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "IndirectContainer"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#IndirectContainer",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Container"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#IndirectContainer",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#MemberSubject",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Individual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#MemberSubject",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Used to indicate default and typical behavior for ldp:insertedContentRelation, where the member-URI value in the membership triple added when a creation request is successful is the URI assigned to the newly created resource."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#MemberSubject",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#MemberSubject",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "MemberSubject"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#MemberSubject",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#NonRDFSource",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#NonRDFSource",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A Linked Data Platform Resource (LDPR) whose state is NOT represented as RDF."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#NonRDFSource",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#NonRDFSource",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "NonRDFSource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#NonRDFSource",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#NonRDFSource",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Page",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Page",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "URI signifying that the resource is an in-sequence page resource, as defined by LDP Paging.  Typically used on Link rel='type' response headers."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Page",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Page",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Page"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Page",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "testing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PageSortCriterion",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PageSortCriterion",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Element in the list of sorting criteria used by the server to assign container members to pages."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PageSortCriterion",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PageSortCriterion",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "PageSortCriterion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PageSortCriterion",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "testing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferContainment",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Individual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferContainment",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "URI identifying a LDPC's containment triples, for example to allow clients to express interest in receiving them."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferContainment",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferContainment",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "PreferContainment"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferContainment",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferEmptyContainer",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Individual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferEmptyContainer",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Archaic alias for ldp:PreferMinimalContainer"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferEmptyContainer",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferEmptyContainer",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "PreferEmptyContainer"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferEmptyContainer",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#PreferMinimalContainer"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferEmptyContainer",
+    "http://www.w3.org/2002/07/owl#equivalentProperty": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#PreferMinimalContainer"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferEmptyContainer",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "archaic"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMembership",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Individual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMembership",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "URI identifying a LDPC's membership triples, for example to allow clients to express interest in receiving them."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMembership",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMembership",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "PreferMembership"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMembership",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMinimalContainer",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Individual"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMinimalContainer",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "URI identifying the subset of a LDPC's triples present in an empty LDPC, for example to allow clients to express interest in receiving them.  Currently this excludes containment and membership triples, but in the future other exclusions might be added.  This definition is written to automatically exclude those new classes of triples."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMinimalContainer",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMinimalContainer",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "PreferMinimalContainer"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#PreferMinimalContainer",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#RDFSource",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#RDFSource",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A Linked Data Platform Resource (LDPR) whose state is represented as RDF."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#RDFSource",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#RDFSource",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "RDFSource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#RDFSource",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#RDFSource",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Resource",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Resource",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A HTTP-addressable resource whose lifecycle is managed by a LDP server."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Resource",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Resource",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#Resource",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#constrainedBy",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#constrainedBy",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Links a resource with constraints that the server requires requests like creation and update to conform to."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#constrainedBy",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#constrainedBy",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#constrainedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "constrainedBy"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#constrainedBy",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#constrainedBy",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#contains",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#contains",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Links a container with resources created through the container."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#contains",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Container"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#contains",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#contains",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "contains"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#contains",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#contains",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#hasMemberRelation",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#hasMemberRelation",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Indicates which predicate is used in membership triples, and that the membership triple pattern is \u003c membership-constant-URI , object-of-hasMemberRelation, member-URI \u003e."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#hasMemberRelation",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Container"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#hasMemberRelation",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#hasMemberRelation",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "hasMemberRelation"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#hasMemberRelation",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#hasMemberRelation",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#inbox",
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#http://csarven.ca/#i"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#inbox",
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#https://rhiaro.co.uk/#me"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#inbox",
+    "http://purl.org/dc/terms/issued": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2016-09-29"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#inbox",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#inbox",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Links a resource to a container where notifications for the resource can be created and discovered."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#inbox",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#https://www.w3.org/TR/ldn/"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#inbox",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "inbox"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#inbox",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#insertedContentRelation",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#insertedContentRelation",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Indicates which triple in a creation request should be used as the member-URI value in the membership triple added when the creation request is successful."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#insertedContentRelation",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Container"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#insertedContentRelation",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#insertedContentRelation",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "insertedContentRelation"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#insertedContentRelation",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#insertedContentRelation",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#isMemberOfRelation",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#isMemberOfRelation",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Indicates which predicate is used in membership triples, and that the membership triple pattern is \u003c member-URI , object-of-isMemberOfRelation, membership-constant-URI \u003e."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#isMemberOfRelation",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Container"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#isMemberOfRelation",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#isMemberOfRelation",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "isMemmberOfRelation"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#isMemberOfRelation",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#isMemberOfRelation",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#member",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#member",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "LDP servers should use this predicate as the membership predicate if there is no obvious predicate from an application vocabulary to use."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#member",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#member",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#member",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "member"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#member",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#member",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#membershipResource",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#membershipResource",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Indicates the membership-constant-URI in a membership triple.  Depending upon the membership triple pattern a container uses, as indicated by the presence of ldp:hasMemberRelation or ldp:isMemberOfRelation, the membership-constant-URI might occupy either the subject or object position in membership triples."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#membershipResource",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Container"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#membershipResource",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#membershipResource",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "membershipResource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#membershipResource",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#membershipResource",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSequence",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSequence",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Link to a page sequence resource, as defined by LDP Paging.  Typically used to communicate the sorting criteria used to allocate LDPC members to pages."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSequence",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSequence",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Page"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSequence",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "testing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCollation",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCollation",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The collation used to order the members across pages in a page sequence when comparing strings."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCollation",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#PageSortCriterion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCollation",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCollation",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "pageSortCollation"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCollation",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCollation",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "testing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCriteria",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCriteria",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Link to the list of sorting criteria used by the server in a representation.  Typically used on Link response headers as an extension link relation URI in the rel= parameter."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCriteria",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#Page"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCriteria",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCriteria",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "pageSortCriteria"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCriteria",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortCriteria",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "testing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortOrder",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortOrder",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The ascending/descending/etc order used to order the members across pages in a page sequence."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortOrder",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#PageSortCriterion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortOrder",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortOrder",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "pageSortOrder"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortOrder",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortOrder",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "testing"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortPredicate",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortPredicate",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Predicate used to specify the order of the members across a page sequence's in-sequence page resources; it asserts nothing about the order of members in the representation of a single page."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortPredicate",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://www.w3.org/ns/ldp#PageSortCriterion"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortPredicate",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://www.w3.org/ns/ldp"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortPredicate",
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "pageSortPredicate"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortPredicate",
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/ns/ldp#pageSortPredicate",
+    "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
+      {
+        "@value": "testing"
+      }
+    ]
+  }
+]

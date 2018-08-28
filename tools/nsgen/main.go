@@ -175,6 +175,7 @@ func Main() error {
 		}
 		errs = append(errs,
 			errors.Wrap(Render(filepath.Join(outdir, "ns.gen.go"), NSTemplate, rctx), "ns.gen.go"),
+			errors.Wrap(Render(filepath.Join(outdir, "properties.gen.go"), PropertiesTemplate, rctx), "properties.gen.go"),
 			errors.Wrap(Render(filepath.Join(outdir, "classes.gen.go"), ClassesTemplate, rctx), "classes.gen.go"),
 			errors.Wrap(Render(filepath.Join(outdir, "datatypes.gen.go"), DataTypesTemplate, rctx), "datatypes.gen.go"),
 		)
