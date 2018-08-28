@@ -9,6 +9,22 @@
   },
   {
     "@id": "https://w3id.org/security#Digest",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "This class represents a message digest that may be used for data integrity verification.\nThe digest algorithm used will determine the cryptographic properties of the digest."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Digest",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Digest",
     "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
       {
         "@value": "stable"
@@ -20,6 +36,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#EncryptedMessage",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A class of messages that are obfuscated in some cryptographic manner.\nThese messages are incredibly difficult to decrypt without the proper decryption key."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#EncryptedMessage",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
       }
     ]
   },
@@ -41,6 +73,22 @@
   },
   {
     "@id": "https://w3id.org/security#GraphSignature2012",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A graph signature is used for digital signatures on RDF graphs. The default canonicalization\nmechanism is specified in the RDF Graph normalization specification, which effectively\ndeterministically names all unnamed nodes. The default signature mechanism uses a SHA-256 digest\nand RSA to perform the digital signature."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#GraphSignature2012",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://w3id.org/security#Signature"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#GraphSignature2012",
     "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
       {
         "@value": "stable"
@@ -52,6 +100,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Key",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "This class represents a cryptographic key that may be used for encryption, decryption, or\ndigitally signing data."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Key",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
       }
     ]
   },
@@ -73,9 +137,49 @@
   },
   {
     "@id": "https://w3id.org/security#LinkedDataSignature2015",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A Linked Data signature is used for digital signatures on RDF Datasets. The default canonicalization\nmechanism is specified in the RDF Dataset Normalization specification, which effectively\ndeterministically names all unnamed nodes. The default signature mechanism uses a SHA-256 digest and\nRSA to perform the digital signature. This signature uses a algorithm for producing the data that it\nsigns and verifies that is different from other Linked Data signatures."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#LinkedDataSignature2015",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://w3id.org/security#Signature"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#LinkedDataSignature2015",
     "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
       {
         "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#LinkedDataSignature2016",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/2000/01/rdf-schema#Class"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#LinkedDataSignature2016",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A Linked Data signature is used for digital signatures on RDF Datasets. The default canonicalization\nmechanism is specified in the RDF Dataset Normalization specification, which effectively\ndeterministically names all unnamed nodes. The default signature mechanism uses a SHA-256 digest and\nRSA to perform the digital signature."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#LinkedDataSignature2016",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://w3id.org/security#Signature"
       }
     ]
   },
@@ -89,9 +193,41 @@
   },
   {
     "@id": "https://w3id.org/security#Signature",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "This class represents a digital signature on serialized data. It is an abstract class and should\nnot be used other than for Semantic Web reasoning purposes, such as by a reasoning agent."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Signature",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://www.w3.org/2002/07/owl#Thing"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#Signature",
     "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
       {
         "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#authenticationTag",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#authenticationTag",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#EncryptedMessage"
       }
     ]
   },
@@ -100,6 +236,14 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#canonicalizationAlgorithm",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The canonicalization algorithm is used to transform the input data into a form that can be passed\nto a cryptographic digest method. The digest is then digitally signed using a digital signature\nalgorithm. Canonicalization ensures that a piece of software that is generating a digital signature\nis able to do so on the same set of information in a deterministic manner."
       }
     ]
   },
@@ -121,6 +265,22 @@
   },
   {
     "@id": "https://w3id.org/security#cipherAlgorithm",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The cipher algorithm describes the mechanism used to encrypt a message. It is typically a string\nexpressing the cipher suite, the strength of the cipher, and a block cipher mode."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherAlgorithm",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#EncryptedMessage"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherAlgorithm",
     "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
       {
         "@value": "stable"
@@ -132,6 +292,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherData",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Cipher data an opaque blob of information that is used to specify an encrypted message."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherData",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#EncryptedMessage"
       }
     ]
   },
@@ -153,9 +329,41 @@
   },
   {
     "@id": "https://w3id.org/security#cipherKey",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A cipher key is a symmetric key that is used to encrypt or decrypt a piece of information.\nThe key itself may be expressed in clear text or encrypted."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherKey",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#EncryptedMessage"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#cipherKey",
     "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
       {
         "@value": "stable"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#creator",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#creator",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#Signature"
       }
     ]
   },
@@ -164,6 +372,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#digestAlgorithm",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The digest algorithm is used to specify the cryptographic function to use when generating the\ndata to be digitally signed. Typically, data that is to be signed goes through three steps:\n1) canonicalization, 2) digest, and 3) signature. This property is used to specify the algorithm\nthat should be used for step #2. A signature class typically specifies a default digest method,\nso this property is typically used to specify information for a signature algorithm."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#digestAlgorithm",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#Digest"
       }
     ]
   },
@@ -180,6 +404,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#digestValue",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The digest value is used to express the output of the digest algorithm expressed in Base-1\n(hexadecimal) format."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#digestValue",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#Digest"
       }
     ]
   },
@@ -196,6 +436,14 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#expires",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The expiration time is typically associated with a Key and specifies when the validity of the key\nwill expire. It is considered a best practice to only create keys that have very definite\nexpiration periods. This period is typically set to between six months and two years. An digital\nsignature created using an expired key MUST be marked as invalid by any software attempting to\nverify the signature."
       }
     ]
   },
@@ -225,6 +473,22 @@
   },
   {
     "@id": "https://w3id.org/security#initializationVector",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The initialization vector (IV) is a byte stream that is typically used to initialize certain block\ncipher encryption schemes. For a receiving application to be able to decrypt a message, it must\nknow the decryption key and the initialization vector. The value is typically base-64 encoded."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#initializationVector",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#EncryptedMessage"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#initializationVector",
     "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
       {
         "@value": "stable"
@@ -236,6 +500,14 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#nonce",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "This property is used in conjunction with the input to the signature hashing function in order to\nprotect against replay attacks. Typically, receivers need to track all nonce values used within a\ncertain time period in order to ensure that an attacker cannot merely re-send a compromised packet\nin order to execute a privileged request."
       }
     ]
   },
@@ -252,6 +524,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#owner",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "An owner is an entity that claims control over a particular resource. Note that ownership is best\nvalidated as a two-way relationship where the owner claims ownership over a particular resource,\nand the resource clearly identifies its owner."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#owner",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#Key"
       }
     ]
   },
@@ -268,6 +556,14 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#password",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A secret that is used to generate a key that can be used to encrypt or decrypt message.\nIt is typically a string value."
       }
     ]
   },
@@ -284,6 +580,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#privateKeyPem",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A private key PEM property is used to specify the PEM-encoded version of the private key.\nThis encoding is compatible with almost every Secure Sockets Layer library implementation and\ntypically plugs directly into functions intializing private keys."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#privateKeyPem",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#Key"
       }
     ]
   },
@@ -300,6 +612,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKey",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A public key property is used to specify a URL that contains information about a public key."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKey",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#EncryptedMessage"
       }
     ]
   },
@@ -316,6 +644,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKeyPem",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A public key PEM property is used to specify the PEM-encoded version of the public key.\nThis encoding is compatible with almost every Secure Sockets Layer library implementation and\ntypically plugs directly into functions intializing public keys."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKeyPem",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#Key"
       }
     ]
   },
@@ -332,6 +676,14 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#publicKeyService",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The publicKeyService property is used to express the REST URL that provides public key management\nservices as defined by the Web Key [SECURE-MESSAGING] specification."
       }
     ]
   },
@@ -353,6 +705,14 @@
   },
   {
     "@id": "https://w3id.org/security#revoked",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The revocation time is typically associated with a Key that has been marked as invalid as of the\ndate and time associated with the property. Key revocations are often used when a key is\ncompromised, such as the theft of the private key, or during the course of best-practice key\nrotation schedules."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#revoked",
     "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status": [
       {
         "@value": "stable"
@@ -364,6 +724,14 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signature",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The signature property is used to associate a signature with a graph of information.\nThe signature property is typically not included in the canonicalized graph that is then digested,\nand digitally signed."
       }
     ]
   },
@@ -380,6 +748,14 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signatureAlgorithm",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The signature algorithm is used to specify the cryptographic signature function to use when\ndigitally signing the digest data. Typically, text to be signed goes through three steps:\n1) canonicalization, 2) digest, and 3) signature. This property is used to specify the algorithm\nthat should be used for step #3. A signature class typically specifies a default signature\nalgorithm, so this property rarely needs to be used in practice when specifying digital signatures."
       }
     ]
   },
@@ -396,6 +772,22 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       {
         "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signatureValue",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The signature value is used to express the output of the signature algorithm expressed in\nbase-64 format."
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/security#signatureValue",
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://w3id.org/security#Signature"
       }
     ]
   },
