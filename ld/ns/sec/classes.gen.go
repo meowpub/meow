@@ -22,11 +22,15 @@ func IsDigest(e ld.Entity) bool { return ld.Is(e, TypeDigest) }
 // 1) canonicalization, 2) digest, and 3) signature. This property is used to specify the algorithm
 // that should be used for step #2. A signature class typically specifies a default digest method,
 // so this property is typically used to specify information for a signature algorithm.
-func (obj Digest) DigestAlgorithm() interface{} { return obj.Get(PropDigestAlgorithm) }
+func (obj Digest) DigestAlgorithm() interface{} { return GetDigestAlgorithm(obj) }
+
+func (obj Digest) SetDigestAlgorithm(v interface{}) { SetDigestAlgorithm(obj, v) }
 
 // The digest value is used to express the output of the digest algorithm expressed in Base-1
 // (hexadecimal) format.
-func (obj Digest) DigestValue() interface{} { return obj.Get(PropDigestValue) }
+func (obj Digest) DigestValue() interface{} { return GetDigestValue(obj) }
+
+func (obj Digest) SetDigestValue(v interface{}) { SetDigestValue(obj, v) }
 
 // A class of messages that are obfuscated in some cryptographic manner.
 // These messages are incredibly difficult to decrypt without the proper decryption key.
@@ -38,28 +42,38 @@ func AsEncryptedMessage(e ld.Entity) EncryptedMessage { return EncryptedMessage{
 // Does the object quack like a(n) EncryptedMessage?
 func IsEncryptedMessage(e ld.Entity) bool { return ld.Is(e, TypeEncryptedMessage) }
 
-func (obj EncryptedMessage) AuthenticationTag() interface{} { return obj.Get(PropAuthenticationTag) }
+func (obj EncryptedMessage) AuthenticationTag() interface{} { return GetAuthenticationTag(obj) }
+
+func (obj EncryptedMessage) SetAuthenticationTag(v interface{}) { SetAuthenticationTag(obj, v) }
 
 // The cipher algorithm describes the mechanism used to encrypt a message. It is typically a string
 // expressing the cipher suite, the strength of the cipher, and a block cipher mode.
-func (obj EncryptedMessage) CipherAlgorithm() interface{} { return obj.Get(PropCipherAlgorithm) }
+func (obj EncryptedMessage) CipherAlgorithm() interface{} { return GetCipherAlgorithm(obj) }
+
+func (obj EncryptedMessage) SetCipherAlgorithm(v interface{}) { SetCipherAlgorithm(obj, v) }
 
 // Cipher data an opaque blob of information that is used to specify an encrypted message.
-func (obj EncryptedMessage) CipherData() interface{} { return obj.Get(PropCipherData) }
+func (obj EncryptedMessage) CipherData() interface{} { return GetCipherData(obj) }
+
+func (obj EncryptedMessage) SetCipherData(v interface{}) { SetCipherData(obj, v) }
 
 // A cipher key is a symmetric key that is used to encrypt or decrypt a piece of information.
 // The key itself may be expressed in clear text or encrypted.
-func (obj EncryptedMessage) CipherKey() interface{} { return obj.Get(PropCipherKey) }
+func (obj EncryptedMessage) CipherKey() interface{} { return GetCipherKey(obj) }
+
+func (obj EncryptedMessage) SetCipherKey(v interface{}) { SetCipherKey(obj, v) }
 
 // The initialization vector (IV) is a byte stream that is typically used to initialize certain block
 // cipher encryption schemes. For a receiving application to be able to decrypt a message, it must
 // know the decryption key and the initialization vector. The value is typically base-64 encoded.
-func (obj EncryptedMessage) InitializationVector() interface{} {
-	return obj.Get(PropInitializationVector)
-}
+func (obj EncryptedMessage) InitializationVector() interface{} { return GetInitializationVector(obj) }
+
+func (obj EncryptedMessage) SetInitializationVector(v interface{}) { SetInitializationVector(obj, v) }
 
 // A public key property is used to specify a URL that contains information about a public key.
-func (obj EncryptedMessage) PublicKey() interface{} { return obj.Get(PropPublicKey) }
+func (obj EncryptedMessage) PublicKey() interface{} { return GetPublicKey(obj) }
+
+func (obj EncryptedMessage) SetPublicKey(v interface{}) { SetPublicKey(obj, v) }
 
 // A graph signature is used for digital signatures on RDF graphs. The default canonicalization
 // mechanism is specified in the RDF Graph normalization specification, which effectively
@@ -86,17 +100,23 @@ func IsKey(e ld.Entity) bool { return ld.Is(e, TypeKey) }
 // An owner is an entity that claims control over a particular resource. Note that ownership is best
 // validated as a two-way relationship where the owner claims ownership over a particular resource,
 // and the resource clearly identifies its owner.
-func (obj Key) Owner() interface{} { return obj.Get(PropOwner) }
+func (obj Key) Owner() interface{} { return GetOwner(obj) }
+
+func (obj Key) SetOwner(v interface{}) { SetOwner(obj, v) }
 
 // A private key PEM property is used to specify the PEM-encoded version of the private key.
 // This encoding is compatible with almost every Secure Sockets Layer library implementation and
 // typically plugs directly into functions intializing private keys.
-func (obj Key) PrivateKeyPem() interface{} { return obj.Get(PropPrivateKeyPem) }
+func (obj Key) PrivateKeyPem() interface{} { return GetPrivateKeyPem(obj) }
+
+func (obj Key) SetPrivateKeyPem(v interface{}) { SetPrivateKeyPem(obj, v) }
 
 // A public key PEM property is used to specify the PEM-encoded version of the public key.
 // This encoding is compatible with almost every Secure Sockets Layer library implementation and
 // typically plugs directly into functions intializing public keys.
-func (obj Key) PublicKeyPem() interface{} { return obj.Get(PropPublicKeyPem) }
+func (obj Key) PublicKeyPem() interface{} { return GetPublicKeyPem(obj) }
+
+func (obj Key) SetPublicKeyPem(v interface{}) { SetPublicKeyPem(obj, v) }
 
 // A Linked Data signature is used for digital signatures on RDF Datasets. The default canonicalization
 // mechanism is specified in the RDF Dataset Normalization specification, which effectively
@@ -137,11 +157,15 @@ func AsSignature(e ld.Entity) Signature { return Signature{owl.AsThing(e)} }
 // Does the object quack like a(n) Signature?
 func IsSignature(e ld.Entity) bool { return ld.Is(e, TypeSignature) }
 
-func (obj Signature) Creator() interface{} { return obj.Get(PropCreator) }
+func (obj Signature) Creator() interface{} { return GetCreator(obj) }
+
+func (obj Signature) SetCreator(v interface{}) { SetCreator(obj, v) }
 
 // The signature value is used to express the output of the signature algorithm expressed in
 // base-64 format.
-func (obj Signature) SignatureValue() interface{} { return obj.Get(PropSignatureValue) }
+func (obj Signature) SignatureValue() interface{} { return GetSignatureValue(obj) }
+
+func (obj Signature) SetSignatureValue(v interface{}) { SetSignatureValue(obj, v) }
 
 var (
 	_ ld.Entity = Digest{}
