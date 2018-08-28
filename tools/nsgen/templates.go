@@ -239,7 +239,7 @@ func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error { re
 
 {{range $.PropertiesOf $cls}}
 {{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
-func (obj {{$cls.TypeName}}) {{.FuncName}}() interface{} { return obj.Get({{$.ResolvePrefix .ID "Prop"}}) }
+func (obj {{$cls.TypeName}}) {{.FuncName}}() interface{} { return Get{{.TypeName}}(obj) }
 {{end}}
 {{end}}
 

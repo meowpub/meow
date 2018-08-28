@@ -34,10 +34,10 @@ func AsList(e ld.Entity) List { return List{AsResource(e)} }
 func IsList(e ld.Entity) bool { return ld.Is(e, TypeList) }
 
 // The first item in the subject RDF list.
-func (obj List) First() interface{} { return obj.Get(PropFirst) }
+func (obj List) First() interface{} { return GetFirst(obj) }
 
 // The rest of the subject RDF list after the first item.
-func (obj List) Rest() interface{} { return obj.Get(PropRest) }
+func (obj List) Rest() interface{} { return GetRest(obj) }
 
 // The class of RDF properties.
 type Property struct{ Resource }
@@ -49,13 +49,13 @@ func AsProperty(e ld.Entity) Property { return Property{AsResource(e)} }
 func IsProperty(e ld.Entity) bool { return ld.Is(e, TypeProperty) }
 
 // A domain of the subject property.
-func (obj Property) Domain() interface{} { return obj.Get(PropDomain) }
+func (obj Property) Domain() interface{} { return GetDomain(obj) }
 
 // A range of the subject property.
-func (obj Property) Range() interface{} { return obj.Get(PropRange) }
+func (obj Property) Range() interface{} { return GetRange(obj) }
 
 // The subject is a subproperty of a property.
-func (obj Property) SubPropertyOf() interface{} { return obj.Get(PropSubPropertyOf) }
+func (obj Property) SubPropertyOf() interface{} { return GetSubPropertyOf(obj) }
 
 // The class of ordered containers.
 type Seq struct{ Container }
@@ -76,13 +76,13 @@ func AsStatement(e ld.Entity) Statement { return Statement{AsResource(e)} }
 func IsStatement(e ld.Entity) bool { return ld.Is(e, TypeStatement) }
 
 // The object of the subject RDF statement.
-func (obj Statement) Object() interface{} { return obj.Get(PropObject) }
+func (obj Statement) Object() interface{} { return GetObject(obj) }
 
 // The predicate of the subject RDF statement.
-func (obj Statement) Predicate() interface{} { return obj.Get(PropPredicate) }
+func (obj Statement) Predicate() interface{} { return GetPredicate(obj) }
 
 // The subject of the subject RDF statement.
-func (obj Statement) Subject() interface{} { return obj.Get(PropSubject) }
+func (obj Statement) Subject() interface{} { return GetSubject(obj) }
 
 // The class of classes.
 type Class struct{ Resource }
@@ -94,7 +94,7 @@ func AsClass(e ld.Entity) Class { return Class{AsResource(e)} }
 func IsClass(e ld.Entity) bool { return ld.Is(e, TypeClass) }
 
 // The subject is a subclass of a class.
-func (obj Class) SubClassOf() interface{} { return obj.Get(PropSubClassOf) }
+func (obj Class) SubClassOf() interface{} { return GetSubClassOf(obj) }
 
 // The class of RDF containers.
 type Container struct{ Resource }
@@ -165,25 +165,25 @@ func (obj Resource) Apply(other ld.Entity, mergeArrays bool) error {
 }
 
 // The subject is an instance of a class.
-func (obj Resource) Type_() interface{} { return obj.Get(PropType) }
+func (obj Resource) Type_() interface{} { return GetType(obj) }
 
 // Idiomatic property used for structured values.
-func (obj Resource) Value_() interface{} { return obj.Get(PropValue) }
+func (obj Resource) Value_() interface{} { return GetValue(obj) }
 
 // A description of the subject resource.
-func (obj Resource) Comment() interface{} { return obj.Get(PropComment) }
+func (obj Resource) Comment() interface{} { return GetComment(obj) }
 
 // The defininition of the subject resource.
-func (obj Resource) IsDefinedBy() interface{} { return obj.Get(PropIsDefinedBy) }
+func (obj Resource) IsDefinedBy() interface{} { return GetIsDefinedBy(obj) }
 
 // A human-readable name for the subject.
-func (obj Resource) Label() interface{} { return obj.Get(PropLabel) }
+func (obj Resource) Label() interface{} { return GetLabel(obj) }
 
 // A member of the subject resource.
-func (obj Resource) Member() interface{} { return obj.Get(PropMember) }
+func (obj Resource) Member() interface{} { return GetMember(obj) }
 
 // Further information about the subject resource.
-func (obj Resource) SeeAlso() interface{} { return obj.Get(PropSeeAlso) }
+func (obj Resource) SeeAlso() interface{} { return GetSeeAlso(obj) }
 
 var (
 	_ ld.Entity = Alt{}

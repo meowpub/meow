@@ -25,19 +25,19 @@ func AsActivity(e ld.Entity) Activity { return Activity{AsObject(e)} }
 func IsActivity(e ld.Entity) bool { return ld.Is(e, TypeActivity) }
 
 // Subproperty of as:attributedTo that identifies the primary actor
-func (obj Activity) Actor() interface{} { return obj.Get(PropActor) }
+func (obj Activity) Actor() interface{} { return GetActor(obj) }
 
 // Indentifies an object used (or to be used) to complete an activity
-func (obj Activity) Instrument() interface{} { return obj.Get(PropInstrument) }
+func (obj Activity) Instrument() interface{} { return GetInstrument(obj) }
 
 // For certain activities, specifies the entity from which the action is directed.
-func (obj Activity) Origin() interface{} { return obj.Get(PropOrigin) }
+func (obj Activity) Origin() interface{} { return GetOrigin(obj) }
 
-func (obj Activity) Result() interface{} { return obj.Get(PropResult) }
+func (obj Activity) Result() interface{} { return GetResult(obj) }
 
-func (obj Activity) Target() interface{} { return obj.Get(PropTarget) }
+func (obj Activity) Target() interface{} { return GetTarget(obj) }
 
-func (obj Activity) Verb() interface{} { return obj.Get(PropVerb) }
+func (obj Activity) Verb() interface{} { return GetVerb(obj) }
 
 // To Add an Object or Link to Something
 type Add struct{ Activity }
@@ -110,16 +110,16 @@ func AsCollection(e ld.Entity) Collection { return Collection{AsObject(e)} }
 // Does the object quack like a(n) Collection?
 func IsCollection(e ld.Entity) bool { return ld.Is(e, TypeCollection) }
 
-func (obj Collection) Current() interface{} { return obj.Get(PropCurrent) }
+func (obj Collection) Current() interface{} { return GetCurrent(obj) }
 
-func (obj Collection) First() interface{} { return obj.Get(PropFirst) }
+func (obj Collection) First() interface{} { return GetFirst(obj) }
 
-func (obj Collection) Items() interface{} { return obj.Get(PropItems) }
+func (obj Collection) Items() interface{} { return GetItems(obj) }
 
-func (obj Collection) Last() interface{} { return obj.Get(PropLast) }
+func (obj Collection) Last() interface{} { return GetLast(obj) }
 
 // The total number of items in a logical collection
-func (obj Collection) TotalItems() interface{} { return obj.Get(PropTotalItems) }
+func (obj Collection) TotalItems() interface{} { return GetTotalItems(obj) }
 
 // A subset of items from a Collection
 type CollectionPage struct{ Collection }
@@ -130,11 +130,11 @@ func AsCollectionPage(e ld.Entity) CollectionPage { return CollectionPage{AsColl
 // Does the object quack like a(n) CollectionPage?
 func IsCollectionPage(e ld.Entity) bool { return ld.Is(e, TypeCollectionPage) }
 
-func (obj CollectionPage) Next() interface{} { return obj.Get(PropNext) }
+func (obj CollectionPage) Next() interface{} { return GetNext(obj) }
 
-func (obj CollectionPage) PartOf() interface{} { return obj.Get(PropPartOf) }
+func (obj CollectionPage) PartOf() interface{} { return GetPartOf(obj) }
 
-func (obj CollectionPage) Prev() interface{} { return obj.Get(PropPrev) }
+func (obj CollectionPage) Prev() interface{} { return GetPrev(obj) }
 
 // To Create Something
 type Create struct{ Activity }
@@ -301,19 +301,19 @@ func (obj Link) Get(key string) interface{} { return obj.o.Get(key) }
 func (obj Link) Apply(other ld.Entity, mergeArrays bool) error { return obj.o.Apply(other, mergeArrays) }
 
 // The display height expressed as device independent pixels
-func (obj Link) Height() interface{} { return obj.Get(PropHeight) }
+func (obj Link) Height() interface{} { return GetHeight(obj) }
 
 // The target URI of the Link
-func (obj Link) Href() interface{} { return obj.Get(PropHref) }
+func (obj Link) Href() interface{} { return GetHref(obj) }
 
 // A hint about the language of the referenced resource
-func (obj Link) Hreflang() interface{} { return obj.Get(PropHreflang) }
+func (obj Link) Hreflang() interface{} { return GetHreflang(obj) }
 
 // The RFC 5988 or HTML5 Link Relation associated with the Link
-func (obj Link) Rel() interface{} { return obj.Get(PropRel) }
+func (obj Link) Rel() interface{} { return GetRel(obj) }
 
 // Specifies the preferred display width of the content, expressed in terms of device independent pixels.
-func (obj Link) Width() interface{} { return obj.Get(PropWidth) }
+func (obj Link) Width() interface{} { return GetWidth(obj) }
 
 // The actor listened to the object
 type Listen struct{ Activity }
@@ -379,76 +379,76 @@ func (obj Object) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.o.Apply(other, mergeArrays)
 }
 
-func (obj Object) Attachment() interface{} { return obj.Get(PropAttachment) }
+func (obj Object) Attachment() interface{} { return GetAttachment(obj) }
 
-func (obj Object) Attachments() interface{} { return obj.Get(PropAttachments) }
+func (obj Object) Attachments() interface{} { return GetAttachments(obj) }
 
-func (obj Object) Audience() interface{} { return obj.Get(PropAudience) }
+func (obj Object) Audience() interface{} { return GetAudience(obj) }
 
 // Identifies the author of an object. Deprecated. Use as:attributedTo instead
-func (obj Object) Author() interface{} { return obj.Get(PropAuthor) }
+func (obj Object) Author() interface{} { return GetAuthor(obj) }
 
-func (obj Object) Bcc() interface{} { return obj.Get(PropBcc) }
+func (obj Object) Bcc() interface{} { return GetBcc(obj) }
 
-func (obj Object) Bto() interface{} { return obj.Get(PropBto) }
+func (obj Object) Bto() interface{} { return GetBto(obj) }
 
-func (obj Object) Cc() interface{} { return obj.Get(PropCc) }
+func (obj Object) Cc() interface{} { return GetCc(obj) }
 
 // The content of the object.
-func (obj Object) Content() interface{} { return obj.Get(PropContent) }
+func (obj Object) Content() interface{} { return GetContent(obj) }
 
 // Specifies the context within which an object exists or an activity was performed
-func (obj Object) Context() interface{} { return obj.Get(PropContext) }
+func (obj Object) Context() interface{} { return GetContext(obj) }
 
-func (obj Object) DownstreamDuplicates() interface{} { return obj.Get(PropDownstreamDuplicates) }
+func (obj Object) DownstreamDuplicates() interface{} { return GetDownstreamDuplicates(obj) }
 
 // The duration of the object
-func (obj Object) Duration() interface{} { return obj.Get(PropDuration) }
+func (obj Object) Duration() interface{} { return GetDuration(obj) }
 
 // The ending time of the object
-func (obj Object) EndTime() interface{} { return obj.Get(PropEndTime) }
+func (obj Object) EndTime() interface{} { return GetEndTime(obj) }
 
-func (obj Object) Generator() interface{} { return obj.Get(PropGenerator) }
+func (obj Object) Generator() interface{} { return GetGenerator(obj) }
 
-func (obj Object) Icon() interface{} { return obj.Get(PropIcon) }
+func (obj Object) Icon() interface{} { return GetIcon(obj) }
 
-func (obj Object) Image() interface{} { return obj.Get(PropImage) }
+func (obj Object) Image() interface{} { return GetImage(obj) }
 
-func (obj Object) InReplyTo() interface{} { return obj.Get(PropInReplyTo) }
+func (obj Object) InReplyTo() interface{} { return GetInReplyTo(obj) }
 
-func (obj Object) Location() interface{} { return obj.Get(PropLocation) }
+func (obj Object) Location() interface{} { return GetLocation(obj) }
 
-func (obj Object) ObjectType() interface{} { return obj.Get(PropObjectType) }
+func (obj Object) ObjectType() interface{} { return GetObjectType(obj) }
 
-func (obj Object) Provider() interface{} { return obj.Get(PropProvider) }
+func (obj Object) Provider() interface{} { return GetProvider(obj) }
 
 // Specifies the date and time the object was published
-func (obj Object) Published() interface{} { return obj.Get(PropPublished) }
+func (obj Object) Published() interface{} { return GetPublished(obj) }
 
 // A numeric rating (>= 0.0, <= 5.0) for the object
-func (obj Object) Rating() interface{} { return obj.Get(PropRating) }
+func (obj Object) Rating() interface{} { return GetRating(obj) }
 
-func (obj Object) Replies() interface{} { return obj.Get(PropReplies) }
+func (obj Object) Replies() interface{} { return GetReplies(obj) }
 
 // The starting time of the object
-func (obj Object) StartTime() interface{} { return obj.Get(PropStartTime) }
+func (obj Object) StartTime() interface{} { return GetStartTime(obj) }
 
 // A short summary of the object
-func (obj Object) Summary() interface{} { return obj.Get(PropSummary) }
+func (obj Object) Summary() interface{} { return GetSummary(obj) }
 
-func (obj Object) Tag() interface{} { return obj.Get(PropTag) }
+func (obj Object) Tag() interface{} { return GetTag(obj) }
 
-func (obj Object) Tags() interface{} { return obj.Get(PropTags) }
+func (obj Object) Tags() interface{} { return GetTags(obj) }
 
-func (obj Object) To() interface{} { return obj.Get(PropTo) }
+func (obj Object) To() interface{} { return GetTo(obj) }
 
 // Specifies when the object was last updated
-func (obj Object) Updated() interface{} { return obj.Get(PropUpdated) }
+func (obj Object) Updated() interface{} { return GetUpdated(obj) }
 
-func (obj Object) UpstreamDuplicates() interface{} { return obj.Get(PropUpstreamDuplicates) }
+func (obj Object) UpstreamDuplicates() interface{} { return GetUpstreamDuplicates(obj) }
 
 // Specifies a link to a specific representation of the Object
-func (obj Object) Url() interface{} { return obj.Get(PropUrl) }
+func (obj Object) Url() interface{} { return GetUrl(obj) }
 
 // To Offer something to someone or something
 type Offer struct{ Activity }
@@ -503,7 +503,7 @@ func AsOrderedCollectionPage(e ld.Entity) OrderedCollectionPage {
 func IsOrderedCollectionPage(e ld.Entity) bool { return ld.Is(e, TypeOrderedCollectionPage) }
 
 // In a strictly ordered logical collection, specifies the index position of the first item in the items list
-func (obj OrderedCollectionPage) StartIndex() interface{} { return obj.Get(PropStartIndex) }
+func (obj OrderedCollectionPage) StartIndex() interface{} { return GetStartIndex(obj) }
 
 // A rdf:List variant for Objects and Links
 type OrderedItems struct{ o *ld.Object }
@@ -571,22 +571,22 @@ func AsPlace(e ld.Entity) Place { return Place{AsObject(e)} }
 func IsPlace(e ld.Entity) bool { return ld.Is(e, TypePlace) }
 
 // Specifies the accuracy around the point established by the longitude and latitude
-func (obj Place) Accuracy() interface{} { return obj.Get(PropAccuracy) }
+func (obj Place) Accuracy() interface{} { return GetAccuracy(obj) }
 
 // The altitude of a place
-func (obj Place) Altitude() interface{} { return obj.Get(PropAltitude) }
+func (obj Place) Altitude() interface{} { return GetAltitude(obj) }
 
 // The latitude
-func (obj Place) Latitude() interface{} { return obj.Get(PropLatitude) }
+func (obj Place) Latitude() interface{} { return GetLatitude(obj) }
 
 // The longitude
-func (obj Place) Longitude() interface{} { return obj.Get(PropLongitude) }
+func (obj Place) Longitude() interface{} { return GetLongitude(obj) }
 
 // Specifies a radius around the point established by the longitude and latitude
-func (obj Place) Radius() interface{} { return obj.Get(PropRadius) }
+func (obj Place) Radius() interface{} { return GetRadius(obj) }
 
 // Identifies the unit of measurement used by the radius, altitude and accuracy properties. The value can be expressed either as one of a set of predefined units or as a well-known common URI that identifies units.
-func (obj Place) Units() interface{} { return obj.Get(PropUnits) }
+func (obj Place) Units() interface{} { return GetUnits(obj) }
 
 // A Profile Document
 type Profile struct{ Object }
@@ -598,7 +598,7 @@ func AsProfile(e ld.Entity) Profile { return Profile{AsObject(e)} }
 func IsProfile(e ld.Entity) bool { return ld.Is(e, TypeProfile) }
 
 // On a Profile object, describes the object described by the profile
-func (obj Profile) Describes() interface{} { return obj.Get(PropDescribes) }
+func (obj Profile) Describes() interface{} { return GetDescribes(obj) }
 
 // A question of any sort.
 type Question struct{ IntransitiveActivity }
@@ -610,10 +610,10 @@ func AsQuestion(e ld.Entity) Question { return Question{AsIntransitiveActivity(e
 func IsQuestion(e ld.Entity) bool { return ld.Is(e, TypeQuestion) }
 
 // Describes a possible inclusive answer or option for a question.
-func (obj Question) AnyOf() interface{} { return obj.Get(PropAnyOf) }
+func (obj Question) AnyOf() interface{} { return GetAnyOf(obj) }
 
 // Describes a possible exclusive answer or option for a question.
-func (obj Question) OneOf() interface{} { return obj.Get(PropOneOf) }
+func (obj Question) OneOf() interface{} { return GetOneOf(obj) }
 
 // The actor read the object
 type Read struct{ Activity }
@@ -643,10 +643,10 @@ func AsRelationship(e ld.Entity) Relationship { return Relationship{AsObject(e)}
 func IsRelationship(e ld.Entity) bool { return ld.Is(e, TypeRelationship) }
 
 // On a Relationship object, describes the type of relationship
-func (obj Relationship) Relationship() interface{} { return obj.Get(PropRelationship) }
+func (obj Relationship) Relationship() interface{} { return GetRelationship(obj) }
 
 // On a Relationship object, identifies the subject. e.g. when saying "John is connected to Sally", 'subject' refers to 'John'
-func (obj Relationship) Subject() interface{} { return obj.Get(PropSubject) }
+func (obj Relationship) Subject() interface{} { return GetSubject(obj) }
 
 // To Remove Something
 type Remove struct{ Activity }
@@ -694,10 +694,10 @@ func AsTombstone(e ld.Entity) Tombstone { return Tombstone{AsObject(e)} }
 func IsTombstone(e ld.Entity) bool { return ld.Is(e, TypeTombstone) }
 
 // Specifies the date and time the object was deleted
-func (obj Tombstone) Deleted() interface{} { return obj.Get(PropDeleted) }
+func (obj Tombstone) Deleted() interface{} { return GetDeleted(obj) }
 
 // On a Tombstone object, describes the former type of the deleted object
-func (obj Tombstone) FormerType() interface{} { return obj.Get(PropFormerType) }
+func (obj Tombstone) FormerType() interface{} { return GetFormerType(obj) }
 
 // The actor is traveling to the target. The origin specifies where the actor is traveling from.
 type Travel struct{ IntransitiveActivity }
