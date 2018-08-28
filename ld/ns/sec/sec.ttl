@@ -1,0 +1,86 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sec: <https://w3id.org/security#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sec:Digest a rdfs:Class ;
+    vs:term_status "stable" .
+
+sec:EncryptedMessage a rdfs:Class ;
+    vs:term_status "stable" .
+
+sec:GraphSignature2012 a rdfs:Class ;
+    vs:term_status "stable" .
+
+sec:Key a rdfs:Class ;
+    vs:term_status "stable" .
+
+sec:LinkedDataSignature2015 a rdfs:Class ;
+    vs:term_status "stable" .
+
+sec:Signature a rdfs:Class ;
+    vs:term_status "stable" .
+
+sec:canonicalizationAlgorithm a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:cipherAlgorithm a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:cipherData a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:cipherKey a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:digestAlgorithm a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:digestValue a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:expires a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:initializationVector a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:nonce a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:owner a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:password a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:privateKeyPem a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:publicKey a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:publicKeyPem a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:publicKeyService a rdf:Property ;
+    vs:term_status "unstable" .
+
+sec:revoked a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:signature a rdf:Property ;
+    vs:term_status "stable" .
+
+sec:signatureAlgorithm a rdf:Property ;
+    vs:term_status "unstable" .
+
+sec:signatureValue a rdf:Property ;
+    vs:term_status "stable" .
+
+<https://web-payments.org/vocabs/security> vs:term_status "stable" .
+
+

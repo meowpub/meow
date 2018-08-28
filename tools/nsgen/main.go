@@ -100,6 +100,11 @@ func NamespaceFragments(ns *Namespace) ([]*ld.Object, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	// Apply patches.
+	fragments = append(fragments, ns.Patches...)
+
+	// Sort this mess.
 	sort.SliceStable(fragments, func(i, j int) bool {
 		idata, err := json.Marshal(fragments[i])
 		if err != nil {
@@ -148,6 +153,9 @@ func Main() error {
 	for _, key := range orderedKeys {
 		declarations = append(declarations, declMap[key])
 	}
+	// if err := DumpJSON("declarations.ld.json", declarations); err != nil {
+	// 	return err
+	// }
 
 	// Generate packages!
 	pkgs := make(map[string][]*Declaration)

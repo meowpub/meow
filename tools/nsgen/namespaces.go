@@ -1,10 +1,16 @@
 package main
 
+import (
+	"github.com/meowpub/meow/ld"
+	"github.com/meowpub/meow/tools/nsgen/patches"
+)
+
 type Namespace struct {
 	Package string
 	Short   string
 	Long    string
 	Source  string
+	Patches []*ld.Object
 }
 
 var Namespaces = []*Namespace{
@@ -37,6 +43,13 @@ var Namespaces = []*Namespace{
 		Short:   "ldp",
 		Long:    "http://www.w3.org/ns/ldp#",
 		Source:  "http://www.w3.org/ns/ldp.ttl",
+	},
+	{
+		Package: "sec",
+		Short:   "sec",
+		Long:    "https://w3id.org/security#",
+		Source:  "https://www.w3.org/2012/pyRdfa/extract?uri=https://web-payments.org/vocabs/security",
+		Patches: patches.SecPatches,
 	},
 
 	// These aren't available in Turtle anywhere, so we have to implement them manually.
