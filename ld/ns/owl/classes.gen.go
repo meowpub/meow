@@ -19,6 +19,8 @@ func IsAllDifferent(e ld.Entity) bool { return ld.Is(e, TypeAllDifferent) }
 // The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.
 func (obj AllDifferent) DistinctMembers() interface{} { return GetDistinctMembers(obj) }
 
+func (obj AllDifferent) SetDistinctMembers(v interface{}) { SetDistinctMembers(obj, v) }
+
 // The class of collections of pairwise disjoint classes.
 type AllDisjointClasses struct{ rdf.Resource }
 
@@ -93,14 +95,22 @@ func IsClass(e ld.Entity) bool { return ld.Is(e, TypeClass) }
 // The property that determines that a given class is the complement of another class.
 func (obj Class) ComplementOf() interface{} { return GetComplementOf(obj) }
 
+func (obj Class) SetComplementOf(v interface{}) { SetComplementOf(obj, v) }
+
 // The property that determines that a given class is equivalent to the disjoint union of a collection of other classes.
 func (obj Class) DisjointUnionOf() interface{} { return GetDisjointUnionOf(obj) }
+
+func (obj Class) SetDisjointUnionOf(v interface{}) { SetDisjointUnionOf(obj, v) }
 
 // The property that determines that two given classes are disjoint.
 func (obj Class) DisjointWith() interface{} { return GetDisjointWith(obj) }
 
+func (obj Class) SetDisjointWith(v interface{}) { SetDisjointWith(obj, v) }
+
 // The property that determines the collection of properties that jointly build a key.
 func (obj Class) HasKey() interface{} { return GetHasKey(obj) }
+
+func (obj Class) SetHasKey(v interface{}) { SetHasKey(obj, v) }
 
 // The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.
 type DataRange struct{ rdf.Datatype }
@@ -196,14 +206,22 @@ func IsNegativePropertyAssertion(e ld.Entity) bool { return ld.Is(e, TypeNegativ
 // The property that determines the predicate of a negative property assertion.
 func (obj NegativePropertyAssertion) AssertionProperty() interface{} { return GetAssertionProperty(obj) }
 
+func (obj NegativePropertyAssertion) SetAssertionProperty(v interface{}) { SetAssertionProperty(obj, v) }
+
 // The property that determines the subject of a negative property assertion.
 func (obj NegativePropertyAssertion) SourceIndividual() interface{} { return GetSourceIndividual(obj) }
+
+func (obj NegativePropertyAssertion) SetSourceIndividual(v interface{}) { SetSourceIndividual(obj, v) }
 
 // The property that determines the object of a negative object property assertion.
 func (obj NegativePropertyAssertion) TargetIndividual() interface{} { return GetTargetIndividual(obj) }
 
+func (obj NegativePropertyAssertion) SetTargetIndividual(v interface{}) { SetTargetIndividual(obj, v) }
+
 // The property that determines the value of a negative data property assertion.
 func (obj NegativePropertyAssertion) TargetValue() interface{} { return GetTargetValue(obj) }
+
+func (obj NegativePropertyAssertion) SetTargetValue(v interface{}) { SetTargetValue(obj, v) }
 
 // This is the empty class.
 type Nothing struct{ Thing }
@@ -226,8 +244,12 @@ func IsObjectProperty(e ld.Entity) bool { return ld.Is(e, TypeObjectProperty) }
 // The property that determines that two given properties are inverse.
 func (obj ObjectProperty) InverseOf() interface{} { return GetInverseOf(obj) }
 
+func (obj ObjectProperty) SetInverseOf(v interface{}) { SetInverseOf(obj, v) }
+
 // The property that determines the n-tuple of properties that build a sub property chain of a given property.
 func (obj ObjectProperty) PropertyChainAxiom() interface{} { return GetPropertyChainAxiom(obj) }
+
+func (obj ObjectProperty) SetPropertyChainAxiom(v interface{}) { SetPropertyChainAxiom(obj, v) }
 
 // The class of ontologies.
 type Ontology struct{ rdf.Resource }
@@ -241,17 +263,27 @@ func IsOntology(e ld.Entity) bool { return ld.Is(e, TypeOntology) }
 // The annotation property that indicates that a given ontology is backward compatible with another ontology.
 func (obj Ontology) BackwardCompatibleWith() interface{} { return GetBackwardCompatibleWith(obj) }
 
+func (obj Ontology) SetBackwardCompatibleWith(v interface{}) { SetBackwardCompatibleWith(obj, v) }
+
 // The property that is used for importing other ontologies into a given ontology.
 func (obj Ontology) Imports() interface{} { return GetImports(obj) }
+
+func (obj Ontology) SetImports(v interface{}) { SetImports(obj, v) }
 
 // The annotation property that indicates that a given ontology is incompatible with another ontology.
 func (obj Ontology) IncompatibleWith() interface{} { return GetIncompatibleWith(obj) }
 
+func (obj Ontology) SetIncompatibleWith(v interface{}) { SetIncompatibleWith(obj, v) }
+
 // The annotation property that indicates the predecessor ontology of a given ontology.
 func (obj Ontology) PriorVersion() interface{} { return GetPriorVersion(obj) }
 
+func (obj Ontology) SetPriorVersion(v interface{}) { SetPriorVersion(obj, v) }
+
 // The property that identifies the version IRI of an ontology.
 func (obj Ontology) VersionIRI() interface{} { return GetVersionIRI(obj) }
+
+func (obj Ontology) SetVersionIRI(v interface{}) { SetVersionIRI(obj, v) }
 
 // The class of ontology properties.
 type OntologyProperty struct{ rdf.Property }
@@ -283,44 +315,72 @@ func IsRestriction(e ld.Entity) bool { return ld.Is(e, TypeRestriction) }
 // The property that determines the class that a universal property restriction refers to.
 func (obj Restriction) AllValuesFrom() interface{} { return GetAllValuesFrom(obj) }
 
+func (obj Restriction) SetAllValuesFrom(v interface{}) { SetAllValuesFrom(obj, v) }
+
 // The property that determines the cardinality of an exact cardinality restriction.
 func (obj Restriction) Cardinality() interface{} { return GetCardinality(obj) }
+
+func (obj Restriction) SetCardinality(v interface{}) { SetCardinality(obj, v) }
 
 // The property that determines the property that a self restriction refers to.
 func (obj Restriction) HasSelf() interface{} { return GetHasSelf(obj) }
 
+func (obj Restriction) SetHasSelf(v interface{}) { SetHasSelf(obj, v) }
+
 // The property that determines the individual that a has-value restriction refers to.
 func (obj Restriction) HasValue() interface{} { return GetHasValue(obj) }
+
+func (obj Restriction) SetHasValue(v interface{}) { SetHasValue(obj, v) }
 
 // The property that determines the cardinality of a maximum cardinality restriction.
 func (obj Restriction) MaxCardinality() interface{} { return GetMaxCardinality(obj) }
 
+func (obj Restriction) SetMaxCardinality(v interface{}) { SetMaxCardinality(obj, v) }
+
 // The property that determines the cardinality of a maximum qualified cardinality restriction.
 func (obj Restriction) MaxQualifiedCardinality() interface{} { return GetMaxQualifiedCardinality(obj) }
+
+func (obj Restriction) SetMaxQualifiedCardinality(v interface{}) { SetMaxQualifiedCardinality(obj, v) }
 
 // The property that determines the cardinality of a minimum cardinality restriction.
 func (obj Restriction) MinCardinality() interface{} { return GetMinCardinality(obj) }
 
+func (obj Restriction) SetMinCardinality(v interface{}) { SetMinCardinality(obj, v) }
+
 // The property that determines the cardinality of a minimum qualified cardinality restriction.
 func (obj Restriction) MinQualifiedCardinality() interface{} { return GetMinQualifiedCardinality(obj) }
+
+func (obj Restriction) SetMinQualifiedCardinality(v interface{}) { SetMinQualifiedCardinality(obj, v) }
 
 // The property that determines the class that a qualified object cardinality restriction refers to.
 func (obj Restriction) OnClass() interface{} { return GetOnClass(obj) }
 
+func (obj Restriction) SetOnClass(v interface{}) { SetOnClass(obj, v) }
+
 // The property that determines the data range that a qualified data cardinality restriction refers to.
 func (obj Restriction) OnDataRange() interface{} { return GetOnDataRange(obj) }
+
+func (obj Restriction) SetOnDataRange(v interface{}) { SetOnDataRange(obj, v) }
 
 // The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to.
 func (obj Restriction) OnProperties() interface{} { return GetOnProperties(obj) }
 
+func (obj Restriction) SetOnProperties(v interface{}) { SetOnProperties(obj, v) }
+
 // The property that determines the property that a property restriction refers to.
 func (obj Restriction) OnProperty() interface{} { return GetOnProperty(obj) }
+
+func (obj Restriction) SetOnProperty(v interface{}) { SetOnProperty(obj, v) }
 
 // The property that determines the cardinality of an exact qualified cardinality restriction.
 func (obj Restriction) QualifiedCardinality() interface{} { return GetQualifiedCardinality(obj) }
 
+func (obj Restriction) SetQualifiedCardinality(v interface{}) { SetQualifiedCardinality(obj, v) }
+
 // The property that determines the class that an existential property restriction refers to.
 func (obj Restriction) SomeValuesFrom() interface{} { return GetSomeValuesFrom(obj) }
+
+func (obj Restriction) SetSomeValuesFrom(v interface{}) { SetSomeValuesFrom(obj, v) }
 
 // The class of symmetric properties.
 type SymmetricProperty struct{ ObjectProperty }
@@ -355,6 +415,9 @@ func (obj Thing) Type() []string { return obj.o.Type() }
 // Returns the named attribute. Implements ld.Entity.
 func (obj Thing) Get(key string) interface{} { return obj.o.Get(key) }
 
+// Sets the named attribute. Implements ld.Entity.
+func (obj Thing) Set(key string, v interface{}) { obj.o.Set(key, v) }
+
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj Thing) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.o.Apply(other, mergeArrays)
@@ -363,20 +426,32 @@ func (obj Thing) Apply(other ld.Entity, mergeArrays bool) error {
 // The data property that does not relate any individual to any data value.
 func (obj Thing) BottomDataProperty() interface{} { return GetBottomDataProperty(obj) }
 
+func (obj Thing) SetBottomDataProperty(v interface{}) { SetBottomDataProperty(obj, v) }
+
 // The object property that does not relate any two individuals.
 func (obj Thing) BottomObjectProperty() interface{} { return GetBottomObjectProperty(obj) }
+
+func (obj Thing) SetBottomObjectProperty(v interface{}) { SetBottomObjectProperty(obj, v) }
 
 // The property that determines that two given individuals are different.
 func (obj Thing) DifferentFrom() interface{} { return GetDifferentFrom(obj) }
 
+func (obj Thing) SetDifferentFrom(v interface{}) { SetDifferentFrom(obj, v) }
+
 // The property that determines that two given individuals are equal.
 func (obj Thing) SameAs() interface{} { return GetSameAs(obj) }
+
+func (obj Thing) SetSameAs(v interface{}) { SetSameAs(obj, v) }
 
 // The data property that relates every individual to every data value.
 func (obj Thing) TopDataProperty() interface{} { return GetTopDataProperty(obj) }
 
+func (obj Thing) SetTopDataProperty(v interface{}) { SetTopDataProperty(obj, v) }
+
 // The object property that relates every two individuals.
 func (obj Thing) TopObjectProperty() interface{} { return GetTopObjectProperty(obj) }
+
+func (obj Thing) SetTopObjectProperty(v interface{}) { SetTopObjectProperty(obj, v) }
 
 // The class of transitive properties.
 type TransitiveProperty struct{ ObjectProperty }

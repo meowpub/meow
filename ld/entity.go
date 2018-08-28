@@ -7,5 +7,6 @@ type Entity interface {
 	Value() string
 	Type() []string
 	Get(key string) interface{}
+	Set(key string, v interface{})
 	Apply(other Entity, mergeArrays bool) error
 }

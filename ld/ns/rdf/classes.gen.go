@@ -36,8 +36,12 @@ func IsList(e ld.Entity) bool { return ld.Is(e, TypeList) }
 // The first item in the subject RDF list.
 func (obj List) First() interface{} { return GetFirst(obj) }
 
+func (obj List) SetFirst(v interface{}) { SetFirst(obj, v) }
+
 // The rest of the subject RDF list after the first item.
 func (obj List) Rest() interface{} { return GetRest(obj) }
+
+func (obj List) SetRest(v interface{}) { SetRest(obj, v) }
 
 // The class of RDF properties.
 type Property struct{ Resource }
@@ -51,11 +55,17 @@ func IsProperty(e ld.Entity) bool { return ld.Is(e, TypeProperty) }
 // A domain of the subject property.
 func (obj Property) Domain() interface{} { return GetDomain(obj) }
 
+func (obj Property) SetDomain(v interface{}) { SetDomain(obj, v) }
+
 // A range of the subject property.
 func (obj Property) Range() interface{} { return GetRange(obj) }
 
+func (obj Property) SetRange(v interface{}) { SetRange(obj, v) }
+
 // The subject is a subproperty of a property.
 func (obj Property) SubPropertyOf() interface{} { return GetSubPropertyOf(obj) }
+
+func (obj Property) SetSubPropertyOf(v interface{}) { SetSubPropertyOf(obj, v) }
 
 // The class of ordered containers.
 type Seq struct{ Container }
@@ -78,11 +88,17 @@ func IsStatement(e ld.Entity) bool { return ld.Is(e, TypeStatement) }
 // The object of the subject RDF statement.
 func (obj Statement) Object() interface{} { return GetObject(obj) }
 
+func (obj Statement) SetObject(v interface{}) { SetObject(obj, v) }
+
 // The predicate of the subject RDF statement.
 func (obj Statement) Predicate() interface{} { return GetPredicate(obj) }
 
+func (obj Statement) SetPredicate(v interface{}) { SetPredicate(obj, v) }
+
 // The subject of the subject RDF statement.
 func (obj Statement) Subject() interface{} { return GetSubject(obj) }
+
+func (obj Statement) SetSubject(v interface{}) { SetSubject(obj, v) }
 
 // The class of classes.
 type Class struct{ Resource }
@@ -95,6 +111,8 @@ func IsClass(e ld.Entity) bool { return ld.Is(e, TypeClass) }
 
 // The subject is a subclass of a class.
 func (obj Class) SubClassOf() interface{} { return GetSubClassOf(obj) }
+
+func (obj Class) SetSubClassOf(v interface{}) { SetSubClassOf(obj, v) }
 
 // The class of RDF containers.
 type Container struct{ Resource }
@@ -159,6 +177,9 @@ func (obj Resource) Type() []string { return obj.o.Type() }
 // Returns the named attribute. Implements ld.Entity.
 func (obj Resource) Get(key string) interface{} { return obj.o.Get(key) }
 
+// Sets the named attribute. Implements ld.Entity.
+func (obj Resource) Set(key string, v interface{}) { obj.o.Set(key, v) }
+
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj Resource) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.o.Apply(other, mergeArrays)
@@ -167,23 +188,37 @@ func (obj Resource) Apply(other ld.Entity, mergeArrays bool) error {
 // The subject is an instance of a class.
 func (obj Resource) Type_() interface{} { return GetType(obj) }
 
+func (obj Resource) SetType_(v interface{}) { SetType(obj, v) }
+
 // Idiomatic property used for structured values.
 func (obj Resource) Value_() interface{} { return GetValue(obj) }
+
+func (obj Resource) SetValue_(v interface{}) { SetValue(obj, v) }
 
 // A description of the subject resource.
 func (obj Resource) Comment() interface{} { return GetComment(obj) }
 
+func (obj Resource) SetComment(v interface{}) { SetComment(obj, v) }
+
 // The defininition of the subject resource.
 func (obj Resource) IsDefinedBy() interface{} { return GetIsDefinedBy(obj) }
+
+func (obj Resource) SetIsDefinedBy(v interface{}) { SetIsDefinedBy(obj, v) }
 
 // A human-readable name for the subject.
 func (obj Resource) Label() interface{} { return GetLabel(obj) }
 
+func (obj Resource) SetLabel(v interface{}) { SetLabel(obj, v) }
+
 // A member of the subject resource.
 func (obj Resource) Member() interface{} { return GetMember(obj) }
 
+func (obj Resource) SetMember(v interface{}) { SetMember(obj, v) }
+
 // Further information about the subject resource.
 func (obj Resource) SeeAlso() interface{} { return GetSeeAlso(obj) }
+
+func (obj Resource) SetSeeAlso(v interface{}) { SetSeeAlso(obj, v) }
 
 var (
 	_ ld.Entity = Alt{}

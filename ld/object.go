@@ -94,6 +94,13 @@ func (obj *Object) Get(key string) interface{} {
 	return nil
 }
 
+// Nil-safe setter for attributes.
+func (obj *Object) Set(key string, value interface{}) {
+	if obj != nil {
+		obj.V[key] = value
+	}
+}
+
 // Applies another object as a patch to this object. The mergeArrays argument specifies whether
 // values for existing keys should replace the existing value, or be added as an additional value.
 func (obj *Object) Apply(patch Entity, mergeArrays bool) error {

@@ -194,6 +194,8 @@ import (
 {{range .Properties}}
 {{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 func Get{{.TypeName}}(e ld.Entity) interface{} { return e.Get(Prop{{.TypeName}}) }
+
+func Set{{.TypeName}}(e ld.Entity, v interface{}) { e.Set(Prop{{.TypeName}}, v) }
 {{end}}
 `[1:]))
 
@@ -233,6 +235,9 @@ func (obj {{$cls.TypeName}}) Type() []string { return obj.o.Type() }
 // Returns the named attribute. Implements ld.Entity.
 func (obj {{$cls.TypeName}}) Get(key string) interface{} { return obj.o.Get(key) }
 
+// Sets the named attribute. Implements ld.Entity.
+func (obj {{$cls.TypeName}}) Set(key string, v interface{}) { obj.o.Set(key, v) }
+
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error { return obj.o.Apply(other, mergeArrays) }
 {{end}}
@@ -240,6 +245,8 @@ func (obj {{$cls.TypeName}}) Apply(other ld.Entity, mergeArrays bool) error { re
 {{range $.PropertiesOf $cls}}
 {{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 func (obj {{$cls.TypeName}}) {{.FuncName}}() interface{} { return Get{{.TypeName}}(obj) }
+
+func (obj {{$cls.TypeName}}) Set{{.FuncName}}(v interface{}) { Set{{.TypeName}}(obj, v) }
 {{end}}
 {{end}}
 
