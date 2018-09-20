@@ -106,6 +106,16 @@ func (obj Page) Set(key string, v interface{}) { obj.o.Set(key, v) }
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj Page) Apply(other ld.Entity, mergeArrays bool) error { return obj.o.Apply(other, mergeArrays) }
 
+// Links a resource to a container where notifications for the resource can be created and discovered.
+func (obj Page) Inbox() interface{} { return GetInbox(obj) }
+
+func (obj Page) SetInbox(v interface{}) { SetInbox(obj, v) }
+
+// Link to a page sequence resource, as defined by LDP Paging.  Typically used to communicate the sorting criteria used to allocate LDPC members to pages.
+func (obj Page) PageSequence() interface{} { return GetPageSequence(obj) }
+
+func (obj Page) SetPageSequence(v interface{}) { SetPageSequence(obj, v) }
+
 // Link to the list of sorting criteria used by the server in a representation.  Typically used on Link response headers as an extension link relation URI in the rel= parameter.
 func (obj Page) PageSortCriteria() interface{} { return GetPageSortCriteria(obj) }
 
@@ -142,6 +152,16 @@ func (obj PageSortCriterion) Set(key string, v interface{}) { obj.o.Set(key, v) 
 func (obj PageSortCriterion) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.o.Apply(other, mergeArrays)
 }
+
+// Links a resource to a container where notifications for the resource can be created and discovered.
+func (obj PageSortCriterion) Inbox() interface{} { return GetInbox(obj) }
+
+func (obj PageSortCriterion) SetInbox(v interface{}) { SetInbox(obj, v) }
+
+// Link to a page sequence resource, as defined by LDP Paging.  Typically used to communicate the sorting criteria used to allocate LDPC members to pages.
+func (obj PageSortCriterion) PageSequence() interface{} { return GetPageSequence(obj) }
+
+func (obj PageSortCriterion) SetPageSequence(v interface{}) { SetPageSequence(obj, v) }
 
 // The collation used to order the members across pages in a page sequence when comparing strings.
 func (obj PageSortCriterion) PageSortCollation() interface{} { return GetPageSortCollation(obj) }
@@ -204,10 +224,20 @@ func (obj Resource) ConstrainedBy() interface{} { return GetConstrainedBy(obj) }
 
 func (obj Resource) SetConstrainedBy(v interface{}) { SetConstrainedBy(obj, v) }
 
+// Links a resource to a container where notifications for the resource can be created and discovered.
+func (obj Resource) Inbox() interface{} { return GetInbox(obj) }
+
+func (obj Resource) SetInbox(v interface{}) { SetInbox(obj, v) }
+
 // LDP servers should use this predicate as the membership predicate if there is no obvious predicate from an application vocabulary to use.
 func (obj Resource) Member() interface{} { return GetMember(obj) }
 
 func (obj Resource) SetMember(v interface{}) { SetMember(obj, v) }
+
+// Link to a page sequence resource, as defined by LDP Paging.  Typically used to communicate the sorting criteria used to allocate LDPC members to pages.
+func (obj Resource) PageSequence() interface{} { return GetPageSequence(obj) }
+
+func (obj Resource) SetPageSequence(v interface{}) { SetPageSequence(obj, v) }
 
 var (
 	_ ld.Entity = BasicContainer{}
