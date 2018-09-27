@@ -44,7 +44,9 @@ func must(err error) {
 
 func TestMain(m *testing.M) {
 	if err := godotenv.Load(filepath.Join(MeowPath, ".env")); err != nil {
-		panic(err)
+		if !os.IsNotExist(err) {
+			panic(err)
+		}
 	}
 
 	// Override the test DB URI with TEST_DB_URI!
