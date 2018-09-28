@@ -13,6 +13,7 @@ func Test_genOnConflict(t *testing.T) {
 		FirstName string
 		LastName  string
 		Email     string
+		priv      string
 	}
 	assert.Equal(t, "ON CONFLICT (id) DO UPDATE SET first_name=EXCLUDED.first_name, last_name=EXCLUDED.last_name, email=EXCLUDED.email", genOnConflict(v, "id"))
 }

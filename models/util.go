@@ -16,6 +16,9 @@ func genOnConflict(t interface{}, conflictOn string) string {
 	var updates []string
 	for i := 0; i < rT.NumField(); i++ {
 		field := rT.Field(i)
+		if field.PkgPath != "" {
+			continue // Field is unexported
+		}
 		dbName := gorm.ToDBName(field.Name)
 		if dbName == conflictOn {
 			continue
