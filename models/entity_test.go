@@ -35,7 +35,7 @@ func TestEntityStore(t *testing.T) {
 
 	t.Run("Create", func(t *testing.T) {
 		t.Run("No Snowflake", func(t *testing.T) {
-			require.EqualError(t, store.Save(Entity{Kind: "object", Data: JSONB(`{
+			require.EqualError(t, store.Save(&Entity{Kind: "object", Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "John Smith"}]
@@ -46,22 +46,22 @@ func TestEntityStore(t *testing.T) {
 		require.NoError(t, err)
 
 		t.Run("Empty", func(t *testing.T) {
-			require.EqualError(t, store.Save(Entity{ID: id, Kind: "object", Data: JSONB(`{}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_not_null_check\"")
+			require.EqualError(t, store.Save(&Entity{ID: id, Kind: "object", Data: JSONB(`{}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_not_null_check\"")
 		})
 
 		t.Run("Empty ID", func(t *testing.T) {
-			require.EqualError(t, store.Save(Entity{ID: id, Kind: "object", Data: JSONB(`{"@id":""}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_not_empty_check\"")
+			require.EqualError(t, store.Save(&Entity{ID: id, Kind: "object", Data: JSONB(`{"@id":""}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_not_empty_check\"")
 		})
 
 		t.Run("Invalid ID", func(t *testing.T) {
-			require.EqualError(t, store.Save(Entity{ID: id, Kind: "object", Data: JSONB(`{"@id":"test"}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_protocol_check\"")
+			require.EqualError(t, store.Save(&Entity{ID: id, Kind: "object", Data: JSONB(`{"@id":"test"}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_protocol_check\"")
 		})
 
 		t.Run("Invalid ID Protocol", func(t *testing.T) {
-			require.EqualError(t, store.Save(Entity{ID: id, Kind: "object", Data: JSONB(`{"@id":"ftp://example.com/~jsmith"}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_protocol_check\"")
+			require.EqualError(t, store.Save(&Entity{ID: id, Kind: "object", Data: JSONB(`{"@id":"ftp://example.com/~jsmith"}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_protocol_check\"")
 		})
 
-		require.NoError(t, store.Save(Entity{ID: id, Data: JSONB(`{
+		require.NoError(t, store.Save(&Entity{ID: id, Data: JSONB(`{
 			"@id": "https://example.com/@jsmith",
 			"@type": ["http://schema.org/Person"],
 			"http://schema.org/name": [{"@value": "John Smith"}]
@@ -85,10 +85,56 @@ func TestEntityStore(t *testing.T) {
 					map[string]interface{}{"@value": "John Smith"},
 				},
 			}, data)
+
+			t.Run("Object", func(t *testing.T) {
+				so, err := se.Object()
+				require.NoError(t, err)
+				io, err := ie.Object()
+				require.NoError(t, err)
+
+				assert.Equal(t, "https://example.com/@jsmith", so.ID())
+				assert.Equal(t, so.ID(), io.ID())
+
+				assert.Equal(t, []string{"http://schema.org/Person"}, so.Type())
+				assert.Equal(t, so.Type(), io.Type())
+
+				assert.Equal(t, map[string]interface{}{
+					"@id":   "https://example.com/@jsmith",
+					"@type": []interface{}{"http://schema.org/Person"},
+					"http://schema.org/name": []interface{}{
+						map[string]interface{}{"@value": "John Smith"},
+					},
+				}, so.V)
+				assert.Equal(t, so.V, io.V)
+
+				t.Run("Update", func(t *testing.T) {
+					so.V["http://schema.org/name"] = []interface{}{
+						map[string]interface{}{"@value": "Jane Smith"},
+					}
+					require.NoError(t, store.Save(se))
+
+					t.Run("Get", func(t *testing.T) {
+						se2, err := store.GetBySnowflake(id)
+						require.NoError(t, err)
+						ie2, err := store.GetByID("https://example.com/@jsmith")
+						require.NoError(t, err)
+
+						so2, err := se2.Object()
+						require.NoError(t, err)
+						io2, err := ie2.Object()
+						require.NoError(t, err)
+
+						assert.Equal(t, []interface{}{
+							map[string]interface{}{"@value": "Jane Smith"},
+						}, so2.Get("http://schema.org/name"))
+						assert.Equal(t, so2.V, io2.V)
+					})
+				})
+			})
 		})
 
 		t.Run("Update", func(t *testing.T) {
-			require.NoError(t, store.Save(Entity{ID: id, Data: JSONB(`{
+			require.NoError(t, store.Save(&Entity{ID: id, Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "Jane Smith"}]

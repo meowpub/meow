@@ -1,10 +1,14 @@
 package models
 
 import (
+	"encoding/json"
+
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
+	"github.com/pkg/errors"
 
 	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/ld"
 	"github.com/meowpub/meow/lib"
 )
 
@@ -24,6 +28,10 @@ type Entity struct {
 	// "Kind" of an entity
 	// Kinds determine what special server side behavior applies
 	Kind string `json:"_kind"`
+
+	// Concrete Object representation of this Entity.
+	// Modifications to this Object will be written back (and synched to Data) by EntityStore.Save().
+	obj *ld.Object `gorm:"-"`
 }
 
 func NewEntity(kind string, data []byte) (*Entity, error) {
@@ -31,8 +39,19 @@ func NewEntity(kind string, data []byte) (*Entity, error) {
 	return &Entity{ID: id, Data: data, Kind: kind}, err
 }
 
+// Lazily constructs and caches an Object from e.Data.
+func (e *Entity) Object() (*ld.Object, error) {
+	if e.obj == nil {
+		obj, err := ld.NewObject(e.Data)
+		if err != nil {
+			return nil, err
+		}
+		e.obj = obj
+	}
+	return e.obj, nil
+}
+
 // EntityStore stores Entities in their raw database form.
-// This is a lower-level API and you probably actually want the higher-level entities package.
 type EntityStore interface {
 	// GetBySnowflake returns an Entity by its snowflake, eg. "353894652568535040".
 	GetBySnowflake(id snowflake.ID) (*Entity, error)
@@ -40,8 +59,8 @@ type EntityStore interface {
 	// GetByID returns an Entity by its ID, eg. "https://example.com/@johnsmith.
 	GetByID(id string) (*Entity, error)
 
-	// Save stores an Entity using an upsert.
-	Save(e Entity) error
+	// Save stores an Entity using an upsert. Updates Data if the object has been modified.
+	Save(e *Entity) error
 }
 
 type entityStore struct {
@@ -62,6 +81,13 @@ func (s entityStore) GetByID(id string) (*Entity, error) {
 	return &e, s.DB.First(&e, `data->>'@id' = ?`, id).Error
 }
 
-func (s entityStore) Save(e Entity) error {
-	return s.DB.Set(gormInsertOption, entityOnConflict).Create(&e).Error
+func (s entityStore) Save(e *Entity) error {
+	if obj := e.obj; obj != nil {
+		data, err := json.Marshal(obj)
+		if err != nil {
+			return errors.Wrap(err, "couldn't serialise back")
+		}
+		e.Data = data
+	}
+	return s.DB.Set(gormInsertOption, entityOnConflict).Create(e).Error
 }

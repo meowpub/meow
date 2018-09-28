@@ -60,7 +60,7 @@ func (mr *MockEntityStoreMockRecorder) GetByID(id interface{}) *gomock.Call {
 }
 
 // Save mocks base method
-func (m *MockEntityStore) Save(e Entity) error {
+func (m *MockEntityStore) Save(e *Entity) error {
 	ret := m.ctrl.Call(m, "Save", e)
 	ret0, _ := ret[0].(error)
 	return ret0
