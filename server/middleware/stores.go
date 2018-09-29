@@ -7,7 +7,6 @@ import (
 	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/models"
-	"github.com/meowpub/meow/models/entities"
 	"github.com/meowpub/meow/server/api"
 )
 
@@ -39,10 +38,8 @@ func AddStores() func(next api.Handler) api.Handler {
 				lib.GetRedis(req),
 				config.RedisKeyspace(),
 			)
-			estore := entities.NewStore(stores.Entities())
 
 			ctx := models.WithStores(req.Context(), stores)
-			ctx = entities.WithStore(ctx, estore)
 			req = req.WithContext(ctx)
 			return next.HandleRequest(req)
 		})

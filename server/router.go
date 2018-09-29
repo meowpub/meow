@@ -14,7 +14,7 @@ import (
 	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/config/secrets"
 	"github.com/meowpub/meow/lib"
-	"github.com/meowpub/meow/models/entities"
+	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/server/api"
 	"github.com/meowpub/meow/server/middleware"
 	"github.com/meowpub/meow/server/oauth"
@@ -56,7 +56,7 @@ func HandleNotFound(req api.Request) api.Response {
 }
 
 func Lookup(ctx context.Context, url string) (api.Traversible, error) {
-	e, err := entities.GetStore(ctx).GetByID(url)
+	e, err := models.GetStores(ctx).Entities().GetByID(url)
 	if err != nil {
 		lib.GetLogger(ctx).Debug("Lookup failed", zap.String("url", url), zap.Error(err))
 		return nil, err
@@ -65,5 +65,9 @@ func Lookup(ctx context.Context, url string) (api.Traversible, error) {
 		lib.GetLogger(ctx).Debug("Lookup found nothing", zap.String("url", url))
 		return nil, nil
 	}
-	return e, nil
+	// TODO: Instantiate things properly instead.
+	handlerFn := api.HandlerFunc(func(api.Request) api.Response {
+		return api.Response{Data: e.Obj}
+	})
+	return api.Node{Self: handlerFn}, nil
 }

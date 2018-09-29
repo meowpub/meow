@@ -5,7 +5,6 @@ import (
 
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
-	"github.com/pkg/errors"
 
 	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/ld"
@@ -31,24 +30,42 @@ type Entity struct {
 
 	// Concrete Object representation of this Entity.
 	// Modifications to this Object will be written back (and synched to Data) by EntityStore.Save().
-	obj *ld.Object `gorm:"-"`
+	Obj *ld.Object `json:"_obj" gorm:"-"`
 }
 
 func NewEntity(kind string, data []byte) (*Entity, error) {
 	id, err := lib.GenSnowflake(config.NodeID())
-	return &Entity{ID: id, Data: data, Kind: kind}, err
+	if err != nil {
+		return nil, err
+	}
+	e := &Entity{ID: id, Data: data, Kind: kind}
+	return e, e.SyncDataToObject()
 }
 
-// Lazily constructs and caches an Object from e.Data.
-func (e *Entity) Object() (*ld.Object, error) {
-	if e.obj == nil {
+// Overwrites Object with Data. Called automatically by EntityStore.Get*() and NewEntity().
+func (e *Entity) SyncDataToObject() error {
+	if len(e.Data) > 0 {
 		obj, err := ld.NewObject(e.Data)
 		if err != nil {
-			return nil, err
+			return err
 		}
-		e.obj = obj
+		e.Obj = obj
+	} else {
+		e.Obj = nil
 	}
-	return e.obj, nil
+	return nil
+}
+
+// Overwrites Data with Object. Called automatically by EntityStore.Save().
+func (e *Entity) SyncObjectToData() error {
+	if e.Obj != nil {
+		data, err := json.Marshal(e.Obj)
+		if err != nil {
+			return err
+		}
+		e.Data = data
+	}
+	return nil
 }
 
 // EntityStore stores Entities in their raw database form.
@@ -73,21 +90,23 @@ func NewEntityStore(db *gorm.DB) EntityStore {
 
 func (s entityStore) GetBySnowflake(id snowflake.ID) (*Entity, error) {
 	var e Entity
-	return &e, s.DB.First(&e, Entity{ID: id}).Error
+	if err := s.DB.First(&e, Entity{ID: id}).Error; err != nil {
+		return &e, err
+	}
+	return &e, e.SyncDataToObject()
 }
 
 func (s entityStore) GetByID(id string) (*Entity, error) {
 	var e Entity
-	return &e, s.DB.First(&e, `data->>'@id' = ?`, id).Error
+	if err := s.DB.First(&e, `data->>'@id' = ?`, id).Error; err != nil {
+		return &e, err
+	}
+	return &e, e.SyncDataToObject()
 }
 
 func (s entityStore) Save(e *Entity) error {
-	if obj := e.obj; obj != nil {
-		data, err := json.Marshal(obj)
-		if err != nil {
-			return errors.Wrap(err, "couldn't serialise back")
-		}
-		e.Data = data
+	if err := e.SyncObjectToData(); err != nil {
+		return err
 	}
 	return s.DB.Set(gormInsertOption, entityOnConflict).Create(e).Error
 }
