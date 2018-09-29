@@ -12,8 +12,9 @@ func Test_genOnConflict(t *testing.T) {
 		ID        snowflake.ID
 		FirstName string
 		LastName  string
-		Email     string
+		Email     string `gorm:"column:e_mail"`
+		Priv      string `gorm:"-"`
 		priv      string
 	}
-	assert.Equal(t, "ON CONFLICT (id) DO UPDATE SET first_name=EXCLUDED.first_name, last_name=EXCLUDED.last_name, email=EXCLUDED.email", genOnConflict(v, "id"))
+	assert.Equal(t, "ON CONFLICT (id) DO UPDATE SET first_name=EXCLUDED.first_name, last_name=EXCLUDED.last_name, e_mail=EXCLUDED.e_mail", genOnConflict(v, "id"))
 }
