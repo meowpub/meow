@@ -145,12 +145,15 @@ func Main() error {
 	orderedKeys := []string{}
 	for _, fragment := range fragments {
 		key := fragment.ID()
+		if key == "_:n0" {
+			continue
+		}
 		if obj, ok := declMap[key]; ok {
 			if err := obj.Apply(fragment, true); err != nil {
 				return err
 			}
 		} else {
-			declMap[key] = &Declaration{fragment}
+			declMap[key] = &Declaration{Object: fragment}
 			orderedKeys = append(orderedKeys, key)
 		}
 	}
@@ -169,6 +172,7 @@ func Main() error {
 		namespaces = append(namespaces, ns)
 		for _, decl := range declarations {
 			if strings.HasPrefix(decl.ID(), ns.Long) {
+				decl.NS = ns
 				pkgs[ns.Package] = append(pkgs[ns.Package], decl)
 			}
 		}
@@ -193,6 +197,14 @@ func Main() error {
 			errors.Wrap(Render(filepath.Join(outdir, "datatypes.gen.go"), DataTypesTemplate, rctx), "datatypes.gen.go"),
 		)
 	}
+	grctx := &RenderContext{
+		Declarations: declarations,
+		Packages:     pkgs,
+		Namespaces:   namespaces,
+	}
+	errs = append(errs,
+		errors.Wrap(Render(filepath.Join(MeowBasePath, "ld", "index.gen.go"), IndexTemplate, grctx), "index.gen.go"),
+	)
 	// if err := multierr.Combine(errs...); err != nil {
 	// 	return err
 	// }

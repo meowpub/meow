@@ -267,30 +267,20 @@ type {{$dt.TypeName}} interface{}
 {{end}}
 `[1:]))
 
-// var IndexTemplate = template.Must(template.New("index.gen.go").Funcs(Funcs).Parse(`
-// // GENERATED FILE, DO NOT EDIT.
-// // Please refer to: tools/nsgen/templates.go
-// package ns
+var IndexTemplate = template.Must(template.New("index.gen.go").Funcs(Funcs).Parse(`
+// GENERATED FILE, DO NOT EDIT.
+// Please refer to: tools/nsgen/templates.go
+package ld
 
-// import (
-// 	"github.com/meowpub/meow/ld"{{range .}}
-// 	"github.com/meowpub/meow/ld/ns/{{.Short}}"{{end}}
-// )
+import (
+	"github.com/meowpub/meow/ld" {{range .Namespaces}}
+	"github.com/meowpub/meow/ld/ns/{{.Package}}" {{end}}
+)
 
-// // Namespace.
-// {{range .}}
-// var ns_{{.Short}} = &ld.Namespace{
-// 	ID: "{{.Long}}",
-// 	Short: "{{.Short}}",
-// 	Props: map[string]string{ {{range .Properties}}
-// 		"{{.Short}}": "{{.ID}}",
-// 		{{- end}}
-// 	},
-// }
-// {{end}}
-
-// var Namespaces = map[string]*ld.Namespace{ {{range .}}
-// 	"{{.Long}}": ns_{{.Short}},
-// 	"{{.Short}}": ns_{{.Short}}, {{end}}
-// }
-// `[1:]))
+var Index = map[string]func(e ld.Entity) ld.Entity{ {{range .Classes}}
+	"{{.ID}}": func(e ld.Entity) ld.Entity {
+    	return {{.Package}}.As{{.TypeName}}(e)
+    },
+{{- end}}
+}
+`[1:]))
