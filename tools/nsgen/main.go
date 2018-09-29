@@ -57,11 +57,16 @@ func Render(path string, tmpl *template.Template, rctx interface{}) error {
 		return errors.Wrap(err, "render")
 	}
 	data := buf.Bytes()
-	data, err := imports.Process(path, data, nil)
-	if err != nil {
-		return errors.Wrap(err, "goimports")
+
+	data2, err := imports.Process(path, data, nil)
+	if err == nil {
+		data = data2
 	}
-	return ioutil.WriteFile(path, data, 0644)
+
+	return multierr.Append(
+		errors.Wrap(err, "goimports"),
+		ioutil.WriteFile(path, data, 0644),
+	)
 }
 
 func TurtleToJSONLD(namespace string, data []byte) ([]byte, error) {
