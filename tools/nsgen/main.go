@@ -202,8 +202,10 @@ func Main() error {
 		Packages:     pkgs,
 		Namespaces:   namespaces,
 	}
+
+	log.Printf("Generating index files...")
 	errs = append(errs,
-		errors.Wrap(Render(filepath.Join(MeowBasePath, "ld", "index.gen.go"), IndexTemplate, grctx), "index.gen.go"),
+		errors.Wrap(Render(filepath.Join(MeowBasePath, "ld", "ns", "index.gen.go"), IndexTemplate, grctx), "index.gen.go"),
 	)
 	// if err := multierr.Combine(errs...); err != nil {
 	// 	return err
