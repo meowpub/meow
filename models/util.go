@@ -21,6 +21,9 @@ func genOnConflict(t interface{}, conflictOn string, exclude ...string) string {
 		}
 		dbName := gorm.ToDBName(field.Name)
 		if tag := field.Tag.Get("gorm"); tag != "" {
+			if tag == "-" {
+				continue
+			}
 			parts := strings.Split(tag, ",")
 			for _, part := range parts {
 				if strings.HasPrefix(part, "column:") {
@@ -28,7 +31,7 @@ func genOnConflict(t interface{}, conflictOn string, exclude ...string) string {
 				}
 			}
 		}
-		if dbName == "" || dbName == "-" || dbName == conflictOn {
+		if dbName == "" || dbName == conflictOn {
 			continue
 		}
 		for _, excl := range exclude {

@@ -87,16 +87,11 @@ func TestEntityStore(t *testing.T) {
 			}, data)
 
 			t.Run("Object", func(t *testing.T) {
-				so, err := se.Object()
-				require.NoError(t, err)
-				io, err := ie.Object()
-				require.NoError(t, err)
+				assert.Equal(t, "https://example.com/@jsmith", se.Obj.ID())
+				assert.Equal(t, se.Obj.ID(), ie.Obj.ID())
 
-				assert.Equal(t, "https://example.com/@jsmith", so.ID())
-				assert.Equal(t, so.ID(), io.ID())
-
-				assert.Equal(t, []string{"http://schema.org/Person"}, so.Type())
-				assert.Equal(t, so.Type(), io.Type())
+				assert.Equal(t, []string{"http://schema.org/Person"}, se.Obj.Type())
+				assert.Equal(t, se.Obj.Type(), ie.Obj.Type())
 
 				assert.Equal(t, map[string]interface{}{
 					"@id":   "https://example.com/@jsmith",
@@ -104,11 +99,11 @@ func TestEntityStore(t *testing.T) {
 					"http://schema.org/name": []interface{}{
 						map[string]interface{}{"@value": "John Smith"},
 					},
-				}, so.V)
-				assert.Equal(t, so.V, io.V)
+				}, se.Obj.V)
+				assert.Equal(t, se.Obj.V, ie.Obj.V)
 
 				t.Run("Update", func(t *testing.T) {
-					so.V["http://schema.org/name"] = []interface{}{
+					se.Obj.V["http://schema.org/name"] = []interface{}{
 						map[string]interface{}{"@value": "Jane Smith"},
 					}
 					require.NoError(t, store.Save(se))
@@ -119,15 +114,10 @@ func TestEntityStore(t *testing.T) {
 						ie2, err := store.GetByID("https://example.com/@jsmith")
 						require.NoError(t, err)
 
-						so2, err := se2.Object()
-						require.NoError(t, err)
-						io2, err := ie2.Object()
-						require.NoError(t, err)
-
 						assert.Equal(t, []interface{}{
 							map[string]interface{}{"@value": "Jane Smith"},
-						}, so2.Get("http://schema.org/name"))
-						assert.Equal(t, so2.V, io2.V)
+						}, se2.Obj.Get("http://schema.org/name"))
+						assert.Equal(t, se2.Obj.V, ie2.Obj.V)
 					})
 				})
 			})
