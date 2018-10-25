@@ -2,9 +2,13 @@ package models
 
 import (
 	"os"
+	"os/user"
 	"path"
+	"path/filepath"
+	"testing"
 
 	"github.com/jinzhu/gorm"
+	"github.com/joho/godotenv"
 	"github.com/mattes/migrate"
 
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -12,8 +16,25 @@ import (
 	_ "github.com/mattes/migrate/source/file"
 )
 
-// TestDB is the database used for testing.
-var TestDB *gorm.DB
+var (
+	// TestDB is the database used for testing.
+	TestDB *gorm.DB
+
+	GOPATH   string // Defaults to ~/go if not set
+	MeowPath string // Path to $GOPATH/src/github.com/meowpub/meow
+)
+
+func init() {
+	GOPATH := os.Getenv("GOPATH")
+	if GOPATH == "" {
+		u, err := user.Current()
+		if err != nil {
+			panic(err)
+		}
+		GOPATH = filepath.Join(u.HomeDir, "go")
+	}
+	MeowPath = filepath.Join(GOPATH, "src", "github.com", "meowpub", "meow")
+}
 
 func must(err error) {
 	if err != nil {
@@ -21,7 +42,13 @@ func must(err error) {
 	}
 }
 
-func init() {
+func TestMain(m *testing.M) {
+	if err := godotenv.Load(filepath.Join(MeowPath, ".env")); err != nil {
+		if !os.IsNotExist(err) {
+			panic(err)
+		}
+	}
+
 	// Override the test DB URI with TEST_DB_URI!
 	// -- DO NOT USE A PRODUCTION DATABASE; IT WILL BE WIPED --
 	uri := os.Getenv("MEOW_TEST_DB")
@@ -53,4 +80,7 @@ func init() {
 	srcerr, dberr := migr.Close()
 	must(srcerr)
 	must(dberr)
+
+	// Now we can run some tests.
+	os.Exit(m.Run())
 }
