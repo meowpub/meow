@@ -331,6 +331,11 @@ func (obj Link) Set(key string, v interface{}) { obj.o.Set(key, v) }
 // Applies another object as a patch to this one. Implements ld.Entity.
 func (obj Link) Apply(other ld.Entity, mergeArrays bool) error { return obj.o.Apply(other, mergeArrays) }
 
+// Identifies an entity to which an object is attributed
+func (obj Link) AttributedTo() interface{} { return GetAttributedTo(obj) }
+
+func (obj Link) SetAttributedTo(v interface{}) { SetAttributedTo(obj, v) }
+
 // The display height expressed as device independent pixels
 func (obj Link) Height() interface{} { return GetHeight(obj) }
 
@@ -345,6 +350,27 @@ func (obj Link) SetHref(v interface{}) { SetHref(obj, v) }
 func (obj Link) Hreflang() interface{} { return GetHreflang(obj) }
 
 func (obj Link) SetHreflang(v interface{}) { SetHreflang(obj, v) }
+
+func (obj Link) Id() interface{} { return GetId(obj) }
+
+func (obj Link) SetId(v interface{}) { SetId(obj, v) }
+
+// The MIME Media Type
+func (obj Link) MediaType() interface{} { return GetMediaType(obj) }
+
+func (obj Link) SetMediaType(v interface{}) { SetMediaType(obj, v) }
+
+func (obj Link) Name() interface{} { return GetName(obj) }
+
+func (obj Link) SetName(v interface{}) { SetName(obj, v) }
+
+func (obj Link) Object() interface{} { return GetObject(obj) }
+
+func (obj Link) SetObject(v interface{}) { SetObject(obj, v) }
+
+func (obj Link) Preview() interface{} { return GetPreview(obj) }
+
+func (obj Link) SetPreview(v interface{}) { SetPreview(obj, v) }
 
 // The RFC 5988 or HTML5 Link Relation associated with the Link
 func (obj Link) Rel() interface{} { return GetRel(obj) }
@@ -431,6 +457,11 @@ func (obj Object) Attachments() interface{} { return GetAttachments(obj) }
 
 func (obj Object) SetAttachments(v interface{}) { SetAttachments(obj, v) }
 
+// Identifies an entity to which an object is attributed
+func (obj Object) AttributedTo() interface{} { return GetAttributedTo(obj) }
+
+func (obj Object) SetAttributedTo(v interface{}) { SetAttributedTo(obj, v) }
+
 func (obj Object) Audience() interface{} { return GetAudience(obj) }
 
 func (obj Object) SetAudience(v interface{}) { SetAudience(obj, v) }
@@ -484,6 +515,10 @@ func (obj Object) Icon() interface{} { return GetIcon(obj) }
 
 func (obj Object) SetIcon(v interface{}) { SetIcon(obj, v) }
 
+func (obj Object) Id() interface{} { return GetId(obj) }
+
+func (obj Object) SetId(v interface{}) { SetId(obj, v) }
+
 func (obj Object) Image() interface{} { return GetImage(obj) }
 
 func (obj Object) SetImage(v interface{}) { SetImage(obj, v) }
@@ -496,9 +531,26 @@ func (obj Object) Location() interface{} { return GetLocation(obj) }
 
 func (obj Object) SetLocation(v interface{}) { SetLocation(obj, v) }
 
+// The MIME Media Type
+func (obj Object) MediaType() interface{} { return GetMediaType(obj) }
+
+func (obj Object) SetMediaType(v interface{}) { SetMediaType(obj, v) }
+
+func (obj Object) Name() interface{} { return GetName(obj) }
+
+func (obj Object) SetName(v interface{}) { SetName(obj, v) }
+
+func (obj Object) Object() interface{} { return GetObject(obj) }
+
+func (obj Object) SetObject(v interface{}) { SetObject(obj, v) }
+
 func (obj Object) ObjectType() interface{} { return GetObjectType(obj) }
 
 func (obj Object) SetObjectType(v interface{}) { SetObjectType(obj, v) }
+
+func (obj Object) Preview() interface{} { return GetPreview(obj) }
+
+func (obj Object) SetPreview(v interface{}) { SetPreview(obj, v) }
 
 func (obj Object) Provider() interface{} { return GetProvider(obj) }
 
@@ -595,6 +647,32 @@ func (obj OrderedCollection) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.o.Apply(other, mergeArrays)
 }
 
+// Identifies an entity to which an object is attributed
+func (obj OrderedCollection) AttributedTo() interface{} { return GetAttributedTo(obj) }
+
+func (obj OrderedCollection) SetAttributedTo(v interface{}) { SetAttributedTo(obj, v) }
+
+func (obj OrderedCollection) Id() interface{} { return GetId(obj) }
+
+func (obj OrderedCollection) SetId(v interface{}) { SetId(obj, v) }
+
+// The MIME Media Type
+func (obj OrderedCollection) MediaType() interface{} { return GetMediaType(obj) }
+
+func (obj OrderedCollection) SetMediaType(v interface{}) { SetMediaType(obj, v) }
+
+func (obj OrderedCollection) Name() interface{} { return GetName(obj) }
+
+func (obj OrderedCollection) SetName(v interface{}) { SetName(obj, v) }
+
+func (obj OrderedCollection) Object() interface{} { return GetObject(obj) }
+
+func (obj OrderedCollection) SetObject(v interface{}) { SetObject(obj, v) }
+
+func (obj OrderedCollection) Preview() interface{} { return GetPreview(obj) }
+
+func (obj OrderedCollection) SetPreview(v interface{}) { SetPreview(obj, v) }
+
 // An ordered subset of items from an OrderedCollection
 type OrderedCollectionPage struct {
 	CollectionPage
@@ -645,6 +723,32 @@ func (obj OrderedItems) Set(key string, v interface{}) { obj.o.Set(key, v) }
 func (obj OrderedItems) Apply(other ld.Entity, mergeArrays bool) error {
 	return obj.o.Apply(other, mergeArrays)
 }
+
+// Identifies an entity to which an object is attributed
+func (obj OrderedItems) AttributedTo() interface{} { return GetAttributedTo(obj) }
+
+func (obj OrderedItems) SetAttributedTo(v interface{}) { SetAttributedTo(obj, v) }
+
+func (obj OrderedItems) Id() interface{} { return GetId(obj) }
+
+func (obj OrderedItems) SetId(v interface{}) { SetId(obj, v) }
+
+// The MIME Media Type
+func (obj OrderedItems) MediaType() interface{} { return GetMediaType(obj) }
+
+func (obj OrderedItems) SetMediaType(v interface{}) { SetMediaType(obj, v) }
+
+func (obj OrderedItems) Name() interface{} { return GetName(obj) }
+
+func (obj OrderedItems) SetName(v interface{}) { SetName(obj, v) }
+
+func (obj OrderedItems) Object() interface{} { return GetObject(obj) }
+
+func (obj OrderedItems) SetObject(v interface{}) { SetObject(obj, v) }
+
+func (obj OrderedItems) Preview() interface{} { return GetPreview(obj) }
+
+func (obj OrderedItems) SetPreview(v interface{}) { SetPreview(obj, v) }
 
 // An Organization
 type Organization struct{ Object }
