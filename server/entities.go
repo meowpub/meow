@@ -2,7 +2,7 @@ package server
 
 import (
 	"context"
-	"path"
+	"net/url"
 
 	"go.uber.org/zap"
 
@@ -16,12 +16,13 @@ var _ api.Traversible = EntityNode{}
 // Wraps an Entity in a Traversible node, which can serve itself to a HTTP response.
 type EntityNode struct {
 	Entity *models.Entity
+	URL    *url.URL
 }
 
 // Uses Lookup to traverse to a child node.
 // TODO: Implement support for "magic nodes" generated at runtime, eg. inboxes.
 func (n EntityNode) Traverse(ctx context.Context, pathElement string) (api.Handler, error) {
-	return Lookup(ctx, path.Join(n.Entity.Obj.ID(), pathElement))
+	return Lookup(ctx, n.URL.ResolveReference(&url.URL{Path: pathElement}))
 }
 
 // Renders the entity to an HTTP response.
@@ -33,15 +34,16 @@ func (n EntityNode) HandleRequest(req api.Request) api.Response {
 
 // Called by the Router to return a node at an arbitrary point in the tree.
 // This is called both by EntityNode.Traverse and the router.
-func Lookup(ctx context.Context, url string) (api.Traversible, error) {
-	e, err := models.GetStores(ctx).Entities().GetByID(url)
+func Lookup(ctx context.Context, u *url.URL) (api.Traversible, error) {
+	lib.GetLogger(ctx).Debug("looking up...", zap.String("url", u.String()))
+	e, err := models.GetStores(ctx).Entities().GetByID(u.String())
 	if err != nil {
-		lib.GetLogger(ctx).Debug("Lookup failed", zap.String("url", url), zap.Error(err))
+		lib.GetLogger(ctx).Debug("Lookup failed", zap.String("url", u.String()), zap.Error(err))
 		return nil, err
 	}
 	if e == nil {
-		lib.GetLogger(ctx).Debug("Lookup found nothing", zap.String("url", url))
+		lib.GetLogger(ctx).Debug("Lookup found nothing", zap.String("url", u.String()))
 		return nil, nil
 	}
-	return EntityNode{e}, nil
+	return EntityNode{e, u}, nil
 }

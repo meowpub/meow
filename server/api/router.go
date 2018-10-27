@@ -5,17 +5,19 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 	"strings"
 
-	"github.com/meowpub/meow/lib"
 	"github.com/unrolled/render"
 	"go.uber.org/zap"
+
+	"github.com/meowpub/meow/lib"
 )
 
 var _ Handler = &Router{}
 var _ http.Handler = &Router{}
 
-type LookupFunc func(ctx context.Context, normalizedURL string) (Traversible, error)
+type LookupFunc func(ctx context.Context, normalizedURL *url.URL) (Traversible, error)
 
 type Router struct {
 	// Returns the entity at the given path. The given URL will always be normalized.
@@ -70,7 +72,7 @@ func (r Router) handleRequest(req Request) Response {
 	rootUrl := lib.RootURL(url)
 
 	// Find the root for the domain, make a Node out of it to reuse existing hard route logic.
-	root, err := r.lookup(req, rootUrl.String())
+	root, err := r.lookup(req, &rootUrl)
 	if err != nil {
 		return Response{Error: err}
 	}
