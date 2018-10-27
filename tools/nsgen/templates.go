@@ -1,11 +1,14 @@
 package main
 
 import (
+	"regexp"
 	"strings"
 	"text/template"
 
 	"github.com/meowpub/meow/ld"
 )
+
+var varSafeRE = regexp.MustCompile(`([^a-zA-Z0-9])+`)
 
 var Funcs = template.FuncMap{
 	"toobject": ld.ToObject,
@@ -15,6 +18,14 @@ var Funcs = template.FuncMap{
 			return obj.Value()
 		}
 		return ""
+	},
+	"toupper": strings.ToUpper,
+	"varsafe": varsafe,
+	"quotesafe": func(v interface{}) string {
+		s := ld.ToString(v)
+		s = strings.Replace(s, "\"", "\\\"", -1)
+		s = strings.Replace(s, "\n", " ", -1)
+		return s
 	},
 	"comment": func(v interface{}) string {
 		if s := ld.ToString(v); s != "" {
@@ -26,6 +37,10 @@ var Funcs = template.FuncMap{
 		}
 		return ""
 	},
+}
+
+func varsafe(s string) string {
+	return varSafeRE.ReplaceAllString(s, "_")
 }
 
 type RenderContext struct {
@@ -277,10 +292,51 @@ import (
 	"github.com/meowpub/meow/ld/ns/{{.Package}}" {{end}}
 )
 
-var Index = map[string]func(e ld.Entity) ld.Entity{ {{range .Classes}}
-	"{{.ID}}": func(e ld.Entity) ld.Entity {
-    	return {{.Package}}.As{{.TypeName}}(e)
-    },
+var Namespaces = map[string]*Namespace{ {{range .Namespaces}}
+	"{{.Long}}": {{.Short|toupper}},
 {{- end}}
 }
+
+var Types = map[string]*Type{ {{range .Classes}}
+	"{{.ID}}": {{.ID|varsafe}},
+{{- end}}
+}
+
+var ( {{range $i, $ns := .Namespaces}}
+	{{$ns.Short|toupper}} = &Namespace{
+		ID: "{{$ns.Long}}",
+		Short: "{{$ns.Short}}",
+		Props: []*Prop{ {{range $.Properties}}{{if eq .NS.Long $ns.Long}}
+    		{{.ID|varsafe}},
+    	{{- end}}{{end}}
+		},
+		Types: map[string]*Type{ {{range $.Classes}}{{if eq .NS.Long $ns.Long}}
+			"{{.ID}}": {{.ID|varsafe}},
+		{{- end}}{{end}}
+		},
+	}
+{{- end}}
+    
+    {{range $i, $cls := .Classes}}
+    {{.ID|varsafe}} = &Type{
+        ID: "{{$cls.ID}}",
+        Short: "{{$cls.Short}}",
+    	Cast: func(e ld.Entity) ld.Entity {
+    		return {{$cls.Package}}.As{{$cls.TypeName}}(e)
+    	},
+		Props: []*Prop{ {{range $.PropertiesOf $cls}}
+    		{{.ID|varsafe}},
+    	{{- end}}
+		},
+    }
+{{- end}}
+
+    {{range .Properties}}
+    {{.ID|varsafe}} = &Prop{
+        ID: "{{.ID}}",
+        Short: "{{.Short}}",
+        Comment: "{{.Get "http://www.w3.org/2000/01/rdf-schema#comment"|quotesafe}}",
+    }
+{{- end}}
+)
 `[1:]))
