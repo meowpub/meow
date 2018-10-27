@@ -1,4 +1,4 @@
-package jsonld
+package ld
 
 import (
 	"bytes"
