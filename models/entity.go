@@ -15,25 +15,32 @@ import (
 
 var entityOnConflict = genOnConflict(Entity{}, "id")
 
+// Kind of an Entity.
+type EntityKind string
+
+const (
+	ObjectEntity = "object" // Default Kind of an Entity.
+)
+
 // An Entity represents a raw, database-form Entity.
 // This is a lower-level API and you probably actually want the higher-level entities package.
 type Entity struct {
 	// Snowflake ID, separate from the public one, used for foreign key consistency.
 	ID snowflake.ID `json:"_id"`
 
-	// Raw JSON data.
+	// Raw JSON data. You probably want to use Obj instead.
 	Data JSONB `json:"_data"`
 
-	// "Kind" of an entity
-	// Kinds determine what special server side behavior applies
-	Kind string `json:"_kind"`
+	// "Kind" of an entity, normally ObjectEntity.
+	// Kinds determine what special server side behavior applies.
+	Kind EntityKind `json:"_kind"`
 
 	// Concrete Object representation of this Entity.
 	// Modifications to this Object will be written back (and synched to Data) by EntityStore.Save().
 	Obj *ld.Object `json:"_obj" gorm:"-"`
 }
 
-func NewEntity(kind string, data []byte) (*Entity, error) {
+func NewEntity(kind EntityKind, data []byte) (*Entity, error) {
 	id, err := lib.GenSnowflake(config.NodeID())
 	if err != nil {
 		return nil, err

@@ -35,7 +35,7 @@ func TestEntityStore(t *testing.T) {
 
 	t.Run("Create", func(t *testing.T) {
 		t.Run("No Snowflake", func(t *testing.T) {
-			require.EqualError(t, store.Save(&Entity{Kind: "object", Data: JSONB(`{
+			require.EqualError(t, store.Save(&Entity{Kind: ObjectEntity, Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "John Smith"}]
@@ -46,19 +46,19 @@ func TestEntityStore(t *testing.T) {
 		require.NoError(t, err)
 
 		t.Run("Empty", func(t *testing.T) {
-			require.EqualError(t, store.Save(&Entity{ID: id, Kind: "object", Data: JSONB(`{}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_not_null_check\"")
+			require.EqualError(t, store.Save(&Entity{ID: id, Kind: ObjectEntity, Data: JSONB(`{}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_not_null_check\"")
 		})
 
 		t.Run("Empty ID", func(t *testing.T) {
-			require.EqualError(t, store.Save(&Entity{ID: id, Kind: "object", Data: JSONB(`{"@id":""}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_not_empty_check\"")
+			require.EqualError(t, store.Save(&Entity{ID: id, Kind: ObjectEntity, Data: JSONB(`{"@id":""}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_not_empty_check\"")
 		})
 
 		t.Run("Invalid ID", func(t *testing.T) {
-			require.EqualError(t, store.Save(&Entity{ID: id, Kind: "object", Data: JSONB(`{"@id":"test"}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_protocol_check\"")
+			require.EqualError(t, store.Save(&Entity{ID: id, Kind: ObjectEntity, Data: JSONB(`{"@id":"test"}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_protocol_check\"")
 		})
 
 		t.Run("Invalid ID Protocol", func(t *testing.T) {
-			require.EqualError(t, store.Save(&Entity{ID: id, Kind: "object", Data: JSONB(`{"@id":"ftp://example.com/~jsmith"}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_protocol_check\"")
+			require.EqualError(t, store.Save(&Entity{ID: id, Kind: ObjectEntity, Data: JSONB(`{"@id":"ftp://example.com/~jsmith"}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_protocol_check\"")
 		})
 
 		require.NoError(t, store.Save(&Entity{ID: id, Data: JSONB(`{
