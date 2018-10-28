@@ -97,7 +97,7 @@ func parseTypedValue(s string) (interface{}, error) {
 func resolveShortType(s string) (string, error) {
 	parts := strings.SplitN(s, ":", 2)
 	if len(parts) != 2 {
-		return "", errors.Errorf("type must be in ns.Type form (eg. as.Note): %s", s)
+		return "", errors.Errorf("type must be in ns:Type form (eg. as:Note): %s", s)
 	}
 	nName := parts[0]
 	tName := parts[1]
