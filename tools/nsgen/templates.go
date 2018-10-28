@@ -112,7 +112,11 @@ func (rctx RenderContext) Properties() []*Declaration {
 
 func (rctx RenderContext) PropertiesOf(of *Declaration) (matches []*Declaration) {
 	for _, decl := range rctx.Properties() {
-		if decl.Domain() == of.ID() {
+		domain := decl.Domain()
+		if domain == of.ID() {
+			matches = append(matches, decl)
+		}
+		if domain == "" && len(of.SubClassOf()) == 0 {
 			matches = append(matches, decl)
 		}
 	}
