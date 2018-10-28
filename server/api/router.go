@@ -170,7 +170,7 @@ func (r *Router) RenderError(rw http.ResponseWriter, req Request, status int, er
 }
 
 func (r *Router) renderJSONLD(rw http.ResponseWriter, status int, data ld.Entity) error {
-	compact, err := ld.Compact(&http.Client{}, data.Obj().V, data.ID(), ns.AS.ID)
+	compact, err := ld.Compact(&http.Client{}, data.Obj().V, "", ns.AS.ID)
 	if err != nil {
 		return err
 	}
