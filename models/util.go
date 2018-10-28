@@ -12,8 +12,10 @@ const gormInsertOption = "gorm:insert_option"
 // genOnConflict build an ON CONFLICT clause from a model type.
 func genOnConflict(t interface{}, conflictOn string, exclude ...string) string {
 	rT := reflect.TypeOf(t)
+	seenExcludes := make(map[string]struct{})
 
 	var updates []string
+fieldLoop:
 	for i := 0; i < rT.NumField(); i++ {
 		field := rT.Field(i)
 		if field.PkgPath != "" {
@@ -36,10 +38,17 @@ func genOnConflict(t interface{}, conflictOn string, exclude ...string) string {
 		}
 		for _, excl := range exclude {
 			if dbName == excl {
-				continue
+				seenExcludes[dbName] = struct{}{}
+				continue fieldLoop
 			}
 		}
 		updates = append(updates, dbName+"=EXCLUDED."+dbName)
+	}
+
+	for _, excl := range exclude {
+		if _, ok := seenExcludes[excl]; !ok {
+			panic("genOnConflict exclusion on nonexistent column: " + excl)
+		}
 	}
 
 	return "ON CONFLICT (" + conflictOn + ") DO UPDATE SET " + strings.Join(updates, ", ")

@@ -13,7 +13,7 @@ import (
 
 //go:generate mockgen -package=models -source=entity.go -destination=entity.mock.go
 
-var entityOnConflict = genOnConflict(Entity{}, "id")
+var entityOnConflict = genOnConflict(Entity{}, "(data->>'@id')", "id")
 
 // Kind of an Entity.
 type EntityKind string

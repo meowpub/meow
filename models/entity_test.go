@@ -11,7 +11,7 @@ import (
 )
 
 func TestEntityConflictClause(t *testing.T) {
-	assert.Equal(t, `ON CONFLICT (id) DO UPDATE SET data=EXCLUDED.data, kind=EXCLUDED.kind`, entityOnConflict)
+	assert.Equal(t, `ON CONFLICT ((data->>'@id')) DO UPDATE SET data=EXCLUDED.data, kind=EXCLUDED.kind`, entityOnConflict)
 }
 
 func TestEntityStore(t *testing.T) {
@@ -124,7 +124,10 @@ func TestEntityStore(t *testing.T) {
 		})
 
 		t.Run("Update", func(t *testing.T) {
-			require.NoError(t, store.Save(&Entity{ID: id, Data: JSONB(`{
+			newID, err := lib.GenSnowflake(0)
+			require.NoError(t, err)
+
+			require.NoError(t, store.Save(&Entity{ID: newID, Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
 				"@type": ["http://schema.org/Person"],
 				"http://schema.org/name": [{"@value": "Jane Smith"}]
