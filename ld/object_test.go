@@ -47,6 +47,13 @@ func TestObjectID(t *testing.T) {
 	})
 }
 
+func TestObjectSetID(t *testing.T) {
+	obj := NewObject("https://example.com")
+	assert.Equal(t, "https://example.com", obj.ID())
+	obj.SetID("https://example.com/boop")
+	assert.Equal(t, "https://example.com/boop", obj.ID())
+}
+
 func TestObjectType(t *testing.T) {
 	t.Run("None", func(t *testing.T) {
 		obj, err := ParseObject([]byte(`{}`))
@@ -93,6 +100,13 @@ func TestObjectType(t *testing.T) {
 			"http://www.w3.org/ns/activitystreams#Image",
 		}, obj.Type())
 	})
+}
+
+func TestObjectSetType(t *testing.T) {
+	obj := NewObject("https://example.com", "http://www.w3.org/ns/activitystreams#Note")
+	assert.Equal(t, []string{"http://www.w3.org/ns/activitystreams#Note"}, obj.Type())
+	obj.SetType("http://www.w3.org/ns/activitystreams#Image")
+	assert.Equal(t, []string{"http://www.w3.org/ns/activitystreams#Image"}, obj.Type())
 }
 
 func TestObjectMerge(t *testing.T) {

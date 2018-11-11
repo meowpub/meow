@@ -64,6 +64,11 @@ func (obj *Object) ID() string {
 	return obj.id
 }
 
+// Sets the object's @id.
+func (obj *Object) SetID(id string) {
+	obj.Set("@id", id)
+}
+
 // Returns the object's @value, or "".
 func (obj *Object) Value() string {
 	if obj == nil {
@@ -73,6 +78,11 @@ func (obj *Object) Value() string {
 		obj.value = ToString(obj.Get("@value"))
 	}
 	return obj.value
+}
+
+// Sets the object's @value.
+func (obj *Object) SetValue(v string) {
+	obj.Set("@value", v)
 }
 
 // Returns the object's @type, or nil.
@@ -86,6 +96,11 @@ func (obj *Object) Type() []string {
 	return obj.typ
 }
 
+// Sets the object's @type.
+func (obj *Object) SetType(ts ...string) {
+	obj.Set("@type", ts)
+}
+
 // Nil-safe getter for attributes.
 func (obj *Object) Get(key string) interface{} {
 	if obj != nil && obj.V != nil {
@@ -96,8 +111,21 @@ func (obj *Object) Get(key string) interface{} {
 
 // Nil-safe setter for attributes.
 func (obj *Object) Set(key string, value interface{}) {
-	if obj != nil {
-		obj.V[key] = value
+	if obj == nil {
+		return
+	}
+	if obj.V == nil {
+		obj.V = map[string]interface{}{key: value}
+		return
+	}
+	obj.V[key] = value
+	switch key {
+	case "@id":
+		obj.id = ""
+	case "@value":
+		obj.value = ""
+	case "@type":
+		obj.typ = nil
 	}
 }
 
