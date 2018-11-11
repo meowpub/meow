@@ -33,10 +33,10 @@ func ToString(raw interface{}) string {
 	}
 }
 
-// Casts to an array.
-// If the value is an array, it's returned verbatim.
-// If not, it's returned wrapped in an array with one item.
-func ToArray(raw interface{}) []interface{} {
+// Casts to a slice.
+// If the value is a slice, it's returned verbatim.
+// If not, it's returned wrapped in a slice with one item.
+func ToSlice(raw interface{}) []interface{} {
 	switch v := raw.(type) {
 	case nil:
 		return nil
@@ -53,12 +53,12 @@ func ToArray(raw interface{}) []interface{} {
 	}
 }
 
-func ToStringArray(raw interface{}) []string {
+func ToStringSlice(raw interface{}) []string {
 	switch v := raw.(type) {
 	case []string:
 		return v
 	default:
-		arr := ToArray(raw)
+		arr := ToSlice(raw)
 		if arr == nil {
 			return nil
 		}

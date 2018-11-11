@@ -81,7 +81,7 @@ func (obj *Object) Type() []string {
 		return nil
 	}
 	if obj.typ == nil {
-		obj.typ = ToStringArray(obj.Get("@type"))
+		obj.typ = ToStringSlice(obj.Get("@type"))
 	}
 	return obj.typ
 }
@@ -109,9 +109,9 @@ func (obj *Object) Apply(patch Entity, mergeArrays bool) error {
 		if k == "@id" || !mergeArrays {
 			obj.V[k] = v
 		} else if arr, ok := v.([]interface{}); ok {
-			obj.V[k] = append(ToArray(obj.Get(k)), arr...)
+			obj.V[k] = append(ToSlice(obj.Get(k)), arr...)
 		} else {
-			obj.V[k] = append(ToArray(obj.Get(k)), v)
+			obj.V[k] = append(ToSlice(obj.Get(k)), v)
 		}
 	}
 	return nil
