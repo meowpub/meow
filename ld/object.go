@@ -17,13 +17,13 @@ type Object struct {
 }
 
 // Creates a new object from a JSON object.
-func NewObject(data []byte) (*Object, error) {
+func ParseObject(data []byte) (*Object, error) {
 	var obj Object
 	return &obj, json.Unmarshal(data, &obj.V)
 }
 
 // Creates a new list of objects from a JSON array.
-func NewObjects(data []byte) ([]*Object, error) {
+func ParseObjects(data []byte) ([]*Object, error) {
 	var vs []map[string]interface{}
 	if err := json.Unmarshal(data, &vs); err != nil {
 		return nil, err

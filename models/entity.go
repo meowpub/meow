@@ -52,7 +52,7 @@ func NewEntity(kind EntityKind, data []byte) (*Entity, error) {
 // Overwrites Object with Data. Called automatically by EntityStore.Get*() and NewEntity().
 func (e *Entity) SyncDataToObject() error {
 	if len(e.Data) > 0 {
-		obj, err := ld.NewObject(e.Data)
+		obj, err := ld.ParseObject(e.Data)
 		if err != nil {
 			return err
 		}

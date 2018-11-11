@@ -9,13 +9,13 @@ import (
 
 func TestObjectID(t *testing.T) {
 	t.Run("None", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{}`))
+		obj, err := ParseObject([]byte(`{}`))
 		require.NoError(t, err)
 		assert.Equal(t, "", obj.ID())
 	})
 
 	t.Run("Null", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@id": null
 		}`))
 		require.NoError(t, err)
@@ -23,7 +23,7 @@ func TestObjectID(t *testing.T) {
 	})
 
 	t.Run("Number", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@id": 12345
 		}`))
 		require.NoError(t, err)
@@ -31,7 +31,7 @@ func TestObjectID(t *testing.T) {
 	})
 
 	t.Run("String", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@id": "https://example.com"
 		}`))
 		require.NoError(t, err)
@@ -39,7 +39,7 @@ func TestObjectID(t *testing.T) {
 	})
 
 	t.Run("Array", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@id": ["https://example.com/1", "https://example.com/2"]
 		}`))
 		require.NoError(t, err)
@@ -49,19 +49,19 @@ func TestObjectID(t *testing.T) {
 
 func TestObjectType(t *testing.T) {
 	t.Run("None", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{}`))
+		obj, err := ParseObject([]byte(`{}`))
 		require.NoError(t, err)
 		assert.Empty(t, obj.Type())
 	})
 
 	t.Run("Null", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{"@type": null}`))
+		obj, err := ParseObject([]byte(`{"@type": null}`))
 		require.NoError(t, err)
 		assert.Empty(t, obj.Type())
 	})
 
 	t.Run("Number", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@type": 12345
 		}`))
 		require.NoError(t, err)
@@ -71,7 +71,7 @@ func TestObjectType(t *testing.T) {
 	})
 
 	t.Run("String", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@type": "http://www.w3.org/ns/activitystreams#Note"
 		}`))
 		require.NoError(t, err)
@@ -81,7 +81,7 @@ func TestObjectType(t *testing.T) {
 	})
 
 	t.Run("Array", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@type": [
 				"http://www.w3.org/ns/activitystreams#Note",
 				"http://www.w3.org/ns/activitystreams#Image"
@@ -97,11 +97,11 @@ func TestObjectType(t *testing.T) {
 
 func TestObjectMerge(t *testing.T) {
 	t.Run("New", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@id": "https://example.com"
 		}`))
 		require.NoError(t, err)
-		patch, err := NewObject([]byte(`{
+		patch, err := ParseObject([]byte(`{
 			"@id": "https://example.com",
 			"http://www.w3.org/ns/activitystreams#content": "hi"
 		}`))
@@ -114,12 +114,12 @@ func TestObjectMerge(t *testing.T) {
 	})
 
 	t.Run("Replace", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@id": "https://example.com",
 			"http://www.w3.org/ns/activitystreams#content": "hi"
 		}`))
 		require.NoError(t, err)
-		patch, err := NewObject([]byte(`{
+		patch, err := ParseObject([]byte(`{
 			"@id": "https://example.com",
 			"http://www.w3.org/ns/activitystreams#content": "bye"
 		}`))
@@ -132,12 +132,12 @@ func TestObjectMerge(t *testing.T) {
 	})
 
 	t.Run("Merge", func(t *testing.T) {
-		obj, err := NewObject([]byte(`{
+		obj, err := ParseObject([]byte(`{
 			"@id": "https://example.com",
 			"http://www.w3.org/ns/activitystreams#content": "hi"
 		}`))
 		require.NoError(t, err)
-		patch, err := NewObject([]byte(`{
+		patch, err := ParseObject([]byte(`{
 			"@id": "https://example.com",
 			"http://www.w3.org/ns/activitystreams#content": "bye"
 		}`))
