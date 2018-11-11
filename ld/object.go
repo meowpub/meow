@@ -16,6 +16,13 @@ type Object struct {
 	typ   []string
 }
 
+func NewObject(id string, types ...string) *Object {
+	obj := &Object{}
+	obj.SetID(id)
+	obj.SetType(types...)
+	return obj
+}
+
 // Creates a new object from a JSON object.
 func ParseObject(data []byte) (*Object, error) {
 	var obj Object
