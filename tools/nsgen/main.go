@@ -57,11 +57,16 @@ func Render(path string, tmpl *template.Template, rctx interface{}) error {
 		return errors.Wrap(err, "render")
 	}
 	data := buf.Bytes()
-	data, err := imports.Process(path, data, nil)
-	if err != nil {
-		return errors.Wrap(err, "goimports")
+
+	data2, err := imports.Process(path, data, nil)
+	if err == nil {
+		data = data2
 	}
-	return ioutil.WriteFile(path, data, 0644)
+
+	return multierr.Append(
+		errors.Wrap(err, "goimports"),
+		ioutil.WriteFile(path, data, 0644),
+	)
 }
 
 func TurtleToJSONLD(namespace string, data []byte) ([]byte, error) {
@@ -140,12 +145,15 @@ func Main() error {
 	orderedKeys := []string{}
 	for _, fragment := range fragments {
 		key := fragment.ID()
+		if key == "_:n0" {
+			continue
+		}
 		if obj, ok := declMap[key]; ok {
 			if err := obj.Apply(fragment, true); err != nil {
 				return err
 			}
 		} else {
-			declMap[key] = &Declaration{fragment}
+			declMap[key] = &Declaration{Object: fragment}
 			orderedKeys = append(orderedKeys, key)
 		}
 	}
@@ -164,6 +172,7 @@ func Main() error {
 		namespaces = append(namespaces, ns)
 		for _, decl := range declarations {
 			if strings.HasPrefix(decl.ID(), ns.Long) {
+				decl.NS = ns
 				pkgs[ns.Package] = append(pkgs[ns.Package], decl)
 			}
 		}
@@ -188,6 +197,16 @@ func Main() error {
 			errors.Wrap(Render(filepath.Join(outdir, "datatypes.gen.go"), DataTypesTemplate, rctx), "datatypes.gen.go"),
 		)
 	}
+	grctx := &RenderContext{
+		Declarations: declarations,
+		Packages:     pkgs,
+		Namespaces:   namespaces,
+	}
+
+	log.Printf("Generating index files...")
+	errs = append(errs,
+		errors.Wrap(Render(filepath.Join(MeowBasePath, "ld", "ns", "index.gen.go"), IndexTemplate, grctx), "index.gen.go"),
+	)
 	// if err := multierr.Combine(errs...); err != nil {
 	// 	return err
 	// }

@@ -11,6 +11,7 @@ var _ ld.Entity = Declaration{}
 
 type Declaration struct {
 	*ld.Object
+	NS *Namespace
 }
 
 func (t Declaration) Obj() *ld.Object {
@@ -18,7 +19,17 @@ func (t Declaration) Obj() *ld.Object {
 }
 
 func (t Declaration) Short() string {
-	return strings.SplitN(t.ID(), "#", 2)[1]
+	if parts := strings.SplitN(t.ID(), "#", 2); len(parts) > 1 {
+		return parts[1]
+	}
+	return t.ID()
+}
+
+func (t Declaration) Package() string {
+	if t.NS != nil {
+		return t.NS.Package
+	}
+	return ""
 }
 
 func (t Declaration) TypeName() string {

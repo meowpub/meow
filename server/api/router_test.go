@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"strconv"
 	"testing"
 
@@ -23,8 +24,8 @@ func TestRouterHandleRequest(t *testing.T) {
 			}),
 		},
 	}
-	r := NewRouter(func(ctx context.Context, url string) (Traversible, error) {
-		if n, ok := roots[url]; ok {
+	r := NewRouter(func(ctx context.Context, u *url.URL) (Traversible, error) {
+		if n, ok := roots[u.String()]; ok {
 			return n, nil
 		}
 		return nil, nil
@@ -79,7 +80,7 @@ func TestRouterServe(t *testing.T) {
 		"templates/template.tmpl": `Hello {{.}}`,
 	}
 	root := &Node{}
-	r := NewRouter(func(ctx context.Context, url string) (Traversible, error) {
+	r := NewRouter(func(ctx context.Context, u *url.URL) (Traversible, error) {
 		return root, nil
 	}, render.Options{
 		Asset: func(name string) ([]byte, error) {
@@ -187,7 +188,7 @@ func TestRouterServe(t *testing.T) {
 }
 
 func TestRouterUse(t *testing.T) {
-	r := NewRouter(func(ctx context.Context, url string) (Traversible, error) {
+	r := NewRouter(func(ctx context.Context, u *url.URL) (Traversible, error) {
 		return Node{Self: HandlerFunc(func(req Request) Response {
 			return Response{Data: "hi"}
 		})}, nil

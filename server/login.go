@@ -5,7 +5,6 @@ import (
 
 	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/models"
-	"github.com/meowpub/meow/models/entities"
 	"github.com/meowpub/meow/server/api"
 	"github.com/meowpub/meow/server/oauth"
 	"github.com/pkg/errors"
@@ -43,7 +42,7 @@ func HandleLogin(req api.Request) api.Response {
 				return api.Response{Error: err}
 			}
 		} else {
-			entity, err := entities.GetStore(req).GetBySnowflake(user.EntityID)
+			entity, err := stores.Entities().GetBySnowflake(user.EntityID)
 			if err != nil {
 				if err := oauth.LogOut(req); err != nil {
 					return api.Response{Error: err}
@@ -52,7 +51,7 @@ func HandleLogin(req api.Request) api.Response {
 					return api.Response{Error: err}
 				}
 			} else {
-				return api.RedirectResponse(entity.GetID())
+				return api.RedirectResponse(entity.Obj.ID())
 			}
 		}
 	}
@@ -74,7 +73,7 @@ func HandleLogin(req api.Request) api.Response {
 		}
 
 		// Look up the user's profile.
-		profile, err := entities.GetStore(req).GetBySnowflake(user.EntityID)
+		profile, err := stores.Entities().GetBySnowflake(user.EntityID)
 		if err != nil {
 			L.Error("Failed to look up user's profile",
 				zap.Int64("user_id", user.ID.Int64()),
@@ -88,7 +87,7 @@ func HandleLogin(req api.Request) api.Response {
 		ok, err := user.CheckPassword(body.Password)
 		if err != nil {
 			L.Error("Password check failed, is the password corrupt in the DB?",
-				zap.String("id", profile.GetID()),
+				zap.String("id", profile.Obj.ID()),
 				zap.Int64("user_id", user.ID.Int64()),
 				zap.Error(err),
 			)
@@ -96,7 +95,7 @@ func HandleLogin(req api.Request) api.Response {
 		}
 		if !ok {
 			L.Warn("Login attempt with invalid password",
-				zap.String("id", profile.GetID()),
+				zap.String("id", profile.Obj.ID()),
 				zap.Int64("user_id", user.ID.Int64()),
 				zap.Error(err),
 			)
@@ -106,7 +105,7 @@ func HandleLogin(req api.Request) api.Response {
 		// Log the user in.
 		if err := oauth.LogIn(req, user); err != nil {
 			L.Error("User authenticated successfully, but session login failed",
-				zap.String("id", profile.GetID()),
+				zap.String("id", profile.Obj.ID()),
 				zap.Int64("user_id", user.ID.Int64()),
 				zap.Int64("profile_id", user.EntityID.Int64()),
 				zap.Error(err),
@@ -115,13 +114,13 @@ func HandleLogin(req api.Request) api.Response {
 		}
 
 		L.Info("User logged in!",
-			zap.String("id", profile.GetID()),
+			zap.String("id", profile.Obj.ID()),
 			zap.Int64("user_id", user.ID.Int64()),
 			zap.Int64("entity_id", user.EntityID.Int64()),
 		)
 
 		// Redirect to the user's profile, or to a given redirect URI *if it's safe*.
-		redirectURI := profile.GetID()
+		redirectURI := profile.Obj.ID()
 		if body.RedirectURI != "" {
 			uri, err := SanitizeRedirectURI(body.RedirectURI)
 			if err != nil {

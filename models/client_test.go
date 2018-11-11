@@ -43,7 +43,7 @@ func TestClientStore(t *testing.T) {
 
 	profile, err := NewEntity("client", []byte(`{"@id": "https://example.com/@client-dev"}`))
 	require.NoError(t, err)
-	require.NoError(t, estore.Save(*profile))
+	require.NoError(t, estore.Save(profile))
 
 	user, err := NewUser(profile.ID, "client-dev@example.com", "password")
 	require.NoError(t, err)

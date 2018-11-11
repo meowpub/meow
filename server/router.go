@@ -1,7 +1,6 @@
 package server
 
 import (
-	"context"
 	"errors"
 	"net/http"
 
@@ -9,12 +8,9 @@ import (
 	"github.com/gorilla/sessions"
 	"github.com/jinzhu/gorm"
 	"github.com/unrolled/render"
-	"go.uber.org/zap"
 
 	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/config/secrets"
-	"github.com/meowpub/meow/lib"
-	"github.com/meowpub/meow/models/entities"
 	"github.com/meowpub/meow/server/api"
 	"github.com/meowpub/meow/server/middleware"
 	"github.com/meowpub/meow/server/oauth"
@@ -53,17 +49,4 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 
 func HandleNotFound(req api.Request) api.Response {
 	return api.Response{Error: api.Wrap(errors.New("not found"), http.StatusNotFound)}
-}
-
-func Lookup(ctx context.Context, url string) (api.Traversible, error) {
-	e, err := entities.GetStore(ctx).GetByID(url)
-	if err != nil {
-		lib.GetLogger(ctx).Debug("Lookup failed", zap.String("url", url), zap.Error(err))
-		return nil, err
-	}
-	if e == nil {
-		lib.GetLogger(ctx).Debug("Lookup found nothing", zap.String("url", url))
-		return nil, nil
-	}
-	return e, nil
 }

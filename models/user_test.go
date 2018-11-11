@@ -54,7 +54,7 @@ func TestUserStore(t *testing.T) {
 
 	eid, err := lib.GenSnowflake(0)
 	require.NoError(t, err)
-	entity := Entity{ID: eid, Data: JSONB(`{
+	entity := &Entity{ID: eid, Data: JSONB(`{
 		"@id": "https://example.com/~jsmith",
 		"@type": ["http://schema.org/Person"],
 		"http://schema.org/name": [{"@value": "John Smith"}]

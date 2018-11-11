@@ -1,84 +1,69 @@
 package cmd
 
 import (
-	"context"
+	"fmt"
+	"os"
 
-	"github.com/jinzhu/gorm"
+	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"go.uber.org/zap"
+	"golang.org/x/crypto/ssh/terminal"
 
 	"github.com/meowpub/meow/config"
-	"github.com/meowpub/meow/jsonld"
 	"github.com/meowpub/meow/models"
-	"github.com/meowpub/meow/models/entities"
 )
 
-// createUserCmd represents the createUser command
 var createUserCmd = &cobra.Command{
-	Use:   "user",
-	Short: "Creates a user",
-	Long:  `Creates a user`,
+	Use:   "user id email",
+	Short: "Create a user",
+	Long:  "Create a user.",
+	Args:  cobra.MinimumNArgs(2),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		id := viper.GetString("create.user.id")
-		preferredUsername := viper.GetString("create.user.username")
-		email := viper.GetString("create.user.email")
-		password := viper.GetString("create.user.password")
+		L := zap.L().Named("create.user")
 
-		db, err := gorm.Open("postgres", config.DB())
+		db, err := openDB(L)
 		if err != nil {
 			return err
 		}
-		tx := db.Begin()
+		stores := models.NewStores(db, nil, config.RedisKeyspace())
 
-		stores := models.NewStores(tx, nil, "")
-		store := entities.NewStore(stores.Entities())
-		userStore := stores.Users()
+		id := args[0]
+		email := args[1]
+		noPasswd := viper.GetBool("create.user.no-passwd")
 
-		ctx := context.Background()
-		ctx = models.WithStores(ctx, stores)
-		ctx = entities.WithStore(ctx, store)
+		// Look up the user's profile; it should've been created with `meow gen entity | meow ingest' already.
+		profile, err := stores.Entities().GetByID(id)
+		if err != nil {
+			if models.IsNotFound(err) {
+				return errors.Wrap(err, "please create the user's profile with 'meow gen entity as:Person' and 'meow ingest' first")
+			}
+			return errors.Wrap(err, "couldn't look up profile")
+		}
 
-		person_, err := store.NewEntity(ctx, "person", id)
+		// Read the password from stdin.
+		var password string
+		if !noPasswd {
+			fmt.Fprint(os.Stderr, "Password: ")
+			pass, err := terminal.ReadPassword(int(os.Stdin.Fd()))
+			if err != nil {
+				return errors.Wrap(err, "couldn't read password from stdin")
+			}
+			password = string(pass)
+		}
+
+		// Create a user!
+		user, err := models.NewUser(profile.ID, email, password)
 		if err != nil {
 			return err
 		}
-		person := person_.(*entities.Person)
-
-		if preferredUsername != "" {
-			person.PreferredUsername = jsonld.ToString(preferredUsername)
-			person.Name = jsonld.ToLangString(preferredUsername)
-		} else {
-			person.Name = jsonld.ToLangString("A new user")
-		}
-		person.Summary = jsonld.ToLangString("A newly created Meow🐱 user")
-
-		if err := store.Save(person); err != nil {
-			return err
-		}
-
-		usr, err := models.NewUser(person.GetSnowflake(), email, password)
-		if err != nil {
-			return err
-		}
-
-		dump(person)
-		dump(usr)
-
-		if err := userStore.Save(usr); err != nil {
-			return err
-		}
-
-		return tx.Commit().Error
+		return stores.Users().Save(user)
 	},
 }
 
 func init() {
 	createCmd.AddCommand(createUserCmd)
 
-	createUserCmd.Flags().StringP("id", "i", "", "user's uri id (required)")
-	createUserCmd.Flags().StringP("email", "e", "", "user's email (required)")
-	createUserCmd.Flags().StringP("password", "p", "", "user's password (required)")
-	createUserCmd.Flags().StringP("username", "u", "", "user's username (optional)")
-
+	createUserCmd.Flags().BoolP("no-passwd", "N", false, "don't set a password; disallows login")
 	bindPFlags("create.user", createUserCmd.Flags())
 }

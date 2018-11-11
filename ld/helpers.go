@@ -16,3 +16,13 @@ func ObjectIDs(objs []*Object) []string {
 	}
 	return ids
 }
+
+// Shorthand to make {"@value": v} structures.
+func Value(v interface{}) map[string]interface{} {
+	return map[string]interface{}{"@value": v}
+}
+
+// Shorthand to make {"@id": v} structures.
+func ID(id string) map[string]interface{} {
+	return map[string]interface{}{"@id": id}
+}
