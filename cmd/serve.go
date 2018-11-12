@@ -9,11 +9,13 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
 	"github.com/meowpub/meow/config"
+	"github.com/meowpub/meow/config/secrets"
 	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/server"
 )
@@ -28,6 +30,11 @@ var serveCmd = &cobra.Command{
 		L := zap.L().Named("serve")
 
 		addr := viper.GetString("api.addr")
+
+		// Derive subkeys from the master secret; this has to be done before use.
+		if err := secrets.Init(L.Named("secrets"), config.Secret()); err != nil {
+			return errors.Wrap(err, "secrets.Init")
+		}
 
 		// Create a context that is cancelled on Ctrl+C.
 		ctx, cancel := context.WithCancel(context.Background())
