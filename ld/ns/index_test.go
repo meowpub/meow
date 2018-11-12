@@ -12,7 +12,7 @@ import (
 
 func TestManifest(t *testing.T) {
 	t.Run("Unknown Type", func(t *testing.T) {
-		o, err := ld.NewObject([]byte(`{
+		o, err := ld.ParseObject([]byte(`{
 			"@id": "https://example.com/@jsmith",
 			"@type": ["http://schema.org/Person"],
 			"http://schema.org/name": [{"@value": "John Smith"}]
@@ -21,7 +21,7 @@ func TestManifest(t *testing.T) {
 		assert.Empty(t, Manifest(o))
 	})
 	t.Run("One Type", func(t *testing.T) {
-		o, err := ld.NewObject([]byte(`{
+		o, err := ld.ParseObject([]byte(`{
 			"@id": "https://example.com/@jsmith",
 			"@type": ["http://www.w3.org/ns/activitystreams#Person"],
 			"http://www.w3.org/ns/activitystreams#name": [{"@value": "John Smith"}]
@@ -34,7 +34,7 @@ func TestManifest(t *testing.T) {
 	})
 	t.Run("Two Types", func(t *testing.T) {
 		// A person who is also a place... how mysterious.
-		o, err := ld.NewObject([]byte(`{
+		o, err := ld.ParseObject([]byte(`{
 			"@id": "https://example.com/@jsmith",
 			"@type": [
 				"http://www.w3.org/ns/activitystreams#Person",

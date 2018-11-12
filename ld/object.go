@@ -16,14 +16,21 @@ type Object struct {
 	typ   []string
 }
 
+func NewObject(id string, types ...string) *Object {
+	obj := &Object{}
+	obj.SetID(id)
+	obj.SetType(types...)
+	return obj
+}
+
 // Creates a new object from a JSON object.
-func NewObject(data []byte) (*Object, error) {
+func ParseObject(data []byte) (*Object, error) {
 	var obj Object
 	return &obj, json.Unmarshal(data, &obj.V)
 }
 
 // Creates a new list of objects from a JSON array.
-func NewObjects(data []byte) ([]*Object, error) {
+func ParseObjects(data []byte) ([]*Object, error) {
 	var vs []map[string]interface{}
 	if err := json.Unmarshal(data, &vs); err != nil {
 		return nil, err
@@ -64,6 +71,11 @@ func (obj *Object) ID() string {
 	return obj.id
 }
 
+// Sets the object's @id.
+func (obj *Object) SetID(id string) {
+	obj.Set("@id", id)
+}
+
 // Returns the object's @value, or "".
 func (obj *Object) Value() string {
 	if obj == nil {
@@ -75,15 +87,25 @@ func (obj *Object) Value() string {
 	return obj.value
 }
 
+// Sets the object's @value.
+func (obj *Object) SetValue(v string) {
+	obj.Set("@value", v)
+}
+
 // Returns the object's @type, or nil.
 func (obj *Object) Type() []string {
 	if obj == nil {
 		return nil
 	}
 	if obj.typ == nil {
-		obj.typ = ToStringArray(obj.Get("@type"))
+		obj.typ = ToStringSlice(obj.Get("@type"))
 	}
 	return obj.typ
+}
+
+// Sets the object's @type.
+func (obj *Object) SetType(ts ...string) {
+	obj.Set("@type", ts)
 }
 
 // Nil-safe getter for attributes.
@@ -96,8 +118,21 @@ func (obj *Object) Get(key string) interface{} {
 
 // Nil-safe setter for attributes.
 func (obj *Object) Set(key string, value interface{}) {
-	if obj != nil {
-		obj.V[key] = value
+	if obj == nil {
+		return
+	}
+	if obj.V == nil {
+		obj.V = map[string]interface{}{key: value}
+		return
+	}
+	obj.V[key] = value
+	switch key {
+	case "@id":
+		obj.id = ""
+	case "@value":
+		obj.value = ""
+	case "@type":
+		obj.typ = nil
 	}
 }
 
@@ -109,9 +144,9 @@ func (obj *Object) Apply(patch Entity, mergeArrays bool) error {
 		if k == "@id" || !mergeArrays {
 			obj.V[k] = v
 		} else if arr, ok := v.([]interface{}); ok {
-			obj.V[k] = append(ToArray(obj.Get(k)), arr...)
+			obj.V[k] = append(ToSlice(obj.Get(k)), arr...)
 		} else {
-			obj.V[k] = append(ToArray(obj.Get(k)), v)
+			obj.V[k] = append(ToSlice(obj.Get(k)), v)
 		}
 	}
 	return nil

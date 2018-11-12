@@ -101,7 +101,7 @@ func NamespaceFragments(ns *Namespace) ([]*ld.Object, error) {
 
 	// Turn it into JSON-LD fragments.
 	ldData, err := TurtleToJSONLD(ns.Long, turtleData)
-	fragments, err := ld.NewObjects(ldData)
+	fragments, err := ld.ParseObjects(ldData)
 	if err != nil {
 		return nil, err
 	}

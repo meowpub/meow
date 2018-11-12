@@ -33,30 +33,41 @@ func ToString(raw interface{}) string {
 	}
 }
 
-// Casts to an array.
-// If the value is an array, it's returned verbatim.
-// If not, it's returned wrapped in an array with one item.
-func ToArray(raw interface{}) []interface{} {
+// Casts to a slice.
+// If the value is a slice, it's returned verbatim.
+// If not, it's returned wrapped in a slice with one item.
+func ToSlice(raw interface{}) []interface{} {
 	switch v := raw.(type) {
 	case nil:
 		return nil
 	case []interface{}:
 		return v
+	case []string:
+		vs := make([]interface{}, len(v))
+		for i, vv := range v {
+			vs[i] = vv
+		}
+		return vs
 	default:
 		return []interface{}{raw}
 	}
 }
 
-func ToStringArray(raw interface{}) []string {
-	arr := ToArray(raw)
-	if arr == nil {
-		return nil
+func ToStringSlice(raw interface{}) []string {
+	switch v := raw.(type) {
+	case []string:
+		return v
+	default:
+		arr := ToSlice(raw)
+		if arr == nil {
+			return nil
+		}
+		strs := make([]string, len(arr))
+		for i, v := range arr {
+			strs[i] = ToString(v)
+		}
+		return strs
 	}
-	strs := make([]string, len(arr))
-	for i, v := range arr {
-		strs[i] = ToString(v)
-	}
-	return strs
 }
 
 func ToObject(raw interface{}) *Object {
