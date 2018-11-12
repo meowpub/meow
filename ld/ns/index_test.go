@@ -10,6 +10,17 @@ import (
 	"github.com/meowpub/meow/ld/ns/as"
 )
 
+func TestTypeIsSubClassOf(t *testing.T) {
+	assert.True(t, http_www_w3_org_ns_activitystreams_Note.IsSubClassOf(http_www_w3_org_ns_activitystreams_Object))
+	assert.False(t, http_www_w3_org_ns_activitystreams_Note.IsSubClassOf(http_www_w3_org_ns_activitystreams_Activity))
+}
+
+func TestQuacksLike(t *testing.T) {
+	obj := ld.NewObject("https://example.com", "http://www.w3.org/ns/activitystreams#Person")
+	assert.True(t, QuacksLike(http_www_w3_org_ns_activitystreams_Object, obj))
+	assert.False(t, QuacksLike(http_www_w3_org_ns_activitystreams_Activity, obj))
+}
+
 func TestManifest(t *testing.T) {
 	t.Run("Unknown Type", func(t *testing.T) {
 		o, err := ld.ParseObject([]byte(`{

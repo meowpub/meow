@@ -325,6 +325,10 @@ var ( {{range $i, $ns := .Namespaces}}
     {{.ID|varsafe}} = &Type{
         ID: "{{$cls.ID}}",
         Short: "{{$cls.Short}}",
+        SubClassOf: []*Type{ {{range .SubClassOf}}
+            {{.|varsafe}},
+        {{- end}}
+        },
     	Cast: func(e ld.Entity) ld.Entity {
     		return {{$cls.Package}}.As{{$cls.TypeName}}(e)
     	},

@@ -464,6 +464,9 @@ var (
 	http_www_w3_org_1999_02_22_rdf_syntax_ns_Alt = &Type{
 		ID:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt",
 		Short: "Alt",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Container,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsAlt(e)
 		},
@@ -472,6 +475,9 @@ var (
 	http_www_w3_org_1999_02_22_rdf_syntax_ns_Bag = &Type{
 		ID:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag",
 		Short: "Bag",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Container,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsBag(e)
 		},
@@ -480,6 +486,9 @@ var (
 	http_www_w3_org_1999_02_22_rdf_syntax_ns_List = &Type{
 		ID:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
 		Short: "List",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsList(e)
 		},
@@ -491,6 +500,9 @@ var (
 	http_www_w3_org_1999_02_22_rdf_syntax_ns_Property = &Type{
 		ID:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
 		Short: "Property",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsProperty(e)
 		},
@@ -505,6 +517,9 @@ var (
 	http_www_w3_org_1999_02_22_rdf_syntax_ns_Seq = &Type{
 		ID:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
 		Short: "Seq",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Container,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsSeq(e)
 		},
@@ -513,6 +528,9 @@ var (
 	http_www_w3_org_1999_02_22_rdf_syntax_ns_Statement = &Type{
 		ID:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement",
 		Short: "Statement",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsStatement(e)
 		},
@@ -525,6 +543,9 @@ var (
 	http_www_w3_org_2000_01_rdf_schema_Class = &Type{
 		ID:    "http://www.w3.org/2000/01/rdf-schema#Class",
 		Short: "Class",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsClass(e)
 		},
@@ -539,6 +560,9 @@ var (
 	http_www_w3_org_2000_01_rdf_schema_Container = &Type{
 		ID:    "http://www.w3.org/2000/01/rdf-schema#Container",
 		Short: "Container",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsContainer(e)
 		},
@@ -547,6 +571,9 @@ var (
 	http_www_w3_org_2000_01_rdf_schema_ContainerMembershipProperty = &Type{
 		ID:    "http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty",
 		Short: "ContainerMembershipProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_1999_02_22_rdf_syntax_ns_Property,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsContainerMembershipProperty(e)
 		},
@@ -555,6 +582,9 @@ var (
 	http_www_w3_org_2000_01_rdf_schema_Datatype = &Type{
 		ID:    "http://www.w3.org/2000/01/rdf-schema#Datatype",
 		Short: "Datatype",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Class,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsDatatype(e)
 		},
@@ -567,14 +597,18 @@ var (
 	http_www_w3_org_2000_01_rdf_schema_Literal = &Type{
 		ID:    "http://www.w3.org/2000/01/rdf-schema#Literal",
 		Short: "Literal",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsLiteral(e)
 		},
 		Props: []*Prop{},
 	}
 	http_www_w3_org_2000_01_rdf_schema_Resource = &Type{
-		ID:    "http://www.w3.org/2000/01/rdf-schema#Resource",
-		Short: "Resource",
+		ID:         "http://www.w3.org/2000/01/rdf-schema#Resource",
+		Short:      "Resource",
+		SubClassOf: []*Type{},
 		Cast: func(e ld.Entity) ld.Entity {
 			return rdf.AsResource(e)
 		},
@@ -592,11 +626,30 @@ var (
 			http_www_w3_org_2002_07_owl_deprecated,
 			http_www_w3_org_2002_07_owl_members,
 			http_www_w3_org_2002_07_owl_versionInfo,
+			http_www_w3_org_ns_activitystreams_attributedTo,
+			http_www_w3_org_ns_activitystreams_id,
+			http_www_w3_org_ns_activitystreams_mediaType,
+			http_www_w3_org_ns_activitystreams_name,
+			http_www_w3_org_ns_activitystreams_object,
+			http_www_w3_org_ns_activitystreams_preview,
+			http_www_w3_org_ns_ldp_inbox,
+			http_www_w3_org_ns_ldp_pageSequence,
+			https_w3id_org_security_canonicalizationAlgorithm,
+			https_w3id_org_security_expires,
+			https_w3id_org_security_nonce,
+			https_w3id_org_security_password,
+			https_w3id_org_security_publicKeyService,
+			https_w3id_org_security_revoked,
+			https_w3id_org_security_signature,
+			https_w3id_org_security_signatureAlgorithm,
 		},
 	}
 	http_www_w3_org_2002_07_owl_AllDifferent = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#AllDifferent",
 		Short: "AllDifferent",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsAllDifferent(e)
 		},
@@ -607,6 +660,9 @@ var (
 	http_www_w3_org_2002_07_owl_AllDisjointClasses = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#AllDisjointClasses",
 		Short: "AllDisjointClasses",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsAllDisjointClasses(e)
 		},
@@ -615,6 +671,9 @@ var (
 	http_www_w3_org_2002_07_owl_AllDisjointProperties = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#AllDisjointProperties",
 		Short: "AllDisjointProperties",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsAllDisjointProperties(e)
 		},
@@ -623,6 +682,9 @@ var (
 	http_www_w3_org_2002_07_owl_Annotation = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#Annotation",
 		Short: "Annotation",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsAnnotation(e)
 		},
@@ -631,6 +693,9 @@ var (
 	http_www_w3_org_2002_07_owl_AnnotationProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#AnnotationProperty",
 		Short: "AnnotationProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_1999_02_22_rdf_syntax_ns_Property,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsAnnotationProperty(e)
 		},
@@ -639,6 +704,9 @@ var (
 	http_www_w3_org_2002_07_owl_AsymmetricProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#AsymmetricProperty",
 		Short: "AsymmetricProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_ObjectProperty,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsAsymmetricProperty(e)
 		},
@@ -647,6 +715,9 @@ var (
 	http_www_w3_org_2002_07_owl_Axiom = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#Axiom",
 		Short: "Axiom",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsAxiom(e)
 		},
@@ -655,6 +726,9 @@ var (
 	http_www_w3_org_2002_07_owl_Class = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#Class",
 		Short: "Class",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Class,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsClass(e)
 		},
@@ -668,6 +742,9 @@ var (
 	http_www_w3_org_2002_07_owl_DataRange = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#DataRange",
 		Short: "DataRange",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Datatype,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsDataRange(e)
 		},
@@ -676,6 +753,9 @@ var (
 	http_www_w3_org_2002_07_owl_DatatypeProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#DatatypeProperty",
 		Short: "DatatypeProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_1999_02_22_rdf_syntax_ns_Property,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsDatatypeProperty(e)
 		},
@@ -684,6 +764,9 @@ var (
 	http_www_w3_org_2002_07_owl_DeprecatedClass = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#DeprecatedClass",
 		Short: "DeprecatedClass",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Class,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsDeprecatedClass(e)
 		},
@@ -692,6 +775,9 @@ var (
 	http_www_w3_org_2002_07_owl_DeprecatedProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#DeprecatedProperty",
 		Short: "DeprecatedProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_1999_02_22_rdf_syntax_ns_Property,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsDeprecatedProperty(e)
 		},
@@ -700,6 +786,9 @@ var (
 	http_www_w3_org_2002_07_owl_FunctionalProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#FunctionalProperty",
 		Short: "FunctionalProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_1999_02_22_rdf_syntax_ns_Property,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsFunctionalProperty(e)
 		},
@@ -708,6 +797,9 @@ var (
 	http_www_w3_org_2002_07_owl_InverseFunctionalProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#InverseFunctionalProperty",
 		Short: "InverseFunctionalProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_ObjectProperty,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsInverseFunctionalProperty(e)
 		},
@@ -716,6 +808,9 @@ var (
 	http_www_w3_org_2002_07_owl_IrreflexiveProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#IrreflexiveProperty",
 		Short: "IrreflexiveProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_ObjectProperty,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsIrreflexiveProperty(e)
 		},
@@ -724,6 +819,9 @@ var (
 	http_www_w3_org_2002_07_owl_NamedIndividual = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#NamedIndividual",
 		Short: "NamedIndividual",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_Thing,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsNamedIndividual(e)
 		},
@@ -732,6 +830,9 @@ var (
 	http_www_w3_org_2002_07_owl_NegativePropertyAssertion = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#NegativePropertyAssertion",
 		Short: "NegativePropertyAssertion",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsNegativePropertyAssertion(e)
 		},
@@ -745,6 +846,9 @@ var (
 	http_www_w3_org_2002_07_owl_Nothing = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#Nothing",
 		Short: "Nothing",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_Thing,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsNothing(e)
 		},
@@ -753,6 +857,9 @@ var (
 	http_www_w3_org_2002_07_owl_ObjectProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#ObjectProperty",
 		Short: "ObjectProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_1999_02_22_rdf_syntax_ns_Property,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsObjectProperty(e)
 		},
@@ -764,6 +871,9 @@ var (
 	http_www_w3_org_2002_07_owl_Ontology = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#Ontology",
 		Short: "Ontology",
+		SubClassOf: []*Type{
+			http_www_w3_org_2000_01_rdf_schema_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsOntology(e)
 		},
@@ -778,6 +888,9 @@ var (
 	http_www_w3_org_2002_07_owl_OntologyProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#OntologyProperty",
 		Short: "OntologyProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_1999_02_22_rdf_syntax_ns_Property,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsOntologyProperty(e)
 		},
@@ -786,6 +899,9 @@ var (
 	http_www_w3_org_2002_07_owl_ReflexiveProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#ReflexiveProperty",
 		Short: "ReflexiveProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_ObjectProperty,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsReflexiveProperty(e)
 		},
@@ -794,6 +910,9 @@ var (
 	http_www_w3_org_2002_07_owl_Restriction = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#Restriction",
 		Short: "Restriction",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_Class,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsRestriction(e)
 		},
@@ -817,14 +936,18 @@ var (
 	http_www_w3_org_2002_07_owl_SymmetricProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#SymmetricProperty",
 		Short: "SymmetricProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_ObjectProperty,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsSymmetricProperty(e)
 		},
 		Props: []*Prop{},
 	}
 	http_www_w3_org_2002_07_owl_Thing = &Type{
-		ID:    "http://www.w3.org/2002/07/owl#Thing",
-		Short: "Thing",
+		ID:         "http://www.w3.org/2002/07/owl#Thing",
+		Short:      "Thing",
+		SubClassOf: []*Type{},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsThing(e)
 		},
@@ -835,11 +958,30 @@ var (
 			http_www_w3_org_2002_07_owl_sameAs,
 			http_www_w3_org_2002_07_owl_topDataProperty,
 			http_www_w3_org_2002_07_owl_topObjectProperty,
+			http_www_w3_org_ns_activitystreams_attributedTo,
+			http_www_w3_org_ns_activitystreams_id,
+			http_www_w3_org_ns_activitystreams_mediaType,
+			http_www_w3_org_ns_activitystreams_name,
+			http_www_w3_org_ns_activitystreams_object,
+			http_www_w3_org_ns_activitystreams_preview,
+			http_www_w3_org_ns_ldp_inbox,
+			http_www_w3_org_ns_ldp_pageSequence,
+			https_w3id_org_security_canonicalizationAlgorithm,
+			https_w3id_org_security_expires,
+			https_w3id_org_security_nonce,
+			https_w3id_org_security_password,
+			https_w3id_org_security_publicKeyService,
+			https_w3id_org_security_revoked,
+			https_w3id_org_security_signature,
+			https_w3id_org_security_signatureAlgorithm,
 		},
 	}
 	http_www_w3_org_2002_07_owl_TransitiveProperty = &Type{
 		ID:    "http://www.w3.org/2002/07/owl#TransitiveProperty",
 		Short: "TransitiveProperty",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_ObjectProperty,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return owl.AsTransitiveProperty(e)
 		},
@@ -848,6 +990,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Accept = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Accept",
 		Short: "Accept",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsAccept(e)
 		},
@@ -856,6 +1001,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Activity = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Activity",
 		Short: "Activity",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsActivity(e)
 		},
@@ -871,6 +1019,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Add = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Add",
 		Short: "Add",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsAdd(e)
 		},
@@ -879,6 +1030,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Announce = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Announce",
 		Short: "Announce",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsAnnounce(e)
 		},
@@ -887,6 +1041,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Application = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Application",
 		Short: "Application",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsApplication(e)
 		},
@@ -895,6 +1052,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Arrive = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Arrive",
 		Short: "Arrive",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_IntransitiveActivity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsArrive(e)
 		},
@@ -903,6 +1063,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Article = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Article",
 		Short: "Article",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsArticle(e)
 		},
@@ -911,6 +1074,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Audio = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Audio",
 		Short: "Audio",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Document,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsAudio(e)
 		},
@@ -919,6 +1085,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Block = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Block",
 		Short: "Block",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Ignore,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsBlock(e)
 		},
@@ -927,6 +1096,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Collection = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Collection",
 		Short: "Collection",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsCollection(e)
 		},
@@ -941,6 +1113,9 @@ var (
 	http_www_w3_org_ns_activitystreams_CollectionPage = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#CollectionPage",
 		Short: "CollectionPage",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Collection,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsCollectionPage(e)
 		},
@@ -953,6 +1128,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Create = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Create",
 		Short: "Create",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsCreate(e)
 		},
@@ -961,6 +1139,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Delete = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Delete",
 		Short: "Delete",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsDelete(e)
 		},
@@ -969,6 +1150,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Dislike = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Dislike",
 		Short: "Dislike",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsDislike(e)
 		},
@@ -977,6 +1161,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Document = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Document",
 		Short: "Document",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsDocument(e)
 		},
@@ -985,6 +1172,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Event = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Event",
 		Short: "Event",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsEvent(e)
 		},
@@ -993,6 +1183,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Flag = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Flag",
 		Short: "Flag",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsFlag(e)
 		},
@@ -1001,6 +1194,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Follow = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Follow",
 		Short: "Follow",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsFollow(e)
 		},
@@ -1009,6 +1205,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Group = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Group",
 		Short: "Group",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsGroup(e)
 		},
@@ -1017,6 +1216,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Ignore = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Ignore",
 		Short: "Ignore",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsIgnore(e)
 		},
@@ -1025,6 +1227,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Image = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Image",
 		Short: "Image",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Document,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsImage(e)
 		},
@@ -1033,6 +1238,9 @@ var (
 	http_www_w3_org_ns_activitystreams_IntransitiveActivity = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#IntransitiveActivity",
 		Short: "IntransitiveActivity",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsIntransitiveActivity(e)
 		},
@@ -1041,6 +1249,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Invite = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Invite",
 		Short: "Invite",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Offer,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsInvite(e)
 		},
@@ -1049,6 +1260,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Join = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Join",
 		Short: "Join",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsJoin(e)
 		},
@@ -1057,6 +1271,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Leave = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Leave",
 		Short: "Leave",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsLeave(e)
 		},
@@ -1065,28 +1282,51 @@ var (
 	http_www_w3_org_ns_activitystreams_Like = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Like",
 		Short: "Like",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsLike(e)
 		},
 		Props: []*Prop{},
 	}
 	http_www_w3_org_ns_activitystreams_Link = &Type{
-		ID:    "http://www.w3.org/ns/activitystreams#Link",
-		Short: "Link",
+		ID:         "http://www.w3.org/ns/activitystreams#Link",
+		Short:      "Link",
+		SubClassOf: []*Type{},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsLink(e)
 		},
 		Props: []*Prop{
+			http_www_w3_org_ns_activitystreams_attributedTo,
 			http_www_w3_org_ns_activitystreams_height,
 			http_www_w3_org_ns_activitystreams_href,
 			http_www_w3_org_ns_activitystreams_hreflang,
+			http_www_w3_org_ns_activitystreams_id,
+			http_www_w3_org_ns_activitystreams_mediaType,
+			http_www_w3_org_ns_activitystreams_name,
+			http_www_w3_org_ns_activitystreams_object,
+			http_www_w3_org_ns_activitystreams_preview,
 			http_www_w3_org_ns_activitystreams_rel,
 			http_www_w3_org_ns_activitystreams_width,
+			http_www_w3_org_ns_ldp_inbox,
+			http_www_w3_org_ns_ldp_pageSequence,
+			https_w3id_org_security_canonicalizationAlgorithm,
+			https_w3id_org_security_expires,
+			https_w3id_org_security_nonce,
+			https_w3id_org_security_password,
+			https_w3id_org_security_publicKeyService,
+			https_w3id_org_security_revoked,
+			https_w3id_org_security_signature,
+			https_w3id_org_security_signatureAlgorithm,
 		},
 	}
 	http_www_w3_org_ns_activitystreams_Listen = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Listen",
 		Short: "Listen",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsListen(e)
 		},
@@ -1095,6 +1335,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Mention = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Mention",
 		Short: "Mention",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Link,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsMention(e)
 		},
@@ -1103,6 +1346,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Move = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Move",
 		Short: "Move",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsMove(e)
 		},
@@ -1111,20 +1357,25 @@ var (
 	http_www_w3_org_ns_activitystreams_Note = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Note",
 		Short: "Note",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsNote(e)
 		},
 		Props: []*Prop{},
 	}
 	http_www_w3_org_ns_activitystreams_Object = &Type{
-		ID:    "http://www.w3.org/ns/activitystreams#Object",
-		Short: "Object",
+		ID:         "http://www.w3.org/ns/activitystreams#Object",
+		Short:      "Object",
+		SubClassOf: []*Type{},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsObject(e)
 		},
 		Props: []*Prop{
 			http_www_w3_org_ns_activitystreams_attachment,
 			http_www_w3_org_ns_activitystreams_attachments,
+			http_www_w3_org_ns_activitystreams_attributedTo,
 			http_www_w3_org_ns_activitystreams_audience,
 			http_www_w3_org_ns_activitystreams_author,
 			http_www_w3_org_ns_activitystreams_bcc,
@@ -1137,10 +1388,15 @@ var (
 			http_www_w3_org_ns_activitystreams_endTime,
 			http_www_w3_org_ns_activitystreams_generator,
 			http_www_w3_org_ns_activitystreams_icon,
+			http_www_w3_org_ns_activitystreams_id,
 			http_www_w3_org_ns_activitystreams_image,
 			http_www_w3_org_ns_activitystreams_inReplyTo,
 			http_www_w3_org_ns_activitystreams_location,
+			http_www_w3_org_ns_activitystreams_mediaType,
+			http_www_w3_org_ns_activitystreams_name,
+			http_www_w3_org_ns_activitystreams_object,
 			http_www_w3_org_ns_activitystreams_objectType,
+			http_www_w3_org_ns_activitystreams_preview,
 			http_www_w3_org_ns_activitystreams_provider,
 			http_www_w3_org_ns_activitystreams_published,
 			http_www_w3_org_ns_activitystreams_rating,
@@ -1153,27 +1409,62 @@ var (
 			http_www_w3_org_ns_activitystreams_updated,
 			http_www_w3_org_ns_activitystreams_upstreamDuplicates,
 			http_www_w3_org_ns_activitystreams_url,
+			http_www_w3_org_ns_ldp_inbox,
+			http_www_w3_org_ns_ldp_pageSequence,
+			https_w3id_org_security_canonicalizationAlgorithm,
+			https_w3id_org_security_expires,
+			https_w3id_org_security_nonce,
+			https_w3id_org_security_password,
+			https_w3id_org_security_publicKeyService,
+			https_w3id_org_security_revoked,
+			https_w3id_org_security_signature,
+			https_w3id_org_security_signatureAlgorithm,
 		},
 	}
 	http_www_w3_org_ns_activitystreams_Offer = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Offer",
 		Short: "Offer",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsOffer(e)
 		},
 		Props: []*Prop{},
 	}
 	http_www_w3_org_ns_activitystreams_OrderedCollection = &Type{
-		ID:    "http://www.w3.org/ns/activitystreams#OrderedCollection",
-		Short: "OrderedCollection",
+		ID:         "http://www.w3.org/ns/activitystreams#OrderedCollection",
+		Short:      "OrderedCollection",
+		SubClassOf: []*Type{},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsOrderedCollection(e)
 		},
-		Props: []*Prop{},
+		Props: []*Prop{
+			http_www_w3_org_ns_activitystreams_attributedTo,
+			http_www_w3_org_ns_activitystreams_id,
+			http_www_w3_org_ns_activitystreams_mediaType,
+			http_www_w3_org_ns_activitystreams_name,
+			http_www_w3_org_ns_activitystreams_object,
+			http_www_w3_org_ns_activitystreams_preview,
+			http_www_w3_org_ns_ldp_inbox,
+			http_www_w3_org_ns_ldp_pageSequence,
+			https_w3id_org_security_canonicalizationAlgorithm,
+			https_w3id_org_security_expires,
+			https_w3id_org_security_nonce,
+			https_w3id_org_security_password,
+			https_w3id_org_security_publicKeyService,
+			https_w3id_org_security_revoked,
+			https_w3id_org_security_signature,
+			https_w3id_org_security_signatureAlgorithm,
+		},
 	}
 	http_www_w3_org_ns_activitystreams_OrderedCollectionPage = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#OrderedCollectionPage",
 		Short: "OrderedCollectionPage",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_CollectionPage,
+			http_www_w3_org_ns_activitystreams_OrderedCollection,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsOrderedCollectionPage(e)
 		},
@@ -1182,16 +1473,37 @@ var (
 		},
 	}
 	http_www_w3_org_ns_activitystreams_OrderedItems = &Type{
-		ID:    "http://www.w3.org/ns/activitystreams#OrderedItems",
-		Short: "OrderedItems",
+		ID:         "http://www.w3.org/ns/activitystreams#OrderedItems",
+		Short:      "OrderedItems",
+		SubClassOf: []*Type{},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsOrderedItems(e)
 		},
-		Props: []*Prop{},
+		Props: []*Prop{
+			http_www_w3_org_ns_activitystreams_attributedTo,
+			http_www_w3_org_ns_activitystreams_id,
+			http_www_w3_org_ns_activitystreams_mediaType,
+			http_www_w3_org_ns_activitystreams_name,
+			http_www_w3_org_ns_activitystreams_object,
+			http_www_w3_org_ns_activitystreams_preview,
+			http_www_w3_org_ns_ldp_inbox,
+			http_www_w3_org_ns_ldp_pageSequence,
+			https_w3id_org_security_canonicalizationAlgorithm,
+			https_w3id_org_security_expires,
+			https_w3id_org_security_nonce,
+			https_w3id_org_security_password,
+			https_w3id_org_security_publicKeyService,
+			https_w3id_org_security_revoked,
+			https_w3id_org_security_signature,
+			https_w3id_org_security_signatureAlgorithm,
+		},
 	}
 	http_www_w3_org_ns_activitystreams_Organization = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Organization",
 		Short: "Organization",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsOrganization(e)
 		},
@@ -1200,6 +1512,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Page = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Page",
 		Short: "Page",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsPage(e)
 		},
@@ -1208,6 +1523,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Person = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Person",
 		Short: "Person",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsPerson(e)
 		},
@@ -1216,6 +1534,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Place = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Place",
 		Short: "Place",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsPlace(e)
 		},
@@ -1231,6 +1552,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Profile = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Profile",
 		Short: "Profile",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsProfile(e)
 		},
@@ -1241,6 +1565,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Question = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Question",
 		Short: "Question",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_IntransitiveActivity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsQuestion(e)
 		},
@@ -1252,6 +1579,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Read = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Read",
 		Short: "Read",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsRead(e)
 		},
@@ -1260,6 +1590,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Reject = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Reject",
 		Short: "Reject",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsReject(e)
 		},
@@ -1268,6 +1601,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Relationship = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Relationship",
 		Short: "Relationship",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsRelationship(e)
 		},
@@ -1279,6 +1615,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Remove = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Remove",
 		Short: "Remove",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsRemove(e)
 		},
@@ -1287,6 +1626,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Service = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Service",
 		Short: "Service",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsService(e)
 		},
@@ -1295,6 +1637,9 @@ var (
 	http_www_w3_org_ns_activitystreams_TentativeAccept = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#TentativeAccept",
 		Short: "TentativeAccept",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Accept,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsTentativeAccept(e)
 		},
@@ -1303,6 +1648,9 @@ var (
 	http_www_w3_org_ns_activitystreams_TentativeReject = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#TentativeReject",
 		Short: "TentativeReject",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Reject,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsTentativeReject(e)
 		},
@@ -1311,6 +1659,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Tombstone = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Tombstone",
 		Short: "Tombstone",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Object,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsTombstone(e)
 		},
@@ -1322,6 +1673,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Travel = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Travel",
 		Short: "Travel",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_IntransitiveActivity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsTravel(e)
 		},
@@ -1330,6 +1684,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Undo = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Undo",
 		Short: "Undo",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsUndo(e)
 		},
@@ -1338,6 +1695,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Update = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Update",
 		Short: "Update",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsUpdate(e)
 		},
@@ -1346,6 +1706,9 @@ var (
 	http_www_w3_org_ns_activitystreams_Video = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#Video",
 		Short: "Video",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Document,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsVideo(e)
 		},
@@ -1354,6 +1717,9 @@ var (
 	http_www_w3_org_ns_activitystreams_View = &Type{
 		ID:    "http://www.w3.org/ns/activitystreams#View",
 		Short: "View",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_activitystreams_Activity,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return as.AsView(e)
 		},
@@ -1362,6 +1728,9 @@ var (
 	http_www_w3_org_ns_ldp_BasicContainer = &Type{
 		ID:    "http://www.w3.org/ns/ldp#BasicContainer",
 		Short: "BasicContainer",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_ldp_Container,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return ldp.AsBasicContainer(e)
 		},
@@ -1370,6 +1739,9 @@ var (
 	http_www_w3_org_ns_ldp_Container = &Type{
 		ID:    "http://www.w3.org/ns/ldp#Container",
 		Short: "Container",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_ldp_RDFSource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return ldp.AsContainer(e)
 		},
@@ -1384,6 +1756,9 @@ var (
 	http_www_w3_org_ns_ldp_DirectContainer = &Type{
 		ID:    "http://www.w3.org/ns/ldp#DirectContainer",
 		Short: "DirectContainer",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_ldp_Container,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return ldp.AsDirectContainer(e)
 		},
@@ -1392,6 +1767,9 @@ var (
 	http_www_w3_org_ns_ldp_IndirectContainer = &Type{
 		ID:    "http://www.w3.org/ns/ldp#IndirectContainer",
 		Short: "IndirectContainer",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_ldp_Container,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return ldp.AsIndirectContainer(e)
 		},
@@ -1400,55 +1778,115 @@ var (
 	http_www_w3_org_ns_ldp_NonRDFSource = &Type{
 		ID:    "http://www.w3.org/ns/ldp#NonRDFSource",
 		Short: "NonRDFSource",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_ldp_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return ldp.AsNonRDFSource(e)
 		},
 		Props: []*Prop{},
 	}
 	http_www_w3_org_ns_ldp_Page = &Type{
-		ID:    "http://www.w3.org/ns/ldp#Page",
-		Short: "Page",
+		ID:         "http://www.w3.org/ns/ldp#Page",
+		Short:      "Page",
+		SubClassOf: []*Type{},
 		Cast: func(e ld.Entity) ld.Entity {
 			return ldp.AsPage(e)
 		},
 		Props: []*Prop{
+			http_www_w3_org_ns_activitystreams_attributedTo,
+			http_www_w3_org_ns_activitystreams_id,
+			http_www_w3_org_ns_activitystreams_mediaType,
+			http_www_w3_org_ns_activitystreams_name,
+			http_www_w3_org_ns_activitystreams_object,
+			http_www_w3_org_ns_activitystreams_preview,
+			http_www_w3_org_ns_ldp_inbox,
+			http_www_w3_org_ns_ldp_pageSequence,
 			http_www_w3_org_ns_ldp_pageSortCriteria,
+			https_w3id_org_security_canonicalizationAlgorithm,
+			https_w3id_org_security_expires,
+			https_w3id_org_security_nonce,
+			https_w3id_org_security_password,
+			https_w3id_org_security_publicKeyService,
+			https_w3id_org_security_revoked,
+			https_w3id_org_security_signature,
+			https_w3id_org_security_signatureAlgorithm,
 		},
 	}
 	http_www_w3_org_ns_ldp_PageSortCriterion = &Type{
-		ID:    "http://www.w3.org/ns/ldp#PageSortCriterion",
-		Short: "PageSortCriterion",
+		ID:         "http://www.w3.org/ns/ldp#PageSortCriterion",
+		Short:      "PageSortCriterion",
+		SubClassOf: []*Type{},
 		Cast: func(e ld.Entity) ld.Entity {
 			return ldp.AsPageSortCriterion(e)
 		},
 		Props: []*Prop{
+			http_www_w3_org_ns_activitystreams_attributedTo,
+			http_www_w3_org_ns_activitystreams_id,
+			http_www_w3_org_ns_activitystreams_mediaType,
+			http_www_w3_org_ns_activitystreams_name,
+			http_www_w3_org_ns_activitystreams_object,
+			http_www_w3_org_ns_activitystreams_preview,
+			http_www_w3_org_ns_ldp_inbox,
+			http_www_w3_org_ns_ldp_pageSequence,
 			http_www_w3_org_ns_ldp_pageSortCollation,
 			http_www_w3_org_ns_ldp_pageSortOrder,
 			http_www_w3_org_ns_ldp_pageSortPredicate,
+			https_w3id_org_security_canonicalizationAlgorithm,
+			https_w3id_org_security_expires,
+			https_w3id_org_security_nonce,
+			https_w3id_org_security_password,
+			https_w3id_org_security_publicKeyService,
+			https_w3id_org_security_revoked,
+			https_w3id_org_security_signature,
+			https_w3id_org_security_signatureAlgorithm,
 		},
 	}
 	http_www_w3_org_ns_ldp_RDFSource = &Type{
 		ID:    "http://www.w3.org/ns/ldp#RDFSource",
 		Short: "RDFSource",
+		SubClassOf: []*Type{
+			http_www_w3_org_ns_ldp_Resource,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return ldp.AsRDFSource(e)
 		},
 		Props: []*Prop{},
 	}
 	http_www_w3_org_ns_ldp_Resource = &Type{
-		ID:    "http://www.w3.org/ns/ldp#Resource",
-		Short: "Resource",
+		ID:         "http://www.w3.org/ns/ldp#Resource",
+		Short:      "Resource",
+		SubClassOf: []*Type{},
 		Cast: func(e ld.Entity) ld.Entity {
 			return ldp.AsResource(e)
 		},
 		Props: []*Prop{
+			http_www_w3_org_ns_activitystreams_attributedTo,
+			http_www_w3_org_ns_activitystreams_id,
+			http_www_w3_org_ns_activitystreams_mediaType,
+			http_www_w3_org_ns_activitystreams_name,
+			http_www_w3_org_ns_activitystreams_object,
+			http_www_w3_org_ns_activitystreams_preview,
 			http_www_w3_org_ns_ldp_constrainedBy,
+			http_www_w3_org_ns_ldp_inbox,
 			http_www_w3_org_ns_ldp_member,
+			http_www_w3_org_ns_ldp_pageSequence,
+			https_w3id_org_security_canonicalizationAlgorithm,
+			https_w3id_org_security_expires,
+			https_w3id_org_security_nonce,
+			https_w3id_org_security_password,
+			https_w3id_org_security_publicKeyService,
+			https_w3id_org_security_revoked,
+			https_w3id_org_security_signature,
+			https_w3id_org_security_signatureAlgorithm,
 		},
 	}
 	https_w3id_org_security_Digest = &Type{
 		ID:    "https://w3id.org/security#Digest",
 		Short: "Digest",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_Thing,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return sec.AsDigest(e)
 		},
@@ -1460,6 +1898,9 @@ var (
 	https_w3id_org_security_EncryptedMessage = &Type{
 		ID:    "https://w3id.org/security#EncryptedMessage",
 		Short: "EncryptedMessage",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_Thing,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return sec.AsEncryptedMessage(e)
 		},
@@ -1475,6 +1916,9 @@ var (
 	https_w3id_org_security_GraphSignature2012 = &Type{
 		ID:    "https://w3id.org/security#GraphSignature2012",
 		Short: "GraphSignature2012",
+		SubClassOf: []*Type{
+			https_w3id_org_security_Signature,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return sec.AsGraphSignature2012(e)
 		},
@@ -1483,6 +1927,9 @@ var (
 	https_w3id_org_security_Key = &Type{
 		ID:    "https://w3id.org/security#Key",
 		Short: "Key",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_Thing,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return sec.AsKey(e)
 		},
@@ -1495,6 +1942,9 @@ var (
 	https_w3id_org_security_LinkedDataSignature2015 = &Type{
 		ID:    "https://w3id.org/security#LinkedDataSignature2015",
 		Short: "LinkedDataSignature2015",
+		SubClassOf: []*Type{
+			https_w3id_org_security_Signature,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return sec.AsLinkedDataSignature2015(e)
 		},
@@ -1503,6 +1953,9 @@ var (
 	https_w3id_org_security_LinkedDataSignature2016 = &Type{
 		ID:    "https://w3id.org/security#LinkedDataSignature2016",
 		Short: "LinkedDataSignature2016",
+		SubClassOf: []*Type{
+			https_w3id_org_security_Signature,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return sec.AsLinkedDataSignature2016(e)
 		},
@@ -1511,6 +1964,9 @@ var (
 	https_w3id_org_security_Signature = &Type{
 		ID:    "https://w3id.org/security#Signature",
 		Short: "Signature",
+		SubClassOf: []*Type{
+			http_www_w3_org_2002_07_owl_Thing,
+		},
 		Cast: func(e ld.Entity) ld.Entity {
 			return sec.AsSignature(e)
 		},
