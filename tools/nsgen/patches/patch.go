@@ -15,5 +15,5 @@ func patch(id, key, subkey, value string) *ld.Object {
 }
 
 func comment(typ, comment string) *ld.Object {
-	return patch(typ, rdf.PropComment, "@value", comment)
+	return patch(typ, rdf.Prop_Comment.ID, "@value", comment)
 }

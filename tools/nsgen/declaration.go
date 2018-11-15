@@ -52,13 +52,13 @@ func (t Declaration) FuncName() string {
 }
 
 func (t Declaration) RDFTypes() []string {
-	return ld.ObjectIDs(ld.ToObjects(t.V[rdf.PropType]))
+	return ld.ObjectIDs(ld.ToObjects(t.V[rdf.Prop_Type.ID]))
 }
 
 func (t Declaration) Domain() string {
-	return ld.ToObject(t.V[rdf.PropDomain]).ID()
+	return ld.ToObject(t.V[rdf.Prop_Domain.ID]).ID()
 }
 
 func (t Declaration) SubClassOf() []string {
-	return ld.ObjectIDs(ld.ToObjects(t.V[rdf.PropSubClassOf]))
+	return ld.ObjectIDs(ld.ToObjects(t.V[rdf.Prop_SubClassOf.ID]))
 }

@@ -13,7 +13,7 @@ type Alt struct{ Container }
 func AsAlt(e ld.Entity) Alt { return Alt{AsContainer(e)} }
 
 // Does the object quack like a(n) Alt?
-func IsAlt(e ld.Entity) bool { return ld.Is(e, TypeAlt) }
+func IsAlt(e ld.Entity) bool { return ld.Is(e, Class_Alt.ID) }
 
 // The class of unordered containers.
 type Bag struct{ Container }
@@ -22,7 +22,7 @@ type Bag struct{ Container }
 func AsBag(e ld.Entity) Bag { return Bag{AsContainer(e)} }
 
 // Does the object quack like a(n) Bag?
-func IsBag(e ld.Entity) bool { return ld.Is(e, TypeBag) }
+func IsBag(e ld.Entity) bool { return ld.Is(e, Class_Bag.ID) }
 
 // The class of RDF Lists.
 type List struct{ Resource }
@@ -31,7 +31,7 @@ type List struct{ Resource }
 func AsList(e ld.Entity) List { return List{AsResource(e)} }
 
 // Does the object quack like a(n) List?
-func IsList(e ld.Entity) bool { return ld.Is(e, TypeList) }
+func IsList(e ld.Entity) bool { return ld.Is(e, Class_List.ID) }
 
 // The first item in the subject RDF list.
 func (obj List) First() interface{} { return GetFirst(obj) }
@@ -50,7 +50,7 @@ type Property struct{ Resource }
 func AsProperty(e ld.Entity) Property { return Property{AsResource(e)} }
 
 // Does the object quack like a(n) Property?
-func IsProperty(e ld.Entity) bool { return ld.Is(e, TypeProperty) }
+func IsProperty(e ld.Entity) bool { return ld.Is(e, Class_Property.ID) }
 
 // A domain of the subject property.
 func (obj Property) Domain() interface{} { return GetDomain(obj) }
@@ -74,7 +74,7 @@ type Seq struct{ Container }
 func AsSeq(e ld.Entity) Seq { return Seq{AsContainer(e)} }
 
 // Does the object quack like a(n) Seq?
-func IsSeq(e ld.Entity) bool { return ld.Is(e, TypeSeq) }
+func IsSeq(e ld.Entity) bool { return ld.Is(e, Class_Seq.ID) }
 
 // The class of RDF statements.
 type Statement struct{ Resource }
@@ -83,7 +83,7 @@ type Statement struct{ Resource }
 func AsStatement(e ld.Entity) Statement { return Statement{AsResource(e)} }
 
 // Does the object quack like a(n) Statement?
-func IsStatement(e ld.Entity) bool { return ld.Is(e, TypeStatement) }
+func IsStatement(e ld.Entity) bool { return ld.Is(e, Class_Statement.ID) }
 
 // The object of the subject RDF statement.
 func (obj Statement) Object() interface{} { return GetObject(obj) }
@@ -107,7 +107,7 @@ type Class struct{ Resource }
 func AsClass(e ld.Entity) Class { return Class{AsResource(e)} }
 
 // Does the object quack like a(n) Class?
-func IsClass(e ld.Entity) bool { return ld.Is(e, TypeClass) }
+func IsClass(e ld.Entity) bool { return ld.Is(e, Class_Class.ID) }
 
 // The subject is a subclass of a class.
 func (obj Class) SubClassOf() interface{} { return GetSubClassOf(obj) }
@@ -121,7 +121,7 @@ type Container struct{ Resource }
 func AsContainer(e ld.Entity) Container { return Container{AsResource(e)} }
 
 // Does the object quack like a(n) Container?
-func IsContainer(e ld.Entity) bool { return ld.Is(e, TypeContainer) }
+func IsContainer(e ld.Entity) bool { return ld.Is(e, Class_Container.ID) }
 
 // The class of container membership properties, rdf:_1, rdf:_2, ...,
 // all of which are sub-properties of 'member'.
@@ -133,7 +133,9 @@ func AsContainerMembershipProperty(e ld.Entity) ContainerMembershipProperty {
 }
 
 // Does the object quack like a(n) ContainerMembershipProperty?
-func IsContainerMembershipProperty(e ld.Entity) bool { return ld.Is(e, TypeContainerMembershipProperty) }
+func IsContainerMembershipProperty(e ld.Entity) bool {
+	return ld.Is(e, Class_ContainerMembershipProperty.ID)
+}
 
 // The class of RDF datatypes.
 type Datatype struct{ Class }
@@ -142,7 +144,7 @@ type Datatype struct{ Class }
 func AsDatatype(e ld.Entity) Datatype { return Datatype{AsClass(e)} }
 
 // Does the object quack like a(n) Datatype?
-func IsDatatype(e ld.Entity) bool { return ld.Is(e, TypeDatatype) }
+func IsDatatype(e ld.Entity) bool { return ld.Is(e, Class_Datatype.ID) }
 
 // The class of literal values, eg. textual strings and integers.
 type Literal struct{ Resource }
@@ -151,7 +153,7 @@ type Literal struct{ Resource }
 func AsLiteral(e ld.Entity) Literal { return Literal{AsResource(e)} }
 
 // Does the object quack like a(n) Literal?
-func IsLiteral(e ld.Entity) bool { return ld.Is(e, TypeLiteral) }
+func IsLiteral(e ld.Entity) bool { return ld.Is(e, Class_Literal.ID) }
 
 // The class resource, everything.
 type Resource struct{ o *ld.Object }
@@ -160,7 +162,7 @@ type Resource struct{ o *ld.Object }
 func AsResource(e ld.Entity) Resource { return Resource{o: e.Obj()} }
 
 // Does the object quack like a(n) Resource?
-func IsResource(e ld.Entity) bool { return ld.Is(e, TypeResource) }
+func IsResource(e ld.Entity) bool { return ld.Is(e, Class_Resource.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Resource) Obj() *ld.Object { return obj.o }
