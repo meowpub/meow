@@ -52,30 +52,6 @@ var (
 			"http://www.w3.org/2000/01/rdf-schema#Resource":                    Class_Resource,
 		},
 	}
-	OWL = &meta.Namespace{
-		ID:    "http://www.w3.org/2002/07/owl#",
-		Short: "owl",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
-	AS = &meta.Namespace{
-		ID:    "http://www.w3.org/ns/activitystreams#",
-		Short: "as",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
-	LDP = &meta.Namespace{
-		ID:    "http://www.w3.org/ns/ldp#",
-		Short: "ldp",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
-	SEC = &meta.Namespace{
-		ID:    "https://w3id.org/security#",
-		Short: "sec",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
 
 	// The first item in the subject RDF list.
 	Prop_First = &meta.Prop{

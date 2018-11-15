@@ -8,30 +8,6 @@ import (
 )
 
 var (
-	RDF = &meta.Namespace{
-		ID:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-		Short: "rdf",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
-	RDFS = &meta.Namespace{
-		ID:    "http://www.w3.org/2000/01/rdf-schema#",
-		Short: "rdfs",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
-	OWL = &meta.Namespace{
-		ID:    "http://www.w3.org/2002/07/owl#",
-		Short: "owl",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
-	AS = &meta.Namespace{
-		ID:    "http://www.w3.org/ns/activitystreams#",
-		Short: "as",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
 	LDP = &meta.Namespace{
 		ID:    "http://www.w3.org/ns/ldp#",
 		Short: "ldp",
@@ -61,12 +37,6 @@ var (
 			"http://www.w3.org/ns/ldp#RDFSource":         Class_RDFSource,
 			"http://www.w3.org/ns/ldp#Resource":          Class_Resource,
 		},
-	}
-	SEC = &meta.Namespace{
-		ID:    "https://w3id.org/security#",
-		Short: "sec",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
 	}
 
 	// Links a resource with constraints that the server requires requests like creation and update to conform to.

@@ -8,24 +8,6 @@ import (
 )
 
 var (
-	RDF = &meta.Namespace{
-		ID:    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-		Short: "rdf",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
-	RDFS = &meta.Namespace{
-		ID:    "http://www.w3.org/2000/01/rdf-schema#",
-		Short: "rdfs",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
-	OWL = &meta.Namespace{
-		ID:    "http://www.w3.org/2002/07/owl#",
-		Short: "owl",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
 	AS = &meta.Namespace{
 		ID:    "http://www.w3.org/ns/activitystreams#",
 		Short: "as",
@@ -157,18 +139,6 @@ var (
 			"http://www.w3.org/ns/activitystreams#Video":                 Class_Video,
 			"http://www.w3.org/ns/activitystreams#View":                  Class_View,
 		},
-	}
-	LDP = &meta.Namespace{
-		ID:    "http://www.w3.org/ns/ldp#",
-		Short: "ldp",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
-	}
-	SEC = &meta.Namespace{
-		ID:    "https://w3id.org/security#",
-		Short: "sec",
-		Props: []*meta.Prop{},
-		Types: map[string]*meta.Type{},
 	}
 
 	// Specifies the accuracy around the point established by the longitude and latitude

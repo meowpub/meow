@@ -172,7 +172,7 @@ import (
 	"github.com/meowpub/meow/ld/ns/{{.Package}}" {{end}}
 )
 
-var ( {{range $i, $ns := .Namespaces}}
+var ( {{range $i, $ns := .Namespaces}} {{if eq $ns.Package $.Package}}
 	{{$ns.Short|toupper}} = &meta.Namespace{
 	ID: "{{$ns.Long}}",
 	Short: "{{$ns.Short}}",
@@ -185,7 +185,7 @@ var ( {{range $i, $ns := .Namespaces}}
 	{{- end}}{{end}}
 	},
 	}
-{{- end}}
+{{- end}}{{end}}
 
 {{range .Properties}}
 	{{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
