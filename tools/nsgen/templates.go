@@ -167,25 +167,52 @@ var NSTemplate = template.Must(template.New("ns.gen.go").Funcs(Funcs).Parse(`
 package {{.Package}}
 
 import (
-	"github.com/meowpub/meow/ld" {{range .Namespaces}}
+	"github.com/meowpub/meow/ld"
+	"github.com/meowpub/meow/ld/ns/meta" {{range .Namespaces}}
 	"github.com/meowpub/meow/ld/ns/{{.Package}}" {{end}}
 )
 
-{{if .Properties}}
-const ( {{range .Properties}}
+var ( {{range $i, $ns := .Namespaces}}
+	{{$ns.Short|toupper}} = &meta.Namespace{
+	ID: "{{$ns.Long}}",
+	Short: "{{$ns.Short}}",
+	Props: []*meta.Prop{ {{range $.Properties}}{{if eq .NS.Long $ns.Long}}
+			Prop_{{.TypeName}},
+		{{- end}}{{end}}
+		},
+	Types: map[string]*meta.Type{ {{range $.Classes}}{{if eq .NS.Long $ns.Long}}
+	"{{.ID}}": Class_{{.TypeName}},
+	{{- end}}{{end}}
+	},
+	}
+{{- end}}
+
+{{range .Properties}}
 	{{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
-	Prop{{.TypeName}} = "{{.ID}}"
-	{{end}}
-)
+	Prop_{{.TypeName}} = &meta.Prop{
+		ID: "{{.ID}}",
+		Short: "{{.Short}}",
+		Comment: "{{.Get "http://www.w3.org/2000/01/rdf-schema#comment"|quotesafe}}",
+	}
 {{end}}
 
-{{if .Classes}}
-const ( {{range .Classes}}
+{{range .Classes}}
 	{{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
-	Type{{.TypeName}} = "{{.ID}}"
-	{{end}}
-)
+	Class_{{.TypeName}} = &meta.Type{
+		ID: "{{.ID}}",
+		Short: "{{.Short}}",
+		Cast: func(e ld.Entity) ld.Entity { return As{{.TypeName}}(e) },
+		SubClassOf: []*meta.Type{ {{range .SubClassOf}}
+			{{$.ResolvePrefix . "Class_"}},
+		{{- end}}
+		},
+		Props: []*meta.Prop{ {{range $.PropertiesOf .}}
+			Prop_{{.TypeName}},
+		{{- end}}
+		},
+	}
 {{end}}
+)
 
 {{if .Constants}}
 const ( {{range .Constants}}
@@ -212,9 +239,9 @@ import (
 
 {{range .Properties}}
 {{comment (.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
-func Get{{.TypeName}}(e ld.Entity) interface{} { return e.Get(Prop{{.TypeName}}) }
+func Get{{.TypeName}}(e ld.Entity) interface{} { return e.Get(Prop_{{.TypeName}}.ID) }
 
-func Set{{.TypeName}}(e ld.Entity, v interface{}) { e.Set(Prop{{.TypeName}}, v) }
+func Set{{.TypeName}}(e ld.Entity, v interface{}) { e.Set(Prop_{{.TypeName}}.ID, v) }
 {{end}}
 `[1:]))
 
@@ -236,7 +263,7 @@ type {{$cls.TypeName}} struct { {{range .SubClassOf}}{{$.Resolve .}}; {{else}}o 
 func As{{$cls.TypeName}}(e ld.Entity) {{$cls.TypeName}} { return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(e),{{else}}o: e.Obj(){{end}} } }
 
 // Does the object quack like a(n) {{.TypeName}}?
-func Is{{$cls.TypeName}}(e ld.Entity) bool { return ld.Is(e, Type{{.TypeName}}) }
+func Is{{$cls.TypeName}}(e ld.Entity) bool { return ld.Is(e, Class_{{.TypeName}}.ID) }
 
 {{if not .SubClassOf}}
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
@@ -292,59 +319,18 @@ var IndexTemplate = template.Must(template.New("index.gen.go").Funcs(Funcs).Pars
 package ns
 
 import (
-	"github.com/meowpub/meow/ld" {{range .Namespaces}}
+	"github.com/meowpub/meow/ld"
+	"github.com/meowpub/meow/ld/ns/meta" {{range .Namespaces}}
 	"github.com/meowpub/meow/ld/ns/{{.Package}}" {{end}}
 )
 
-var Namespaces = map[string]*Namespace{ {{range .Namespaces}}
-	"{{.Long}}": {{.Short|toupper}},
+var Namespaces = map[string]*meta.Namespace{ {{range .Namespaces}}
+	"{{.Long}}": {{.Package}}.{{.Short|toupper}},
 {{- end}}
 }
 
-var Types = map[string]*Type{ {{range .Classes}}
-	"{{.ID}}": {{.ID|varsafe}},
+var Classes = map[string]*meta.Type{ {{range .Classes}}
+	"{{.ID}}": {{.Package}}.Class_{{.TypeName}},
 {{- end}}
 }
-
-var ( {{range $i, $ns := .Namespaces}}
-	{{$ns.Short|toupper}} = &Namespace{
-		ID: "{{$ns.Long}}",
-		Short: "{{$ns.Short}}",
-		Props: []*Prop{ {{range $.Properties}}{{if eq .NS.Long $ns.Long}}
-    		{{.ID|varsafe}},
-    	{{- end}}{{end}}
-		},
-		Types: map[string]*Type{ {{range $.Classes}}{{if eq .NS.Long $ns.Long}}
-			"{{.ID}}": {{.ID|varsafe}},
-		{{- end}}{{end}}
-		},
-	}
-{{- end}}
-    
-    {{range $i, $cls := .Classes}}
-    {{.ID|varsafe}} = &Type{
-        ID: "{{$cls.ID}}",
-        Short: "{{$cls.Short}}",
-        SubClassOf: []*Type{ {{range .SubClassOf}}
-            {{.|varsafe}},
-        {{- end}}
-        },
-    	Cast: func(e ld.Entity) ld.Entity {
-    		return {{$cls.Package}}.As{{$cls.TypeName}}(e)
-    	},
-		Props: []*Prop{ {{range $.PropertiesOf $cls}}
-    		{{.ID|varsafe}},
-    	{{- end}}
-		},
-    }
-{{- end}}
-
-    {{range .Properties}}
-    {{.ID|varsafe}} = &Prop{
-        ID: "{{.ID}}",
-        Short: "{{.Short}}",
-        Comment: "{{.Get "http://www.w3.org/2000/01/rdf-schema#comment"|quotesafe}}",
-    }
-{{- end}}
-)
 `[1:]))

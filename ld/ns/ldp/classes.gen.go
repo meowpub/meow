@@ -13,7 +13,7 @@ type BasicContainer struct{ Container }
 func AsBasicContainer(e ld.Entity) BasicContainer { return BasicContainer{AsContainer(e)} }
 
 // Does the object quack like a(n) BasicContainer?
-func IsBasicContainer(e ld.Entity) bool { return ld.Is(e, TypeBasicContainer) }
+func IsBasicContainer(e ld.Entity) bool { return ld.Is(e, Class_BasicContainer.ID) }
 
 // A Linked Data Platform RDF Source (LDP-RS) that also conforms to additional patterns and conventions for managing membership. Readers should refer to the specification defining this ontology for the list of behaviors associated with it.
 type Container struct{ RDFSource }
@@ -22,7 +22,7 @@ type Container struct{ RDFSource }
 func AsContainer(e ld.Entity) Container { return Container{AsRDFSource(e)} }
 
 // Does the object quack like a(n) Container?
-func IsContainer(e ld.Entity) bool { return ld.Is(e, TypeContainer) }
+func IsContainer(e ld.Entity) bool { return ld.Is(e, Class_Container.ID) }
 
 // Links a container with resources created through the container.
 func (obj Container) Contains() interface{} { return GetContains(obj) }
@@ -56,7 +56,7 @@ type DirectContainer struct{ Container }
 func AsDirectContainer(e ld.Entity) DirectContainer { return DirectContainer{AsContainer(e)} }
 
 // Does the object quack like a(n) DirectContainer?
-func IsDirectContainer(e ld.Entity) bool { return ld.Is(e, TypeDirectContainer) }
+func IsDirectContainer(e ld.Entity) bool { return ld.Is(e, Class_DirectContainer.ID) }
 
 // An LDPC that has the flexibility of choosing what form the membership triples take.
 type IndirectContainer struct{ Container }
@@ -65,7 +65,7 @@ type IndirectContainer struct{ Container }
 func AsIndirectContainer(e ld.Entity) IndirectContainer { return IndirectContainer{AsContainer(e)} }
 
 // Does the object quack like a(n) IndirectContainer?
-func IsIndirectContainer(e ld.Entity) bool { return ld.Is(e, TypeIndirectContainer) }
+func IsIndirectContainer(e ld.Entity) bool { return ld.Is(e, Class_IndirectContainer.ID) }
 
 // A Linked Data Platform Resource (LDPR) whose state is NOT represented as RDF.
 type NonRDFSource struct{ Resource }
@@ -74,7 +74,7 @@ type NonRDFSource struct{ Resource }
 func AsNonRDFSource(e ld.Entity) NonRDFSource { return NonRDFSource{AsResource(e)} }
 
 // Does the object quack like a(n) NonRDFSource?
-func IsNonRDFSource(e ld.Entity) bool { return ld.Is(e, TypeNonRDFSource) }
+func IsNonRDFSource(e ld.Entity) bool { return ld.Is(e, Class_NonRDFSource.ID) }
 
 // URI signifying that the resource is an in-sequence page resource, as defined by LDP Paging.  Typically used on Link rel='type' response headers.
 type Page struct{ o *ld.Object }
@@ -83,7 +83,7 @@ type Page struct{ o *ld.Object }
 func AsPage(e ld.Entity) Page { return Page{o: e.Obj()} }
 
 // Does the object quack like a(n) Page?
-func IsPage(e ld.Entity) bool { return ld.Is(e, TypePage) }
+func IsPage(e ld.Entity) bool { return ld.Is(e, Class_Page.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Page) Obj() *ld.Object { return obj.o }
@@ -128,7 +128,7 @@ type PageSortCriterion struct{ o *ld.Object }
 func AsPageSortCriterion(e ld.Entity) PageSortCriterion { return PageSortCriterion{o: e.Obj()} }
 
 // Does the object quack like a(n) PageSortCriterion?
-func IsPageSortCriterion(e ld.Entity) bool { return ld.Is(e, TypePageSortCriterion) }
+func IsPageSortCriterion(e ld.Entity) bool { return ld.Is(e, Class_PageSortCriterion.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj PageSortCriterion) Obj() *ld.Object { return obj.o }
@@ -185,7 +185,7 @@ type RDFSource struct{ Resource }
 func AsRDFSource(e ld.Entity) RDFSource { return RDFSource{AsResource(e)} }
 
 // Does the object quack like a(n) RDFSource?
-func IsRDFSource(e ld.Entity) bool { return ld.Is(e, TypeRDFSource) }
+func IsRDFSource(e ld.Entity) bool { return ld.Is(e, Class_RDFSource.ID) }
 
 // A HTTP-addressable resource whose lifecycle is managed by a LDP server.
 type Resource struct{ o *ld.Object }
@@ -194,7 +194,7 @@ type Resource struct{ o *ld.Object }
 func AsResource(e ld.Entity) Resource { return Resource{o: e.Obj()} }
 
 // Does the object quack like a(n) Resource?
-func IsResource(e ld.Entity) bool { return ld.Is(e, TypeResource) }
+func IsResource(e ld.Entity) bool { return ld.Is(e, Class_Resource.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Resource) Obj() *ld.Object { return obj.o }

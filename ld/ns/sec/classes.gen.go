@@ -15,7 +15,7 @@ type Digest struct{ owl.Thing }
 func AsDigest(e ld.Entity) Digest { return Digest{owl.AsThing(e)} }
 
 // Does the object quack like a(n) Digest?
-func IsDigest(e ld.Entity) bool { return ld.Is(e, TypeDigest) }
+func IsDigest(e ld.Entity) bool { return ld.Is(e, Class_Digest.ID) }
 
 // The digest algorithm is used to specify the cryptographic function to use when generating the
 // data to be digitally signed. Typically, data that is to be signed goes through three steps:
@@ -40,7 +40,7 @@ type EncryptedMessage struct{ owl.Thing }
 func AsEncryptedMessage(e ld.Entity) EncryptedMessage { return EncryptedMessage{owl.AsThing(e)} }
 
 // Does the object quack like a(n) EncryptedMessage?
-func IsEncryptedMessage(e ld.Entity) bool { return ld.Is(e, TypeEncryptedMessage) }
+func IsEncryptedMessage(e ld.Entity) bool { return ld.Is(e, Class_EncryptedMessage.ID) }
 
 func (obj EncryptedMessage) AuthenticationTag() interface{} { return GetAuthenticationTag(obj) }
 
@@ -85,7 +85,7 @@ type GraphSignature2012 struct{ Signature }
 func AsGraphSignature2012(e ld.Entity) GraphSignature2012 { return GraphSignature2012{AsSignature(e)} }
 
 // Does the object quack like a(n) GraphSignature2012?
-func IsGraphSignature2012(e ld.Entity) bool { return ld.Is(e, TypeGraphSignature2012) }
+func IsGraphSignature2012(e ld.Entity) bool { return ld.Is(e, Class_GraphSignature2012.ID) }
 
 // This class represents a cryptographic key that may be used for encryption, decryption, or
 // digitally signing data.
@@ -95,7 +95,7 @@ type Key struct{ owl.Thing }
 func AsKey(e ld.Entity) Key { return Key{owl.AsThing(e)} }
 
 // Does the object quack like a(n) Key?
-func IsKey(e ld.Entity) bool { return ld.Is(e, TypeKey) }
+func IsKey(e ld.Entity) bool { return ld.Is(e, Class_Key.ID) }
 
 // An owner is an entity that claims control over a particular resource. Note that ownership is best
 // validated as a two-way relationship where the owner claims ownership over a particular resource,
@@ -131,7 +131,7 @@ func AsLinkedDataSignature2015(e ld.Entity) LinkedDataSignature2015 {
 }
 
 // Does the object quack like a(n) LinkedDataSignature2015?
-func IsLinkedDataSignature2015(e ld.Entity) bool { return ld.Is(e, TypeLinkedDataSignature2015) }
+func IsLinkedDataSignature2015(e ld.Entity) bool { return ld.Is(e, Class_LinkedDataSignature2015.ID) }
 
 // A Linked Data signature is used for digital signatures on RDF Datasets. The default canonicalization
 // mechanism is specified in the RDF Dataset Normalization specification, which effectively
@@ -145,7 +145,7 @@ func AsLinkedDataSignature2016(e ld.Entity) LinkedDataSignature2016 {
 }
 
 // Does the object quack like a(n) LinkedDataSignature2016?
-func IsLinkedDataSignature2016(e ld.Entity) bool { return ld.Is(e, TypeLinkedDataSignature2016) }
+func IsLinkedDataSignature2016(e ld.Entity) bool { return ld.Is(e, Class_LinkedDataSignature2016.ID) }
 
 // This class represents a digital signature on serialized data. It is an abstract class and should
 // not be used other than for Semantic Web reasoning purposes, such as by a reasoning agent.
@@ -155,7 +155,7 @@ type Signature struct{ owl.Thing }
 func AsSignature(e ld.Entity) Signature { return Signature{owl.AsThing(e)} }
 
 // Does the object quack like a(n) Signature?
-func IsSignature(e ld.Entity) bool { return ld.Is(e, TypeSignature) }
+func IsSignature(e ld.Entity) bool { return ld.Is(e, Class_Signature.ID) }
 
 func (obj Signature) Creator() interface{} { return GetCreator(obj) }
 

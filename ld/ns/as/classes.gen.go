@@ -13,7 +13,7 @@ type Accept struct{ Activity }
 func AsAccept(e ld.Entity) Accept { return Accept{AsActivity(e)} }
 
 // Does the object quack like a(n) Accept?
-func IsAccept(e ld.Entity) bool { return ld.Is(e, TypeAccept) }
+func IsAccept(e ld.Entity) bool { return ld.Is(e, Class_Accept.ID) }
 
 // An Object representing some form of Action that has been taken
 type Activity struct{ Object }
@@ -22,7 +22,7 @@ type Activity struct{ Object }
 func AsActivity(e ld.Entity) Activity { return Activity{AsObject(e)} }
 
 // Does the object quack like a(n) Activity?
-func IsActivity(e ld.Entity) bool { return ld.Is(e, TypeActivity) }
+func IsActivity(e ld.Entity) bool { return ld.Is(e, Class_Activity.ID) }
 
 // Subproperty of as:attributedTo that identifies the primary actor
 func (obj Activity) Actor() interface{} { return GetActor(obj) }
@@ -58,7 +58,7 @@ type Add struct{ Activity }
 func AsAdd(e ld.Entity) Add { return Add{AsActivity(e)} }
 
 // Does the object quack like a(n) Add?
-func IsAdd(e ld.Entity) bool { return ld.Is(e, TypeAdd) }
+func IsAdd(e ld.Entity) bool { return ld.Is(e, Class_Add.ID) }
 
 // Actor announces the object to the target
 type Announce struct{ Activity }
@@ -67,7 +67,7 @@ type Announce struct{ Activity }
 func AsAnnounce(e ld.Entity) Announce { return Announce{AsActivity(e)} }
 
 // Does the object quack like a(n) Announce?
-func IsAnnounce(e ld.Entity) bool { return ld.Is(e, TypeAnnounce) }
+func IsAnnounce(e ld.Entity) bool { return ld.Is(e, Class_Announce.ID) }
 
 // Represents a software application of any sort
 type Application struct{ Object }
@@ -76,7 +76,7 @@ type Application struct{ Object }
 func AsApplication(e ld.Entity) Application { return Application{AsObject(e)} }
 
 // Does the object quack like a(n) Application?
-func IsApplication(e ld.Entity) bool { return ld.Is(e, TypeApplication) }
+func IsApplication(e ld.Entity) bool { return ld.Is(e, Class_Application.ID) }
 
 // To Arrive Somewhere (can be used, for instance, to indicate that a particular entity is currently located somewhere, e.g. a "check-in")
 type Arrive struct{ IntransitiveActivity }
@@ -85,7 +85,7 @@ type Arrive struct{ IntransitiveActivity }
 func AsArrive(e ld.Entity) Arrive { return Arrive{AsIntransitiveActivity(e)} }
 
 // Does the object quack like a(n) Arrive?
-func IsArrive(e ld.Entity) bool { return ld.Is(e, TypeArrive) }
+func IsArrive(e ld.Entity) bool { return ld.Is(e, Class_Arrive.ID) }
 
 // A written work. Typically several paragraphs long. For example, a blog post or a news article.
 type Article struct{ Object }
@@ -94,7 +94,7 @@ type Article struct{ Object }
 func AsArticle(e ld.Entity) Article { return Article{AsObject(e)} }
 
 // Does the object quack like a(n) Article?
-func IsArticle(e ld.Entity) bool { return ld.Is(e, TypeArticle) }
+func IsArticle(e ld.Entity) bool { return ld.Is(e, Class_Article.ID) }
 
 // An audio file
 type Audio struct{ Document }
@@ -103,7 +103,7 @@ type Audio struct{ Document }
 func AsAudio(e ld.Entity) Audio { return Audio{AsDocument(e)} }
 
 // Does the object quack like a(n) Audio?
-func IsAudio(e ld.Entity) bool { return ld.Is(e, TypeAudio) }
+func IsAudio(e ld.Entity) bool { return ld.Is(e, Class_Audio.ID) }
 
 type Block struct{ Ignore }
 
@@ -111,7 +111,7 @@ type Block struct{ Ignore }
 func AsBlock(e ld.Entity) Block { return Block{AsIgnore(e)} }
 
 // Does the object quack like a(n) Block?
-func IsBlock(e ld.Entity) bool { return ld.Is(e, TypeBlock) }
+func IsBlock(e ld.Entity) bool { return ld.Is(e, Class_Block.ID) }
 
 // An ordered or unordered collection of Objects or Links
 type Collection struct{ Object }
@@ -120,7 +120,7 @@ type Collection struct{ Object }
 func AsCollection(e ld.Entity) Collection { return Collection{AsObject(e)} }
 
 // Does the object quack like a(n) Collection?
-func IsCollection(e ld.Entity) bool { return ld.Is(e, TypeCollection) }
+func IsCollection(e ld.Entity) bool { return ld.Is(e, Class_Collection.ID) }
 
 func (obj Collection) Current() interface{} { return GetCurrent(obj) }
 
@@ -150,7 +150,7 @@ type CollectionPage struct{ Collection }
 func AsCollectionPage(e ld.Entity) CollectionPage { return CollectionPage{AsCollection(e)} }
 
 // Does the object quack like a(n) CollectionPage?
-func IsCollectionPage(e ld.Entity) bool { return ld.Is(e, TypeCollectionPage) }
+func IsCollectionPage(e ld.Entity) bool { return ld.Is(e, Class_CollectionPage.ID) }
 
 func (obj CollectionPage) Next() interface{} { return GetNext(obj) }
 
@@ -171,7 +171,7 @@ type Create struct{ Activity }
 func AsCreate(e ld.Entity) Create { return Create{AsActivity(e)} }
 
 // Does the object quack like a(n) Create?
-func IsCreate(e ld.Entity) bool { return ld.Is(e, TypeCreate) }
+func IsCreate(e ld.Entity) bool { return ld.Is(e, Class_Create.ID) }
 
 // To Delete Something
 type Delete struct{ Activity }
@@ -180,7 +180,7 @@ type Delete struct{ Activity }
 func AsDelete(e ld.Entity) Delete { return Delete{AsActivity(e)} }
 
 // Does the object quack like a(n) Delete?
-func IsDelete(e ld.Entity) bool { return ld.Is(e, TypeDelete) }
+func IsDelete(e ld.Entity) bool { return ld.Is(e, Class_Delete.ID) }
 
 // The actor dislikes the object
 type Dislike struct{ Activity }
@@ -189,7 +189,7 @@ type Dislike struct{ Activity }
 func AsDislike(e ld.Entity) Dislike { return Dislike{AsActivity(e)} }
 
 // Does the object quack like a(n) Dislike?
-func IsDislike(e ld.Entity) bool { return ld.Is(e, TypeDislike) }
+func IsDislike(e ld.Entity) bool { return ld.Is(e, Class_Dislike.ID) }
 
 // Represents a digital document/file of any sort
 type Document struct{ Object }
@@ -198,7 +198,7 @@ type Document struct{ Object }
 func AsDocument(e ld.Entity) Document { return Document{AsObject(e)} }
 
 // Does the object quack like a(n) Document?
-func IsDocument(e ld.Entity) bool { return ld.Is(e, TypeDocument) }
+func IsDocument(e ld.Entity) bool { return ld.Is(e, Class_Document.ID) }
 
 // An Event of any kind
 type Event struct{ Object }
@@ -207,7 +207,7 @@ type Event struct{ Object }
 func AsEvent(e ld.Entity) Event { return Event{AsObject(e)} }
 
 // Does the object quack like a(n) Event?
-func IsEvent(e ld.Entity) bool { return ld.Is(e, TypeEvent) }
+func IsEvent(e ld.Entity) bool { return ld.Is(e, Class_Event.ID) }
 
 // To flag something (e.g. flag as inappropriate, flag as spam, etc)
 type Flag struct{ Activity }
@@ -216,7 +216,7 @@ type Flag struct{ Activity }
 func AsFlag(e ld.Entity) Flag { return Flag{AsActivity(e)} }
 
 // Does the object quack like a(n) Flag?
-func IsFlag(e ld.Entity) bool { return ld.Is(e, TypeFlag) }
+func IsFlag(e ld.Entity) bool { return ld.Is(e, Class_Flag.ID) }
 
 // To Express Interest in Something
 type Follow struct{ Activity }
@@ -225,7 +225,7 @@ type Follow struct{ Activity }
 func AsFollow(e ld.Entity) Follow { return Follow{AsActivity(e)} }
 
 // Does the object quack like a(n) Follow?
-func IsFollow(e ld.Entity) bool { return ld.Is(e, TypeFollow) }
+func IsFollow(e ld.Entity) bool { return ld.Is(e, Class_Follow.ID) }
 
 // A Group of any kind.
 type Group struct{ Object }
@@ -234,7 +234,7 @@ type Group struct{ Object }
 func AsGroup(e ld.Entity) Group { return Group{AsObject(e)} }
 
 // Does the object quack like a(n) Group?
-func IsGroup(e ld.Entity) bool { return ld.Is(e, TypeGroup) }
+func IsGroup(e ld.Entity) bool { return ld.Is(e, Class_Group.ID) }
 
 // Actor is ignoring the Object
 type Ignore struct{ Activity }
@@ -243,7 +243,7 @@ type Ignore struct{ Activity }
 func AsIgnore(e ld.Entity) Ignore { return Ignore{AsActivity(e)} }
 
 // Does the object quack like a(n) Ignore?
-func IsIgnore(e ld.Entity) bool { return ld.Is(e, TypeIgnore) }
+func IsIgnore(e ld.Entity) bool { return ld.Is(e, Class_Ignore.ID) }
 
 // An Image file
 type Image struct{ Document }
@@ -252,7 +252,7 @@ type Image struct{ Document }
 func AsImage(e ld.Entity) Image { return Image{AsDocument(e)} }
 
 // Does the object quack like a(n) Image?
-func IsImage(e ld.Entity) bool { return ld.Is(e, TypeImage) }
+func IsImage(e ld.Entity) bool { return ld.Is(e, Class_Image.ID) }
 
 // An Activity that has no direct object
 type IntransitiveActivity struct{ Activity }
@@ -263,7 +263,7 @@ func AsIntransitiveActivity(e ld.Entity) IntransitiveActivity {
 }
 
 // Does the object quack like a(n) IntransitiveActivity?
-func IsIntransitiveActivity(e ld.Entity) bool { return ld.Is(e, TypeIntransitiveActivity) }
+func IsIntransitiveActivity(e ld.Entity) bool { return ld.Is(e, Class_IntransitiveActivity.ID) }
 
 // To invite someone or something to something
 type Invite struct{ Offer }
@@ -272,7 +272,7 @@ type Invite struct{ Offer }
 func AsInvite(e ld.Entity) Invite { return Invite{AsOffer(e)} }
 
 // Does the object quack like a(n) Invite?
-func IsInvite(e ld.Entity) bool { return ld.Is(e, TypeInvite) }
+func IsInvite(e ld.Entity) bool { return ld.Is(e, Class_Invite.ID) }
 
 // To Join Something
 type Join struct{ Activity }
@@ -281,7 +281,7 @@ type Join struct{ Activity }
 func AsJoin(e ld.Entity) Join { return Join{AsActivity(e)} }
 
 // Does the object quack like a(n) Join?
-func IsJoin(e ld.Entity) bool { return ld.Is(e, TypeJoin) }
+func IsJoin(e ld.Entity) bool { return ld.Is(e, Class_Join.ID) }
 
 // To Leave Something
 type Leave struct{ Activity }
@@ -290,7 +290,7 @@ type Leave struct{ Activity }
 func AsLeave(e ld.Entity) Leave { return Leave{AsActivity(e)} }
 
 // Does the object quack like a(n) Leave?
-func IsLeave(e ld.Entity) bool { return ld.Is(e, TypeLeave) }
+func IsLeave(e ld.Entity) bool { return ld.Is(e, Class_Leave.ID) }
 
 // To Like Something
 type Like struct{ Activity }
@@ -299,7 +299,7 @@ type Like struct{ Activity }
 func AsLike(e ld.Entity) Like { return Like{AsActivity(e)} }
 
 // Does the object quack like a(n) Like?
-func IsLike(e ld.Entity) bool { return ld.Is(e, TypeLike) }
+func IsLike(e ld.Entity) bool { return ld.Is(e, Class_Like.ID) }
 
 // Represents a qualified reference to another resource. Patterned after the RFC5988 Web Linking Model
 type Link struct{ o *ld.Object }
@@ -308,7 +308,7 @@ type Link struct{ o *ld.Object }
 func AsLink(e ld.Entity) Link { return Link{o: e.Obj()} }
 
 // Does the object quack like a(n) Link?
-func IsLink(e ld.Entity) bool { return ld.Is(e, TypeLink) }
+func IsLink(e ld.Entity) bool { return ld.Is(e, Class_Link.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Link) Obj() *ld.Object { return obj.o }
@@ -389,7 +389,7 @@ type Listen struct{ Activity }
 func AsListen(e ld.Entity) Listen { return Listen{AsActivity(e)} }
 
 // Does the object quack like a(n) Listen?
-func IsListen(e ld.Entity) bool { return ld.Is(e, TypeListen) }
+func IsListen(e ld.Entity) bool { return ld.Is(e, Class_Listen.ID) }
 
 // A specialized Link that represents an @mention
 type Mention struct{ Link }
@@ -398,7 +398,7 @@ type Mention struct{ Link }
 func AsMention(e ld.Entity) Mention { return Mention{AsLink(e)} }
 
 // Does the object quack like a(n) Mention?
-func IsMention(e ld.Entity) bool { return ld.Is(e, TypeMention) }
+func IsMention(e ld.Entity) bool { return ld.Is(e, Class_Mention.ID) }
 
 // The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from.
 type Move struct{ Activity }
@@ -407,7 +407,7 @@ type Move struct{ Activity }
 func AsMove(e ld.Entity) Move { return Move{AsActivity(e)} }
 
 // Does the object quack like a(n) Move?
-func IsMove(e ld.Entity) bool { return ld.Is(e, TypeMove) }
+func IsMove(e ld.Entity) bool { return ld.Is(e, Class_Move.ID) }
 
 // A Short note, typically less than a single paragraph. A "tweet" is an example, or a "status update"
 type Note struct{ Object }
@@ -416,7 +416,7 @@ type Note struct{ Object }
 func AsNote(e ld.Entity) Note { return Note{AsObject(e)} }
 
 // Does the object quack like a(n) Note?
-func IsNote(e ld.Entity) bool { return ld.Is(e, TypeNote) }
+func IsNote(e ld.Entity) bool { return ld.Is(e, Class_Note.ID) }
 
 type Object struct{ o *ld.Object }
 
@@ -424,7 +424,7 @@ type Object struct{ o *ld.Object }
 func AsObject(e ld.Entity) Object { return Object{o: e.Obj()} }
 
 // Does the object quack like a(n) Object?
-func IsObject(e ld.Entity) bool { return ld.Is(e, TypeObject) }
+func IsObject(e ld.Entity) bool { return ld.Is(e, Class_Object.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Object) Obj() *ld.Object { return obj.o }
@@ -613,7 +613,7 @@ type Offer struct{ Activity }
 func AsOffer(e ld.Entity) Offer { return Offer{AsActivity(e)} }
 
 // Does the object quack like a(n) Offer?
-func IsOffer(e ld.Entity) bool { return ld.Is(e, TypeOffer) }
+func IsOffer(e ld.Entity) bool { return ld.Is(e, Class_Offer.ID) }
 
 // A variation of Collection in which items are strictly ordered
 type OrderedCollection struct{ o *ld.Object }
@@ -622,7 +622,7 @@ type OrderedCollection struct{ o *ld.Object }
 func AsOrderedCollection(e ld.Entity) OrderedCollection { return OrderedCollection{o: e.Obj()} }
 
 // Does the object quack like a(n) OrderedCollection?
-func IsOrderedCollection(e ld.Entity) bool { return ld.Is(e, TypeOrderedCollection) }
+func IsOrderedCollection(e ld.Entity) bool { return ld.Is(e, Class_OrderedCollection.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj OrderedCollection) Obj() *ld.Object { return obj.o }
@@ -685,7 +685,7 @@ func AsOrderedCollectionPage(e ld.Entity) OrderedCollectionPage {
 }
 
 // Does the object quack like a(n) OrderedCollectionPage?
-func IsOrderedCollectionPage(e ld.Entity) bool { return ld.Is(e, TypeOrderedCollectionPage) }
+func IsOrderedCollectionPage(e ld.Entity) bool { return ld.Is(e, Class_OrderedCollectionPage.ID) }
 
 // In a strictly ordered logical collection, specifies the index position of the first item in the items list
 func (obj OrderedCollectionPage) StartIndex() interface{} { return GetStartIndex(obj) }
@@ -699,7 +699,7 @@ type OrderedItems struct{ o *ld.Object }
 func AsOrderedItems(e ld.Entity) OrderedItems { return OrderedItems{o: e.Obj()} }
 
 // Does the object quack like a(n) OrderedItems?
-func IsOrderedItems(e ld.Entity) bool { return ld.Is(e, TypeOrderedItems) }
+func IsOrderedItems(e ld.Entity) bool { return ld.Is(e, Class_OrderedItems.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj OrderedItems) Obj() *ld.Object { return obj.o }
@@ -757,7 +757,7 @@ type Organization struct{ Object }
 func AsOrganization(e ld.Entity) Organization { return Organization{AsObject(e)} }
 
 // Does the object quack like a(n) Organization?
-func IsOrganization(e ld.Entity) bool { return ld.Is(e, TypeOrganization) }
+func IsOrganization(e ld.Entity) bool { return ld.Is(e, Class_Organization.ID) }
 
 // A Web Page
 type Page struct{ Object }
@@ -766,7 +766,7 @@ type Page struct{ Object }
 func AsPage(e ld.Entity) Page { return Page{AsObject(e)} }
 
 // Does the object quack like a(n) Page?
-func IsPage(e ld.Entity) bool { return ld.Is(e, TypePage) }
+func IsPage(e ld.Entity) bool { return ld.Is(e, Class_Page.ID) }
 
 // A Person
 type Person struct{ Object }
@@ -775,7 +775,7 @@ type Person struct{ Object }
 func AsPerson(e ld.Entity) Person { return Person{AsObject(e)} }
 
 // Does the object quack like a(n) Person?
-func IsPerson(e ld.Entity) bool { return ld.Is(e, TypePerson) }
+func IsPerson(e ld.Entity) bool { return ld.Is(e, Class_Person.ID) }
 
 // A physical or logical location
 type Place struct{ Object }
@@ -784,7 +784,7 @@ type Place struct{ Object }
 func AsPlace(e ld.Entity) Place { return Place{AsObject(e)} }
 
 // Does the object quack like a(n) Place?
-func IsPlace(e ld.Entity) bool { return ld.Is(e, TypePlace) }
+func IsPlace(e ld.Entity) bool { return ld.Is(e, Class_Place.ID) }
 
 // Specifies the accuracy around the point established by the longitude and latitude
 func (obj Place) Accuracy() interface{} { return GetAccuracy(obj) }
@@ -823,7 +823,7 @@ type Profile struct{ Object }
 func AsProfile(e ld.Entity) Profile { return Profile{AsObject(e)} }
 
 // Does the object quack like a(n) Profile?
-func IsProfile(e ld.Entity) bool { return ld.Is(e, TypeProfile) }
+func IsProfile(e ld.Entity) bool { return ld.Is(e, Class_Profile.ID) }
 
 // On a Profile object, describes the object described by the profile
 func (obj Profile) Describes() interface{} { return GetDescribes(obj) }
@@ -837,7 +837,7 @@ type Question struct{ IntransitiveActivity }
 func AsQuestion(e ld.Entity) Question { return Question{AsIntransitiveActivity(e)} }
 
 // Does the object quack like a(n) Question?
-func IsQuestion(e ld.Entity) bool { return ld.Is(e, TypeQuestion) }
+func IsQuestion(e ld.Entity) bool { return ld.Is(e, Class_Question.ID) }
 
 // Describes a possible inclusive answer or option for a question.
 func (obj Question) AnyOf() interface{} { return GetAnyOf(obj) }
@@ -856,7 +856,7 @@ type Read struct{ Activity }
 func AsRead(e ld.Entity) Read { return Read{AsActivity(e)} }
 
 // Does the object quack like a(n) Read?
-func IsRead(e ld.Entity) bool { return ld.Is(e, TypeRead) }
+func IsRead(e ld.Entity) bool { return ld.Is(e, Class_Read.ID) }
 
 // Actor rejects the Object
 type Reject struct{ Activity }
@@ -865,7 +865,7 @@ type Reject struct{ Activity }
 func AsReject(e ld.Entity) Reject { return Reject{AsActivity(e)} }
 
 // Does the object quack like a(n) Reject?
-func IsReject(e ld.Entity) bool { return ld.Is(e, TypeReject) }
+func IsReject(e ld.Entity) bool { return ld.Is(e, Class_Reject.ID) }
 
 // Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)
 type Relationship struct{ Object }
@@ -874,7 +874,7 @@ type Relationship struct{ Object }
 func AsRelationship(e ld.Entity) Relationship { return Relationship{AsObject(e)} }
 
 // Does the object quack like a(n) Relationship?
-func IsRelationship(e ld.Entity) bool { return ld.Is(e, TypeRelationship) }
+func IsRelationship(e ld.Entity) bool { return ld.Is(e, Class_Relationship.ID) }
 
 // On a Relationship object, describes the type of relationship
 func (obj Relationship) Relationship() interface{} { return GetRelationship(obj) }
@@ -893,7 +893,7 @@ type Remove struct{ Activity }
 func AsRemove(e ld.Entity) Remove { return Remove{AsActivity(e)} }
 
 // Does the object quack like a(n) Remove?
-func IsRemove(e ld.Entity) bool { return ld.Is(e, TypeRemove) }
+func IsRemove(e ld.Entity) bool { return ld.Is(e, Class_Remove.ID) }
 
 // A service provided by some entity
 type Service struct{ Object }
@@ -902,7 +902,7 @@ type Service struct{ Object }
 func AsService(e ld.Entity) Service { return Service{AsObject(e)} }
 
 // Does the object quack like a(n) Service?
-func IsService(e ld.Entity) bool { return ld.Is(e, TypeService) }
+func IsService(e ld.Entity) bool { return ld.Is(e, Class_Service.ID) }
 
 // Actor tentatively accepts the Object
 type TentativeAccept struct{ Accept }
@@ -911,7 +911,7 @@ type TentativeAccept struct{ Accept }
 func AsTentativeAccept(e ld.Entity) TentativeAccept { return TentativeAccept{AsAccept(e)} }
 
 // Does the object quack like a(n) TentativeAccept?
-func IsTentativeAccept(e ld.Entity) bool { return ld.Is(e, TypeTentativeAccept) }
+func IsTentativeAccept(e ld.Entity) bool { return ld.Is(e, Class_TentativeAccept.ID) }
 
 // Actor tentatively rejects the object
 type TentativeReject struct{ Reject }
@@ -920,7 +920,7 @@ type TentativeReject struct{ Reject }
 func AsTentativeReject(e ld.Entity) TentativeReject { return TentativeReject{AsReject(e)} }
 
 // Does the object quack like a(n) TentativeReject?
-func IsTentativeReject(e ld.Entity) bool { return ld.Is(e, TypeTentativeReject) }
+func IsTentativeReject(e ld.Entity) bool { return ld.Is(e, Class_TentativeReject.ID) }
 
 // A placeholder for a deleted object
 type Tombstone struct{ Object }
@@ -929,7 +929,7 @@ type Tombstone struct{ Object }
 func AsTombstone(e ld.Entity) Tombstone { return Tombstone{AsObject(e)} }
 
 // Does the object quack like a(n) Tombstone?
-func IsTombstone(e ld.Entity) bool { return ld.Is(e, TypeTombstone) }
+func IsTombstone(e ld.Entity) bool { return ld.Is(e, Class_Tombstone.ID) }
 
 // Specifies the date and time the object was deleted
 func (obj Tombstone) Deleted() interface{} { return GetDeleted(obj) }
@@ -948,7 +948,7 @@ type Travel struct{ IntransitiveActivity }
 func AsTravel(e ld.Entity) Travel { return Travel{AsIntransitiveActivity(e)} }
 
 // Does the object quack like a(n) Travel?
-func IsTravel(e ld.Entity) bool { return ld.Is(e, TypeTravel) }
+func IsTravel(e ld.Entity) bool { return ld.Is(e, Class_Travel.ID) }
 
 // To Undo Something. This would typically be used to indicate that a previous Activity has been undone.
 type Undo struct{ Activity }
@@ -957,7 +957,7 @@ type Undo struct{ Activity }
 func AsUndo(e ld.Entity) Undo { return Undo{AsActivity(e)} }
 
 // Does the object quack like a(n) Undo?
-func IsUndo(e ld.Entity) bool { return ld.Is(e, TypeUndo) }
+func IsUndo(e ld.Entity) bool { return ld.Is(e, Class_Undo.ID) }
 
 // To Update/Modify Something
 type Update struct{ Activity }
@@ -966,7 +966,7 @@ type Update struct{ Activity }
 func AsUpdate(e ld.Entity) Update { return Update{AsActivity(e)} }
 
 // Does the object quack like a(n) Update?
-func IsUpdate(e ld.Entity) bool { return ld.Is(e, TypeUpdate) }
+func IsUpdate(e ld.Entity) bool { return ld.Is(e, Class_Update.ID) }
 
 // A Video document of any kind.
 type Video struct{ Document }
@@ -975,7 +975,7 @@ type Video struct{ Document }
 func AsVideo(e ld.Entity) Video { return Video{AsDocument(e)} }
 
 // Does the object quack like a(n) Video?
-func IsVideo(e ld.Entity) bool { return ld.Is(e, TypeVideo) }
+func IsVideo(e ld.Entity) bool { return ld.Is(e, Class_Video.ID) }
 
 // The actor viewed the object
 type View struct{ Activity }
@@ -984,7 +984,7 @@ type View struct{ Activity }
 func AsView(e ld.Entity) View { return View{AsActivity(e)} }
 
 // Does the object quack like a(n) View?
-func IsView(e ld.Entity) bool { return ld.Is(e, TypeView) }
+func IsView(e ld.Entity) bool { return ld.Is(e, Class_View.ID) }
 
 var (
 	_ ld.Entity = Accept{}
