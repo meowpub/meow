@@ -6,13 +6,11 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
 	"github.com/meowpub/meow/config"
-	"github.com/meowpub/meow/config/secrets"
 )
 
 var rootCmd = &cobra.Command{
@@ -35,11 +33,6 @@ var rootCmd = &cobra.Command{
 		// Disable colours globally if asked.
 		if config.NoColour() {
 			color.NoColor = true
-		}
-
-		// Derive subkeys from the master secret; this has to be done before use.
-		if err := secrets.Init(l.Named("secrets"), config.Secret()); err != nil {
-			return errors.Wrap(err, "secrets.Init")
 		}
 
 		return nil
