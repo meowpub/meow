@@ -9,6 +9,8 @@ import (
 // Actor accepts the Object
 type Accept struct{ Activity }
 
+func NewAccept(id string) Accept { return AsAccept(ld.NewObject(id, Class_Accept.ID)) }
+
 // Ducktypes the object into a(n) Accept.
 func AsAccept(e ld.Entity) Accept { return Accept{AsActivity(e)} }
 
@@ -17,6 +19,8 @@ func IsAccept(e ld.Entity) bool { return ld.Is(e, Class_Accept.ID) }
 
 // An Object representing some form of Action that has been taken
 type Activity struct{ Object }
+
+func NewActivity(id string) Activity { return AsActivity(ld.NewObject(id, Class_Activity.ID)) }
 
 // Ducktypes the object into a(n) Activity.
 func AsActivity(e ld.Entity) Activity { return Activity{AsObject(e)} }
@@ -54,6 +58,8 @@ func (obj Activity) SetVerb(v interface{}) { SetVerb(obj, v) }
 // To Add an Object or Link to Something
 type Add struct{ Activity }
 
+func NewAdd(id string) Add { return AsAdd(ld.NewObject(id, Class_Add.ID)) }
+
 // Ducktypes the object into a(n) Add.
 func AsAdd(e ld.Entity) Add { return Add{AsActivity(e)} }
 
@@ -62,6 +68,8 @@ func IsAdd(e ld.Entity) bool { return ld.Is(e, Class_Add.ID) }
 
 // Actor announces the object to the target
 type Announce struct{ Activity }
+
+func NewAnnounce(id string) Announce { return AsAnnounce(ld.NewObject(id, Class_Announce.ID)) }
 
 // Ducktypes the object into a(n) Announce.
 func AsAnnounce(e ld.Entity) Announce { return Announce{AsActivity(e)} }
@@ -72,6 +80,10 @@ func IsAnnounce(e ld.Entity) bool { return ld.Is(e, Class_Announce.ID) }
 // Represents a software application of any sort
 type Application struct{ Object }
 
+func NewApplication(id string) Application {
+	return AsApplication(ld.NewObject(id, Class_Application.ID))
+}
+
 // Ducktypes the object into a(n) Application.
 func AsApplication(e ld.Entity) Application { return Application{AsObject(e)} }
 
@@ -80,6 +92,8 @@ func IsApplication(e ld.Entity) bool { return ld.Is(e, Class_Application.ID) }
 
 // To Arrive Somewhere (can be used, for instance, to indicate that a particular entity is currently located somewhere, e.g. a "check-in")
 type Arrive struct{ IntransitiveActivity }
+
+func NewArrive(id string) Arrive { return AsArrive(ld.NewObject(id, Class_Arrive.ID)) }
 
 // Ducktypes the object into a(n) Arrive.
 func AsArrive(e ld.Entity) Arrive { return Arrive{AsIntransitiveActivity(e)} }
@@ -90,6 +104,8 @@ func IsArrive(e ld.Entity) bool { return ld.Is(e, Class_Arrive.ID) }
 // A written work. Typically several paragraphs long. For example, a blog post or a news article.
 type Article struct{ Object }
 
+func NewArticle(id string) Article { return AsArticle(ld.NewObject(id, Class_Article.ID)) }
+
 // Ducktypes the object into a(n) Article.
 func AsArticle(e ld.Entity) Article { return Article{AsObject(e)} }
 
@@ -99,6 +115,8 @@ func IsArticle(e ld.Entity) bool { return ld.Is(e, Class_Article.ID) }
 // An audio file
 type Audio struct{ Document }
 
+func NewAudio(id string) Audio { return AsAudio(ld.NewObject(id, Class_Audio.ID)) }
+
 // Ducktypes the object into a(n) Audio.
 func AsAudio(e ld.Entity) Audio { return Audio{AsDocument(e)} }
 
@@ -106,6 +124,8 @@ func AsAudio(e ld.Entity) Audio { return Audio{AsDocument(e)} }
 func IsAudio(e ld.Entity) bool { return ld.Is(e, Class_Audio.ID) }
 
 type Block struct{ Ignore }
+
+func NewBlock(id string) Block { return AsBlock(ld.NewObject(id, Class_Block.ID)) }
 
 // Ducktypes the object into a(n) Block.
 func AsBlock(e ld.Entity) Block { return Block{AsIgnore(e)} }
@@ -115,6 +135,8 @@ func IsBlock(e ld.Entity) bool { return ld.Is(e, Class_Block.ID) }
 
 // An ordered or unordered collection of Objects or Links
 type Collection struct{ Object }
+
+func NewCollection(id string) Collection { return AsCollection(ld.NewObject(id, Class_Collection.ID)) }
 
 // Ducktypes the object into a(n) Collection.
 func AsCollection(e ld.Entity) Collection { return Collection{AsObject(e)} }
@@ -146,6 +168,10 @@ func (obj Collection) SetTotalItems(v interface{}) { SetTotalItems(obj, v) }
 // A subset of items from a Collection
 type CollectionPage struct{ Collection }
 
+func NewCollectionPage(id string) CollectionPage {
+	return AsCollectionPage(ld.NewObject(id, Class_CollectionPage.ID))
+}
+
 // Ducktypes the object into a(n) CollectionPage.
 func AsCollectionPage(e ld.Entity) CollectionPage { return CollectionPage{AsCollection(e)} }
 
@@ -167,6 +193,8 @@ func (obj CollectionPage) SetPrev(v interface{}) { SetPrev(obj, v) }
 // To Create Something
 type Create struct{ Activity }
 
+func NewCreate(id string) Create { return AsCreate(ld.NewObject(id, Class_Create.ID)) }
+
 // Ducktypes the object into a(n) Create.
 func AsCreate(e ld.Entity) Create { return Create{AsActivity(e)} }
 
@@ -175,6 +203,8 @@ func IsCreate(e ld.Entity) bool { return ld.Is(e, Class_Create.ID) }
 
 // To Delete Something
 type Delete struct{ Activity }
+
+func NewDelete(id string) Delete { return AsDelete(ld.NewObject(id, Class_Delete.ID)) }
 
 // Ducktypes the object into a(n) Delete.
 func AsDelete(e ld.Entity) Delete { return Delete{AsActivity(e)} }
@@ -185,6 +215,8 @@ func IsDelete(e ld.Entity) bool { return ld.Is(e, Class_Delete.ID) }
 // The actor dislikes the object
 type Dislike struct{ Activity }
 
+func NewDislike(id string) Dislike { return AsDislike(ld.NewObject(id, Class_Dislike.ID)) }
+
 // Ducktypes the object into a(n) Dislike.
 func AsDislike(e ld.Entity) Dislike { return Dislike{AsActivity(e)} }
 
@@ -193,6 +225,8 @@ func IsDislike(e ld.Entity) bool { return ld.Is(e, Class_Dislike.ID) }
 
 // Represents a digital document/file of any sort
 type Document struct{ Object }
+
+func NewDocument(id string) Document { return AsDocument(ld.NewObject(id, Class_Document.ID)) }
 
 // Ducktypes the object into a(n) Document.
 func AsDocument(e ld.Entity) Document { return Document{AsObject(e)} }
@@ -203,6 +237,8 @@ func IsDocument(e ld.Entity) bool { return ld.Is(e, Class_Document.ID) }
 // An Event of any kind
 type Event struct{ Object }
 
+func NewEvent(id string) Event { return AsEvent(ld.NewObject(id, Class_Event.ID)) }
+
 // Ducktypes the object into a(n) Event.
 func AsEvent(e ld.Entity) Event { return Event{AsObject(e)} }
 
@@ -211,6 +247,8 @@ func IsEvent(e ld.Entity) bool { return ld.Is(e, Class_Event.ID) }
 
 // To flag something (e.g. flag as inappropriate, flag as spam, etc)
 type Flag struct{ Activity }
+
+func NewFlag(id string) Flag { return AsFlag(ld.NewObject(id, Class_Flag.ID)) }
 
 // Ducktypes the object into a(n) Flag.
 func AsFlag(e ld.Entity) Flag { return Flag{AsActivity(e)} }
@@ -221,6 +259,8 @@ func IsFlag(e ld.Entity) bool { return ld.Is(e, Class_Flag.ID) }
 // To Express Interest in Something
 type Follow struct{ Activity }
 
+func NewFollow(id string) Follow { return AsFollow(ld.NewObject(id, Class_Follow.ID)) }
+
 // Ducktypes the object into a(n) Follow.
 func AsFollow(e ld.Entity) Follow { return Follow{AsActivity(e)} }
 
@@ -229,6 +269,8 @@ func IsFollow(e ld.Entity) bool { return ld.Is(e, Class_Follow.ID) }
 
 // A Group of any kind.
 type Group struct{ Object }
+
+func NewGroup(id string) Group { return AsGroup(ld.NewObject(id, Class_Group.ID)) }
 
 // Ducktypes the object into a(n) Group.
 func AsGroup(e ld.Entity) Group { return Group{AsObject(e)} }
@@ -239,6 +281,8 @@ func IsGroup(e ld.Entity) bool { return ld.Is(e, Class_Group.ID) }
 // Actor is ignoring the Object
 type Ignore struct{ Activity }
 
+func NewIgnore(id string) Ignore { return AsIgnore(ld.NewObject(id, Class_Ignore.ID)) }
+
 // Ducktypes the object into a(n) Ignore.
 func AsIgnore(e ld.Entity) Ignore { return Ignore{AsActivity(e)} }
 
@@ -248,6 +292,8 @@ func IsIgnore(e ld.Entity) bool { return ld.Is(e, Class_Ignore.ID) }
 // An Image file
 type Image struct{ Document }
 
+func NewImage(id string) Image { return AsImage(ld.NewObject(id, Class_Image.ID)) }
+
 // Ducktypes the object into a(n) Image.
 func AsImage(e ld.Entity) Image { return Image{AsDocument(e)} }
 
@@ -256,6 +302,10 @@ func IsImage(e ld.Entity) bool { return ld.Is(e, Class_Image.ID) }
 
 // An Activity that has no direct object
 type IntransitiveActivity struct{ Activity }
+
+func NewIntransitiveActivity(id string) IntransitiveActivity {
+	return AsIntransitiveActivity(ld.NewObject(id, Class_IntransitiveActivity.ID))
+}
 
 // Ducktypes the object into a(n) IntransitiveActivity.
 func AsIntransitiveActivity(e ld.Entity) IntransitiveActivity {
@@ -268,6 +318,8 @@ func IsIntransitiveActivity(e ld.Entity) bool { return ld.Is(e, Class_Intransiti
 // To invite someone or something to something
 type Invite struct{ Offer }
 
+func NewInvite(id string) Invite { return AsInvite(ld.NewObject(id, Class_Invite.ID)) }
+
 // Ducktypes the object into a(n) Invite.
 func AsInvite(e ld.Entity) Invite { return Invite{AsOffer(e)} }
 
@@ -276,6 +328,8 @@ func IsInvite(e ld.Entity) bool { return ld.Is(e, Class_Invite.ID) }
 
 // To Join Something
 type Join struct{ Activity }
+
+func NewJoin(id string) Join { return AsJoin(ld.NewObject(id, Class_Join.ID)) }
 
 // Ducktypes the object into a(n) Join.
 func AsJoin(e ld.Entity) Join { return Join{AsActivity(e)} }
@@ -286,6 +340,8 @@ func IsJoin(e ld.Entity) bool { return ld.Is(e, Class_Join.ID) }
 // To Leave Something
 type Leave struct{ Activity }
 
+func NewLeave(id string) Leave { return AsLeave(ld.NewObject(id, Class_Leave.ID)) }
+
 // Ducktypes the object into a(n) Leave.
 func AsLeave(e ld.Entity) Leave { return Leave{AsActivity(e)} }
 
@@ -295,6 +351,8 @@ func IsLeave(e ld.Entity) bool { return ld.Is(e, Class_Leave.ID) }
 // To Like Something
 type Like struct{ Activity }
 
+func NewLike(id string) Like { return AsLike(ld.NewObject(id, Class_Like.ID)) }
+
 // Ducktypes the object into a(n) Like.
 func AsLike(e ld.Entity) Like { return Like{AsActivity(e)} }
 
@@ -303,6 +361,8 @@ func IsLike(e ld.Entity) bool { return ld.Is(e, Class_Like.ID) }
 
 // Represents a qualified reference to another resource. Patterned after the RFC5988 Web Linking Model
 type Link struct{ o *ld.Object }
+
+func NewLink(id string) Link { return AsLink(ld.NewObject(id, Class_Link.ID)) }
 
 // Ducktypes the object into a(n) Link.
 func AsLink(e ld.Entity) Link { return Link{o: e.Obj()} }
@@ -385,6 +445,8 @@ func (obj Link) SetWidth(v interface{}) { SetWidth(obj, v) }
 // The actor listened to the object
 type Listen struct{ Activity }
 
+func NewListen(id string) Listen { return AsListen(ld.NewObject(id, Class_Listen.ID)) }
+
 // Ducktypes the object into a(n) Listen.
 func AsListen(e ld.Entity) Listen { return Listen{AsActivity(e)} }
 
@@ -393,6 +455,8 @@ func IsListen(e ld.Entity) bool { return ld.Is(e, Class_Listen.ID) }
 
 // A specialized Link that represents an @mention
 type Mention struct{ Link }
+
+func NewMention(id string) Mention { return AsMention(ld.NewObject(id, Class_Mention.ID)) }
 
 // Ducktypes the object into a(n) Mention.
 func AsMention(e ld.Entity) Mention { return Mention{AsLink(e)} }
@@ -403,6 +467,8 @@ func IsMention(e ld.Entity) bool { return ld.Is(e, Class_Mention.ID) }
 // The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from.
 type Move struct{ Activity }
 
+func NewMove(id string) Move { return AsMove(ld.NewObject(id, Class_Move.ID)) }
+
 // Ducktypes the object into a(n) Move.
 func AsMove(e ld.Entity) Move { return Move{AsActivity(e)} }
 
@@ -412,6 +478,8 @@ func IsMove(e ld.Entity) bool { return ld.Is(e, Class_Move.ID) }
 // A Short note, typically less than a single paragraph. A "tweet" is an example, or a "status update"
 type Note struct{ Object }
 
+func NewNote(id string) Note { return AsNote(ld.NewObject(id, Class_Note.ID)) }
+
 // Ducktypes the object into a(n) Note.
 func AsNote(e ld.Entity) Note { return Note{AsObject(e)} }
 
@@ -419,6 +487,8 @@ func AsNote(e ld.Entity) Note { return Note{AsObject(e)} }
 func IsNote(e ld.Entity) bool { return ld.Is(e, Class_Note.ID) }
 
 type Object struct{ o *ld.Object }
+
+func NewObject(id string) Object { return AsObject(ld.NewObject(id, Class_Object.ID)) }
 
 // Ducktypes the object into a(n) Object.
 func AsObject(e ld.Entity) Object { return Object{o: e.Obj()} }
@@ -609,6 +679,8 @@ func (obj Object) SetUrl(v interface{}) { SetUrl(obj, v) }
 // To Offer something to someone or something
 type Offer struct{ Activity }
 
+func NewOffer(id string) Offer { return AsOffer(ld.NewObject(id, Class_Offer.ID)) }
+
 // Ducktypes the object into a(n) Offer.
 func AsOffer(e ld.Entity) Offer { return Offer{AsActivity(e)} }
 
@@ -617,6 +689,10 @@ func IsOffer(e ld.Entity) bool { return ld.Is(e, Class_Offer.ID) }
 
 // A variation of Collection in which items are strictly ordered
 type OrderedCollection struct{ o *ld.Object }
+
+func NewOrderedCollection(id string) OrderedCollection {
+	return AsOrderedCollection(ld.NewObject(id, Class_OrderedCollection.ID))
+}
 
 // Ducktypes the object into a(n) OrderedCollection.
 func AsOrderedCollection(e ld.Entity) OrderedCollection { return OrderedCollection{o: e.Obj()} }
@@ -679,6 +755,10 @@ type OrderedCollectionPage struct {
 	OrderedCollection
 }
 
+func NewOrderedCollectionPage(id string) OrderedCollectionPage {
+	return AsOrderedCollectionPage(ld.NewObject(id, Class_OrderedCollectionPage.ID))
+}
+
 // Ducktypes the object into a(n) OrderedCollectionPage.
 func AsOrderedCollectionPage(e ld.Entity) OrderedCollectionPage {
 	return OrderedCollectionPage{AsCollectionPage(e), AsOrderedCollection(e)}
@@ -694,6 +774,10 @@ func (obj OrderedCollectionPage) SetStartIndex(v interface{}) { SetStartIndex(ob
 
 // A rdf:List variant for Objects and Links
 type OrderedItems struct{ o *ld.Object }
+
+func NewOrderedItems(id string) OrderedItems {
+	return AsOrderedItems(ld.NewObject(id, Class_OrderedItems.ID))
+}
 
 // Ducktypes the object into a(n) OrderedItems.
 func AsOrderedItems(e ld.Entity) OrderedItems { return OrderedItems{o: e.Obj()} }
@@ -753,6 +837,10 @@ func (obj OrderedItems) SetPreview(v interface{}) { SetPreview(obj, v) }
 // An Organization
 type Organization struct{ Object }
 
+func NewOrganization(id string) Organization {
+	return AsOrganization(ld.NewObject(id, Class_Organization.ID))
+}
+
 // Ducktypes the object into a(n) Organization.
 func AsOrganization(e ld.Entity) Organization { return Organization{AsObject(e)} }
 
@@ -761,6 +849,8 @@ func IsOrganization(e ld.Entity) bool { return ld.Is(e, Class_Organization.ID) }
 
 // A Web Page
 type Page struct{ Object }
+
+func NewPage(id string) Page { return AsPage(ld.NewObject(id, Class_Page.ID)) }
 
 // Ducktypes the object into a(n) Page.
 func AsPage(e ld.Entity) Page { return Page{AsObject(e)} }
@@ -771,6 +861,8 @@ func IsPage(e ld.Entity) bool { return ld.Is(e, Class_Page.ID) }
 // A Person
 type Person struct{ Object }
 
+func NewPerson(id string) Person { return AsPerson(ld.NewObject(id, Class_Person.ID)) }
+
 // Ducktypes the object into a(n) Person.
 func AsPerson(e ld.Entity) Person { return Person{AsObject(e)} }
 
@@ -779,6 +871,8 @@ func IsPerson(e ld.Entity) bool { return ld.Is(e, Class_Person.ID) }
 
 // A physical or logical location
 type Place struct{ Object }
+
+func NewPlace(id string) Place { return AsPlace(ld.NewObject(id, Class_Place.ID)) }
 
 // Ducktypes the object into a(n) Place.
 func AsPlace(e ld.Entity) Place { return Place{AsObject(e)} }
@@ -819,6 +913,8 @@ func (obj Place) SetUnits(v interface{}) { SetUnits(obj, v) }
 // A Profile Document
 type Profile struct{ Object }
 
+func NewProfile(id string) Profile { return AsProfile(ld.NewObject(id, Class_Profile.ID)) }
+
 // Ducktypes the object into a(n) Profile.
 func AsProfile(e ld.Entity) Profile { return Profile{AsObject(e)} }
 
@@ -832,6 +928,8 @@ func (obj Profile) SetDescribes(v interface{}) { SetDescribes(obj, v) }
 
 // A question of any sort.
 type Question struct{ IntransitiveActivity }
+
+func NewQuestion(id string) Question { return AsQuestion(ld.NewObject(id, Class_Question.ID)) }
 
 // Ducktypes the object into a(n) Question.
 func AsQuestion(e ld.Entity) Question { return Question{AsIntransitiveActivity(e)} }
@@ -852,6 +950,8 @@ func (obj Question) SetOneOf(v interface{}) { SetOneOf(obj, v) }
 // The actor read the object
 type Read struct{ Activity }
 
+func NewRead(id string) Read { return AsRead(ld.NewObject(id, Class_Read.ID)) }
+
 // Ducktypes the object into a(n) Read.
 func AsRead(e ld.Entity) Read { return Read{AsActivity(e)} }
 
@@ -861,6 +961,8 @@ func IsRead(e ld.Entity) bool { return ld.Is(e, Class_Read.ID) }
 // Actor rejects the Object
 type Reject struct{ Activity }
 
+func NewReject(id string) Reject { return AsReject(ld.NewObject(id, Class_Reject.ID)) }
+
 // Ducktypes the object into a(n) Reject.
 func AsReject(e ld.Entity) Reject { return Reject{AsActivity(e)} }
 
@@ -869,6 +971,10 @@ func IsReject(e ld.Entity) bool { return ld.Is(e, Class_Reject.ID) }
 
 // Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)
 type Relationship struct{ Object }
+
+func NewRelationship(id string) Relationship {
+	return AsRelationship(ld.NewObject(id, Class_Relationship.ID))
+}
 
 // Ducktypes the object into a(n) Relationship.
 func AsRelationship(e ld.Entity) Relationship { return Relationship{AsObject(e)} }
@@ -889,6 +995,8 @@ func (obj Relationship) SetSubject(v interface{}) { SetSubject(obj, v) }
 // To Remove Something
 type Remove struct{ Activity }
 
+func NewRemove(id string) Remove { return AsRemove(ld.NewObject(id, Class_Remove.ID)) }
+
 // Ducktypes the object into a(n) Remove.
 func AsRemove(e ld.Entity) Remove { return Remove{AsActivity(e)} }
 
@@ -897,6 +1005,8 @@ func IsRemove(e ld.Entity) bool { return ld.Is(e, Class_Remove.ID) }
 
 // A service provided by some entity
 type Service struct{ Object }
+
+func NewService(id string) Service { return AsService(ld.NewObject(id, Class_Service.ID)) }
 
 // Ducktypes the object into a(n) Service.
 func AsService(e ld.Entity) Service { return Service{AsObject(e)} }
@@ -907,6 +1017,10 @@ func IsService(e ld.Entity) bool { return ld.Is(e, Class_Service.ID) }
 // Actor tentatively accepts the Object
 type TentativeAccept struct{ Accept }
 
+func NewTentativeAccept(id string) TentativeAccept {
+	return AsTentativeAccept(ld.NewObject(id, Class_TentativeAccept.ID))
+}
+
 // Ducktypes the object into a(n) TentativeAccept.
 func AsTentativeAccept(e ld.Entity) TentativeAccept { return TentativeAccept{AsAccept(e)} }
 
@@ -916,6 +1030,10 @@ func IsTentativeAccept(e ld.Entity) bool { return ld.Is(e, Class_TentativeAccept
 // Actor tentatively rejects the object
 type TentativeReject struct{ Reject }
 
+func NewTentativeReject(id string) TentativeReject {
+	return AsTentativeReject(ld.NewObject(id, Class_TentativeReject.ID))
+}
+
 // Ducktypes the object into a(n) TentativeReject.
 func AsTentativeReject(e ld.Entity) TentativeReject { return TentativeReject{AsReject(e)} }
 
@@ -924,6 +1042,8 @@ func IsTentativeReject(e ld.Entity) bool { return ld.Is(e, Class_TentativeReject
 
 // A placeholder for a deleted object
 type Tombstone struct{ Object }
+
+func NewTombstone(id string) Tombstone { return AsTombstone(ld.NewObject(id, Class_Tombstone.ID)) }
 
 // Ducktypes the object into a(n) Tombstone.
 func AsTombstone(e ld.Entity) Tombstone { return Tombstone{AsObject(e)} }
@@ -944,6 +1064,8 @@ func (obj Tombstone) SetFormerType(v interface{}) { SetFormerType(obj, v) }
 // The actor is traveling to the target. The origin specifies where the actor is traveling from.
 type Travel struct{ IntransitiveActivity }
 
+func NewTravel(id string) Travel { return AsTravel(ld.NewObject(id, Class_Travel.ID)) }
+
 // Ducktypes the object into a(n) Travel.
 func AsTravel(e ld.Entity) Travel { return Travel{AsIntransitiveActivity(e)} }
 
@@ -952,6 +1074,8 @@ func IsTravel(e ld.Entity) bool { return ld.Is(e, Class_Travel.ID) }
 
 // To Undo Something. This would typically be used to indicate that a previous Activity has been undone.
 type Undo struct{ Activity }
+
+func NewUndo(id string) Undo { return AsUndo(ld.NewObject(id, Class_Undo.ID)) }
 
 // Ducktypes the object into a(n) Undo.
 func AsUndo(e ld.Entity) Undo { return Undo{AsActivity(e)} }
@@ -962,6 +1086,8 @@ func IsUndo(e ld.Entity) bool { return ld.Is(e, Class_Undo.ID) }
 // To Update/Modify Something
 type Update struct{ Activity }
 
+func NewUpdate(id string) Update { return AsUpdate(ld.NewObject(id, Class_Update.ID)) }
+
 // Ducktypes the object into a(n) Update.
 func AsUpdate(e ld.Entity) Update { return Update{AsActivity(e)} }
 
@@ -971,6 +1097,8 @@ func IsUpdate(e ld.Entity) bool { return ld.Is(e, Class_Update.ID) }
 // A Video document of any kind.
 type Video struct{ Document }
 
+func NewVideo(id string) Video { return AsVideo(ld.NewObject(id, Class_Video.ID)) }
+
 // Ducktypes the object into a(n) Video.
 func AsVideo(e ld.Entity) Video { return Video{AsDocument(e)} }
 
@@ -979,6 +1107,8 @@ func IsVideo(e ld.Entity) bool { return ld.Is(e, Class_Video.ID) }
 
 // The actor viewed the object
 type View struct{ Activity }
+
+func NewView(id string) View { return AsView(ld.NewObject(id, Class_View.ID)) }
 
 // Ducktypes the object into a(n) View.
 func AsView(e ld.Entity) View { return View{AsActivity(e)} }

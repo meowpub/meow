@@ -259,6 +259,8 @@ import (
 {{comment ($cls.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 type {{$cls.TypeName}} struct { {{range .SubClassOf}}{{$.Resolve .}}; {{else}}o *ld.Object{{end}} }
 
+func New{{$cls.TypeName}}(id string) {{$cls.TypeName}} { return As{{$cls.TypeName}}(ld.NewObject(id, Class_{{.TypeName}}.ID)) }
+
 // Ducktypes the object into a(n) {{.TypeName}}.
 func As{{$cls.TypeName}}(e ld.Entity) {{$cls.TypeName}} { return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(e),{{else}}o: e.Obj(){{end}} } }
 

@@ -9,6 +9,10 @@ import (
 // An LDPC that uses a predefined predicate to simply link to its contained resources.
 type BasicContainer struct{ Container }
 
+func NewBasicContainer(id string) BasicContainer {
+	return AsBasicContainer(ld.NewObject(id, Class_BasicContainer.ID))
+}
+
 // Ducktypes the object into a(n) BasicContainer.
 func AsBasicContainer(e ld.Entity) BasicContainer { return BasicContainer{AsContainer(e)} }
 
@@ -17,6 +21,8 @@ func IsBasicContainer(e ld.Entity) bool { return ld.Is(e, Class_BasicContainer.I
 
 // A Linked Data Platform RDF Source (LDP-RS) that also conforms to additional patterns and conventions for managing membership. Readers should refer to the specification defining this ontology for the list of behaviors associated with it.
 type Container struct{ RDFSource }
+
+func NewContainer(id string) Container { return AsContainer(ld.NewObject(id, Class_Container.ID)) }
 
 // Ducktypes the object into a(n) Container.
 func AsContainer(e ld.Entity) Container { return Container{AsRDFSource(e)} }
@@ -52,6 +58,10 @@ func (obj Container) SetMembershipResource(v interface{}) { SetMembershipResourc
 // An LDPC that is similar to a LDP-DC but it allows an indirection with the ability to list as member a resource, such as a URI representing a real-world object, that is different from the resource that is created.
 type DirectContainer struct{ Container }
 
+func NewDirectContainer(id string) DirectContainer {
+	return AsDirectContainer(ld.NewObject(id, Class_DirectContainer.ID))
+}
+
 // Ducktypes the object into a(n) DirectContainer.
 func AsDirectContainer(e ld.Entity) DirectContainer { return DirectContainer{AsContainer(e)} }
 
@@ -60,6 +70,10 @@ func IsDirectContainer(e ld.Entity) bool { return ld.Is(e, Class_DirectContainer
 
 // An LDPC that has the flexibility of choosing what form the membership triples take.
 type IndirectContainer struct{ Container }
+
+func NewIndirectContainer(id string) IndirectContainer {
+	return AsIndirectContainer(ld.NewObject(id, Class_IndirectContainer.ID))
+}
 
 // Ducktypes the object into a(n) IndirectContainer.
 func AsIndirectContainer(e ld.Entity) IndirectContainer { return IndirectContainer{AsContainer(e)} }
@@ -70,6 +84,10 @@ func IsIndirectContainer(e ld.Entity) bool { return ld.Is(e, Class_IndirectConta
 // A Linked Data Platform Resource (LDPR) whose state is NOT represented as RDF.
 type NonRDFSource struct{ Resource }
 
+func NewNonRDFSource(id string) NonRDFSource {
+	return AsNonRDFSource(ld.NewObject(id, Class_NonRDFSource.ID))
+}
+
 // Ducktypes the object into a(n) NonRDFSource.
 func AsNonRDFSource(e ld.Entity) NonRDFSource { return NonRDFSource{AsResource(e)} }
 
@@ -78,6 +96,8 @@ func IsNonRDFSource(e ld.Entity) bool { return ld.Is(e, Class_NonRDFSource.ID) }
 
 // URI signifying that the resource is an in-sequence page resource, as defined by LDP Paging.  Typically used on Link rel='type' response headers.
 type Page struct{ o *ld.Object }
+
+func NewPage(id string) Page { return AsPage(ld.NewObject(id, Class_Page.ID)) }
 
 // Ducktypes the object into a(n) Page.
 func AsPage(e ld.Entity) Page { return Page{o: e.Obj()} }
@@ -123,6 +143,10 @@ func (obj Page) SetPageSortCriteria(v interface{}) { SetPageSortCriteria(obj, v)
 
 // Element in the list of sorting criteria used by the server to assign container members to pages.
 type PageSortCriterion struct{ o *ld.Object }
+
+func NewPageSortCriterion(id string) PageSortCriterion {
+	return AsPageSortCriterion(ld.NewObject(id, Class_PageSortCriterion.ID))
+}
 
 // Ducktypes the object into a(n) PageSortCriterion.
 func AsPageSortCriterion(e ld.Entity) PageSortCriterion { return PageSortCriterion{o: e.Obj()} }
@@ -181,6 +205,8 @@ func (obj PageSortCriterion) SetPageSortPredicate(v interface{}) { SetPageSortPr
 // A Linked Data Platform Resource (LDPR) whose state is represented as RDF.
 type RDFSource struct{ Resource }
 
+func NewRDFSource(id string) RDFSource { return AsRDFSource(ld.NewObject(id, Class_RDFSource.ID)) }
+
 // Ducktypes the object into a(n) RDFSource.
 func AsRDFSource(e ld.Entity) RDFSource { return RDFSource{AsResource(e)} }
 
@@ -189,6 +215,8 @@ func IsRDFSource(e ld.Entity) bool { return ld.Is(e, Class_RDFSource.ID) }
 
 // A HTTP-addressable resource whose lifecycle is managed by a LDP server.
 type Resource struct{ o *ld.Object }
+
+func NewResource(id string) Resource { return AsResource(ld.NewObject(id, Class_Resource.ID)) }
 
 // Ducktypes the object into a(n) Resource.
 func AsResource(e ld.Entity) Resource { return Resource{o: e.Obj()} }

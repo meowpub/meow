@@ -10,6 +10,10 @@ import (
 // The class of collections of pairwise different individuals.
 type AllDifferent struct{ rdf.Resource }
 
+func NewAllDifferent(id string) AllDifferent {
+	return AsAllDifferent(ld.NewObject(id, Class_AllDifferent.ID))
+}
+
 // Ducktypes the object into a(n) AllDifferent.
 func AsAllDifferent(e ld.Entity) AllDifferent { return AllDifferent{rdf.AsResource(e)} }
 
@@ -24,6 +28,10 @@ func (obj AllDifferent) SetDistinctMembers(v interface{}) { SetDistinctMembers(o
 // The class of collections of pairwise disjoint classes.
 type AllDisjointClasses struct{ rdf.Resource }
 
+func NewAllDisjointClasses(id string) AllDisjointClasses {
+	return AsAllDisjointClasses(ld.NewObject(id, Class_AllDisjointClasses.ID))
+}
+
 // Ducktypes the object into a(n) AllDisjointClasses.
 func AsAllDisjointClasses(e ld.Entity) AllDisjointClasses {
 	return AllDisjointClasses{rdf.AsResource(e)}
@@ -34,6 +42,10 @@ func IsAllDisjointClasses(e ld.Entity) bool { return ld.Is(e, Class_AllDisjointC
 
 // The class of collections of pairwise disjoint properties.
 type AllDisjointProperties struct{ rdf.Resource }
+
+func NewAllDisjointProperties(id string) AllDisjointProperties {
+	return AsAllDisjointProperties(ld.NewObject(id, Class_AllDisjointProperties.ID))
+}
 
 // Ducktypes the object into a(n) AllDisjointProperties.
 func AsAllDisjointProperties(e ld.Entity) AllDisjointProperties {
@@ -46,6 +58,8 @@ func IsAllDisjointProperties(e ld.Entity) bool { return ld.Is(e, Class_AllDisjoi
 // The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.
 type Annotation struct{ rdf.Resource }
 
+func NewAnnotation(id string) Annotation { return AsAnnotation(ld.NewObject(id, Class_Annotation.ID)) }
+
 // Ducktypes the object into a(n) Annotation.
 func AsAnnotation(e ld.Entity) Annotation { return Annotation{rdf.AsResource(e)} }
 
@@ -54,6 +68,10 @@ func IsAnnotation(e ld.Entity) bool { return ld.Is(e, Class_Annotation.ID) }
 
 // The class of annotation properties.
 type AnnotationProperty struct{ rdf.Property }
+
+func NewAnnotationProperty(id string) AnnotationProperty {
+	return AsAnnotationProperty(ld.NewObject(id, Class_AnnotationProperty.ID))
+}
 
 // Ducktypes the object into a(n) AnnotationProperty.
 func AsAnnotationProperty(e ld.Entity) AnnotationProperty {
@@ -66,6 +84,10 @@ func IsAnnotationProperty(e ld.Entity) bool { return ld.Is(e, Class_AnnotationPr
 // The class of asymmetric properties.
 type AsymmetricProperty struct{ ObjectProperty }
 
+func NewAsymmetricProperty(id string) AsymmetricProperty {
+	return AsAsymmetricProperty(ld.NewObject(id, Class_AsymmetricProperty.ID))
+}
+
 // Ducktypes the object into a(n) AsymmetricProperty.
 func AsAsymmetricProperty(e ld.Entity) AsymmetricProperty {
 	return AsymmetricProperty{AsObjectProperty(e)}
@@ -77,6 +99,8 @@ func IsAsymmetricProperty(e ld.Entity) bool { return ld.Is(e, Class_AsymmetricPr
 // The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.
 type Axiom struct{ rdf.Resource }
 
+func NewAxiom(id string) Axiom { return AsAxiom(ld.NewObject(id, Class_Axiom.ID)) }
+
 // Ducktypes the object into a(n) Axiom.
 func AsAxiom(e ld.Entity) Axiom { return Axiom{rdf.AsResource(e)} }
 
@@ -85,6 +109,8 @@ func IsAxiom(e ld.Entity) bool { return ld.Is(e, Class_Axiom.ID) }
 
 // The class of OWL classes.
 type Class struct{ rdf.Class }
+
+func NewClass(id string) Class { return AsClass(ld.NewObject(id, Class_Class.ID)) }
 
 // Ducktypes the object into a(n) Class.
 func AsClass(e ld.Entity) Class { return Class{rdf.AsClass(e)} }
@@ -115,6 +141,8 @@ func (obj Class) SetHasKey(v interface{}) { SetHasKey(obj, v) }
 // The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.
 type DataRange struct{ rdf.Datatype }
 
+func NewDataRange(id string) DataRange { return AsDataRange(ld.NewObject(id, Class_DataRange.ID)) }
+
 // Ducktypes the object into a(n) DataRange.
 func AsDataRange(e ld.Entity) DataRange { return DataRange{rdf.AsDatatype(e)} }
 
@@ -123,6 +151,10 @@ func IsDataRange(e ld.Entity) bool { return ld.Is(e, Class_DataRange.ID) }
 
 // The class of data properties.
 type DatatypeProperty struct{ rdf.Property }
+
+func NewDatatypeProperty(id string) DatatypeProperty {
+	return AsDatatypeProperty(ld.NewObject(id, Class_DatatypeProperty.ID))
+}
 
 // Ducktypes the object into a(n) DatatypeProperty.
 func AsDatatypeProperty(e ld.Entity) DatatypeProperty { return DatatypeProperty{rdf.AsProperty(e)} }
@@ -133,6 +165,10 @@ func IsDatatypeProperty(e ld.Entity) bool { return ld.Is(e, Class_DatatypeProper
 // The class of deprecated classes.
 type DeprecatedClass struct{ rdf.Class }
 
+func NewDeprecatedClass(id string) DeprecatedClass {
+	return AsDeprecatedClass(ld.NewObject(id, Class_DeprecatedClass.ID))
+}
+
 // Ducktypes the object into a(n) DeprecatedClass.
 func AsDeprecatedClass(e ld.Entity) DeprecatedClass { return DeprecatedClass{rdf.AsClass(e)} }
 
@@ -141,6 +177,10 @@ func IsDeprecatedClass(e ld.Entity) bool { return ld.Is(e, Class_DeprecatedClass
 
 // The class of deprecated properties.
 type DeprecatedProperty struct{ rdf.Property }
+
+func NewDeprecatedProperty(id string) DeprecatedProperty {
+	return AsDeprecatedProperty(ld.NewObject(id, Class_DeprecatedProperty.ID))
+}
 
 // Ducktypes the object into a(n) DeprecatedProperty.
 func AsDeprecatedProperty(e ld.Entity) DeprecatedProperty {
@@ -153,6 +193,10 @@ func IsDeprecatedProperty(e ld.Entity) bool { return ld.Is(e, Class_DeprecatedPr
 // The class of functional properties.
 type FunctionalProperty struct{ rdf.Property }
 
+func NewFunctionalProperty(id string) FunctionalProperty {
+	return AsFunctionalProperty(ld.NewObject(id, Class_FunctionalProperty.ID))
+}
+
 // Ducktypes the object into a(n) FunctionalProperty.
 func AsFunctionalProperty(e ld.Entity) FunctionalProperty {
 	return FunctionalProperty{rdf.AsProperty(e)}
@@ -163,6 +207,10 @@ func IsFunctionalProperty(e ld.Entity) bool { return ld.Is(e, Class_FunctionalPr
 
 // The class of inverse-functional properties.
 type InverseFunctionalProperty struct{ ObjectProperty }
+
+func NewInverseFunctionalProperty(id string) InverseFunctionalProperty {
+	return AsInverseFunctionalProperty(ld.NewObject(id, Class_InverseFunctionalProperty.ID))
+}
 
 // Ducktypes the object into a(n) InverseFunctionalProperty.
 func AsInverseFunctionalProperty(e ld.Entity) InverseFunctionalProperty {
@@ -177,6 +225,10 @@ func IsInverseFunctionalProperty(e ld.Entity) bool {
 // The class of irreflexive properties.
 type IrreflexiveProperty struct{ ObjectProperty }
 
+func NewIrreflexiveProperty(id string) IrreflexiveProperty {
+	return AsIrreflexiveProperty(ld.NewObject(id, Class_IrreflexiveProperty.ID))
+}
+
 // Ducktypes the object into a(n) IrreflexiveProperty.
 func AsIrreflexiveProperty(e ld.Entity) IrreflexiveProperty {
 	return IrreflexiveProperty{AsObjectProperty(e)}
@@ -188,6 +240,10 @@ func IsIrreflexiveProperty(e ld.Entity) bool { return ld.Is(e, Class_Irreflexive
 // The class of named individuals.
 type NamedIndividual struct{ Thing }
 
+func NewNamedIndividual(id string) NamedIndividual {
+	return AsNamedIndividual(ld.NewObject(id, Class_NamedIndividual.ID))
+}
+
 // Ducktypes the object into a(n) NamedIndividual.
 func AsNamedIndividual(e ld.Entity) NamedIndividual { return NamedIndividual{AsThing(e)} }
 
@@ -196,6 +252,10 @@ func IsNamedIndividual(e ld.Entity) bool { return ld.Is(e, Class_NamedIndividual
 
 // The class of negative property assertions.
 type NegativePropertyAssertion struct{ rdf.Resource }
+
+func NewNegativePropertyAssertion(id string) NegativePropertyAssertion {
+	return AsNegativePropertyAssertion(ld.NewObject(id, Class_NegativePropertyAssertion.ID))
+}
 
 // Ducktypes the object into a(n) NegativePropertyAssertion.
 func AsNegativePropertyAssertion(e ld.Entity) NegativePropertyAssertion {
@@ -230,6 +290,8 @@ func (obj NegativePropertyAssertion) SetTargetValue(v interface{}) { SetTargetVa
 // This is the empty class.
 type Nothing struct{ Thing }
 
+func NewNothing(id string) Nothing { return AsNothing(ld.NewObject(id, Class_Nothing.ID)) }
+
 // Ducktypes the object into a(n) Nothing.
 func AsNothing(e ld.Entity) Nothing { return Nothing{AsThing(e)} }
 
@@ -238,6 +300,10 @@ func IsNothing(e ld.Entity) bool { return ld.Is(e, Class_Nothing.ID) }
 
 // The class of object properties.
 type ObjectProperty struct{ rdf.Property }
+
+func NewObjectProperty(id string) ObjectProperty {
+	return AsObjectProperty(ld.NewObject(id, Class_ObjectProperty.ID))
+}
 
 // Ducktypes the object into a(n) ObjectProperty.
 func AsObjectProperty(e ld.Entity) ObjectProperty { return ObjectProperty{rdf.AsProperty(e)} }
@@ -257,6 +323,8 @@ func (obj ObjectProperty) SetPropertyChainAxiom(v interface{}) { SetPropertyChai
 
 // The class of ontologies.
 type Ontology struct{ rdf.Resource }
+
+func NewOntology(id string) Ontology { return AsOntology(ld.NewObject(id, Class_Ontology.ID)) }
 
 // Ducktypes the object into a(n) Ontology.
 func AsOntology(e ld.Entity) Ontology { return Ontology{rdf.AsResource(e)} }
@@ -292,6 +360,10 @@ func (obj Ontology) SetVersionIRI(v interface{}) { SetVersionIRI(obj, v) }
 // The class of ontology properties.
 type OntologyProperty struct{ rdf.Property }
 
+func NewOntologyProperty(id string) OntologyProperty {
+	return AsOntologyProperty(ld.NewObject(id, Class_OntologyProperty.ID))
+}
+
 // Ducktypes the object into a(n) OntologyProperty.
 func AsOntologyProperty(e ld.Entity) OntologyProperty { return OntologyProperty{rdf.AsProperty(e)} }
 
@@ -301,6 +373,10 @@ func IsOntologyProperty(e ld.Entity) bool { return ld.Is(e, Class_OntologyProper
 // The class of reflexive properties.
 type ReflexiveProperty struct{ ObjectProperty }
 
+func NewReflexiveProperty(id string) ReflexiveProperty {
+	return AsReflexiveProperty(ld.NewObject(id, Class_ReflexiveProperty.ID))
+}
+
 // Ducktypes the object into a(n) ReflexiveProperty.
 func AsReflexiveProperty(e ld.Entity) ReflexiveProperty { return ReflexiveProperty{AsObjectProperty(e)} }
 
@@ -309,6 +385,10 @@ func IsReflexiveProperty(e ld.Entity) bool { return ld.Is(e, Class_ReflexiveProp
 
 // The class of property restrictions.
 type Restriction struct{ Class }
+
+func NewRestriction(id string) Restriction {
+	return AsRestriction(ld.NewObject(id, Class_Restriction.ID))
+}
 
 // Ducktypes the object into a(n) Restriction.
 func AsRestriction(e ld.Entity) Restriction { return Restriction{AsClass(e)} }
@@ -389,6 +469,10 @@ func (obj Restriction) SetSomeValuesFrom(v interface{}) { SetSomeValuesFrom(obj,
 // The class of symmetric properties.
 type SymmetricProperty struct{ ObjectProperty }
 
+func NewSymmetricProperty(id string) SymmetricProperty {
+	return AsSymmetricProperty(ld.NewObject(id, Class_SymmetricProperty.ID))
+}
+
 // Ducktypes the object into a(n) SymmetricProperty.
 func AsSymmetricProperty(e ld.Entity) SymmetricProperty { return SymmetricProperty{AsObjectProperty(e)} }
 
@@ -397,6 +481,8 @@ func IsSymmetricProperty(e ld.Entity) bool { return ld.Is(e, Class_SymmetricProp
 
 // The class of OWL individuals.
 type Thing struct{ o *ld.Object }
+
+func NewThing(id string) Thing { return AsThing(ld.NewObject(id, Class_Thing.ID)) }
 
 // Ducktypes the object into a(n) Thing.
 func AsThing(e ld.Entity) Thing { return Thing{o: e.Obj()} }
@@ -459,6 +545,10 @@ func (obj Thing) SetTopObjectProperty(v interface{}) { SetTopObjectProperty(obj,
 
 // The class of transitive properties.
 type TransitiveProperty struct{ ObjectProperty }
+
+func NewTransitiveProperty(id string) TransitiveProperty {
+	return AsTransitiveProperty(ld.NewObject(id, Class_TransitiveProperty.ID))
+}
 
 // Ducktypes the object into a(n) TransitiveProperty.
 func AsTransitiveProperty(e ld.Entity) TransitiveProperty {
