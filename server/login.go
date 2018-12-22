@@ -7,13 +7,12 @@ import (
 	"github.com/meowpub/meow/models"
 	"github.com/meowpub/meow/server/api"
 	"github.com/meowpub/meow/server/oauth"
-	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )
 
-var ErrInvalidUsernameOrPassword = api.Wrap(
-	errors.New("invalid username or password"),
+var ErrInvalidUsernameOrPassword = lib.Error(
 	http.StatusUnauthorized,
+	"invalid username or password",
 )
 
 type LoginRequest struct {

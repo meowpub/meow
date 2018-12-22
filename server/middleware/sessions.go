@@ -6,6 +6,7 @@ import (
 
 	"github.com/gorilla/sessions"
 
+	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/server/api"
 )
 
@@ -25,12 +26,12 @@ func AddSession(store sessions.Store) func(next api.Handler) api.Handler {
 		return api.HandlerFunc(func(req api.Request) api.Response {
 			sess, err := store.Get(req.Request, "session")
 			if err != nil {
-				return api.Response{Error: api.Wrap(err, http.StatusBadRequest)}
+				return api.Response{Error: lib.Code(err, http.StatusBadRequest)}
 			}
 			req = req.WithContext(WithSession(req.Context(), sess))
 			resp := next.HandleRequest(req)
 			if err := sess.Save(req.Request, &resp); err != nil {
-				return api.Response{Error: api.Wrap(err, http.StatusBadRequest)}
+				return api.Response{Error: lib.Code(err, http.StatusBadRequest)}
 			}
 			return resp
 		})

@@ -1,35 +1,35 @@
 package well_known
 
 import (
-	"errors"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"go.uber.org/zap"
 
 	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/lib/clog"
 	"github.com/meowpub/meow/lib/xrd"
 	"github.com/meowpub/meow/server/api"
-	"go.uber.org/zap"
 )
 
 func WebFingerHandler(req api.Request) api.Response {
 	q := req.URL.Query()
 	resource := q.Get("resource")
 	if resource == "" {
-		return api.ErrorResponse(api.Wrap(errors.New("No resource specified"), http.StatusBadRequest))
+		return api.ErrorResponse(lib.Error(http.StatusBadRequest, "No resource specified"))
 	}
 
 	rootUrl := req.RootURL()
 
 	resourceUrl, err := url.Parse(resource)
 	if err != nil {
-		return api.ErrorResponse(api.Wrap(err, http.StatusBadRequest))
+		return api.ErrorResponse(lib.Code(err, http.StatusBadRequest))
 	}
 	*resourceUrl = lib.NormalizeURL(*rootUrl.ResolveReference(resourceUrl))
 
 	if resourceUrl.Host != rootUrl.Host {
-		return api.ErrorResponse(api.Wrap(errors.New("Resource on wrong host"), http.StatusNotFound))
+		return api.ErrorResponse(lib.Error(http.StatusNotFound, "Resource on wrong host"))
 	}
 
 	subReq := req.WithContext(lib.WithLoggerFields(req.Context(),
@@ -63,12 +63,12 @@ func WebFingerHandler(req api.Request) api.Response {
 			}
 		} else {
 			clog.Error(subReq, "Not found: not traversible")
-			return api.ErrorResponse(api.Wrap(errors.New(resourceUrl.String()+" Not found"), http.StatusNotFound))
+			return api.ErrorResponse(lib.Errorf(http.StatusNotFound, "%s: Not found", resourceUrl.String()))
 		}
 
 	default:
 		clog.Error(req, "Unsupported scheme")
-		return api.ErrorResponse(api.Wrap(errors.New("Unsupported scheme"), http.StatusNotFound))
+		return api.ErrorResponse(lib.Error(http.StatusNotFound, "Unsupported scheme"))
 	}
 
 	return RenderXRD(req, xrd, "jrd")

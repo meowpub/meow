@@ -5,10 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/pkg/errors"
-
 	"github.com/meowpub/meow/lib"
-	"github.com/meowpub/meow/server/api"
 )
 
 // Authorize retrieves the access token from the context and ensures that it has the requested
@@ -20,18 +17,19 @@ func Authorize(ctx context.Context, scope *Scope) error {
 
 	if token == nil {
 		l.Debug("No token in context")
-		return api.Wrap(
-			errors.New("authentication required"),
+		return lib.Error(
 			http.StatusUnauthorized,
+			"authentication required",
 		)
 	}
 
 	// If we're authorizing with a scope, reject as unauthorized if we don't have it.
 	scopes := strings.Split(token.Scope, " ")
 	if scope != nil && !CheckScope(scopes, scope) {
-		return api.Wrap(
-			errors.Errorf("this endpoint requires the %s scope, but you only have grants for %s", scope.ID, strings.Join(scopes, ", ")),
+		return lib.Errorf(
 			http.StatusForbidden,
+			"this endpoint requires the %s scope, but you only have grants for %s",
+			scope.ID, strings.Join(scopes, ", "),
 		)
 	}
 
