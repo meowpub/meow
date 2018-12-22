@@ -14,6 +14,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/unrolled/render"
+
+	"github.com/meowpub/meow/lib"
 )
 
 func TestRouterHandleRequest(t *testing.T) {
@@ -157,7 +159,7 @@ func TestRouterServe(t *testing.T) {
 
 	t.Run("Error", func(t *testing.T) {
 		root.Self = HandlerFunc(func(req Request) Response {
-			return Response{Error: Wrap(errors.New("i'm a teapot"), http.StatusTeapot)}
+			return Response{Error: lib.Error(http.StatusTeapot, "i'm a teapot")}
 		})
 
 		rec := httptest.NewRecorder()

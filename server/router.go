@@ -1,7 +1,6 @@
 package server
 
 import (
-	"errors"
 	"net/http"
 
 	"github.com/go-redis/redis"
@@ -11,6 +10,7 @@ import (
 
 	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/config/secrets"
+	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/server/api"
 	"github.com/meowpub/meow/server/middleware"
 	"github.com/meowpub/meow/server/oauth"
@@ -48,5 +48,5 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 }
 
 func HandleNotFound(req api.Request) api.Response {
-	return api.Response{Error: api.Wrap(errors.New("not found"), http.StatusNotFound)}
+	return api.Response{Error: lib.Error(http.StatusNotFound, "not found")}
 }

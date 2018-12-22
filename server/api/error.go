@@ -5,44 +5,51 @@ import (
 
 	"github.com/pkg/errors"
 
+	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/models"
 )
 
-// From pkg/errors; unexported but stable.
+// Lifted from pkg/errors.
 type causer interface {
 	Cause() error
 }
 
-// From pkg/errors; unexported but stable.
-type stackTracer interface {
-	StackTrace() errors.StackTrace
-}
-
-// Error attaches a status code to an error.
-type statusError struct {
-	Err        error
-	StatusCode int
-}
-
-func Wrap(err error, code int) error {
-	if err != nil {
-		return statusError{err, code}
+func cause(err error) error {
+	if cerr, ok := err.(causer); ok {
+		return cerr.Cause()
 	}
 	return nil
 }
 
-func (err statusError) Error() string { return err.Err.Error() }
+// Lifted from pkg/errors.
+type stackTracer interface {
+	StackTrace() errors.StackTrace
+}
 
-// Cause satisfies causer.
-func (err statusError) Cause() error { return err.Err }
+func stackTrace(err error) errors.StackTrace {
+	if serr, ok := err.(stackTracer); ok {
+		return serr.StackTrace()
+	}
+	if cerr := cause(err); cerr != nil {
+		return stackTrace(cerr)
+	}
+	return nil
+}
 
 // ErrorStatus returns the status code for an error (defaults to 500, 200 for a nil error).
 func ErrorStatus(err error) int {
+	if status := errorStatus(err); status != 0 {
+		return status
+	}
+	return http.StatusInternalServerError
+}
+
+func errorStatus(err error) int {
 	if err == nil {
 		return http.StatusOK
 	}
 
-	if e, ok := err.(statusError); ok {
+	if e, ok := err.(lib.Err); ok {
 		return e.StatusCode
 	}
 
@@ -54,16 +61,5 @@ func ErrorStatus(err error) int {
 		return ErrorStatus(e.Cause())
 	}
 
-	return http.StatusInternalServerError
-}
-
-// StackTrace returns the stack trace for an error or any parent errors, if there is one.
-func StackTrace(err error) errors.StackTrace {
-	if e, ok := err.(stackTracer); ok {
-		return e.StackTrace()
-	}
-	if e, ok := err.(causer); ok {
-		return StackTrace(e.Cause())
-	}
-	return nil
+	return 0
 }
