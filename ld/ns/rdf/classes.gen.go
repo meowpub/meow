@@ -193,6 +193,9 @@ func IsResource(e ld.Entity) bool { return ld.Is(e, Class_Resource.ID) }
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Resource) Obj() *ld.Object { return obj.o }
 
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj Resource) IsNull() bool { return obj.o == nil }
+
 // Returns the object's @id. Implements ld.Entity.
 func (obj Resource) ID() string { return obj.o.ID() }
 

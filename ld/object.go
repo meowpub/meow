@@ -60,6 +60,10 @@ func (obj *Object) Obj() *Object {
 	return obj
 }
 
+func (obj *Object) IsNull() bool {
+	return obj == nil
+}
+
 // Returns the object's @id, or "".
 func (obj *Object) ID() string {
 	if obj == nil {

@@ -108,6 +108,9 @@ func IsPage(e ld.Entity) bool { return ld.Is(e, Class_Page.ID) }
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Page) Obj() *ld.Object { return obj.o }
 
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj Page) IsNull() bool { return obj.o == nil }
+
 // Returns the object's @id. Implements ld.Entity.
 func (obj Page) ID() string { return obj.o.ID() }
 
@@ -156,6 +159,9 @@ func IsPageSortCriterion(e ld.Entity) bool { return ld.Is(e, Class_PageSortCrite
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj PageSortCriterion) Obj() *ld.Object { return obj.o }
+
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj PageSortCriterion) IsNull() bool { return obj.o == nil }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj PageSortCriterion) ID() string { return obj.o.ID() }
@@ -226,6 +232,9 @@ func IsResource(e ld.Entity) bool { return ld.Is(e, Class_Resource.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Resource) Obj() *ld.Object { return obj.o }
+
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj Resource) IsNull() bool { return obj.o == nil }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj Resource) ID() string { return obj.o.ID() }

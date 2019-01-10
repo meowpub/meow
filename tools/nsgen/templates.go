@@ -271,6 +271,9 @@ func Is{{$cls.TypeName}}(e ld.Entity) bool { return ld.Is(e, Class_{{.TypeName}}
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj {{$cls.TypeName}}) Obj() *ld.Object { return obj.o }
 
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj {{$cls.TypeName}}) IsNull() bool { return obj.o == nil }
+
 // Returns the object's @id. Implements ld.Entity.
 func (obj {{$cls.TypeName}}) ID() string { return obj.o.ID() }
 

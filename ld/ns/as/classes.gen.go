@@ -373,6 +373,9 @@ func IsLink(e ld.Entity) bool { return ld.Is(e, Class_Link.ID) }
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Link) Obj() *ld.Object { return obj.o }
 
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj Link) IsNull() bool { return obj.o == nil }
+
 // Returns the object's @id. Implements ld.Entity.
 func (obj Link) ID() string { return obj.o.ID() }
 
@@ -498,6 +501,9 @@ func IsObject(e ld.Entity) bool { return ld.Is(e, Class_Object.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Object) Obj() *ld.Object { return obj.o }
+
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj Object) IsNull() bool { return obj.o == nil }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj Object) ID() string { return obj.o.ID() }
@@ -703,6 +709,9 @@ func IsOrderedCollection(e ld.Entity) bool { return ld.Is(e, Class_OrderedCollec
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj OrderedCollection) Obj() *ld.Object { return obj.o }
 
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj OrderedCollection) IsNull() bool { return obj.o == nil }
+
 // Returns the object's @id. Implements ld.Entity.
 func (obj OrderedCollection) ID() string { return obj.o.ID() }
 
@@ -787,6 +796,9 @@ func IsOrderedItems(e ld.Entity) bool { return ld.Is(e, Class_OrderedItems.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj OrderedItems) Obj() *ld.Object { return obj.o }
+
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj OrderedItems) IsNull() bool { return obj.o == nil }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj OrderedItems) ID() string { return obj.o.ID() }

@@ -493,6 +493,9 @@ func IsThing(e ld.Entity) bool { return ld.Is(e, Class_Thing.ID) }
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Thing) Obj() *ld.Object { return obj.o }
 
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj Thing) IsNull() bool { return obj.o == nil }
+
 // Returns the object's @id. Implements ld.Entity.
 func (obj Thing) ID() string { return obj.o.ID() }
 
