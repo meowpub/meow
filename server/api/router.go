@@ -133,7 +133,7 @@ func (r *Router) Render(rw http.ResponseWriter, req Request, resp Response) {
 		case []byte:
 			err = r.rend.Data(rw, resp.Status, data)
 		case ld.Entity:
-			err = r.renderJSONLD(rw, resp.Status, data)
+			err = r.renderJSONLD(req.Context(), rw, resp.Status, data)
 		default:
 			err = r.rend.JSON(rw, resp.Status, data)
 		}
@@ -169,8 +169,8 @@ func (r *Router) RenderError(rw http.ResponseWriter, req Request, status int, er
 	fmt.Fprintln(rw, string(data))
 }
 
-func (r *Router) renderJSONLD(rw http.ResponseWriter, status int, data ld.Entity) error {
-	compact, err := ld.Compact(&http.Client{}, data.Obj().V, "", as.AS.ID)
+func (r *Router) renderJSONLD(ctx context.Context, rw http.ResponseWriter, status int, data ld.Entity) error {
+	compact, err := ld.Compact(ctx, data.Obj().V, "", as.AS.ID)
 	if err != nil {
 		return err
 	}
