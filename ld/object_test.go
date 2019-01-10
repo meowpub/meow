@@ -7,6 +7,28 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestObjectSet(t *testing.T) {
+	t.Run("Simple", func(t *testing.T) {
+		obj := NewObject("https://example.com")
+		obj.Set("key", "value")
+		assert.Equal(t, "value", obj.Get("key"))
+	})
+	t.Run("Object", func(t *testing.T) {
+		obj := NewObject("https://example.com")
+		obj.Set("key", NewObject("https://example.com/other"))
+		assert.Equal(t, map[string]interface{}{
+			"@id": "https://example.com/other",
+		}, obj.Get("key"))
+	})
+	t.Run("Entity", func(t *testing.T) {
+		obj := NewObject("https://example.com")
+		obj.Set("key", Entity(NewObject("https://example.com/other")))
+		assert.Equal(t, map[string]interface{}{
+			"@id": "https://example.com/other",
+		}, obj.Get("key"))
+	})
+}
+
 func TestObjectID(t *testing.T) {
 	t.Run("None", func(t *testing.T) {
 		obj, err := ParseObject([]byte(`{}`))

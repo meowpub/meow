@@ -18,8 +18,12 @@ type Object struct {
 
 func NewObject(id string, types ...string) *Object {
 	obj := &Object{}
-	obj.SetID(id)
-	obj.SetType(types...)
+	if id != "" {
+		obj.SetID(id)
+	}
+	if types != nil {
+		obj.SetType(types...)
+	}
 	return obj
 }
 
@@ -128,6 +132,12 @@ func (obj *Object) Set(key string, value interface{}) {
 	if obj.V == nil {
 		obj.V = map[string]interface{}{key: value}
 		return
+	}
+	switch v := value.(type) {
+	case Entity:
+		value = v.Obj().V
+	case *Object:
+		value = v.V
 	}
 	obj.V[key] = value
 	switch key {
