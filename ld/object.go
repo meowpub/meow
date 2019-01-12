@@ -1,7 +1,11 @@
 package ld
 
 import (
+	"context"
 	"encoding/json"
+	"net/http"
+
+	"github.com/meowpub/meow/lib"
 )
 
 var _ Entity = &Object{}
@@ -25,6 +29,18 @@ func NewObject(id string, types ...string) *Object {
 		obj.SetType(types...)
 	}
 	return obj
+}
+
+func FetchObject(ctx context.Context, id string) (*Object, error) {
+	rdoc, err := NewDocumentLoader(ctx).LoadDocument(id)
+	if err != nil {
+		return nil, lib.Code(err, http.StatusUnprocessableEntity)
+	}
+	v, ok := rdoc.Document.(map[string]interface{})
+	if !ok {
+		return nil, lib.Errorf(http.StatusInternalServerError, "can't cast %T to map[string]interface{}", v)
+	}
+	return &Object{V: v}, nil
 }
 
 // Creates a new object from a JSON object.
