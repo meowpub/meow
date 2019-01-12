@@ -6,7 +6,6 @@ import (
 
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
-	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/lib"
 )
 
@@ -91,17 +90,11 @@ func (s *streamItemStore) TryInsertItem(streamID snowflake.ID, entityID snowflak
 
 	if err != nil {
 		// Not found - insert our own entry
-
 		if gorm.IsRecordNotFoundError(err) {
-			flake, err := lib.GenSnowflake(config.NodeID())
-			if err != nil {
-				return nil, false, err
-			}
-
 			item := &StreamItem{
 				StreamID: streamID,
 				EntityID: entityID,
-				ItemID:   flake,
+				ItemID:   lib.GenSnowflake(),
 			}
 			err = s.DB.Create(item).Error
 

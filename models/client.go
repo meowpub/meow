@@ -8,7 +8,6 @@ import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
 
-	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/lib"
 )
 
@@ -32,10 +31,7 @@ type ClientUserData struct {
 
 func NewClient(ud ClientUserData, redirectURI string) (*Client, error) {
 	// Generate a snowflake.
-	id, err := lib.GenSnowflake(config.NodeID())
-	if err != nil {
-		return nil, err
-	}
+	id := lib.GenSnowflake()
 
 	// Generate a Secret.
 	secretData := make([]byte, 64)
