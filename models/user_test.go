@@ -52,8 +52,7 @@ func TestUserStore(t *testing.T) {
 		})
 	})
 
-	eid, err := lib.GenSnowflake(0)
-	require.NoError(t, err)
+	eid := lib.GenSnowflake()
 	entity := &Entity{ID: eid, Data: JSONB(`{
 		"@id": "https://example.com/~jsmith",
 		"@type": ["http://schema.org/Person"],
@@ -61,8 +60,7 @@ func TestUserStore(t *testing.T) {
 	}`), Kind: "user"}
 	require.NoError(t, estore.Save(entity))
 
-	id, err := lib.GenSnowflake(0)
-	require.NoError(t, err)
+	id := lib.GenSnowflake()
 	user := &User{
 		ID:       id,
 		EntityID: eid,

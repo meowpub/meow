@@ -42,8 +42,7 @@ func TestEntityStore(t *testing.T) {
 			}`)}), "pq: null value in column \"id\" violates not-null constraint")
 		})
 
-		id, err := lib.GenSnowflake(0)
-		require.NoError(t, err)
+		id := lib.GenSnowflake()
 
 		t.Run("Empty", func(t *testing.T) {
 			require.EqualError(t, store.Save(&Entity{ID: id, Kind: ObjectEntity, Data: JSONB(`{}`)}), "pq: new row for relation \"entities\" violates check constraint \"entities_data_id_not_null_check\"")
@@ -124,8 +123,7 @@ func TestEntityStore(t *testing.T) {
 		})
 
 		t.Run("Update", func(t *testing.T) {
-			newID, err := lib.GenSnowflake(0)
-			require.NoError(t, err)
+			newID := lib.GenSnowflake()
 
 			require.NoError(t, store.Save(&Entity{ID: newID, Data: JSONB(`{
 				"@id": "https://example.com/@jsmith",
