@@ -9,67 +9,67 @@ import (
 // mockStore.EXPECT().Clients().Returns(myExistingMockClientStore) etc. before every real EXPECT().
 // That would also break in obnoxious ways if tested functions change the way they reuse stores,
 // which should not be part of the API contract in the slightest.
-type mockStores struct {
+type MockStores struct {
 	ctrl *gomock.Controller
 
-	entityStore        EntityStore
-	userStore          UserStore
-	clientStore        ClientStore
-	authorizationStore AuthorizationStore
-	accessTokenStore   AccessTokenStore
-	refreshTokenStore  RefreshTokenStore
-	streamItemStore    StreamItemStore
+	EntityStore        *MockEntityStore
+	UserStore          *MockUserStore
+	ClientStore        *MockClientStore
+	AuthorizationStore *MockAuthorizationStore
+	AccessTokenStore   *MockAccessTokenStore
+	RefreshTokenStore  *MockRefreshTokenStore
+	StreamItemStore    *MockStreamItemStore
 }
 
-func NewMockStores(ctrl *gomock.Controller) Stores {
-	return &mockStores{ctrl: ctrl}
+func NewMockStores(ctrl *gomock.Controller) *MockStores {
+	return &MockStores{ctrl: ctrl}
 }
 
-func (s *mockStores) Entities() EntityStore {
-	if s.entityStore == nil {
-		s.entityStore = NewMockEntityStore(s.ctrl)
+func (s *MockStores) Entities() EntityStore {
+	if s.EntityStore == nil {
+		s.EntityStore = NewMockEntityStore(s.ctrl)
 	}
-	return s.entityStore
+	return s.EntityStore
 }
 
-func (s *mockStores) Users() UserStore {
-	if s.userStore == nil {
-		s.userStore = NewMockUserStore(s.ctrl)
+func (s *MockStores) Users() UserStore {
+	if s.UserStore == nil {
+		s.UserStore = NewMockUserStore(s.ctrl)
 	}
-	return s.userStore
+	return s.UserStore
 }
 
-func (s *mockStores) Clients() ClientStore {
-	if s.clientStore == nil {
-		s.clientStore = NewMockClientStore(s.ctrl)
+func (s *MockStores) Clients() ClientStore {
+	if s.ClientStore == nil {
+		s.ClientStore = NewMockClientStore(s.ctrl)
 	}
-	return s.clientStore
+	return s.ClientStore
 }
 
-func (s *mockStores) Authorizations() AuthorizationStore {
-	if s.authorizationStore == nil {
-		s.authorizationStore = NewMockAuthorizationStore(s.ctrl)
+func (s *MockStores) Authorizations() AuthorizationStore {
+	if s.AuthorizationStore == nil {
+		s.AuthorizationStore = NewMockAuthorizationStore(s.ctrl)
 	}
-	return s.authorizationStore
+	return s.AuthorizationStore
 }
 
-func (s *mockStores) AccessTokens() AccessTokenStore {
-	if s.accessTokenStore == nil {
-		s.accessTokenStore = NewMockAccessTokenStore(s.ctrl)
+func (s *MockStores) AccessTokens() AccessTokenStore {
+	if s.AccessTokenStore == nil {
+		s.AccessTokenStore = NewMockAccessTokenStore(s.ctrl)
 	}
-	return s.accessTokenStore
+	return s.AccessTokenStore
 }
 
-func (s *mockStores) RefreshTokens() RefreshTokenStore {
-	if s.refreshTokenStore == nil {
-		s.refreshTokenStore = NewMockRefreshTokenStore(s.ctrl)
+func (s *MockStores) RefreshTokens() RefreshTokenStore {
+	if s.RefreshTokenStore == nil {
+		s.RefreshTokenStore = NewMockRefreshTokenStore(s.ctrl)
 	}
-	return s.refreshTokenStore
+	return s.RefreshTokenStore
 }
 
-func (s *mockStores) StreamItems() StreamItemStore {
-	if s.streamItemStore == nil {
-		s.streamItemStore = NewMockStreamItemStore(s.ctrl)
+func (s *MockStores) StreamItems() StreamItemStore {
+	if s.StreamItemStore == nil {
+		s.StreamItemStore = NewMockStreamItemStore(s.ctrl)
 	}
-	return s.streamItemStore
+	return s.StreamItemStore
 }

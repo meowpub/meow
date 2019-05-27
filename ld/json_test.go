@@ -2,11 +2,14 @@ package ld
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
-
-	// "github.com/stretchr/testify/assert"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -30,6 +33,38 @@ const compacted = `
 		"id":"something"
 	}
 	`
+
+func TestDocumentLoader(t *testing.T) {
+	srv := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
+		assert.Equal(t, "GET", req.Method, "Wrong Method")
+		assert.Equal(t, "/something", req.RequestURI, "Wrong RequestURI")
+		assert.Equal(t, acceptHeader, req.Header.Get("Accept"), "Wrong Accept header")
+		fmt.Fprintln(rw, expanded)
+	}))
+	defer srv.Close()
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	loader := NewDocumentLoader(ctx)
+	rdoc, err := loader.LoadDocument(srv.URL + "/something")
+	require.NoError(t, err)
+	assert.Equal(t, srv.URL+"/something", rdoc.DocumentURL, "Wrong DocumentURL")
+	assert.Equal(t, map[string]interface{}{
+		"@id": "https://example.com/something",
+		"http://purl.org/dc/terms/creator": []interface{}{
+			map[string]interface{}{"@id": "https://example.com/someBODY"},
+		},
+		"https://w3id.org/security#Ed25519Signature2018": []interface{}{
+			map[string]interface{}{"@value": "foo"},
+		},
+	}, rdoc.Document, "Wrong Document")
+
+	cancel()
+
+	_, err = loader.LoadDocument(srv.URL + "/something")
+	assert.EqualError(t, err, "Get "+srv.URL+"/something: context canceled", "Wrong error from cancelled context")
+}
 
 func TestCompact(t *testing.T) {
 	var compBuf bytes.Buffer

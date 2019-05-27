@@ -5,7 +5,6 @@ import (
 	"github.com/jinzhu/gorm"
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/lib"
 )
 
@@ -24,13 +23,8 @@ type User struct {
 }
 
 func NewUser(profileID snowflake.ID, email, password string) (*User, error) {
-	id, err := lib.GenSnowflake(config.NodeID())
-	if err != nil {
-		return nil, err
-	}
-
 	user := User{
-		ID:       id,
+		ID:       lib.GenSnowflake(),
 		EntityID: profileID,
 		Email:    email,
 	}

@@ -9,6 +9,8 @@ import (
 // The class of containers of alternatives.
 type Alt struct{ Container }
 
+func NewAlt(id string) Alt { return AsAlt(ld.NewObject(id, Class_Alt.ID)) }
+
 // Ducktypes the object into a(n) Alt.
 func AsAlt(e ld.Entity) Alt { return Alt{AsContainer(e)} }
 
@@ -18,6 +20,8 @@ func IsAlt(e ld.Entity) bool { return ld.Is(e, Class_Alt.ID) }
 // The class of unordered containers.
 type Bag struct{ Container }
 
+func NewBag(id string) Bag { return AsBag(ld.NewObject(id, Class_Bag.ID)) }
+
 // Ducktypes the object into a(n) Bag.
 func AsBag(e ld.Entity) Bag { return Bag{AsContainer(e)} }
 
@@ -26,6 +30,8 @@ func IsBag(e ld.Entity) bool { return ld.Is(e, Class_Bag.ID) }
 
 // The class of RDF Lists.
 type List struct{ Resource }
+
+func NewList(id string) List { return AsList(ld.NewObject(id, Class_List.ID)) }
 
 // Ducktypes the object into a(n) List.
 func AsList(e ld.Entity) List { return List{AsResource(e)} }
@@ -45,6 +51,8 @@ func (obj List) SetRest(v interface{}) { SetRest(obj, v) }
 
 // The class of RDF properties.
 type Property struct{ Resource }
+
+func NewProperty(id string) Property { return AsProperty(ld.NewObject(id, Class_Property.ID)) }
 
 // Ducktypes the object into a(n) Property.
 func AsProperty(e ld.Entity) Property { return Property{AsResource(e)} }
@@ -70,6 +78,8 @@ func (obj Property) SetSubPropertyOf(v interface{}) { SetSubPropertyOf(obj, v) }
 // The class of ordered containers.
 type Seq struct{ Container }
 
+func NewSeq(id string) Seq { return AsSeq(ld.NewObject(id, Class_Seq.ID)) }
+
 // Ducktypes the object into a(n) Seq.
 func AsSeq(e ld.Entity) Seq { return Seq{AsContainer(e)} }
 
@@ -78,6 +88,8 @@ func IsSeq(e ld.Entity) bool { return ld.Is(e, Class_Seq.ID) }
 
 // The class of RDF statements.
 type Statement struct{ Resource }
+
+func NewStatement(id string) Statement { return AsStatement(ld.NewObject(id, Class_Statement.ID)) }
 
 // Ducktypes the object into a(n) Statement.
 func AsStatement(e ld.Entity) Statement { return Statement{AsResource(e)} }
@@ -103,6 +115,8 @@ func (obj Statement) SetSubject(v interface{}) { SetSubject(obj, v) }
 // The class of classes.
 type Class struct{ Resource }
 
+func NewClass(id string) Class { return AsClass(ld.NewObject(id, Class_Class.ID)) }
+
 // Ducktypes the object into a(n) Class.
 func AsClass(e ld.Entity) Class { return Class{AsResource(e)} }
 
@@ -117,6 +131,8 @@ func (obj Class) SetSubClassOf(v interface{}) { SetSubClassOf(obj, v) }
 // The class of RDF containers.
 type Container struct{ Resource }
 
+func NewContainer(id string) Container { return AsContainer(ld.NewObject(id, Class_Container.ID)) }
+
 // Ducktypes the object into a(n) Container.
 func AsContainer(e ld.Entity) Container { return Container{AsResource(e)} }
 
@@ -126,6 +142,10 @@ func IsContainer(e ld.Entity) bool { return ld.Is(e, Class_Container.ID) }
 // The class of container membership properties, rdf:_1, rdf:_2, ...,
 // all of which are sub-properties of 'member'.
 type ContainerMembershipProperty struct{ Property }
+
+func NewContainerMembershipProperty(id string) ContainerMembershipProperty {
+	return AsContainerMembershipProperty(ld.NewObject(id, Class_ContainerMembershipProperty.ID))
+}
 
 // Ducktypes the object into a(n) ContainerMembershipProperty.
 func AsContainerMembershipProperty(e ld.Entity) ContainerMembershipProperty {
@@ -140,6 +160,8 @@ func IsContainerMembershipProperty(e ld.Entity) bool {
 // The class of RDF datatypes.
 type Datatype struct{ Class }
 
+func NewDatatype(id string) Datatype { return AsDatatype(ld.NewObject(id, Class_Datatype.ID)) }
+
 // Ducktypes the object into a(n) Datatype.
 func AsDatatype(e ld.Entity) Datatype { return Datatype{AsClass(e)} }
 
@@ -148,6 +170,8 @@ func IsDatatype(e ld.Entity) bool { return ld.Is(e, Class_Datatype.ID) }
 
 // The class of literal values, eg. textual strings and integers.
 type Literal struct{ Resource }
+
+func NewLiteral(id string) Literal { return AsLiteral(ld.NewObject(id, Class_Literal.ID)) }
 
 // Ducktypes the object into a(n) Literal.
 func AsLiteral(e ld.Entity) Literal { return Literal{AsResource(e)} }
@@ -158,6 +182,8 @@ func IsLiteral(e ld.Entity) bool { return ld.Is(e, Class_Literal.ID) }
 // The class resource, everything.
 type Resource struct{ o *ld.Object }
 
+func NewResource(id string) Resource { return AsResource(ld.NewObject(id, Class_Resource.ID)) }
+
 // Ducktypes the object into a(n) Resource.
 func AsResource(e ld.Entity) Resource { return Resource{o: e.Obj()} }
 
@@ -166,6 +192,9 @@ func IsResource(e ld.Entity) bool { return ld.Is(e, Class_Resource.ID) }
 
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj Resource) Obj() *ld.Object { return obj.o }
+
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj Resource) IsNull() bool { return obj.o == nil }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj Resource) ID() string { return obj.o.ID() }

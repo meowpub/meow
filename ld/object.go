@@ -1,7 +1,11 @@
 package ld
 
 import (
+	"context"
 	"encoding/json"
+	"net/http"
+
+	"github.com/meowpub/meow/lib"
 )
 
 var _ Entity = &Object{}
@@ -18,9 +22,25 @@ type Object struct {
 
 func NewObject(id string, types ...string) *Object {
 	obj := &Object{}
-	obj.SetID(id)
-	obj.SetType(types...)
+	if id != "" {
+		obj.SetID(id)
+	}
+	if types != nil {
+		obj.SetType(types...)
+	}
 	return obj
+}
+
+func FetchObject(ctx context.Context, id string) (*Object, error) {
+	rdoc, err := NewDocumentLoader(ctx).LoadDocument(id)
+	if err != nil {
+		return nil, lib.Code(err, http.StatusUnprocessableEntity)
+	}
+	v, ok := rdoc.Document.(map[string]interface{})
+	if !ok {
+		return nil, lib.Errorf(http.StatusInternalServerError, "can't cast %T to map[string]interface{}", v)
+	}
+	return &Object{V: v}, nil
 }
 
 // Creates a new object from a JSON object.
@@ -58,6 +78,10 @@ func (obj *Object) UnmarshalJSON(data []byte) error {
 // Revolver Ocelot.
 func (obj *Object) Obj() *Object {
 	return obj
+}
+
+func (obj *Object) IsNull() bool {
+	return obj == nil
 }
 
 // Returns the object's @id, or "".
@@ -124,6 +148,12 @@ func (obj *Object) Set(key string, value interface{}) {
 	if obj.V == nil {
 		obj.V = map[string]interface{}{key: value}
 		return
+	}
+	switch v := value.(type) {
+	case Entity:
+		value = v.Obj().V
+	case *Object:
+		value = v.V
 	}
 	obj.V[key] = value
 	switch key {

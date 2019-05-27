@@ -6,7 +6,6 @@ import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/jinzhu/gorm"
 
-	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/ld"
 	"github.com/meowpub/meow/lib"
 )
@@ -41,12 +40,12 @@ type Entity struct {
 }
 
 func NewEntity(kind EntityKind, data []byte) (*Entity, error) {
-	id, err := lib.GenSnowflake(config.NodeID())
-	if err != nil {
-		return nil, err
-	}
-	e := &Entity{ID: id, Data: data, Kind: kind}
+	e := &Entity{ID: lib.GenSnowflake(), Data: data, Kind: kind}
 	return e, e.SyncDataToObject()
+}
+
+func NewEntityFrom(kind EntityKind, e ld.Entity) *Entity {
+	return &Entity{ID: lib.GenSnowflake(), Obj: e.Obj(), Kind: kind}
 }
 
 // Overwrites Object with Data. Called automatically by EntityStore.Get*() and NewEntity().

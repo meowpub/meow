@@ -6,7 +6,7 @@ import (
 )
 
 // Returns whether the entity quacks like a certain type.
-func QuacksLike(t *meta.Type, e ld.Entity) bool {
+func QuacksLike(e ld.Entity, t *meta.Type) bool {
 	for _, tID := range e.Type() {
 		if t.ID == tID {
 			return true
@@ -16,6 +16,16 @@ func QuacksLike(t *meta.Type, e ld.Entity) bool {
 			continue
 		}
 		if typ.IsSubClassOf(t) {
+			return true
+		}
+	}
+	return false
+}
+
+// Returns whether the entity quacks like any of the given types.
+func QuacksLikeAny(e ld.Entity, ts ...*meta.Type) bool {
+	for _, t := range ts {
+		if QuacksLike(e, t) {
 			return true
 		}
 	}

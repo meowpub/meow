@@ -259,6 +259,8 @@ import (
 {{comment ($cls.Get "http://www.w3.org/2000/01/rdf-schema#comment")}}
 type {{$cls.TypeName}} struct { {{range .SubClassOf}}{{$.Resolve .}}; {{else}}o *ld.Object{{end}} }
 
+func New{{$cls.TypeName}}(id string) {{$cls.TypeName}} { return As{{$cls.TypeName}}(ld.NewObject(id, Class_{{.TypeName}}.ID)) }
+
 // Ducktypes the object into a(n) {{.TypeName}}.
 func As{{$cls.TypeName}}(e ld.Entity) {{$cls.TypeName}} { return {{$cls.TypeName}}{ {{range .SubClassOf}}{{$.ResolvePrefix . "As"}}(e),{{else}}o: e.Obj(){{end}} } }
 
@@ -268,6 +270,9 @@ func Is{{$cls.TypeName}}(e ld.Entity) bool { return ld.Is(e, Class_{{.TypeName}}
 {{if not .SubClassOf}}
 // Returns the wrapped plain ld.Object. Implements ld.Entity.
 func (obj {{$cls.TypeName}}) Obj() *ld.Object { return obj.o }
+
+// Returns whether the wrapped object is null. Implements ld.Entity.
+func (obj {{$cls.TypeName}}) IsNull() bool { return obj.o == nil }
 
 // Returns the object's @id. Implements ld.Entity.
 func (obj {{$cls.TypeName}}) ID() string { return obj.o.ID() }

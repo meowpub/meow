@@ -4,17 +4,23 @@ import (
 	"github.com/bwmarrin/snowflake"
 )
 
-var snowflakeNode *snowflake.Node
+//go:generate mockgen -package=lib -source=snowflakes.go -destination=snowflakes.mock.go
 
-// GenSnowflake generates a snowflake ID. The nodeID is only used on the first call, to create a
-// cached Node - the algorithm relies on there being a monotonous, global step counter.
-func GenSnowflake(nodeID int64) (snowflake.ID, error) {
-	if snowflakeNode == nil {
-		node, err := snowflake.NewNode(nodeID)
-		if err != nil {
-			return 0, err
-		}
-		snowflakeNode = node
+var DefaultSnowflakeGenerator SnowflakeGenerator
+
+func init() {
+	node, err := snowflake.NewNode(0)
+	if err != nil {
+		panic(err)
 	}
-	return snowflakeNode.Generate(), nil
+	DefaultSnowflakeGenerator = node
+}
+
+type SnowflakeGenerator interface {
+	Generate() snowflake.ID
+}
+
+// GenSnowflake generates a snowflake ID.
+func GenSnowflake() snowflake.ID {
+	return DefaultSnowflakeGenerator.Generate()
 }

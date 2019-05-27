@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/ld"
 	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/models"
@@ -33,12 +32,8 @@ var ingestCmd = &cobra.Command{
 
 		// Entities ingested this way are always ObjectEntities.
 		// (Add a flag to say otherwise if that ever becomes useful.)
-		id, err := lib.GenSnowflake(config.NodeID())
-		if err != nil {
-			return err
-		}
 		e := &models.Entity{
-			ID:   id,
+			ID:   lib.GenSnowflake(),
 			Kind: models.ObjectEntity,
 			Obj:  &obj,
 		}

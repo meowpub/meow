@@ -11,6 +11,8 @@ import (
 // The digest algorithm used will determine the cryptographic properties of the digest.
 type Digest struct{ owl.Thing }
 
+func NewDigest(id string) Digest { return AsDigest(ld.NewObject(id, Class_Digest.ID)) }
+
 // Ducktypes the object into a(n) Digest.
 func AsDigest(e ld.Entity) Digest { return Digest{owl.AsThing(e)} }
 
@@ -35,6 +37,10 @@ func (obj Digest) SetDigestValue(v interface{}) { SetDigestValue(obj, v) }
 // A class of messages that are obfuscated in some cryptographic manner.
 // These messages are incredibly difficult to decrypt without the proper decryption key.
 type EncryptedMessage struct{ owl.Thing }
+
+func NewEncryptedMessage(id string) EncryptedMessage {
+	return AsEncryptedMessage(ld.NewObject(id, Class_EncryptedMessage.ID))
+}
 
 // Ducktypes the object into a(n) EncryptedMessage.
 func AsEncryptedMessage(e ld.Entity) EncryptedMessage { return EncryptedMessage{owl.AsThing(e)} }
@@ -81,6 +87,10 @@ func (obj EncryptedMessage) SetPublicKey(v interface{}) { SetPublicKey(obj, v) }
 // and RSA to perform the digital signature.
 type GraphSignature2012 struct{ Signature }
 
+func NewGraphSignature2012(id string) GraphSignature2012 {
+	return AsGraphSignature2012(ld.NewObject(id, Class_GraphSignature2012.ID))
+}
+
 // Ducktypes the object into a(n) GraphSignature2012.
 func AsGraphSignature2012(e ld.Entity) GraphSignature2012 { return GraphSignature2012{AsSignature(e)} }
 
@@ -90,6 +100,8 @@ func IsGraphSignature2012(e ld.Entity) bool { return ld.Is(e, Class_GraphSignatu
 // This class represents a cryptographic key that may be used for encryption, decryption, or
 // digitally signing data.
 type Key struct{ owl.Thing }
+
+func NewKey(id string) Key { return AsKey(ld.NewObject(id, Class_Key.ID)) }
 
 // Ducktypes the object into a(n) Key.
 func AsKey(e ld.Entity) Key { return Key{owl.AsThing(e)} }
@@ -125,6 +137,10 @@ func (obj Key) SetPublicKeyPem(v interface{}) { SetPublicKeyPem(obj, v) }
 // signs and verifies that is different from other Linked Data signatures.
 type LinkedDataSignature2015 struct{ Signature }
 
+func NewLinkedDataSignature2015(id string) LinkedDataSignature2015 {
+	return AsLinkedDataSignature2015(ld.NewObject(id, Class_LinkedDataSignature2015.ID))
+}
+
 // Ducktypes the object into a(n) LinkedDataSignature2015.
 func AsLinkedDataSignature2015(e ld.Entity) LinkedDataSignature2015 {
 	return LinkedDataSignature2015{AsSignature(e)}
@@ -139,6 +155,10 @@ func IsLinkedDataSignature2015(e ld.Entity) bool { return ld.Is(e, Class_LinkedD
 // RSA to perform the digital signature.
 type LinkedDataSignature2016 struct{ Signature }
 
+func NewLinkedDataSignature2016(id string) LinkedDataSignature2016 {
+	return AsLinkedDataSignature2016(ld.NewObject(id, Class_LinkedDataSignature2016.ID))
+}
+
 // Ducktypes the object into a(n) LinkedDataSignature2016.
 func AsLinkedDataSignature2016(e ld.Entity) LinkedDataSignature2016 {
 	return LinkedDataSignature2016{AsSignature(e)}
@@ -150,6 +170,8 @@ func IsLinkedDataSignature2016(e ld.Entity) bool { return ld.Is(e, Class_LinkedD
 // This class represents a digital signature on serialized data. It is an abstract class and should
 // not be used other than for Semantic Web reasoning purposes, such as by a reasoning agent.
 type Signature struct{ owl.Thing }
+
+func NewSignature(id string) Signature { return AsSignature(ld.NewObject(id, Class_Signature.ID)) }
 
 // Ducktypes the object into a(n) Signature.
 func AsSignature(e ld.Entity) Signature { return Signature{owl.AsThing(e)} }
