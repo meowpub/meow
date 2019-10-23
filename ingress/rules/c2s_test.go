@@ -164,6 +164,30 @@ func TestC2SGenerateIDs(t *testing.T) {
 		assert.Equal(t, "https://example.com/~jsmith/2", note.ID())
 	})
 
+	t.Run("Empty Slug", func(t *testing.T) {
+		ctrl := gomock.NewController(t)
+		defer ctrl.Finish()
+
+		flakeGen := lib.NewMockSnowflakeGenerator(ctrl)
+		lib.DefaultSnowflakeGenerator = flakeGen
+
+		gomock.InOrder(
+			flakeGen.EXPECT().Generate().Return(snowflake.ID(1)).Times(1),
+			flakeGen.EXPECT().Generate().Return(snowflake.ID(2)).Times(1),
+		)
+
+		note := as.NewNote("")
+		note.SetName(ld.Value(".")) // Nothing but punctuation.
+		note.SetContent(ld.Value("Lorem ipsum dolor sit amet"))
+		create := as.NewCreate("")
+		create.SetObject(note)
+
+		activity := as.AsActivity(create)
+		assert.NoError(t, C2SGenerateIDs(ctx, ld.ClientToServer, actor, outbox, &activity))
+		assert.Equal(t, "https://example.com/~jsmith/outbox/1", create.ID())
+		assert.Equal(t, "https://example.com/~jsmith/2", note.ID())
+	})
+
 	t.Run("Long Name", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
