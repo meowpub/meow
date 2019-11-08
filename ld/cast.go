@@ -22,8 +22,8 @@ func ToString(raw interface{}) string {
 		}
 		return out
 	case map[string]interface{}:
-		if s := ToString(v["@value"]); s != "" {
-			return s
+		if val, ok := v["@value"]; ok {
+			return ToString(val)
 		}
 		return fmt.Sprint(v)
 	case fmt.Stringer:

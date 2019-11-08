@@ -151,7 +151,8 @@ func C2SGenerateIDs(ctx context.Context, src ld.Source, actor, stream *models.En
 				}
 				objectID += slug
 			}
-		} else {
+		}
+		if objectID == "" {
 			objectID = lib.GenSnowflake().String()
 		}
 
