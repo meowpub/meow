@@ -3,7 +3,9 @@ package middleware
 import (
 	"net/http"
 
+	"github.com/meowpub/meow/lib"
 	"github.com/meowpub/meow/server/api"
+	"go.uber.org/zap"
 )
 
 func LocalDomains(domains []string) func(next api.Handler) api.Handler {
@@ -18,7 +20,10 @@ func LocalDomains(domains []string) func(next api.Handler) api.Handler {
 				}
 			}
 			if !isLocal {
-				return api.Response{Status: http.StatusMisdirectedRequest}
+				zap.L().Warn("rejecting request to unknown domain",
+					zap.String("domain", hostname), zap.Strings("local", domains))
+				return api.ErrorResponse(lib.Errorf(http.StatusMisdirectedRequest,
+					"The server was not configured to handle the domain: '%s'", hostname))
 			}
 			return next.HandleRequest(req)
 		})
