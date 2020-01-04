@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"net/http"
 	"net/http/httptest"
 	"testing"
 
@@ -22,9 +21,9 @@ func TestLocalDomains(t *testing.T) {
 	})
 	t.Run("Remote", func(t *testing.T) {
 		req := httptest.NewRequest("GET", "https://example2.com/abc123", nil)
-		assert.Equal(t,
-			api.Response{Status: http.StatusMisdirectedRequest},
-			LocalDomains([]string{"example.com"})(handler).HandleRequest(api.Request{Request: req}),
+		assert.EqualError(t,
+			LocalDomains([]string{"example.com"})(handler).HandleRequest(api.Request{Request: req}).Error,
+			"The server was not configured to handle the domain: 'example2.com'",
 		)
 	})
 }
