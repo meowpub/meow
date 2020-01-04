@@ -30,6 +30,12 @@ var serveCmd = &cobra.Command{
 		L := zap.L().Named("serve")
 
 		addr := viper.GetString("api.addr")
+		domains := viper.GetStringSlice("api.domain")
+
+		// We need to know what domains are local, because it changes some semantics.
+		if len(domains) == 0 {
+			return errors.Errorf("no domains configured: specify -d/--domain, eg. `meow s -d localhost`")
+		}
 
 		// Derive subkeys from the master secret; this has to be done before use.
 		if err := secrets.Init(L.Named("secrets"), config.Secret()); err != nil {
@@ -62,7 +68,7 @@ var serveCmd = &cobra.Command{
 		defer func() { lib.Report(ctx, r.Close(), "couldn't cleanly close redis connection") }()
 
 		// Build a server.
-		mux := server.New(db, r, config.RedisKeyspace())
+		mux := server.New(domains, db, r, config.RedisKeyspace())
 		srv := &http.Server{Handler: mux}
 
 		// Listen!
@@ -70,7 +76,7 @@ var serveCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		L.Info("listening on...", zap.String("addr", lis.Addr().String()))
+		L.Info("serving!", zap.String("addr", lis.Addr().String()), zap.Strings("domains", domains))
 
 		// Run until the context exits.
 		errC := make(chan error, 1)
@@ -90,6 +96,7 @@ var serveCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(serveCmd)
 
+	serveCmd.Flags().StringSliceP("domain", "d", nil, "domain(s) to serve on (eg. \"example.com\")")
 	serveCmd.Flags().StringP("addr", "a", "localhost:8000", "address to listen on")
 	bindPFlags("api", serveCmd.Flags())
 }
