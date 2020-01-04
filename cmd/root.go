@@ -4,11 +4,13 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 
 	"github.com/meowpub/meow/config"
 )
@@ -22,6 +24,11 @@ var rootCmd = &cobra.Command{
 		lconf := zap.NewDevelopmentConfig()
 		if config.IsProd() {
 			lconf = zap.NewProductionConfig()
+		} else {
+			lconf.EncoderConfig.EncodeTime = func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
+				enc.AppendString(fmt.Sprintf("%02d:%02d:%02d", t.Hour(), t.Minute(), t.Second()))
+			}
+			lconf.EncoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
 		}
 		l, err := lconf.Build()
 		if err != nil {
