@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  redis:
+    image: redis:5
+    ports:
+    - "36379:6379"
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: meow
+      POSTGRES_PASSWORD: meow
+    ports:
+    - "35432:5432"
