@@ -34,7 +34,9 @@ func (n EntityNode) HandleRequest(req api.Request) api.Response {
 
 // Called by the Router to return a node at an arbitrary point in the tree.
 // This is called both by EntityNode.Traverse and the router.
-func Lookup(ctx context.Context, u *url.URL) (api.Traversible, error) {
+func Lookup(ctx context.Context, u_ *url.URL) (api.Traversible, error) {
+	u := *u_
+	u.Scheme = "https"
 	lib.GetLogger(ctx).Debug("looking up...", zap.String("url", u.String()))
 	e, err := models.GetStores(ctx).Entities().GetByID(u.String())
 	if err != nil {
@@ -45,5 +47,5 @@ func Lookup(ctx context.Context, u *url.URL) (api.Traversible, error) {
 		lib.GetLogger(ctx).Debug("Lookup found nothing", zap.String("url", u.String()))
 		return nil, nil
 	}
-	return EntityNode{e, u}, nil
+	return EntityNode{e, &u}, nil
 }

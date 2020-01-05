@@ -1,0 +1,6 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "@type": "Service",
+    "@id": "https://localhost",
+    "name": "Test Domain"
+}

@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"net"
 	"net/http"
 
 	"github.com/meowpub/meow/lib"
@@ -11,7 +12,10 @@ import (
 func LocalDomains(domains []string) func(next api.Handler) api.Handler {
 	return func(next api.Handler) api.Handler {
 		return api.HandlerFunc(func(req api.Request) api.Response {
-			hostname := req.URL.Hostname()
+			hostname, _, _ := net.SplitHostPort(req.Host)
+			if hostname == "" {
+				hostname = req.Host
+			}
 			isLocal := false
 			for _, domain := range domains {
 				if hostname == domain {
