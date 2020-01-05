@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"io/ioutil"
 	"os"
@@ -24,10 +25,15 @@ var ingestCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		var obj ld.Object
-		if err := json.Unmarshal(indata, &obj); err != nil {
+		var kv map[string]interface{}
+		if err := json.Unmarshal(indata, &kv); err != nil {
 			return err
 		}
+		kv, err = ld.Expand(context.Background(), kv, "")
+		if err != nil {
+			return err
+		}
+		obj := ld.Object{V: kv}
 		dump(obj)
 
 		// Entities ingested this way are always ObjectEntities.

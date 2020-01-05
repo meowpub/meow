@@ -1,0 +1,13 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "@type": "Person",
+    "@id": "https://localhost/~jane",
+    "inbox": "https://localhost/~jane/-inbox",
+    "outbox": "https://localhost/~jane/-outbox",
+    "liked": "https://localhost/~jane/-liked",
+    "following": "https://localhost/~jane/-following",
+    "followers": "https://localhost/~jane/-followers",
+    "preferredUsername": "jane",
+    "name": "Jane Smith",
+    "summary": "meowpub test user"
+}
