@@ -9,6 +9,7 @@ Setting up a development environment
 You will need `docker` and `docker-compose` installed.
 
 1. Run `docker-compose up` to bring up Postgres and Redis containers.
+1. Run migrations: `go run . migrate up`.
 1. (Optional) Load sample data for development - note that `meow` requires every node in a path.
    1. `go run . ingest < fixtures/localhost.json` - create `https://localhost`.
    1. `go run . ingest < fixtures/localhost-jane.json` - create `https://localhost/~jane`.
