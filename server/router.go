@@ -18,7 +18,7 @@ import (
 )
 
 // New returns a new API router.
-func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
+func New(domains []string, db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 	renderOpts := render.Options{
 		Directory:     "templates",
 		Extensions:    []string{".html"},
@@ -27,6 +27,7 @@ func New(db *gorm.DB, r *redis.Client, keyspace string) http.Handler {
 	}
 
 	mux := api.NewRouter(Lookup, renderOpts)
+	mux.Use(middleware.LocalDomains(domains))
 	mux.Use(middleware.AddDB(db))
 	mux.Use(middleware.AddRedis(r))
 	mux.Use(middleware.AddStores())
