@@ -2,22 +2,21 @@ package cmd
 
 import (
 	"context"
-	"net"
-	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
+	"github.com/monzo/typhon"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
+	"github.com/meowpub/meow/api"
 	"github.com/meowpub/meow/config"
 	"github.com/meowpub/meow/config/secrets"
 	"github.com/meowpub/meow/lib"
-	"github.com/meowpub/meow/server"
 )
 
 // serveCmd represents the api command
@@ -67,29 +66,25 @@ var serveCmd = &cobra.Command{
 		}
 		defer func() { lib.Report(ctx, r.Close(), "couldn't cleanly close redis connection") }()
 
-		// Build a server.
-		mux := server.New(domains, db, r, config.RedisKeyspace())
-		srv := &http.Server{Handler: mux}
-
 		// Listen!
-		lis, err := net.Listen("tcp", addr)
+		svc := api.Service.
+			Filter(api.StoresFilter(db, r)).
+			Filter(typhon.ExpirationFilter).
+			Filter(api.PanicFilter).
+			Filter(api.ErrorFilter).
+			Filter(typhon.H2cFilter)
+		srv, err := typhon.Listen(svc, addr)
 		if err != nil {
 			return err
 		}
-		L.Info("serving!", zap.String("addr", lis.Addr().String()), zap.Strings("domains", domains))
+		L.Info("Listening!", zap.String("addr", addr), zap.Strings("domains", domains))
 
-		// Run until the context exits.
-		errC := make(chan error, 1)
-		go func() { errC <- srv.Serve(lis) }()
-
-		select {
-		case err := <-errC:
-			return err
-		case <-ctx.Done():
-			shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-			defer cancel()
-			return srv.Shutdown(shutdownCtx)
-		}
+		// Stop that when the context exits, eg. on Ctrl+C.
+		<-ctx.Done()
+		cancelCtx, cancelCancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancelCancel()
+		srv.Stop(cancelCtx)
+		return nil
 	},
 }
 
