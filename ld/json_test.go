@@ -99,34 +99,19 @@ func TestExpand(t *testing.T) {
 	require.Equal(t, expBuf.String(), string(buf), "should produce expected result")
 }
 
-func TestTypeToContext(t *testing.T) {
-	testdata := map[string]struct {
-		Types   []string
-		Context interface{}
-	}{
-		"empty": {[]string{}, nil},
-		"as:Note": {
-			[]string{"https://www.w3.org/ns/activitystreams#Note"},
-			map[string]interface{}{"as": "https://www.w3.org/ns/activitystreams#"},
-		},
-		"sec:EncryptedMessage": {
-			[]string{"https://w3id.org/security#EncryptedMessage"},
-			map[string]interface{}{"sec": "https://w3id.org/security#"},
-		},
-		"as:Note + sec:EncryptedMessage": {
-			[]string{
-				"https://www.w3.org/ns/activitystreams#Note",
-				"https://w3id.org/security#EncryptedMessage",
-			},
-			map[string]interface{}{
-				"as":  "https://www.w3.org/ns/activitystreams#",
-				"sec": "https://w3id.org/security#",
-			},
-		},
+func Test_attrNamespace_shortNamespace(t *testing.T) {
+	testdata := map[string]string{
+		"http://www.w3.org/ns/activitystreams#Note":  "as",
+		"https://www.w3.org/ns/activitystreams#Note": "as",
 	}
-	for name, tdata := range testdata {
-		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, tdata.Context, TypeToContext(tdata.Types))
+	for attr, final := range testdata {
+		t.Run(attr, func(t *testing.T) {
+			ns := attrNamespace(attr)
+			if short, ok := shortNamespace(ns); ok {
+				assert.Equal(t, final, short)
+			} else {
+				assert.Equal(t, final, ns)
+			}
 		})
 	}
 }

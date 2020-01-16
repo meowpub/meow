@@ -3,7 +3,6 @@ package ld
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -132,40 +131,53 @@ func Compact(ctx context.Context, doc map[string]interface{}, uri string, contex
 }
 
 func CompactObject(ctx context.Context, obj *Object) (map[string]interface{}, error) {
-	return Compact(ctx, obj.V, "", TypeToContext(obj.Type()))
+	return Compact(ctx, obj.V, "", contextForObject(obj))
 }
 
-func TypeToContext(types []string) interface{} {
+func contextForObject(obj *Object) interface{} {
 	ldctx := map[string]interface{}{}
-	for _, typ := range types {
-		if hashPos := strings.Index(typ, "#"); hashPos != -1 {
-			// We can't use ns.Namespaces, because it causes a circular import :(
-			nsID := typ[:hashPos+1]
-			fmt.Println(typ, nsID)
-			switch nsID {
-			case "https://www.w3.org/1999/02/22-rdf-syntax-ns#",
-				"http://www.w3.org/1999/02/22-rdf-syntax-ns#":
-				ldctx["rdf"] = nsID
-			case "https://www.w3.org/2000/01/rdf-schema#",
-				"http://www.w3.org/2000/01/rdf-schema#":
-				ldctx["rdfs"] = nsID
-			case "https://www.w3.org/2002/07/owl#",
-				"http://www.w3.org/2002/07/owl#":
-				ldctx["owl"] = nsID
-			case "https://www.w3.org/ns/activitystreams#",
-				"http://www.w3.org/ns/activitystreams#":
-				ldctx["as"] = nsID
-			case "https://www.w3.org/ns/ldp#",
-				"http://www.w3.org/ns/ldp#":
-				ldctx["ldp"] = nsID
-			case "https://w3id.org/security#",
-				"http://w3id.org/security#":
-				ldctx["sec"] = nsID
+	walkValueForContext(ldctx, obj.V)
+	return ldctx
+}
+
+func walkValueForContext(ldctx map[string]interface{}, vv interface{}) {
+	switch v := vv.(type) {
+	case map[string]interface{}:
+		for key, value := range v {
+			if attrNS := attrNamespace(key); attrNS != "" {
+				if shortNS, ok := shortNamespace(attrNS); ok {
+					ldctx[shortNS] = attrNS
+				}
 			}
+			walkValueForContext(ldctx, value)
 		}
 	}
-	if len(ldctx) == 0 {
-		return nil
+}
+
+func attrNamespace(attr string) string {
+	if idx := strings.IndexRune(attr, '#'); idx != -1 {
+		return attr[:idx+1]
 	}
-	return ldctx
+	return ""
+}
+
+func shortNamespace(ns string) (string, bool) {
+	if idx := strings.Index(ns, "://"); idx != -1 {
+		ns = ns[idx+3:]
+	}
+	switch ns {
+	case "www.w3.org/1999/02/22-rdf-syntax-ns#":
+		return "rdf", true
+	case "www.w3.org/2000/01/rdf-schema#":
+		return "rdfs", true
+	case "www.w3.org/2002/07/owl#":
+		return "owl", true
+	case "www.w3.org/ns/activitystreams#":
+		return "as", true
+	case "www.w3.org/ns/ldp#":
+		return "ldp", true
+	case "w3id.org/security#":
+		return "sec", true
+	}
+	return "", false
 }
