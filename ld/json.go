@@ -135,21 +135,35 @@ func CompactObject(ctx context.Context, obj *Object) (map[string]interface{}, er
 }
 
 func contextForObject(obj *Object) interface{} {
-	ldctx := map[string]interface{}{}
-	walkValueForContext(ldctx, obj.V)
-	return ldctx
+	embeds := map[string]struct{}{}
+	aliases := map[string]interface{}{}
+	walkValueForContext(embeds, aliases, obj.V)
+	if num := len(embeds); num > 0 {
+		ldctx := make([]interface{}, 0, len(embeds))
+		for embed := range embeds {
+			if num == 1 {
+				return embed
+			}
+			ldctx = append(ldctx, embed)
+		}
+		return ldctx
+	}
+	return aliases
 }
 
-func walkValueForContext(ldctx map[string]interface{}, vv interface{}) {
+func walkValueForContext(embeds map[string]struct{}, aliases map[string]interface{}, vv interface{}) {
 	switch v := vv.(type) {
 	case map[string]interface{}:
 		for key, value := range v {
 			if attrNS := attrNamespace(key); attrNS != "" {
-				if shortNS, ok := shortNamespace(attrNS); ok {
-					ldctx[shortNS] = attrNS
+				nsAlias, embed := namespaceAlias(attrNS)
+				if embed {
+					embeds[nsAlias] = struct{}{}
+				} else if nsAlias != "" {
+					aliases[nsAlias] = attrNS
 				}
 			}
-			walkValueForContext(ldctx, value)
+			walkValueForContext(embeds, aliases, value)
 		}
 	}
 }
@@ -161,23 +175,23 @@ func attrNamespace(attr string) string {
 	return ""
 }
 
-func shortNamespace(ns string) (string, bool) {
+func namespaceAlias(ns string) (string, bool) {
 	if idx := strings.Index(ns, "://"); idx != -1 {
 		ns = ns[idx+3:]
 	}
 	switch ns {
 	case "www.w3.org/1999/02/22-rdf-syntax-ns#":
-		return "rdf", true
+		return "rdf", false
 	case "www.w3.org/2000/01/rdf-schema#":
-		return "rdfs", true
+		return "rdfs", false
 	case "www.w3.org/2002/07/owl#":
-		return "owl", true
+		return "owl", false
 	case "www.w3.org/ns/activitystreams#":
-		return "as", true
+		return "https://www.w3.org/ns/activitystreams", true
 	case "www.w3.org/ns/ldp#":
-		return "ldp", true
+		return "ldp", false
 	case "w3id.org/security#":
-		return "sec", true
+		return "https://w3id.org/security", true
 	}
 	return "", false
 }
