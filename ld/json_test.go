@@ -98,3 +98,35 @@ func TestExpand(t *testing.T) {
 
 	require.Equal(t, expBuf.String(), string(buf), "should produce expected result")
 }
+
+func TestTypeToContext(t *testing.T) {
+	testdata := map[string]struct {
+		Types   []string
+		Context interface{}
+	}{
+		"empty": {[]string{}, nil},
+		"as:Note": {
+			[]string{"https://www.w3.org/ns/activitystreams#Note"},
+			map[string]interface{}{"as": "https://www.w3.org/ns/activitystreams#"},
+		},
+		"sec:EncryptedMessage": {
+			[]string{"https://w3id.org/security#EncryptedMessage"},
+			map[string]interface{}{"sec": "https://w3id.org/security#"},
+		},
+		"as:Note + sec:EncryptedMessage": {
+			[]string{
+				"https://www.w3.org/ns/activitystreams#Note",
+				"https://w3id.org/security#EncryptedMessage",
+			},
+			map[string]interface{}{
+				"as":  "https://www.w3.org/ns/activitystreams#",
+				"sec": "https://w3id.org/security#",
+			},
+		},
+	}
+	for name, tdata := range testdata {
+		t.Run(name, func(t *testing.T) {
+			assert.Equal(t, tdata.Context, TypeToContext(tdata.Types))
+		})
+	}
+}

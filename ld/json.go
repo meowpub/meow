@@ -3,9 +3,11 @@ package ld
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	rice "github.com/GeertJohan/go.rice"
 	"github.com/piprate/json-gold/ld"
@@ -127,4 +129,43 @@ func Compact(ctx context.Context, doc map[string]interface{}, uri string, contex
 	} else {
 		return res, nil
 	}
+}
+
+func CompactObject(ctx context.Context, obj *Object) (map[string]interface{}, error) {
+	return Compact(ctx, obj.V, "", TypeToContext(obj.Type()))
+}
+
+func TypeToContext(types []string) interface{} {
+	ldctx := map[string]interface{}{}
+	for _, typ := range types {
+		if hashPos := strings.Index(typ, "#"); hashPos != -1 {
+			// We can't use ns.Namespaces, because it causes a circular import :(
+			nsID := typ[:hashPos+1]
+			fmt.Println(typ, nsID)
+			switch nsID {
+			case "https://www.w3.org/1999/02/22-rdf-syntax-ns#",
+				"http://www.w3.org/1999/02/22-rdf-syntax-ns#":
+				ldctx["rdf"] = nsID
+			case "https://www.w3.org/2000/01/rdf-schema#",
+				"http://www.w3.org/2000/01/rdf-schema#":
+				ldctx["rdfs"] = nsID
+			case "https://www.w3.org/2002/07/owl#",
+				"http://www.w3.org/2002/07/owl#":
+				ldctx["owl"] = nsID
+			case "https://www.w3.org/ns/activitystreams#",
+				"http://www.w3.org/ns/activitystreams#":
+				ldctx["as"] = nsID
+			case "https://www.w3.org/ns/ldp#",
+				"http://www.w3.org/ns/ldp#":
+				ldctx["ldp"] = nsID
+			case "https://w3id.org/security#",
+				"http://w3id.org/security#":
+				ldctx["sec"] = nsID
+			}
+		}
+	}
+	if len(ldctx) == 0 {
+		return nil
+	}
+	return ldctx
 }

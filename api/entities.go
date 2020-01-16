@@ -21,7 +21,7 @@ type Node interface {
 type Object struct{ *ld.Object }
 
 func (o Object) GET(req typhon.Request) typhon.Response {
-	return req.Response(o)
+	return EntityResponse(req, o.Object)
 }
 
 func Instantiate(obj *ld.Object) Node {
