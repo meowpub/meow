@@ -29,7 +29,10 @@ func Instantiate(obj *ld.Object) Node {
 }
 
 func Lookup(ctx context.Context, reqURL url.URL) (Node, error) {
+	// Normalise the URL, forcing it to https:// and removing any authentication or queries.
+	reqURL = url.URL{Scheme: "https", Host: reqURL.Host, Path: reqURL.Path}
 	lib.GetLogger(ctx).Debug("Looking up entity...", zap.String("id", reqURL.String()))
+
 	entities := models.GetStores(ctx).Entities()
 	e, err := entities.GetByID(reqURL.String())
 	if err != nil {

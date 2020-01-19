@@ -15,7 +15,6 @@ var Service = typhon.Service(Handler)
 
 func Handler(req typhon.Request) typhon.Response {
 	u := *req.URL
-	u.Scheme = "https"
 	u.Host, _, _ = net.SplitHostPort(req.Host)
 	if u.Host == "" {
 		u.Host = req.Host
