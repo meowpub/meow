@@ -98,3 +98,21 @@ func TestExpand(t *testing.T) {
 
 	require.Equal(t, expBuf.String(), string(buf), "should produce expected result")
 }
+
+func Test_attrNamespace_namespaceAlias(t *testing.T) {
+	testdata := map[string]struct {
+		Alias string
+		Embed bool
+	}{
+		"http://www.w3.org/ns/activitystreams#Note":  {"https://www.w3.org/ns/activitystreams", true},
+		"https://www.w3.org/ns/activitystreams#Note": {"https://www.w3.org/ns/activitystreams", true},
+	}
+	for attr, final := range testdata {
+		t.Run(attr, func(t *testing.T) {
+			ns := attrNamespace(attr)
+			alias, embed := namespaceAlias(ns)
+			assert.Equal(t, final.Alias, alias)
+			assert.Equal(t, final.Embed, embed)
+		})
+	}
+}

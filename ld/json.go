@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	rice "github.com/GeertJohan/go.rice"
 	"github.com/piprate/json-gold/ld"
@@ -127,4 +128,70 @@ func Compact(ctx context.Context, doc map[string]interface{}, uri string, contex
 	} else {
 		return res, nil
 	}
+}
+
+func CompactObject(ctx context.Context, obj *Object) (map[string]interface{}, error) {
+	return Compact(ctx, obj.V, "", contextForObject(obj))
+}
+
+func contextForObject(obj *Object) interface{} {
+	embeds := map[string]struct{}{}
+	aliases := map[string]interface{}{}
+	walkValueForContext(embeds, aliases, obj.V)
+	if num := len(embeds); num > 0 {
+		ldctx := make([]interface{}, 0, len(embeds))
+		for embed := range embeds {
+			if num == 1 {
+				return embed
+			}
+			ldctx = append(ldctx, embed)
+		}
+		return ldctx
+	}
+	return aliases
+}
+
+func walkValueForContext(embeds map[string]struct{}, aliases map[string]interface{}, vv interface{}) {
+	switch v := vv.(type) {
+	case map[string]interface{}:
+		for key, value := range v {
+			if attrNS := attrNamespace(key); attrNS != "" {
+				nsAlias, embed := namespaceAlias(attrNS)
+				if embed {
+					embeds[nsAlias] = struct{}{}
+				} else if nsAlias != "" {
+					aliases[nsAlias] = attrNS
+				}
+			}
+			walkValueForContext(embeds, aliases, value)
+		}
+	}
+}
+
+func attrNamespace(attr string) string {
+	if idx := strings.IndexRune(attr, '#'); idx != -1 {
+		return attr[:idx+1]
+	}
+	return ""
+}
+
+func namespaceAlias(ns string) (string, bool) {
+	if idx := strings.Index(ns, "://"); idx != -1 {
+		ns = ns[idx+3:]
+	}
+	switch ns {
+	case "www.w3.org/1999/02/22-rdf-syntax-ns#":
+		return "rdf", false
+	case "www.w3.org/2000/01/rdf-schema#":
+		return "rdfs", false
+	case "www.w3.org/2002/07/owl#":
+		return "owl", false
+	case "www.w3.org/ns/activitystreams#":
+		return "https://www.w3.org/ns/activitystreams", true
+	case "www.w3.org/ns/ldp#":
+		return "ldp", false
+	case "w3id.org/security#":
+		return "https://w3id.org/security", true
+	}
+	return "", false
 }
